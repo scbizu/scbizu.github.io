@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            一次爬方正教务处的成功实践 | 
+        
+        一只菜鸡的成长之路
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="scnace">
+    <meta name="description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta name="keywords" content="null,golang,repo,教务处">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一只菜鸡的成长之路">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.scnace.cc">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="一次爬方正教务处的成功实践 | 一只菜鸡的成长之路">
+    <meta property="og:description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta property="og:article:tag" content="golang"> <meta property="og:article:tag" content="repo"> <meta property="og:article:tag" content="教务处"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前戏"><span class="post-toc-number">1.</span> <span class="post-toc-text">前戏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入戏"><span class="post-toc-number">2.</span> <span class="post-toc-text">入戏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HOW-TO-DO"><span class="post-toc-number">3.</span> <span class="post-toc-text">HOW TO DO</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">STEP 1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">STEP 2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">STEP3:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP4"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">STEP4:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP5"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">STEP5:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#STEP-6"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">STEP 6:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#END"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">END</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                一次爬方正教务处的成功实践
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>scnace</strong>
+        <span>May 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/golang/">golang</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/repo/">repo</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/教务处/">教务处</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=一次爬方正教务处的成功实践&url=http://blog.scnace.cc//一次爬方正教务处的成功实践/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=一次爬方正教务处的成功实践&url=http://blog.scnace.cc//一次爬方正教务处的成功实践/index.html&via=scnace" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//一次爬方正教务处的成功实践/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//一次爬方正教务处的成功实践/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a>前戏</h2><p>不知道从什么时候开始,搞教务处已经成了我山CS专业的学生学习一门新的WEB语言(只要跟web沾边的)  Java PHP Python NodeJS Golang….等不同版本就这样一一诞生，当然 我也不例外 这次用golang实现模拟登陆教务处并获取课表 成绩等信息。(额  问我为什么喜欢搞教务处  大概是因为教务处的页面实在太丑了 然后每次都要我去评教 评教的Button ，Chrome竟然不兼容!这么烂的东西,评你【友善度】个【友善度】啊！</p>
+<h2 id="入戏"><a href="#入戏" class="headerlink" title="入戏"></a>入戏</h2><p>其实 去年自学PHP cURL的时候 我也试过模拟登陆教务处  那时候还做了个查分数的模块挂在微信上(但是人一多真的会炸啊2333  因为那时候服务器还在HK 所以被别人吐槽慢的跟什么一样了)    去年的时候 是看着<a href="http://www.blogfshare.com/php-curl-zhengfang.html" target="_blank" rel="external">这篇PHP解决方案</a>来一步步操作的 虽然也遇到了一些问题 但是自己都解决啦~~</p>
+<p>我还记得 那篇部落格里有一句话简直就像一个Flag一样 插在了那里  我当时看的时候就觉得药丸，药丸。。。。</p>
+<blockquote>好吧，这只是正方，如果在服务器后台加一个判断，如果验证码为空，直接返回登陆失败了！！！黑线！！！GG 了。。。</blockquote>
+
+
+
+<p>然后。。。</p>
+<p>然后。。。</p>
+<p>然后。。。</p>
+<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlbyiaxyuj30xb0can24" alt="flag"></p>
+<p>正方的程序猿肯定也看到了这篇部落格(嗯 肯定是这样！)</p>
+<p>怪不得 寒假老是接到小伙伴的反馈 说我的东西崩掉了(原来真的是这样)</p>
+<p>所以,还是用<strong>通用办法(我连验证码一起抓还不行吗!)</strong>吧。。</p>
+<h2 id="HOW-TO-DO"><a href="#HOW-TO-DO" class="headerlink" title="HOW TO DO"></a>HOW TO DO</h2><p>我尽量说一下通用步骤:</p>
+<h3 id="STEP-1"><a href="#STEP-1" class="headerlink" title="STEP 1"></a>STEP 1</h3><p>请求还是要发的,第一步要去教务处的Login界面 去拿VIEWSTATE 和 VIEWSTATEGENERATOR，这两货我就不多说了,之前的链接里面有说明。<strong>还多了一步,就是这个操作也要拿下Cookie</strong>(STEP2要用到)</p>
+<h3 id="STEP-2"><a href="#STEP-2" class="headerlink" title="STEP 2"></a>STEP 2</h3><p>竟然验证码已经绕不过去了 那我们就不绕了。我们通过F12检查发现 验证码也是有地址的(./CheckCode.aspx),我们<strong>把Step1拿到的cookies带上去发Get请求到这个地址</strong>，不要废话,拿了Body体就走,然后把body里面的gif缓存在本地。这边给下示范:</p>
+<pre><code>// 获取验证码
+var verify_code string
+for {
+//用刚才生成的cookie去爬 验证码   否则会504!!!!!
+
+   res, _ = c.Do(req)      
+   file, _ := os.Create(&quot;verify.gif&quot;)
+   io.Copy(file, res.Body)
+
+  fmt.Println(&quot;请查看verify.gif， 然后输入验证码， 看不清输入0重新获取验证码&quot;)
+   fmt.Scanf(&quot;%s&quot;, &amp;verify_code)
+   if verify_code != &quot;0&quot; {
+       break
+   }
+</code></pre><p>当然 我用了带break的while(true){}循环  憋说了 已经因为l1不分被嘲笑了无数次了(泪)</p>
+<h3 id="STEP3"><a href="#STEP3" class="headerlink" title="STEP3:"></a>STEP3:</h3><p>在STEP2确认测试通过的前提下,也就是本地存在了那张gif图片(测试的时候gif图片我是用ie打开的,因为<strong>读写要尽可能分离</strong>),接下来就是比较重要的post环节了,其实上面那篇php的实现里面已经写得很详细了,我这边由于是golang版本的，golang 1.5 新加了跟python一样的cookiejar .Client带cookiejar实现抓取实在是太爽了,蛤蛤蛤。。哦,<strong>对了,强调一点,由于这破JWC看起来像是上世纪的产物,所以,不要忘了把你的utf-8转成gbk2312哦,这个是个坑,勿入~</strong></p>
+<p>golang的话 可以考虑一下这个库</p>
+<pre><code>&quot;github.com/scbizu/mahonia&quot;
+</code></pre><p>当然 七牛的库也不错</p>
+<pre><code>&quot;github.com/qiniu/iconv&quot;
+</code></pre><p>其他的lang乃们就自己找吧(吐舌头~</p>
+<p>这里我也贴个代码吧~<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">*模拟post表单</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(Rurl <span class="keyword">string</span>,c *http.Client,username <span class="keyword">string</span>,password <span class="keyword">string</span>,verify_code <span class="keyword">string</span>,VIEWSTATE <span class="keyword">string</span>,VIEWSTATEGENERATOR <span class="keyword">string</span>,temp_cookies []*http.Cookie)</span> []*<span class="title">http</span>.<span class="title">Cookie</span></span>&#123;</div><div class="line">    postValue:=url.Values&#123;&#125;</div><div class="line">    cd:=mahonia.NewEncoder(<span class="string">"gb2312"</span>)</div><div class="line">    rb:=cd.ConvertString(<span class="string">"学生"</span>)</div><div class="line">    <span class="comment">//准备POST的数据</span></div><div class="line">    postValue.Add(<span class="string">"txtUserName"</span>,username)</div><div class="line">    postValue.Add(<span class="string">"TextBox2"</span>,password)</div><div class="line">    postValue.Add(<span class="string">"txtSecretCode"</span>,verify_code)</div><div class="line">    postValue.Add(<span class="string">"__VIEWSTATE"</span>,VIEWSTATE)</div><div class="line">    postValue.Add(<span class="string">"__VIEWSTATEGENERATOR"</span>,VIEWSTATEGENERATOR)</div><div class="line">    postValue.Add(<span class="string">"Button1"</span>,<span class="string">""</span>)</div><div class="line">    postValue.Add(<span class="string">"lbLanguage"</span>,<span class="string">""</span>)</div><div class="line">    postValue.Add(<span class="string">"hidPdrs"</span>,<span class="string">""</span>)</div><div class="line">    postValue.Add(<span class="string">"hidsc"</span>,<span class="string">""</span>)</div><div class="line">    postValue.Add(<span class="string">"RadioButtonList1"</span>,rb)</div><div class="line">    <span class="comment">//开始POST   这次POST到登陆界面   带上第一次请求的cookie 和 验证码  和 一些必要的数据</span></div><div class="line">    postUrl,_:=url.Parse(Rurl)</div><div class="line">    Jar,_:=cookiejar.New(<span class="literal">nil</span>)</div><div class="line">    Jar.SetCookies(postUrl,temp_cookies)</div><div class="line">    c.Jar=Jar   </div><div class="line">    resp,_:=c.PostForm(Rurl,postValue)</div><div class="line">    cookies:=resp.Cookies()</div><div class="line">    <span class="keyword">return</span> cookies</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="STEP4"><a href="#STEP4" class="headerlink" title="STEP4:"></a>STEP4:</h3><p>看到这里说明你已经快接近成功了。</p>
+<p>拿着上面登陆成功的cookie去登陆成功的页面(<strong>./xs_main.aspx?xh=YOUR STUDENT No.</strong>)看看 是否能出现意料之中的body 没有的话  再仔细检查一下自己的STEP3 慢慢来 不要急 喝杯水 继续呗~</p>
+<p>成功了的话 也不要以为JWC就是任你行了 Naive 还是有坑的。。。</p>
+<p>如果 有一定web基础的同学<strong>肯定按下了F12 然后打开个人课表。</strong>没错，所以你看到了下面的页面其实都是假象(<iframe>) 真正的页面只有点了Network的人才会明白 。</iframe></p>
+<p>没错 就是它(<strong>./xskbcx.aspx?xh=YOUR STUDENT No.&amp;xm=urlencode(YOUR NAME)&amp;gnmkdm=N121603</strong>)</p>
+<p>其实，老司机告诉你，其实xm和gnmkdm都是可选的get set value 你只要get上去你自己的xh就可以了</p>
+<p>Like this : <strong>./xskbcx.aspx?xh=YOUR STUDENT No</strong></p>
+<h3 id="STEP5"><a href="#STEP5" class="headerlink" title="STEP5:"></a>STEP5:</h3><p>如果泥还看下去,说明你遇到问题了 是不是发现Get上去了 却<strong>response给了你302</strong>啊 嘿嘿嘿  就是这个神奇的302的,</p>
+<p>这时候查看header里的Location还是空,是不是感觉整个人都要崩溃了,我在这里也懵逼了<strong>一个晚上+一个上午</strong></p>
+<p>直到……..</p>
+<p><strong>一个苹果掉在了我的头上。。。。</strong></p>
+<p>怎么可能  我又不是牛顿。。。</p>
+<p>我偶然间 <strong>对比了两次request头</strong></p>
+<p>来，我们来看看:</p>
+<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcadh5jdj311j05bt9w" alt="norefer"><br><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcb8tr9rj311x05z0ue" alt="hasrefer"></p>
+<p>可以 很清楚的看到 <strong>不是cookie的锅</strong>(把你的光标从post函数上离开)</p>
+<p>200的尝试  有referer头!</p>
+<p>就是因为这个重定向头 导致你一直302;</p>
+<p>此时 仿佛中了500w一般开心吧~</p>
+<p>知道了这个梗 我们在Request里面设置一个重定向:</p>
+<p>Like this:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.Header.Set(<span class="string">"Referer"</span>,courseURL)</div></pre></td></tr></table></figure></p>
+<h3 id="STEP-6"><a href="#STEP-6" class="headerlink" title="STEP 6:"></a>STEP 6:</h3><p>好了 JWC可以任你行了 去玩吧~ Enjoy your time，guys!</p>
+<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>最后 贴上源码地址:<a href="https://github.com/scbizu/Zafu_jwcInterface" target="_blank" rel="external">https://github.com/scbizu/Zafu_jwcInterface</a></p>
+<p>萌新  弱弱地求一发Follow(Star就算了  受不起)</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    queue.offer(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://blog.scnace.cc/一次爬方正教务处的成功实践/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//blog-scnace-cc.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016年度总结之认知/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="scnace's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        scbizu@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">May 2017<span class="sidebar_archives-count">44</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="function link() { [native code] }" title="link">
+                
+                link
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009558353664" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/110681183080897592246" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/u/5032057249/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/scbizu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/ji-si-min/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11124261/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.png);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-telegram.png);">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;一只菜鸡的成长之路
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//blog-scnace-cc.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

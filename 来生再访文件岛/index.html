@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            来生再访文件岛 | 
+        
+        一只菜鸡的成长之路
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="scnace">
+    <meta name="description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta name="keywords" content="null,番剧">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一只菜鸡的成长之路">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.scnace.cc">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="来生再访文件岛 | 一只菜鸡的成长之路">
+    <meta property="og:description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta property="og:article:tag" content="番剧"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Back-To-DM"><span class="post-toc-number">1.</span> <span class="post-toc-text">Back To DM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一部追的日漫"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第一部追的日漫</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一次看完的整个系列"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第一次看完的整个系列</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#THE-END"><span class="post-toc-number">2.</span> <span class="post-toc-text">THE END</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#今生无悔被选召-来生再访文件岛！"><span class="post-toc-number">3.</span> <span class="post-toc-text">今生无悔被选召  来生再访文件岛！</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                来生再访文件岛
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>scnace</strong>
+        <span>May 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/番剧/">番剧</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=来生再访文件岛&url=http://blog.scnace.cc//来生再访文件岛/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=来生再访文件岛&url=http://blog.scnace.cc//来生再访文件岛/index.html&via=scnace" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//来生再访文件岛/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//来生再访文件岛/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>第一部动漫,第一部日本动漫,第一个从头追到尾的系列,光叔走了,但是无法抹掉我们DMer梦想依旧不灭</p>
+</blockquote>
+<p>微信群: 光叔走了(哭。</p>
+<p>我:光叔哪只啊。</p>
+<p>微信群:无限大。</p>
+<p>我:……..</p>
+<p>真的不知道那时候 那时候该说什么好。</p>
+<p>光叔怎么可能走了呢！不是刚唱过DM的tri version吗!他们最近嘴怎么越来越毒了啊。。。。</p>
+<p>我记得看到这个的时候 应该在图书馆吧   心情瞬间就低沉了下来。。。</p>
+<p>虽然</p>
+<p>虽然 光叔的喉癌在Tri Version之前就已经听说了</p>
+<p>但说实话 也曾抱怨过  Tri OP刚出来的时候 感叹过  虽然是童年的butterfly 但是还是少了些许童年的味道。</p>
+<p>但是</p>
+<p>现在听起来 仿佛</p>
+<p>相比年轻气盛时的butterfly 这首butterfly 多了一份对病魔的抗争吧。</p>
+<p>Butterfly Tri version著作的时候,应该是光叔第三次战胜癌症的时候吧(没记错的话</p>
+<p>之前 听说Tri要重置  我还是很期待的</p>
+<p>但是 好像 这次……</p>
+<p>会没有光叔无限燃的【无限大】</p>
+<blockquote>八个孩子终于结束了冒险之旅,但是这扇大门并不会就这样关上了,因为被选召的孩子们的冒险,他们不是第一批,当然也不会是最后一批，通往数码世界的大门一定会再次开启,只要永远记住数码宝贝,那么当我们希望的时候,我们的心里… 不 说不定很快就……</blockquote>
+
+
+
+<p>所以  光叔 你就这么辞职不干了 去文件岛了吗！</p>
+<p>快TM滚回来  给我唱Re. Tri version</p>
+<p>(不行了  要哭出来了)</p>
+<h2 id="Back-To-DM"><a href="#Back-To-DM" class="headerlink" title="Back To DM"></a>Back To DM</h2><h3 id="第一部追的日漫"><a href="#第一部追的日漫" class="headerlink" title="第一部追的日漫"></a>第一部追的日漫</h3><p>还记得嘛,那时候看的还是国语翻版,每天上学回家都会守在电视机前看,跟着OP一起哼，跟老爸老妈因为要看DA而错过吃晚饭吵了好多次,被拎过耳朵,被拔过电源。。。。</p>
+<p>好喜欢 太一的亚古兽 和 阿和的加布兽</p>
+<p>那时候因为 战斗暴龙兽 和 钢铁加鲁鲁 打起来的时候就感觉内心非常纠结(记得是小丑兽那边</p>
+<p>被<strong>巫师兽</strong>和<strong>狮子兽</strong>死的时候 弄哭过。</p>
+<p>小时候 最想要的生日礼物 就是那只 <strong>数码暴龙机</strong>。</p>
+<p><strong>(大家也可以分享下自己的经历诶~   我肯定会看评论的)</strong></p>
+<p>太多太多了。。。</p>
+<p>数不清的关于DA时代的回忆。</p>
+<p>(那时候还觉得长大以后一定要找个跟<strong>素娜</strong>一样的  然而。。。</p>
+<p>大概就是从DA开始吧….</p>
+<p>开始发了疯的<strong>喜欢看日漫</strong></p>
+<p>特别是那些<strong>超级燃</strong>的。。</p>
+<p>现在还喜欢</p>
+<p>也导致了长辈们的各种不解</p>
+<h3 id="第一次看完的整个系列"><a href="#第一次看完的整个系列" class="headerlink" title="第一次看完的整个系列"></a>第一次看完的整个系列</h3><p>追过很多长番</p>
+<p>但是都不久</p>
+<p>火影和海贼也是  中间AFK了一阵子</p>
+<p>就完全没有去补完的动力了</p>
+<p>(连鼬桑和S怎么死的我都没看到</p>
+<p>但是 DM</p>
+<p>我追完了！</p>
+<p>DA到DXW再到City Hunter 再到 Tri</p>
+<p><strong>一！集！不！落！下！</strong></p>
+<p>(以下多图预警)</p>
+<p>当然 其实DIGIMON 也是一个不断年长的过程</p>
+<p><strong>八神太一(和亚古兽)</strong>时代  &lt;—– DA 最经典的一部 大家的童年  最戳泪点的一部！(特指飞帽杀,秒泪崩</p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/01-650x523.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/01-650x523-300x241.jpg" alt="01-650x523"></a></p>
+<p><strong>大辅和V仔</strong>的第二部(阿武和嘉儿确定恋爱关系的第二部?) &lt;—-DA02 应该是比较冷门的一部吧  大家还都沉浸在第一部当中</p>
+<p>推荐补吧~</p>
+<p>个人觉得剧情<strong>不逊色于DA</strong>的</p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/0541040850C8129B6A0A48503EFC7521.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/0541040850C8129B6A0A48503EFC7521-300x169.jpg" alt="0541040850C8129B6A0A48503EFC7521"></a></p>
+<p><strong>启人</strong>和<strong>基尔兽</strong>的第三部  &lt;——DT同样精彩  特别是萌萌哒的大耳兽   我记得是高一的时候补的  大一又补了一遍</p>
+<p><strong>(前排当然要给大耳兽啊~)</strong></p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/20200000013920144727411560673_s.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/20200000013920144727411560673_s-300x240.jpg" alt="20200000013920144727411560673_s"></a>        <a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/bki-20131210165741-1572843663.png" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/bki-20131210165741-1572843663-252x300.png" alt="bki-20131210165741-1572843663"></a></p>
+<p>第四部  第四部   第四部  <strong>拓也和炎之斗士精神        </strong></p>
+<p>DF那里暗属性哥哥那里也感人啊~</p>
+<p>大一补的时候</p>
+<p>再说到哥哥的身世那里</p>
+<p>也会心头一紧</p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/d009b3de9c82d158086a8e47820a19d8bd3e4258.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/d009b3de9c82d158086a8e47820a19d8bd3e4258-300x225.jpg" alt="d009b3de9c82d158086a8e47820a19d8bd3e4258"></a></p>
+<p>第五部 是关注度最低的一部吧  因为那时候的OP不是光叔唱的！</p>
+<p>被抗议了！</p>
+<p>最后还是换回光叔唱的OP了。</p>
+<p>DS里面就是热血男主大门大的故事了。</p>
+<p>DIGI Code什么的 打一拳不就有了吗！</p>
+<p><strong>大门大 和 亚古兽！</strong></p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/50ae8f8adb4fd.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/50ae8f8adb4fd-210x300.jpg" alt="50ae8f8adb4fd"></a></p>
+<p>第六季   讲道理   City Hunter也是属于第六季的</p>
+<p>DXW的各种变装也是萌萌哒~</p>
+<p>比如 底层父类——–ShoutMon</p>
+<p><strong>队旗表阵营！</strong></p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/b812c8fcc3cec3fd19c774cdd688d43f86942789.jpg" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/b812c8fcc3cec3fd19c774cdd688d43f86942789-300x216.jpg" alt="b812c8fcc3cec3fd19c774cdd688d43f86942789"></a></p>
+<p>还有 CityHunter里出现的年轻主角  <strong>明石激</strong></p>
+<p>诶！</p>
+<p>中二少年明石激 !</p>
+<p>激太相信友情了 以至于最后TM错误相信了<strong>最上龙马</strong></p>
+<p>差点酿成大错!</p>
+<p>(这集是高二的时候躲在寝室被窝里看的 所以印象特别深 手机差点被班主任没收2333)</p>
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/04/2-1.png" target="_blank" rel="external"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/04/2-1-300x168.png" alt="2-1"></a></p>
+<p>至于Tri   我不是很想说话  因为对比之前的DM 我对Tri的评价反而不是很高。。。。。</p>
+<p>占坑 等Re.tri吧</p>
+<h2 id="THE-END"><a href="#THE-END" class="headerlink" title="THE END"></a>THE END</h2><p>Anyway  感谢光叔给我唱了10年的OP</p>
+<p>此处  我作为一个DMer 对您的贡献表示最诚挚的感谢(鞠躬</p>
+<p>光叔</p>
+<p>一路走好~</p>
+<h2 id="今生无悔被选召-来生再访文件岛！"><a href="#今生无悔被选召-来生再访文件岛！" class="headerlink" title="今生无悔被选召  来生再访文件岛！"></a>今生无悔被选召  来生再访文件岛！</h2><p>##</p>
+<p>您的梦想将会被世人牢记:</p>
+<p><strong>無限大（むげんだい）な夢（ゆめ）のあとの　</strong><br><strong>何（なに）もない世（よ）の中（なか）じゃ</strong><br><strong>そうさ愛（いと）しい　想（おも）いも負（ま）けそうになるけど</strong></p>
+<p>以上。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    queue.offer(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://blog.scnace.cc/来生再访文件岛/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//blog-scnace-cc.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/无搜索按钮的搜索栏实现/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/杂/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="scnace's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        scbizu@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">May 2017<span class="sidebar_archives-count">44</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="function link() { [native code] }" title="link">
+                
+                link
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009558353664" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/110681183080897592246" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/u/5032057249/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/scbizu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/ji-si-min/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11124261/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.png);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-telegram.png);">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;一只菜鸡的成长之路
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//blog-scnace-cc.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

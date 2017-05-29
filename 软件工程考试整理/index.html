@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            软件工程考试整理 | 
+        
+        一只菜鸡的成长之路
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="scnace">
+    <meta name="description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta name="keywords" content="null,Class and Examination">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一只菜鸡的成长之路">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.scnace.cc">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="软件工程考试整理 | 一只菜鸡的成长之路">
+    <meta property="og:description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta property="og:article:tag" content="Class and Examination"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                软件工程考试整理
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>scnace</strong>
+        <span>May 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Class-and-Examination/">Class and Examination</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=软件工程考试整理&url=http://blog.scnace.cc//软件工程考试整理/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=软件工程考试整理&url=http://blog.scnace.cc//软件工程考试整理/index.html&via=scnace" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//软件工程考试整理/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//软件工程考试整理/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>题型：</p>
+<pre><code> 选择题：15x2 = 30分
+
+
+
+填空题：10x1 = 10分
+
+
+简答题：4~5题，共30分。
+
+
+分析设计题：3题，共30分。
+</code></pre><p>第1章</p>
+<ul>
+<li>什么是软件危机，典型表现，产生原因</li>
+</ul>
+<p>定义:</p>
+<pre><code>1. 如何开发软件以满足对软件日益增长的需求
+
+2. 如何维护数量不断膨胀的已有软件    
+</code></pre><p>典型表现:</p>
+<pre><code>1. 对软件开发成本和进度常常很不准确
+2. 用户对软件系统结果不满意
+3. 软件产品的质量往往靠不住
+4. 软件常常是不可维护的
+5. 软件通常没有适当的文档资料
+6. 软件成本在计算机系统总成本中所占比例逐年上升
+7. 软件开发生产率提高的速度 远远跟不上计算机应用速度普及深入的趋势。
+</code></pre><p>原因：</p>
+<pre><code>1. 忽视软件需求分析的重要性
+2. 认为软件开发就是写程序并设法使之运行
+3. 轻视软件维护
+
+
+
+* 什么是软件工程
+
+ 采用工程的概念,原理 技术 和方法来开发与维护软件 把经过时间考验而证明正确的管理技术和当前能够得到的技术方法结合起来，以经济地开发出高质量的软件并有效地维护它。
+
+
+* 软件生命周期的各个阶段的基本任务
+
+
+1. 问题定义:要解决的问题是什么
+2. 可行性研究:对于上一个阶段所确定的问题有没有行得通的解决方法
+3. 需求分析：确定系统必须具备哪些功能
+4. 总体设计:怎样实现目标系统
+5. 详细设计：具体设计系统
+6. 编码和单元测试：写出容易理解和容易维护的程序模块
+7. 综合测试：通过各种类型的测试使软件达到预定的要求
+8. 软件维护：通过各种必要的维护活动使系统持久地满足用户的需要
+
+
+
+* 软件生命周期模型
+
+
+1. 瀑布模型
+
+2. 快速原型模型
+3. 增量模型
+4. 螺旋模型
+5. 喷泉模型
+
+
+
+* 瀑布模型开发过程
+
+
+1. 阶段间具有顺序性和依懒性
+2. 推迟实现的观点
+3. 质量保证的观点
+
+
+
+* 增量模型开发过程
+
+
+  渐增模式，最终的软件由多个构件(相互作用的模块)组成,并且能够完成特定的功能，每个新构件必须是可以测试的。
+</code></pre><p>第2、3章</p>
+<pre><code>* 可行性分析：技术可行性、经济可行性、操作可行性、社会可行性
+
+
+
+
+* ER图：组成元素，如何绘制
+
+
+
+1. 数据对象:对软件必须理解的复合信息的抽象
+
+2. 属性:数据对象的性质
+3. 联系:数据对象彼此之间互相联系的方式
+</code></pre><p>第5章</p>
+<pre><code>* 什么是总体设计
+
+
+1. 系统设计阶段；确定系统的具体实现方式
+2. 结构设计阶段:确定软件结构
+
+
+ 具体:
+
+1. 设想供选择的方案
+2. 选取合理的方案
+3. 推荐最佳方案
+4. 功能分解
+5. 设计软件结构
+6. 设计数据库
+7. 制定测试计划
+8. 书写文档
+9. 审查与复查
+
+
+
+* 软件结构的深度、宽度、扇入、扇出
+
+
+1. 深度:表示软件结构中控制的层数
+2. 宽度:软件结构内同一层次上的模块总数的最大值 影响最大的是模块的扇出
+3. 扇出:一个模块直接控制的模块数目 平均扇出通常是3或4 上限是5-9
+4. 扇入：有多少个上级模块调用它、底层模块往往有高扇入
+
+
+
+* 模块的耦合性和内聚性原则
+</code></pre><p>耦合：一个软件结构内不同模块之间的互连程度的度量</p>
+<pre><code>数据耦合：交换的信息仅仅是数据  属于低耦合
+ 控制耦合：交换的信息仅仅是控制信息(可以是数据) 中等程度耦合
+ 特征耦合：数据结构中，传递的数据多于需要的数据。
+ 公共环境耦合:两个或多个模块通过一个公共数据环境相互作用。
+ 内容耦合：耦合程度最高的耦合。应该尽量避免:
+
+*           一个模块访问另一模块的内部数据
+*            一个模块不通过正常入口而转到另一个模块的内部
+*           两个模块有一部分程序代码重叠(只可能出现在汇编程序中)
+*           一个模块有多个功能
+</code></pre><p>-建议-:尽量使用数据耦合,少使用控制耦合和特征耦合,限制公共环境耦合的范围，完全不用内容耦合。</p>
+<p>内聚：一个模块内各个元素彼此结合的紧密程度，是信息隐藏和局部化概念的自然扩展  尽量做到高内聚<br>低内聚：<br>偶然内聚：一个模块完成一组任务，任务彼此间的关系比较松散<br>逻辑内聚：一个模块完成的任务在逻辑上属于相同或相似的一类<br>时间内聚：一个模块包含的任务必须在同一时间内执行</p>
+<p>中内聚：<br>过程内聚：一个模块内的处理元素是相关的，而且必须以特定次序执行<br>通信内聚：模块中所有元素都使用同一个输入数据或产生同一个输出数据</p>
+<p>高内聚：<br>顺序内聚：一个模块内的处理元素和同一个功能密切相关 而且这些处理必须顺序执行<br>功能内聚：最高程度的内聚。模块内所有元素都是一个整体来实现一个单一的功能</p>
+<pre><code>* 开发成本与模块化的关系
+</code></pre><p>存在一个最佳模块数量M 使得软件总成本最低（源于：随着软件模块的增多，开发单个模块的成本的减少，但是所需要的模块间的接口成本却在不断增加）</p>
+<p>第6章</p>
+<pre><code>* 结构化程序的三种基本结构
+
+
+
+1. 顺序结构
+2. 循环结构
+3. 选择结构
+
+
+
+* 结构化程序设计的好处
+
+      显著提高软件生产率和降低软件维护代价
+
+
+* 程序流程图、盒图、PAD图、判定表、判定树
+</code></pre><p>第7章</p>
+<pre><code>* 软件测试的含义
+
+
+1. 为了发现程序中的错误而执行程序的过程
+2. 极可能发现迄今为止尚未发现的错误
+3. 发现了至今为止尚未发现的错误
+
+
+
+* 集成测试，集成方法
+</code></pre><p>集成测试：测试和组装软件的系统化技术<br>集成方法：<br>     非渐增式测试方法：分别测试每个模块再把所有模块结合在一起<br>     渐增式测试方法：把下一个测试的模块同已经测试好的那些模块结合起来测试，测试完再把下一个应该测试的模块结合进来测试<br>          自顶向下集成:深度优先或者宽度优先<br>          自底向上集成:</p>
+<pre><code>1.               把低层模块组合成实现某个特定的软件子功能的族
+2.               写一个驱动程序，协调测试数据的输入输出
+3.               对由模块组成的子功能族进行测试
+4.               去掉驱动程序，沿软件结构自下向上移动，把子功能族组合起来形成更大的子功能族。          
+
+
+
+* 驱动模块和桩模块
+</code></pre><p>驱动程序：接收测试数据，把这些数据传送给被测试的模块，并且印出有关的结果。<br>存根程序：代替被测试的模块所调用的模块 也称虚拟子程序</p>
+<pre><code>* 黑盒测试技术：等价类划分法、边界值法
+</code></pre><p>等价划分：把程序的输入域划分为若干个数据类，据此导出测试用例</p>
+<pre><code>1. 设计一个新的测试方案以尽可能多地覆盖尚未被覆盖的有效等价类，重复这一步骤直到所有有效等价类都被覆盖为止
+2. 设计一个新的测试方案使它覆盖一个而且只覆盖一个尚未被覆盖的无效等价类，重复这一步骤直到所有无效等价类都被覆盖为止
+</code></pre><p>边界值分析：首先确定边界情况，通常输入等价类和输出等价类的边界，就是应该着重测试的程序边界情况</p>
+<pre><code>* 白盒测试技术：逻辑覆盖
+
+
+1. 语句覆盖
+2. 判定覆盖
+3. 条件覆盖
+4. 判定/条件覆盖
+5. 条件组合覆盖
+6. 点覆盖
+7. 边覆盖
+8. 路径覆盖
+</code></pre><p>第9、10、11章</p>
+<pre><code>* 类与实例
+</code></pre><p>类：对具有相同数据和相同操作的一组相似对象的定义</p>
+<p>实例：某个特定的类所描述的一个具体的对象</p>
+<ul>
+<li>类与类之间的关系</li>
+</ul>
+<p>封装(encapsulation)<br>继承(inheritance)<br>多态(polymorphism)<br>重载(overloading)</p>
+<ul>
+<li>类图</li>
+</ul>
+<p>p221</p>
+<ul>
+<li>用例图</li>
+</ul>
+<p>p227</p>
+<ul>
+<li>状态图</li>
+</ul>
+<p>p252</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    queue.offer(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://blog.scnace.cc/软件工程考试整理/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//blog-scnace-cc.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/记一次博客搬家/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="scnace's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        scbizu@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">May 2017<span class="sidebar_archives-count">44</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="function link() { [native code] }" title="link">
+                
+                link
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009558353664" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/110681183080897592246" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/u/5032057249/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/scbizu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/ji-si-min/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11124261/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.png);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-telegram.png);">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;一只菜鸡的成长之路
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//blog-scnace-cc.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

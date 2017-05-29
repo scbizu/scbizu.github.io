@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            j2ee复习 | 
+        
+        一只菜鸡的成长之路
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="scnace">
+    <meta name="description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta name="keywords" content="null,Examination,J2ee">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一只菜鸡的成长之路">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.scnace.cc">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="j2ee复习 | 一只菜鸡的成长之路">
+    <meta property="og:description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
+    <meta property="og:article:tag" content="Examination"> <meta property="og:article:tag" content="J2ee"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#J2EE复习资料"><span class="post-toc-number">1.</span> <span class="post-toc-text">J2EE复习资料</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进入Mysql命令行界面-Console"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">进入Mysql命令行界面(Console)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建和声明Session"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建和声明Session</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试Session是否创建成功"><span class="post-toc-number">3.</span> <span class="post-toc-text">测试Session是否创建成功</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在session中绑定数据"><span class="post-toc-number">4.</span> <span class="post-toc-text">在session中绑定数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获得session数据"><span class="post-toc-number">5.</span> <span class="post-toc-text">获得session数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解绑session-移除"><span class="post-toc-number">6.</span> <span class="post-toc-text">解绑session  移除</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                j2ee复习
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>scnace</strong>
+        <span>May 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Examination/">Examination</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/J2ee/">J2ee</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=j2ee复习&url=http://blog.scnace.cc//j2ee复习/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=j2ee复习&url=http://blog.scnace.cc//j2ee复习/index.html&via=scnace" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//j2ee复习/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//j2ee复习/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="J2EE复习资料"><a href="#J2EE复习资料" class="headerlink" title="J2EE复习资料"></a>J2EE复习资料</h2><blockquote>
+<p> 原稿:12届学长 区长  编辑者:13届学沫 nace</p>
+</blockquote>
+<ul>
+<li>java的编译命令:java 和 javac</li>
+</ul>
+<pre><code>javac demo.java
+java  demo
+</code></pre><ul>
+<li>Tomcat的命令:<strong>startup</strong>和<strong>shutdown</strong></li>
+</ul>
+<ul>
+<li>Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)</li>
+</ul>
+<h4 id="进入Mysql命令行界面-Console"><a href="#进入Mysql命令行界面-Console" class="headerlink" title="进入Mysql命令行界面(Console)"></a>进入Mysql命令行界面(Console)</h4><pre><code>mysql -h localhost -u root -p 123456(这里是写你设置的mysql密码,默认是空)
+
+
+
+
+
+
+CREATE database database_name(数据库名称)
+    DROP database database_name
+    //新建user用户表
+    CREATE TABLE user(
+        id int primary key auto_increment,
+        username varchar(20) not null,
+        password varchar(20) not null
+     );
+    //删除user用户表
+    DROP table user
+    //插入新的数据
+    INSERT INTO user(`username`,`password`) values(`scnace`,`123456`)
+    //删除user表中名字是scnace的记录
+    DELETE FROM user where `username`=`scnace`
+    //更改表中名字为scnace的数据为scbizu
+    UPDATE user SET username=&apos;scbizu&apos; WHERE username=&apos;scnace&apos;
+    //选取表中名字为scnace的Record
+    SELECT * FROM user WHERE username=`scnace`
+</code></pre><p><em>Extension:</em><strong>面试</strong>中的SQL喜欢出的题:</p>
+<ol>
+<li>连表查询:<br>1.1. 左连接(<strong>LEFT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="external">LEFT JOIN Declaration and usecase</a><br>1.2. 右连接(<strong>RIGHT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_right.asp" target="_blank" rel="external">RIGHT JOIN Declaration and usecase</a><br>1.3. 全连接(<strong>FULL JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_full.asp" target="_blank" rel="external">FULL JOIN Declaration and Usecase</a></li>
+<li>数据库基本操作</li>
+</ol>
+<ul>
+<li>包的引入和定义import和package</li>
+</ul>
+<pre><code>Import java.util.Scanner;
+Import java.io.*;
+Package cn.edu.zafu;//Package
+</code></pre><ul>
+<li>Java控制台(cmd&amp;&amp;IDE)下的输入输出:</li>
+</ul>
+<blockquote>
+<p> Scanner和System.out.print()语句</p>
+</blockquote>
+<pre><code>    Scanner scanner=new Scanner(System.in);
+    while(scanner.hasNext()){
+    //scanner.next();
+    //scanner.nextInt();
+    //scanner.nextBoolean();
+    //scanner.nextDouble();
+    //scanner.nextFloat();
+       //System.out.***
+    //System.out.print();
+    //System.out.println();
+    //System.out.printf(&quot;%d %s&quot;,(Integer),(String));
+}
+</code></pre><ul>
+<li>流程控制语句—条件语句 if switch</li>
+</ul>
+<pre><code>  if(_condition){
+    //ADD YOUR CODE HERE to do under the  _condition
+    }else{
+    //* otherwise....
+    }
+
+
+
+
+
+
+
+
+switch(_condition){
+case _condition_0:
+    break;
+case _condition_1:
+    break;
+default:
+    break;
+}
+</code></pre><ul>
+<li>循环语句 for while</li>
+</ul>
+<pre><code>for(int i=0;i&lt;args.length;i++){
+    //Traversal The Array
+     String str=args[i];
+  }
+  while(i&lt;5){
+     i++;
+  }
+</code></pre><ul>
+<li>变量定义 (普通变量定义及初始化 静态变量定义 常量定义)</li>
+</ul>
+<pre><code>int i=5;
+boolean flag=true;
+float f=3.0f;
+double d=3.5;
+byte b=1;
+static final String name=&quot;nace&quot;;
+</code></pre><blockquote>
+<p> Note:Java变量类型<a href="https://en.wikipedia.org/wiki/Final_(Java" target="_blank" rel="external">final</a>)<br>                   <a href="http://beginnersbook.com/2013/04/java-static-class-block-methods-variables/" target="_blank" rel="external">static关键字</a></p>
+</blockquote>
+<ul>
+<li>数组的定义  数组的遍历</li>
+</ul>
+<pre><code>int a[]=int[]{1,2,3,4,5};
+for(int i=0;i &lt;a.length;i++){
+    System.out.println(a[i]);
+}
+</code></pre><ul>
+<li>字符串的使用 定义字符串 格式化字符串 字符串查找 etc.</li>
+</ul>
+<pre><code>String str1=String.format(&quot;%s %d&quot;,&quot;nace&quot;,2);
+//Source Data to be searched
+String str2=&quot;naceoncelovedapuregirl.&quot;;
+System.out.print(str2.indexOf(&quot;S&quot;));
+System.out.print(str2.indexOf(&quot;S&quot;,6));//Start with 1.
+System.out.print(str2.charAt(1));
+</code></pre><blockquote>
+<p> Note:关于<a href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html" target="_blank" rel="external">String.format()</a><br>       关于<a href="http://www.tutorialspoint.com/java/java_string_charat.htm" target="_blank" rel="external">String.chatAt()</a></p>
+</blockquote>
+<ul>
+<li>ArrayList HashSet HashMap的定义和遍历</li>
+</ul>
+<pre><code>List&lt;string&gt; array=new ArrayList&lt;String&gt;();
+array.add(&quot;1&quot;);
+array.add(&quot;2&quot;);
+array.add(&quot;3&quot;);
+//Travelsal the ArrayList with Iterator
+for(Iterator iterator=arr.iterator();iterator.hasNext();){
+String str=(String)iterator.next();
+System.out.println(str);
+}
+for(String str:arr){
+  System.out.println(str);
+}
+
+
+
+
+
+
+  //HashSet
+    HashSet&lt;String&gt; set=new HashSet&lt;String&gt;();
+    set.add(&quot;1&quot;);
+    set.add(&quot;2&quot;);
+    set.add(&quot;3&quot;);
+    //Travelsal the HashMap with Iterator
+    for(Iterator ite =set.iterator();iterator.hasNext();){
+    String str=(String)ite.next();
+    System.out.println(str);
+    }
+    //for-each Travelsal
+    for(String str:set){
+      System.out.println(str);
+    }
+
+    //HashMap Code.....
+    HashMap&lt;Integer,String&gt; map=new HashMap&lt;Integer,String&gt;();
+    //put(index,value)  and Start with 1
+    map.put(1,&quot;1&quot;);
+    map.put(2,&quot;2&quot;);
+    //Iterator Travelsal
+    Set&lt;Entry&lt;Integer,String&gt;&gt; entrySet=map.entrySet();
+    for(Iterator iter =entrySet.iterator();iter.hasNext();){
+        Entry&lt;Integer,String&gt; entry=(Entry&lt;Integer,String&gt;) iter.next();
+        System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+    }
+    //for-each Travelsal
+    for(Entry&lt;Integer,String&gt;entry:entrySet){
+       System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+    }
+</code></pre><ul>
+<li>JDBC连接字符串  Tomcat资源定义含义</li>
+</ul>
+<pre><code>try{
+    String url=&quot;jdbc:mysql://localhost:3306/test_nace&quot;;
+    //if you wanna Unicode is utf-8
+  //  String url=&quot;jdbc:mysql://localhost:3306/test_nace?useUnicode=true&amp;characterEncoding;=Utf-8&quot;;
+    String driver=&quot;com.mysql.jdbc.Driver&quot;;
+    String username=&quot;root&quot;;
+    String password=&quot;&quot;;//默认为空
+    Class.forName(driver);
+    Connection conn=DriverManager.getConnnection(url,username,password);
+    System.out.println(conn);
+  }catch(Exception e){
+    e.printStackTrace();
+  }
+</code></pre><blockquote>
+<p> Note:<a href="https://docs.jelastic.com/connection-to-db-via-jndi" target="_blank" rel="external">JNDI:j2ee另一种连接数据库的方式,通过设置xml</a></p>
+</blockquote>
+<ul>
+<li>java中的排序</li>
+</ul>
+<blockquote><br>  collection.sort()两种实现  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="external">Comparable</a>和<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="external">Comparator</a><br></blockquote>
+
+
+
+
+
+<pre><code>    /**
+      *sort.java
+      */
+       package practice;
+
+
+import java.util.*;
+/**
+ *
+ * @author My scnace
+ *
+ */
+public class sort {
+
+    public static void main(String[] args) {
+ //ArrayLists中的对象String 本身含有compareTo方法，所以可以直接调用sort方法，按自然顺序排序，即升序排序
+        List&lt;String&gt; first_array=new ArrayList&lt;String&gt;();
+        List&lt;realclass&gt; classarray=new ArrayList&lt;realclass&gt;();
+
+        //子弹装填  loading.....
+        first_array.add(&quot;a&quot;);
+        first_array.add(&quot;c&quot;);
+        first_array.add(&quot;b&quot;);        
+        //Compare To  Collections.sort排序
+        Collections.sort(first_array);
+        //Shooting....
+        Result res=new Result();
+     //   res.outPrinter(first_array);
+
+        //realclass real=new realclass();
+
+        //Sort the Class
+          //装填开始.....
+        classarray.add(new realclass(2,&quot;a&quot;));
+        classarray.add(new realclass(1,&quot;c&quot;));
+        classarray.add(new realclass(3,&quot;b&quot;));
+
+        Collections.sort(classarray);
+      // Collections.sort(classarray,new realclass());
+        //Shooting.....
+        Result res2=new Result();
+        res2.outclassPriter(classarray);    
+    }
+}
+
+
+
+
+
+
+
+      /**
+     *realclass.java
+     */
+      package practice;
+
+import java.lang.*;
+import java.util.*;
+
+public class realclass implements Comparator&lt;realclass&gt;,Comparable&lt;realclass&gt;{
+
+    private int index;
+
+    private String foo;
+
+    //空值构造
+    realclass(){}
+    //带参构造
+    realclass(int index,String foo){
+        this.index=index;
+        this.foo=foo;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
+    }
+
+    public int compareTo(realclass real){
+        return (this.foo).compareTo(real.foo);
+    }
+
+    @Override
+    public int compare(realclass o1, realclass o2) {
+        // TODO Auto-generated method stub
+        return o1.getIndex()-o2.getIndex();
+    }
+}
+
+
+
+
+
+
+    /**
+     *result.java
+     */
+
+package practice;
+
+import java.util.List;
+
+public class Result {
+
+    public String outer;
+
+    public  void outPrinter(List&lt;String&gt; out){
+        //Tranversal
+        for(String str:out){
+            System.out.println(str);
+        }
+    }
+
+    public void outclassPriter(List&lt;realclass&gt; out){
+        //Tranversal
+        for(realclass real:out){
+            System.out.println(real.getIndex()+&quot;,&quot;+real.getFoo());
+        }
+    }
+}
+</code></pre><ul>
+<li>类的定义,继承(关键字 extends)</li>
+</ul>
+<pre><code>    /**
+    *first.java
+    */
+
+   package practice;
+
+import java.util.*;
+public abstract class first {
+
+    private int mynum;
+
+    private String mystr;
+    //含参构造
+    first(int hernum,String herstr){
+        this.mynum=hernum;
+        this.mystr=herstr;
+    }
+    //不含参数构造
+    first(){
+        this.mynum=23;
+        this.mystr=&amp;quot;nace&amp;quot;;
+    }
+    //方法
+    public void Sayhellotoher(){
+        System.out.println(&amp;quot;Hi,My num is&amp;quot;+this.mynum);
+    }
+    //虚函数
+    public abstract void Saymyname();
+
+}
+
+
+
+
+
+
+    /**
+    *second.java
+    */
+package practice;
+
+public class second extends first implements inter{
+
+
+    public second() {
+        // TODO Auto-generated constructor stub
+           //构造父类
+        super();        
+    }
+
+     second(int mynum,String mystr){
+         //含参构造
+         super(mynum,mystr);
+     }
+    @Override
+    public void Saymyname() {
+        // TODO Auto-generated method stub
+        super.Sayhellotoher();
+    }
+  @Override
+   public void howto(){
+       System.out.println(&amp;quot;I do not kown&amp;quot;);
+   }
+}
+
+
+
+
+
+
+
+package practice;
+
+/**
+ * rooter.java
+ * @author My Protoss
+ *
+ */
+public class rooter {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        second se=new second();
+        se.Saymyname();
+        se.howto();
+    }
+
+}
+
+
+
+
+
+
+
+/**
+ *inter.java
+ */
+package practice;
+
+public interface inter {
+
+    public default   void howto(){
+        System.out.println(&amp;quot;Hi Nace&amp;quot;);
+    }
+}
+</code></pre><ul>
+<li>session的使用</li>
+</ul>
+<h2 id="创建和声明Session"><a href="#创建和声明Session" class="headerlink" title="创建和声明Session"></a>创建和声明Session</h2><p>  HttpSession mysession=request,getSession();</p>
+<blockquote><br><br>&gt;<br>&gt; Note:The <code>getSession()</code> method should be called before anything is written to the response stream.<br></blockquote>
+
+
+
+
+
+<h2 id="测试Session是否创建成功"><a href="#测试Session是否创建成功" class="headerlink" title="测试Session是否创建成功"></a>测试Session是否创建成功</h2><pre><code>String mySessionID = mySession.getId();
+</code></pre><h2 id="在session中绑定数据"><a href="#在session中绑定数据" class="headerlink" title="在session中绑定数据"></a>在session中绑定数据</h2><p>  mysession.setAttribute(&quot;key&quot;,value);</p>
+<h2 id="获得session数据"><a href="#获得session数据" class="headerlink" title="获得session数据"></a>获得session数据</h2><pre><code>mysession.getAttribute(&amp;quot;key&amp;quot;);//return an object
+
+mysession.getAttributeNames(); //return an array of sessions
+</code></pre><h2 id="解绑session-移除"><a href="#解绑session-移除" class="headerlink" title="解绑session  移除"></a>解绑session  移除</h2><pre><code>mysession.removesession(&amp;quot;key&amp;quot;);
+</code></pre><ul>
+<li>Struts2</li>
+</ul>
+<p><a href="https://cwiki.apache.org/confluence/display/WW/struts.xml+Examples" target="_blank" rel="external">Struts2 Manual</a></p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    queue.offer(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://blog.scnace.cc/j2ee复习/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//blog-scnace-cc.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/hello-world/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/nextstep/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="scnace's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        scbizu@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">May 2017<span class="sidebar_archives-count">44</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="function link() { [native code] }" title="link">
+                
+                link
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/profile.php?id=100009558353664" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/110681183080897592246" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/u/5032057249/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/scbizu/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/ji-si-min/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11124261/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.png);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/scnace" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-telegram.png);">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;一只菜鸡的成长之路
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//blog-scnace-cc.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
