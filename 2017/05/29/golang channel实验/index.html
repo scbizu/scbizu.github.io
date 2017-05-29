@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>golang channel实验 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一种东西?也许信道与 UNIX的双向PIPE 比较类似,也是采用了FIFO的方式来实现调度。由于Goroutine 运行在相同的地址空间 , 所以访问共享内存时必须要做好同步 。Channel就是为了解决这个问题而出现的。通过他来接收或者发送值。 Donot">
+<meta name="keywords" content="golang,in action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang channel实验">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/golang channel实验/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一种东西?也许信道与 UNIX的双向PIPE 比较类似,也是采用了FIFO的方式来实现调度。由于Goroutine 运行在相同的地址空间 , 所以访问共享内存时必须要做好同步 。Channel就是为了解决这个问题而出现的。通过他来接收或者发送值。 Donot">
+<meta property="og:updated_time" content="2017-05-29T03:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="golang channel实验">
+<meta name="twitter:description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一种东西?也许信道与 UNIX的双向PIPE 比较类似,也是采用了FIFO的方式来实现调度。由于Goroutine 运行在相同的地址空间 , 所以访问共享内存时必须要做好同步 。Channel就是为了解决这个问题而出现的。通过他来接收或者发送值。 Donot">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-golang channel实验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/29/golang channel实验/" class="article-date">
+  <time datetime="2017-05-29T03:35:17.000Z" itemprop="datePublished">2017-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/伪技术相关/">伪技术相关</a>►<a class="article-category-link" href="/categories/伪技术相关/golang/">golang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      golang channel实验
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。</p>
+<h3 id="信道到底是怎么一种东西"><a href="#信道到底是怎么一种东西" class="headerlink" title="信道到底是怎么一种东西?"></a>信道到底是怎么一种东西?</h3><p>也许信道与 <strong>UNIX的双向PIPE</strong> 比较类似,也是采用了FIFO的方式来实现调度。由于Goroutine <strong>运行在相同的地址空间</strong> , <strong>所以访问共享内存时必须要做好同步</strong> 。Channel就是为了解决这个问题而出现的。通过他来接收或者发送值。</p>
+<h3 id="Donot-BB-Show-me-the-code"><a href="#Donot-BB-Show-me-the-code" class="headerlink" title="Donot BB Show me the code"></a>Donot BB Show me the code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">func main() &#123;</div><div class="line"></div><div class="line">   init:=make(chan int,20)</div><div class="line">   init&lt;-1</div><div class="line">   init&lt;-2</div><div class="line">   fmt.Println(&lt;-init)</div><div class="line">   fmt.Println(&lt;-init)</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>这就是Channel的用法了,首先缓冲数据,再取出数据。</p>
+<p>By the way,信道的发送和接收方默认是阻塞的,也就是,知道发送方有数据发送过来之前,接收的通道一直都是阻塞的。</p>
+<p>当然,这是缓冲Channel的写法。可以缓冲多组数据。</p>
+<p>而无缓冲的channel(即 <strong>make(chan TYPE)</strong> )只能用于单组数据的传输,这也是goroutine最常用的方式。</p>
+<h3 id="Goroutine基本运用"><a href="#Goroutine基本运用" class="headerlink" title="Goroutine基本运用"></a>Goroutine基本运用</h3><p>用channel来辅助并发(Coroutine) 应该是channel最基础的应用.由于在主线程(main)会在go func()之前跑完,所以导致func()没法跑完  用channel实现的思路是 <strong>用channel去阻塞主线程,直到个go func()全部跑完 再把阻塞取消掉</strong>。在多个Go Routine中,<strong>需要维护一个全局的channel数组,由这个全局channel控制每个Goroutine</strong>。示例代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import &quot;fmt&quot;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line"></div><div class="line">	fmt.Println(&quot;main routine..&quot;)</div><div class="line">	charr := make([]chan int, 11)</div><div class="line">	charr[0] = make(chan int)</div><div class="line">//One GoR</div><div class="line">	go func(ch chan int) &#123;</div><div class="line">		fmt.Println(&quot;other routine&quot;)</div><div class="line">		ch &lt;- 1</div><div class="line">	&#125;(charr[0])</div><div class="line">//Other GoRs</div><div class="line">	for chn := 1; chn &lt; 11; chn++ &#123;</div><div class="line">		charr[chn] = make(chan int)</div><div class="line">		go func(ch chan int) &#123;</div><div class="line">			for i := 0; i &lt; 3; i++ &#123;</div><div class="line">				fmt.Println(i)</div><div class="line">				ch &lt;- 1</div><div class="line">			&#125;</div><div class="line">		&#125;(charr[chn])</div><div class="line">	&#125;</div><div class="line">//解除阻塞..</div><div class="line">	for _, ch := range charr &#123;</div><div class="line">		&lt;-ch</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>稍微对着代码解释下,charr是我设置的全局channel数组  由他负责所有的子Channel  </p>
+<h3 id="关于Range和Close在channel中的应用"><a href="#关于Range和Close在channel中的应用" class="headerlink" title="关于Range和Close在channel中的应用"></a>关于Range和Close在channel中的应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">  &quot;fmt&quot;</div><div class="line">)</div><div class="line">func channel_init(c chan int)&#123;</div><div class="line"></div><div class="line">    for i:=0;i&lt;20;i++&#123;</div><div class="line">        c &lt;- i</div><div class="line">        &#125;</div><div class="line">   close(c)</div><div class="line">    &#125;</div><div class="line">func main() &#123;</div><div class="line"></div><div class="line">   init:=make(chan int,20)</div><div class="line">   channel_init(init)</div><div class="line">    for data:=range init&#123;</div><div class="line">        fmt.Println(data)</div><div class="line">        &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>这里的range实际是遍历的一种简写方法。作用也是遍历channel里的所有数据。range给我们带来了很大的便利</p>
+<p>而close(),便是关闭当前信道。<strong>注意!close一定要在生产的地方去调用,在消费的地方调用会引起panic</strong>.channel作为一种缓存类型,并不需要经常去关闭,只要在确实没有数据发的时候关闭信道就可以了。</p>
+<h3 id="升阶–让我们在一起吧"><a href="#升阶–让我们在一起吧" class="headerlink" title="升阶–让我们在一起吧"></a>升阶–让我们在一起吧</h3><p>思想:在遇到非常复杂的计算时,我们可以分多路对此计算进行分割计算，之后再把三路的计算结果放入总信道，然后从总信道里取值，以此来缩短程序的运行时间。</p>
+<p>The Code is here:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">  &quot;fmt&quot;</div><div class="line">  &quot;time&quot;</div><div class="line">  &quot;math/rand&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func simu_cacul(x int) int&#123;</div><div class="line">    time.Sleep(time.Duration(rand.Intn(10)) * time.Millisecond)</div><div class="line">    return 50-x</div><div class="line">    &#125;</div><div class="line"></div><div class="line">func branch(data int) chan int&#123;</div><div class="line">    //构造branch</div><div class="line">    branch:=make(chan int)</div><div class="line">    //匿名函数表达式执行</div><div class="line">    go func()&#123;</div><div class="line">        //部分计算过程 放入这个分支</div><div class="line">        branch &lt;- simu_cacul(data)</div><div class="line">        &#125;()</div><div class="line">    return branch</div><div class="line">    &#125;</div><div class="line">//合并全部分支</div><div class="line">func merge(aChan ...chan int)chan int&#123;</div><div class="line">    //aChan是一个Slice类型</div><div class="line">    result:=make(chan int)</div><div class="line">    for _,v:=range aChan&#123;</div><div class="line">        //merge    取出传入信道的数据传到result信道</div><div class="line">        go func(c chan int)&#123;result &lt;- &lt;-c&#125;(v)</div><div class="line">        &#125;</div><div class="line">    return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">    res:=merge(branch(1),branch(2),branch(3))</div><div class="line">    for i:=0;i&lt;3;i++&#123;</div><div class="line">        fmt.Println(&lt;-res)</div><div class="line">        &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>(嘘！这里我们假装50-x是一个非常耗时的计算。。。用了Sleep来强行伪装。。。。)</p>
+<h3 id="监视器"><a href="#监视器" class="headerlink" title="监视器"></a>监视器</h3><p>Golang中黑科技炒鸡多的,这就是我喜欢它的原因吧~~比如这个SELECT是用来监测信道上的数据流动</p>
+<p>select默认是阻塞的,只有当监听的信道接收或发送时才可以运行,然后当有多个信道满足条件时,select会选择一个执行。(感觉用法跟Switch‘有点像   然而只是语法有点像 case default啥的</p>
+<p>然后上面的代码就可以开始简化了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//合并全部分支</div><div class="line">func merge(aChan ...chan int)chan int&#123;</div><div class="line">    //aChan是一个Slice类型</div><div class="line">    result:=make(chan int)</div><div class="line">    go func()&#123;</div><div class="line">        for _,v:=range aChan&#123;</div><div class="line">            select&#123;</div><div class="line">                    //监听从v信道流出</div><div class="line">                case c:=&lt;-v:</div><div class="line">                   result &lt;- c</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;()</div><div class="line">    return result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>SELECT 还有一个 <strong>设置超时</strong> 功能,用来避免全部阻塞的情况</p>
+<pre><code>case &lt;-time.After(5*time.Second):
+//do sth here
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/29/golang channel实验/" data-id="cj39px7qu000eoq4dcdwu2b8a" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/in-action/">in action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/29/golang bufio实验/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          golang bufio实验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/29/golang panic和recover实验小结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">golang panic和recover实验小结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">#伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crawler/">Crawler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪情感相关/">伪情感相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/ssh/">ssh</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/年度总结/">年度总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/">伪生活相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/情感/">情感</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪运维相关/">伪运维相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/情感/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾/">折腾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/重要课程/">重要课程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-and-Examination/">Class and Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Examination/">Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/J2ee/">J2ee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xampp/">Xampp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/configuration/">configuration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/in-action/">in action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/repo/">repo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/theory/">theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/当XX-发生了什么/">当XX 发生了什么?</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教务处/">教务处</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Class-and-Examination/" style="font-size: 12px;">Class and Examination</a> <a href="/tags/Examination/" style="font-size: 10px;">Examination</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/J2ee/" style="font-size: 10px;">J2ee</a> <a href="/tags/Solution/" style="font-size: 16px;">Solution</a> <a href="/tags/Xampp/" style="font-size: 14px;">Xampp</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/crawler/" style="font-size: 14px;">crawler</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/in-action/" style="font-size: 18px;">in action</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/repo/" style="font-size: 12px;">repo</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/theory/" style="font-size: 10px;">theory</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/当XX-发生了什么/" style="font-size: 10px;">当XX 发生了什么?</a> <a href="/tags/总结/" style="font-size: 12px;">总结</a> <a href="/tags/教务处/" style="font-size: 10px;">教务处</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/番剧/" style="font-size: 10px;">番剧</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/29/一次爬方正教务处的成功实践/">一次爬方正教务处的成功实践</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/2016年度总结之认知/">2016年度总结之认知</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/Docker下ES及其集群的搭建/">Docker下搭建Elasticsearch及其集群</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/goeclipse配置指南/">goeclipse配置指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

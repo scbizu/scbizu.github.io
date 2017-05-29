@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>golang多返回值写法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="看热闹不嫌事大系列——–&amp;gt;如何看待函数返回多个值的设计?     From  知乎 这个号称是Golang特性之一的  多返回值写法 给开发者带来了许多便捷的地方，由于Golang的语法中规定没有使用过只是初始化了的变量会报错,所以，引入了多返回值的方法，因为这样做就可以用_来舍弃掉之前声明但是又不想使用的变量了。 先来看一段多返回值的标准写法: 1234567891011121314151">
+<meta name="keywords" content="golang,in action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang多返回值写法">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/golang多返回值写法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="看热闹不嫌事大系列——–&amp;gt;如何看待函数返回多个值的设计?     From  知乎 这个号称是Golang特性之一的  多返回值写法 给开发者带来了许多便捷的地方，由于Golang的语法中规定没有使用过只是初始化了的变量会报错,所以，引入了多返回值的方法，因为这样做就可以用_来舍弃掉之前声明但是又不想使用的变量了。 先来看一段多返回值的标准写法: 1234567891011121314151">
+<meta property="og:updated_time" content="2017-05-29T03:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="golang多返回值写法">
+<meta name="twitter:description" content="看热闹不嫌事大系列——–&amp;gt;如何看待函数返回多个值的设计?     From  知乎 这个号称是Golang特性之一的  多返回值写法 给开发者带来了许多便捷的地方，由于Golang的语法中规定没有使用过只是初始化了的变量会报错,所以，引入了多返回值的方法，因为这样做就可以用_来舍弃掉之前声明但是又不想使用的变量了。 先来看一段多返回值的标准写法: 1234567891011121314151">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-golang多返回值写法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/29/golang多返回值写法/" class="article-date">
+  <time datetime="2017-05-29T03:35:17.000Z" itemprop="datePublished">2017-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/伪技术相关/">伪技术相关</a>►<a class="article-category-link" href="/categories/伪技术相关/golang/">golang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      golang多返回值写法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看热闹不嫌事大系列——–&gt;<a href="https://www.zhihu.com/question/20132013" target="_blank" rel="external">如何看待函数返回多个值的设计?     From  知乎</a></p>
+<p>这个号称是Golang特性之一的  多返回值写法 给开发者带来了许多便捷的地方，由于Golang的语法中规定没有使用过只是初始化了的变量会报错,所以，引入了多返回值的方法，因为这样做就可以用<code>_</code>来舍弃掉之前声明但是又不想使用的变量了。</p>
+<p>先来看一段多返回值的标准写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">  &quot;fmt&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func dataOp(data1 float32 ,data2 float32)(float32,float32)&#123;</div><div class="line"></div><div class="line">    return data1+data2,data1*data2</div><div class="line">    &#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">   var x float32</div><div class="line">   var y float32</div><div class="line">    x=1.1</div><div class="line">    y=2.2</div><div class="line">    added,mutied:=dataOp(x,y)</div><div class="line">    fmt.Printf(&quot;%f,%f&quot;,added,mutied);   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>顾名思义,也就是dataOp()返回了两个值。(e.g.中是data1+data2和 data1*data2).然后调用的时候的写法就是定义两个变量来接收dataOp的返回值。</p>
+<p>然而返回值的先后顺序也必须的一一对应的。</p>
+<p>改一下代码，我们舍弃掉第一个返回值。</p>
+<p>Change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">added,mutied:=dataOp(x,y)</div></pre></td></tr></table></figure></p>
+<p>To</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_,mutied:=dataOp(x,y)</div></pre></td></tr></table></figure>
+<p>验证结果后会发现,返回的是乘积值:2.420000</p>
+<p>利用这种原理,我们可以大大简化代码的冗余，而且，我们是可以自由选择返回值,不要的就可以释放掉,优化程序的内存管理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/29/golang多返回值写法/" data-id="cj39px7r5000noq4dzw5m4h30" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/in-action/">in action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/29/golang 闭包实践/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          golang 闭包实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/29/golang常用数据结构/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">golang常用数据结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">#伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crawler/">Crawler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪情感相关/">伪情感相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/ssh/">ssh</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/年度总结/">年度总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/">伪生活相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/情感/">情感</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪运维相关/">伪运维相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/情感/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾/">折腾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/重要课程/">重要课程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-and-Examination/">Class and Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Examination/">Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/J2ee/">J2ee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xampp/">Xampp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/configuration/">configuration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/in-action/">in action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/repo/">repo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/theory/">theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/当XX-发生了什么/">当XX 发生了什么?</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教务处/">教务处</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Class-and-Examination/" style="font-size: 12px;">Class and Examination</a> <a href="/tags/Examination/" style="font-size: 10px;">Examination</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/J2ee/" style="font-size: 10px;">J2ee</a> <a href="/tags/Solution/" style="font-size: 16px;">Solution</a> <a href="/tags/Xampp/" style="font-size: 14px;">Xampp</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/crawler/" style="font-size: 14px;">crawler</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/in-action/" style="font-size: 18px;">in action</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/repo/" style="font-size: 12px;">repo</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/theory/" style="font-size: 10px;">theory</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/当XX-发生了什么/" style="font-size: 10px;">当XX 发生了什么?</a> <a href="/tags/总结/" style="font-size: 12px;">总结</a> <a href="/tags/教务处/" style="font-size: 10px;">教务处</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/番剧/" style="font-size: 10px;">番剧</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/29/一次爬方正教务处的成功实践/">一次爬方正教务处的成功实践</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/2016年度总结之认知/">2016年度总结之认知</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/Docker下ES及其集群的搭建/">Docker下搭建Elasticsearch及其集群</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/goeclipse配置指南/">goeclipse配置指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

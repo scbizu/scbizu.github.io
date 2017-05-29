@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>golang panic和recover实验小结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="认识Panic和RecoverPanic这是Golang中的一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。当函数F调用Panic，函数F的执行将被中断，但是F中的延迟函数会正常执行,然后F返回到调用它的地方。这个恐慌可以直接调用panic产生，也可以由运行时的错误产生。 RecoverGolang的内建函数。可以让进入恐慌的goroutine恢复过来。并且Recover只在延迟函">
+<meta name="keywords" content="golang,in action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang panic和recover实验小结">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/golang panic和recover实验小结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="认识Panic和RecoverPanic这是Golang中的一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。当函数F调用Panic，函数F的执行将被中断，但是F中的延迟函数会正常执行,然后F返回到调用它的地方。这个恐慌可以直接调用panic产生，也可以由运行时的错误产生。 RecoverGolang的内建函数。可以让进入恐慌的goroutine恢复过来。并且Recover只在延迟函">
+<meta property="og:updated_time" content="2017-05-29T03:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="golang panic和recover实验小结">
+<meta name="twitter:description" content="认识Panic和RecoverPanic这是Golang中的一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。当函数F调用Panic，函数F的执行将被中断，但是F中的延迟函数会正常执行,然后F返回到调用它的地方。这个恐慌可以直接调用panic产生，也可以由运行时的错误产生。 RecoverGolang的内建函数。可以让进入恐慌的goroutine恢复过来。并且Recover只在延迟函">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-golang panic和recover实验小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/29/golang panic和recover实验小结/" class="article-date">
+  <time datetime="2017-05-29T03:35:17.000Z" itemprop="datePublished">2017-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/伪技术相关/">伪技术相关</a>►<a class="article-category-link" href="/categories/伪技术相关/golang/">golang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      golang panic和recover实验小结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="认识Panic和Recover"><a href="#认识Panic和Recover" class="headerlink" title="认识Panic和Recover"></a>认识Panic和Recover</h2><h3 id="Panic"><a href="#Panic" class="headerlink" title="Panic"></a>Panic</h3><p>这是Golang中的一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。当函数F调用Panic，函数F的执行将被中断，但是F中的延迟函数会正常执行,然后F返回到调用它的地方。这个恐慌可以直接调用panic产生，也可以由运行时的错误产生。</p>
+<h3 id="Recover"><a href="#Recover" class="headerlink" title="Recover"></a>Recover</h3><p>Golang的内建函数。可以让进入恐慌的goroutine恢复过来。并且<strong>Recover</strong>只在延迟函数中有效，在正常情况下goroutine会返回Nil 但是一旦陷入恐慌,Recover就会返回当前的陷入恐慌的panic信息,并恢复程序的正常执行。</p>
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><pre><code>package main
+
+import (
+  &quot;fmt&quot;
+)
+
+func ifpanic(){
+    //recover
+
+      //unnamed function
+      defer func(){
+        if r:=recover();r!=nil{
+            fmt.Println(&quot;recover in ifpanic()&quot;,r);
+            }
+        }()
+      //Catch panic
+      fmt.Println(&quot;Calling panic block&quot;);
+      panicblock(0);
+      fmt.Println(&quot;Returning from panicblock normally&quot;);
+    }
+
+func panicblock(data int){
+    //creat a panic manually by recursion
+    if data&gt;=3 {
+        fmt.Println(&quot;panic ing....&quot;);
+        panic(fmt.Sprintf(&quot;%v&quot;,data));
+        }
+     defer fmt.Println(&quot;defer block&quot;,data)
+     fmt.Println(&quot;Printing now&quot;,data);
+     panicblock(data+1)
+    }
+
+
+// func dataOp(data1 float32 ,data2 float32)(float32,float32){
+//  
+//  return data1+data2,data1*data2
+//  }
+//只有一个defer 的情景
+func main() {
+    ifpanic();
+    fmt.Printf(&quot;Return normally ...&quot;);  
+}
+</code></pre><p>输出为:</p>
+<pre><code>Calling panic block
+Printing now 0
+Printing now 1
+Printing now 2
+panic ing....
+defer block 2
+defer block 1
+defer block 0
+recover in ifpanic() 3
+Return normally ...
+</code></pre><p>有趣的是  如果我们去掉Ifpanic()里面的defer关键字(让其马上执行,不延迟)</p>
+<p>即 defer func(){}()  —&gt;  func(){}()</p>
+<p>输出马上就会变为:</p>
+<pre><code>Calling panic block
+Printing now 0
+Printing now 1
+Printing now 2
+panic ing....
+defer block 2
+defer block 1
+defer block 0
+panic: 3
+
+goroutine 1 [running]:
+main.panicblock(0x3)
+    C:/Users/A450V/workspace/godemo/src/main/main.go:26 +0x29d
+main.panicblock(0x2)
+    C:/Users/A450V/workspace/godemo/src/main/main.go:30 +0x617
+main.panicblock(0x1)
+    C:/Users/A450V/workspace/godemo/src/main/main.go:30 +0x617
+main.panicblock(0x0)
+    C:/Users/A450V/workspace/godemo/src/main/main.go:30 +0x617
+main.ifpanic()
+    C:/Users/A450V/workspace/godemo/src/main/main.go:18 +0x123
+main.main()
+    C:/Users/A450V/workspace/godemo/src/main/main.go:40 +0x1f
+</code></pre><p>(注:GOPATH 为C:/Users/A450V/workspace/godemo/ )</p>
+<p>当异常的JSON数据格式被捕获到,就会优先(first-level)调用PANIC去减轻栈的压力,然后会返回一个error code 并自动调用recover返回程序。。</p>
+<p>由此  证实了如定义所说。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/29/golang panic和recover实验小结/" data-id="cj39px7qx000hoq4dssdle8w1" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/in-action/">in action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/29/golang channel实验/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          golang channel实验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/29/golang 闭包实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">golang 闭包实践</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">#伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crawler/">Crawler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪情感相关/">伪情感相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/ssh/">ssh</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/年度总结/">年度总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/">伪生活相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/情感/">情感</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪运维相关/">伪运维相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/情感/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾/">折腾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/重要课程/">重要课程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-and-Examination/">Class and Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Examination/">Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/J2ee/">J2ee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xampp/">Xampp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/configuration/">configuration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/in-action/">in action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/repo/">repo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/theory/">theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/当XX-发生了什么/">当XX 发生了什么?</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教务处/">教务处</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Class-and-Examination/" style="font-size: 12px;">Class and Examination</a> <a href="/tags/Examination/" style="font-size: 10px;">Examination</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/J2ee/" style="font-size: 10px;">J2ee</a> <a href="/tags/Solution/" style="font-size: 16px;">Solution</a> <a href="/tags/Xampp/" style="font-size: 14px;">Xampp</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/crawler/" style="font-size: 14px;">crawler</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/in-action/" style="font-size: 18px;">in action</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/repo/" style="font-size: 12px;">repo</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/theory/" style="font-size: 10px;">theory</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/当XX-发生了什么/" style="font-size: 10px;">当XX 发生了什么?</a> <a href="/tags/总结/" style="font-size: 12px;">总结</a> <a href="/tags/教务处/" style="font-size: 10px;">教务处</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/番剧/" style="font-size: 10px;">番剧</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/29/一次爬方正教务处的成功实践/">一次爬方正教务处的成功实践</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/2016年度总结之认知/">2016年度总结之认知</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/Docker下ES及其集群的搭建/">Docker下搭建Elasticsearch及其集群</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/goeclipse配置指南/">goeclipse配置指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

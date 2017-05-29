@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>j2ee复习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="J2EE复习资料  原稿:12届学长 区长  编辑者:13届学沫 nace   java的编译命令:java 和 javac  javac demo.java java  demo  Tomcat的命令:startup和shutdown   Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)  进入Mysql命令行界面(Console)mysql -h localho">
+<meta name="keywords" content="Examination,J2ee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="j2ee复习">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/j2ee复习/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="J2EE复习资料  原稿:12届学长 区长  编辑者:13届学沫 nace   java的编译命令:java 和 javac  javac demo.java java  demo  Tomcat的命令:startup和shutdown   Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)  进入Mysql命令行界面(Console)mysql -h localho">
+<meta property="og:updated_time" content="2017-05-29T03:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="j2ee复习">
+<meta name="twitter:description" content="J2EE复习资料  原稿:12届学长 区长  编辑者:13届学沫 nace   java的编译命令:java 和 javac  javac demo.java java  demo  Tomcat的命令:startup和shutdown   Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)  进入Mysql命令行界面(Console)mysql -h localho">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-j2ee复习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/29/j2ee复习/" class="article-date">
+  <time datetime="2017-05-29T03:35:17.000Z" itemprop="datePublished">2017-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/伪技术相关/">#伪技术相关</a>►<a class="article-category-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      j2ee复习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="J2EE复习资料"><a href="#J2EE复习资料" class="headerlink" title="J2EE复习资料"></a>J2EE复习资料</h2><blockquote>
+<p> 原稿:12届学长 区长  编辑者:13届学沫 nace</p>
+</blockquote>
+<ul>
+<li>java的编译命令:java 和 javac</li>
+</ul>
+<pre><code>javac demo.java
+java  demo
+</code></pre><ul>
+<li>Tomcat的命令:<strong>startup</strong>和<strong>shutdown</strong></li>
+</ul>
+<ul>
+<li>Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)</li>
+</ul>
+<h4 id="进入Mysql命令行界面-Console"><a href="#进入Mysql命令行界面-Console" class="headerlink" title="进入Mysql命令行界面(Console)"></a>进入Mysql命令行界面(Console)</h4><pre><code>mysql -h localhost -u root -p 123456(这里是写你设置的mysql密码,默认是空)
+
+
+
+
+
+
+CREATE database database_name(数据库名称)
+    DROP database database_name
+    //新建user用户表
+    CREATE TABLE user(
+        id int primary key auto_increment,
+        username varchar(20) not null,
+        password varchar(20) not null
+     );
+    //删除user用户表
+    DROP table user
+    //插入新的数据
+    INSERT INTO user(`username`,`password`) values(`scnace`,`123456`)
+    //删除user表中名字是scnace的记录
+    DELETE FROM user where `username`=`scnace`
+    //更改表中名字为scnace的数据为scbizu
+    UPDATE user SET username=&apos;scbizu&apos; WHERE username=&apos;scnace&apos;
+    //选取表中名字为scnace的Record
+    SELECT * FROM user WHERE username=`scnace`
+</code></pre><p><em>Extension:</em><strong>面试</strong>中的SQL喜欢出的题:</p>
+<ol>
+<li>连表查询:<br>1.1. 左连接(<strong>LEFT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="external">LEFT JOIN Declaration and usecase</a><br>1.2. 右连接(<strong>RIGHT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_right.asp" target="_blank" rel="external">RIGHT JOIN Declaration and usecase</a><br>1.3. 全连接(<strong>FULL JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_full.asp" target="_blank" rel="external">FULL JOIN Declaration and Usecase</a></li>
+<li>数据库基本操作</li>
+</ol>
+<ul>
+<li>包的引入和定义import和package</li>
+</ul>
+<pre><code>Import java.util.Scanner;
+Import java.io.*;
+Package cn.edu.zafu;//Package
+</code></pre><ul>
+<li>Java控制台(cmd&amp;&amp;IDE)下的输入输出:</li>
+</ul>
+<blockquote>
+<p> Scanner和System.out.print()语句</p>
+</blockquote>
+<pre><code>    Scanner scanner=new Scanner(System.in);
+    while(scanner.hasNext()){
+    //scanner.next();
+    //scanner.nextInt();
+    //scanner.nextBoolean();
+    //scanner.nextDouble();
+    //scanner.nextFloat();
+       //System.out.***
+    //System.out.print();
+    //System.out.println();
+    //System.out.printf(&quot;%d %s&quot;,(Integer),(String));
+}
+</code></pre><ul>
+<li>流程控制语句—条件语句 if switch</li>
+</ul>
+<pre><code>  if(_condition){
+    //ADD YOUR CODE HERE to do under the  _condition
+    }else{
+    //* otherwise....
+    }
+
+
+
+
+
+
+
+
+switch(_condition){
+case _condition_0:
+    break;
+case _condition_1:
+    break;
+default:
+    break;
+}
+</code></pre><ul>
+<li>循环语句 for while</li>
+</ul>
+<pre><code>for(int i=0;i&lt;args.length;i++){
+    //Traversal The Array
+     String str=args[i];
+  }
+  while(i&lt;5){
+     i++;
+  }
+</code></pre><ul>
+<li>变量定义 (普通变量定义及初始化 静态变量定义 常量定义)</li>
+</ul>
+<pre><code>int i=5;
+boolean flag=true;
+float f=3.0f;
+double d=3.5;
+byte b=1;
+static final String name=&quot;nace&quot;;
+</code></pre><blockquote>
+<p> Note:Java变量类型<a href="https://en.wikipedia.org/wiki/Final_(Java" target="_blank" rel="external">final</a>)<br>                   <a href="http://beginnersbook.com/2013/04/java-static-class-block-methods-variables/" target="_blank" rel="external">static关键字</a></p>
+</blockquote>
+<ul>
+<li>数组的定义  数组的遍历</li>
+</ul>
+<pre><code>int a[]=int[]{1,2,3,4,5};
+for(int i=0;i &lt;a.length;i++){
+    System.out.println(a[i]);
+}
+</code></pre><ul>
+<li>字符串的使用 定义字符串 格式化字符串 字符串查找 etc.</li>
+</ul>
+<pre><code>String str1=String.format(&quot;%s %d&quot;,&quot;nace&quot;,2);
+//Source Data to be searched
+String str2=&quot;naceoncelovedapuregirl.&quot;;
+System.out.print(str2.indexOf(&quot;S&quot;));
+System.out.print(str2.indexOf(&quot;S&quot;,6));//Start with 1.
+System.out.print(str2.charAt(1));
+</code></pre><blockquote>
+<p> Note:关于<a href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html" target="_blank" rel="external">String.format()</a><br>       关于<a href="http://www.tutorialspoint.com/java/java_string_charat.htm" target="_blank" rel="external">String.chatAt()</a></p>
+</blockquote>
+<ul>
+<li>ArrayList HashSet HashMap的定义和遍历</li>
+</ul>
+<pre><code>List&lt;string&gt; array=new ArrayList&lt;String&gt;();
+array.add(&quot;1&quot;);
+array.add(&quot;2&quot;);
+array.add(&quot;3&quot;);
+//Travelsal the ArrayList with Iterator
+for(Iterator iterator=arr.iterator();iterator.hasNext();){
+String str=(String)iterator.next();
+System.out.println(str);
+}
+for(String str:arr){
+  System.out.println(str);
+}
+
+
+
+
+
+
+  //HashSet
+    HashSet&lt;String&gt; set=new HashSet&lt;String&gt;();
+    set.add(&quot;1&quot;);
+    set.add(&quot;2&quot;);
+    set.add(&quot;3&quot;);
+    //Travelsal the HashMap with Iterator
+    for(Iterator ite =set.iterator();iterator.hasNext();){
+    String str=(String)ite.next();
+    System.out.println(str);
+    }
+    //for-each Travelsal
+    for(String str:set){
+      System.out.println(str);
+    }
+
+    //HashMap Code.....
+    HashMap&lt;Integer,String&gt; map=new HashMap&lt;Integer,String&gt;();
+    //put(index,value)  and Start with 1
+    map.put(1,&quot;1&quot;);
+    map.put(2,&quot;2&quot;);
+    //Iterator Travelsal
+    Set&lt;Entry&lt;Integer,String&gt;&gt; entrySet=map.entrySet();
+    for(Iterator iter =entrySet.iterator();iter.hasNext();){
+        Entry&lt;Integer,String&gt; entry=(Entry&lt;Integer,String&gt;) iter.next();
+        System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+    }
+    //for-each Travelsal
+    for(Entry&lt;Integer,String&gt;entry:entrySet){
+       System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+    }
+</code></pre><ul>
+<li>JDBC连接字符串  Tomcat资源定义含义</li>
+</ul>
+<pre><code>try{
+    String url=&quot;jdbc:mysql://localhost:3306/test_nace&quot;;
+    //if you wanna Unicode is utf-8
+  //  String url=&quot;jdbc:mysql://localhost:3306/test_nace?useUnicode=true&amp;characterEncoding;=Utf-8&quot;;
+    String driver=&quot;com.mysql.jdbc.Driver&quot;;
+    String username=&quot;root&quot;;
+    String password=&quot;&quot;;//默认为空
+    Class.forName(driver);
+    Connection conn=DriverManager.getConnnection(url,username,password);
+    System.out.println(conn);
+  }catch(Exception e){
+    e.printStackTrace();
+  }
+</code></pre><blockquote>
+<p> Note:<a href="https://docs.jelastic.com/connection-to-db-via-jndi" target="_blank" rel="external">JNDI:j2ee另一种连接数据库的方式,通过设置xml</a></p>
+</blockquote>
+<ul>
+<li>java中的排序</li>
+</ul>
+<blockquote><br>  collection.sort()两种实现  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="external">Comparable</a>和<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="external">Comparator</a><br></blockquote>
+
+
+
+
+
+<pre><code>    /**
+      *sort.java
+      */
+       package practice;
+
+
+import java.util.*;
+/**
+ *
+ * @author My scnace
+ *
+ */
+public class sort {
+
+    public static void main(String[] args) {
+ //ArrayLists中的对象String 本身含有compareTo方法，所以可以直接调用sort方法，按自然顺序排序，即升序排序
+        List&lt;String&gt; first_array=new ArrayList&lt;String&gt;();
+        List&lt;realclass&gt; classarray=new ArrayList&lt;realclass&gt;();
+
+        //子弹装填  loading.....
+        first_array.add(&quot;a&quot;);
+        first_array.add(&quot;c&quot;);
+        first_array.add(&quot;b&quot;);        
+        //Compare To  Collections.sort排序
+        Collections.sort(first_array);
+        //Shooting....
+        Result res=new Result();
+     //   res.outPrinter(first_array);
+
+        //realclass real=new realclass();
+
+        //Sort the Class
+          //装填开始.....
+        classarray.add(new realclass(2,&quot;a&quot;));
+        classarray.add(new realclass(1,&quot;c&quot;));
+        classarray.add(new realclass(3,&quot;b&quot;));
+
+        Collections.sort(classarray);
+      // Collections.sort(classarray,new realclass());
+        //Shooting.....
+        Result res2=new Result();
+        res2.outclassPriter(classarray);    
+    }
+}
+
+
+
+
+
+
+
+      /**
+     *realclass.java
+     */
+      package practice;
+
+import java.lang.*;
+import java.util.*;
+
+public class realclass implements Comparator&lt;realclass&gt;,Comparable&lt;realclass&gt;{
+
+    private int index;
+
+    private String foo;
+
+    //空值构造
+    realclass(){}
+    //带参构造
+    realclass(int index,String foo){
+        this.index=index;
+        this.foo=foo;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
+    }
+
+    public int compareTo(realclass real){
+        return (this.foo).compareTo(real.foo);
+    }
+
+    @Override
+    public int compare(realclass o1, realclass o2) {
+        // TODO Auto-generated method stub
+        return o1.getIndex()-o2.getIndex();
+    }
+}
+
+
+
+
+
+
+    /**
+     *result.java
+     */
+
+package practice;
+
+import java.util.List;
+
+public class Result {
+
+    public String outer;
+
+    public  void outPrinter(List&lt;String&gt; out){
+        //Tranversal
+        for(String str:out){
+            System.out.println(str);
+        }
+    }
+
+    public void outclassPriter(List&lt;realclass&gt; out){
+        //Tranversal
+        for(realclass real:out){
+            System.out.println(real.getIndex()+&quot;,&quot;+real.getFoo());
+        }
+    }
+}
+</code></pre><ul>
+<li>类的定义,继承(关键字 extends)</li>
+</ul>
+<pre><code>    /**
+    *first.java
+    */
+
+   package practice;
+
+import java.util.*;
+public abstract class first {
+
+    private int mynum;
+
+    private String mystr;
+    //含参构造
+    first(int hernum,String herstr){
+        this.mynum=hernum;
+        this.mystr=herstr;
+    }
+    //不含参数构造
+    first(){
+        this.mynum=23;
+        this.mystr=&amp;quot;nace&amp;quot;;
+    }
+    //方法
+    public void Sayhellotoher(){
+        System.out.println(&amp;quot;Hi,My num is&amp;quot;+this.mynum);
+    }
+    //虚函数
+    public abstract void Saymyname();
+
+}
+
+
+
+
+
+
+    /**
+    *second.java
+    */
+package practice;
+
+public class second extends first implements inter{
+
+
+    public second() {
+        // TODO Auto-generated constructor stub
+           //构造父类
+        super();        
+    }
+
+     second(int mynum,String mystr){
+         //含参构造
+         super(mynum,mystr);
+     }
+    @Override
+    public void Saymyname() {
+        // TODO Auto-generated method stub
+        super.Sayhellotoher();
+    }
+  @Override
+   public void howto(){
+       System.out.println(&amp;quot;I do not kown&amp;quot;);
+   }
+}
+
+
+
+
+
+
+
+package practice;
+
+/**
+ * rooter.java
+ * @author My Protoss
+ *
+ */
+public class rooter {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        second se=new second();
+        se.Saymyname();
+        se.howto();
+    }
+
+}
+
+
+
+
+
+
+
+/**
+ *inter.java
+ */
+package practice;
+
+public interface inter {
+
+    public default   void howto(){
+        System.out.println(&amp;quot;Hi Nace&amp;quot;);
+    }
+}
+</code></pre><ul>
+<li>session的使用</li>
+</ul>
+<h2 id="创建和声明Session"><a href="#创建和声明Session" class="headerlink" title="创建和声明Session"></a>创建和声明Session</h2><p>  HttpSession mysession=request,getSession();</p>
+<blockquote><br><br>&gt;<br>&gt; Note:The <code>getSession()</code> method should be called before anything is written to the response stream.<br></blockquote>
+
+
+
+
+
+<h2 id="测试Session是否创建成功"><a href="#测试Session是否创建成功" class="headerlink" title="测试Session是否创建成功"></a>测试Session是否创建成功</h2><pre><code>String mySessionID = mySession.getId();
+</code></pre><h2 id="在session中绑定数据"><a href="#在session中绑定数据" class="headerlink" title="在session中绑定数据"></a>在session中绑定数据</h2><p>  mysession.setAttribute(&quot;key&quot;,value);</p>
+<h2 id="获得session数据"><a href="#获得session数据" class="headerlink" title="获得session数据"></a>获得session数据</h2><pre><code>mysession.getAttribute(&amp;quot;key&amp;quot;);//return an object
+
+mysession.getAttributeNames(); //return an array of sessions
+</code></pre><h2 id="解绑session-移除"><a href="#解绑session-移除" class="headerlink" title="解绑session  移除"></a>解绑session  移除</h2><pre><code>mysession.removesession(&amp;quot;key&amp;quot;);
+</code></pre><ul>
+<li>Struts2</li>
+</ul>
+<p><a href="https://cwiki.apache.org/confluence/display/WW/struts.xml+Examples" target="_blank" rel="external">Struts2 Manual</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/29/j2ee复习/" data-id="cj39px7rm000zoq4dufhgalub" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Examination/">Examination</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/J2ee/">J2ee</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/29/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/29/linux mint下修改默认中文文件夹/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">linux mint下修改默认中文文件夹</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">#伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crawler/">Crawler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪情感相关/">伪情感相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/ssh/">ssh</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/年度总结/">年度总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/">伪生活相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/情感/">情感</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪运维相关/">伪运维相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/情感/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾/">折腾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/重要课程/">重要课程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-and-Examination/">Class and Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Examination/">Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/J2ee/">J2ee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xampp/">Xampp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/configuration/">configuration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/in-action/">in action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/repo/">repo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/theory/">theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/当XX-发生了什么/">当XX 发生了什么?</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教务处/">教务处</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Class-and-Examination/" style="font-size: 12px;">Class and Examination</a> <a href="/tags/Examination/" style="font-size: 10px;">Examination</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/J2ee/" style="font-size: 10px;">J2ee</a> <a href="/tags/Solution/" style="font-size: 16px;">Solution</a> <a href="/tags/Xampp/" style="font-size: 14px;">Xampp</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/crawler/" style="font-size: 14px;">crawler</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/in-action/" style="font-size: 18px;">in action</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/repo/" style="font-size: 12px;">repo</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/theory/" style="font-size: 10px;">theory</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/当XX-发生了什么/" style="font-size: 10px;">当XX 发生了什么?</a> <a href="/tags/总结/" style="font-size: 12px;">总结</a> <a href="/tags/教务处/" style="font-size: 10px;">教务处</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/番剧/" style="font-size: 10px;">番剧</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/29/一次爬方正教务处的成功实践/">一次爬方正教务处的成功实践</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/2016年度总结之认知/">2016年度总结之认知</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/Docker下ES及其集群的搭建/">Docker下搭建Elasticsearch及其集群</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/goeclipse配置指南/">goeclipse配置指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>从遍历DOM树谈BFS和DFS | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工作点滴(闲谈)这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/Mind Review ,然后下一个任务。但是我觉得这个礼拜我成长了很多。应该是环境的关系吧,边上的人都在认真写代码,你就不会想去怠慢。而(普通本科)学校里根本没有这种驱动力,所以,我觉得环境对一个人的塑造作用比本身的自制力要强的多(不考虑孤僻症的特殊人群).">
+<meta name="keywords" content="in action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从遍历DOM树谈BFS和DFS">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/从遍历DOM树谈DFS和BFS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="工作点滴(闲谈)这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/Mind Review ,然后下一个任务。但是我觉得这个礼拜我成长了很多。应该是环境的关系吧,边上的人都在认真写代码,你就不会想去怠慢。而(普通本科)学校里根本没有这种驱动力,所以,我觉得环境对一个人的塑造作用比本身的自制力要强的多(不考虑孤僻症的特殊人群).">
+<meta property="og:updated_time" content="2017-05-29T03:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从遍历DOM树谈BFS和DFS">
+<meta name="twitter:description" content="工作点滴(闲谈)这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/Mind Review ,然后下一个任务。但是我觉得这个礼拜我成长了很多。应该是环境的关系吧,边上的人都在认真写代码,你就不会想去怠慢。而(普通本科)学校里根本没有这种驱动力,所以,我觉得环境对一个人的塑造作用比本身的自制力要强的多(不考虑孤僻症的特殊人群).">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-从遍历DOM树谈DFS和BFS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/29/从遍历DOM树谈DFS和BFS/" class="article-date">
+  <time datetime="2017-05-29T03:35:17.000Z" itemprop="datePublished">2017-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/伪技术相关/">伪技术相关</a>►<a class="article-category-link" href="/categories/伪技术相关/算法/">算法</a>►<a class="article-category-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从遍历DOM树谈BFS和DFS
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="工作点滴-闲谈"><a href="#工作点滴-闲谈" class="headerlink" title="工作点滴(闲谈)"></a>工作点滴(闲谈)</h3><p>这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/Mind Review ,然后下一个任务。但是我觉得这个礼拜我成长了很多。应该是环境的关系吧,边上的人都在认真写代码,你就不会想去怠慢。而(普通本科)学校里根本没有这种驱动力,所以,我觉得<code>环境</code>对一个人的塑造作用比本身的<code>自制力</code>要强的多(不考虑孤僻症的特殊人群).</p>
+<h3 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h3><p>这几天一直研究<code>爬虫框架</code>,由于要做某些页面的分析,去拿<code>&lt;form&gt;&lt;/form&gt;</code>里的一些key(e.g. 就像input的name这种)用做后期处理。写过HTML的应该都知道DOM结构,然而并不是<code>&lt;form&gt;</code>这个tag下就有<code>&lt;input&gt;</code>给你拿的 每个页面都不一样  有的会在外面套好几层<code>&lt;div&gt;</code>.所以要做的事就很明显了 <strong>遍历这块DOM</strong> .</p>
+<p>由于<a href="https://github.com/hu17889/go_spider" target="_blank" rel="external">go-spider</a>框架内置了<code>goquery</code>(一个类似jQuery的golang DOM处理包) ,所以我也就顺便用goquery吧。仔细思考,会发现这个问题其实是<code>遍历一个多叉树</code>。</p>
+<p>怎么遍历树 ? 我记得大一的课堂上说过 <code>深度优先遍历</code>(DFS) 和 <code>广度优先遍历</code>(BFS).</p>
+<ul>
+<li>DFS:</li>
+</ul>
+<p>深度优先遍历,顾名思义,从Root节点 开始 沿着子节点一直遍历下去。直到子节点遍历完成 回溯到上一个节点 继续此过程。</p>
+<p>我的思路是 上个节点先去获取字节点的<code>Length</code>  <code>if Length!=0</code> 那就<code>Each</code>这个这些子节点。然后递归这个过程。最后实现整个DOM的遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//GetChildsWithTag  find data traversely</div><div class="line">func GetChildsWithTag(tagname string, s *goquery.Selection) []string &#123;</div><div class="line">  var tags []string</div><div class="line"></div><div class="line">  s.Find(tagname).Each(func(i int, child *goquery.Selection) &#123;</div><div class="line">      //Children numbers</div><div class="line">    len := child.Children().Length()</div><div class="line">    tag, _ := child.Attr(&quot;name&quot;)</div><div class="line">    tags = append(tags, tag)</div><div class="line">    if len != 0 &#123;</div><div class="line">      GetChildsWithTag(tagname, child.Children())</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  return tags</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>BFS</li>
+</ul>
+<p>那么 广度优先遍历 也就很好理解了,先遍历ROOT节点,然后<strong>一层一层</strong>遍历下去….</p>
+<p>我的思路是 <code>Each</code>了<code>ROOT</code>之后 子节点如果也有Children的话 把子节点的Children放在一个<code>Selector</code>里面。第一次<code>Each</code>之后，把这个<code>Selector</code>作为<code>ROOT</code>,递归这个过程。</p>
+<p>我没有对这个方法进行实现  有兴趣的 可以试一下 ~  :)</p>
+<p>显然 比起来 DFS的方法比较容易想到  也比较容易实现。 但是碰到单层节点很多的情况 还是选择<strong>BFS</strong>比较好。<strong>DFS</strong>的思想在爬虫中应用面还是很广的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/29/从遍历DOM树谈DFS和BFS/" data-id="cj39px7sm0024oq4dhh7ls40p" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/in-action/">in action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/29/为go get护航 /" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          天朝局域网内go get的正确姿势
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/29/修改Golang模板语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">修改Golang template语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">#伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/JAVA-WEB/">JAVA WEB</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Crawler/">Crawler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪情感相关/">伪情感相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/">伪技术相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/ssh/">ssh</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/年度总结/">年度总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪技术相关/算法/工作点滴/">工作点滴</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/">伪生活相关</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/伪生活相关/情感/">情感</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/伪运维相关/">伪运维相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/情感/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾/">折腾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/重要课程/">重要课程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class-and-Examination/">Class and Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Examination/">Examination</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/J2ee/">J2ee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xampp/">Xampp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/configuration/">configuration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/in-action/">in action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/repo/">repo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/theory/">theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/当XX-发生了什么/">当XX 发生了什么?</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教务处/">教务处</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂/">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Class-and-Examination/" style="font-size: 12px;">Class and Examination</a> <a href="/tags/Examination/" style="font-size: 10px;">Examination</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/J2ee/" style="font-size: 10px;">J2ee</a> <a href="/tags/Solution/" style="font-size: 16px;">Solution</a> <a href="/tags/Xampp/" style="font-size: 14px;">Xampp</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/crawler/" style="font-size: 14px;">crawler</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/in-action/" style="font-size: 18px;">in action</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/repo/" style="font-size: 12px;">repo</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/theory/" style="font-size: 10px;">theory</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/当XX-发生了什么/" style="font-size: 10px;">当XX 发生了什么?</a> <a href="/tags/总结/" style="font-size: 12px;">总结</a> <a href="/tags/教务处/" style="font-size: 10px;">教务处</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/番剧/" style="font-size: 10px;">番剧</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/29/一次爬方正教务处的成功实践/">一次爬方正教务处的成功实践</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/2016年度总结之认知/">2016年度总结之认知</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/Docker下ES及其集群的搭建/">Docker下搭建Elasticsearch及其集群</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/29/goeclipse配置指南/">goeclipse配置指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
