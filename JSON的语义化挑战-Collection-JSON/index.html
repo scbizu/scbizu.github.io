@@ -10,7 +10,7 @@
     
     <title>
         
-            感谢15有你们 | 
+            JSON的语义化挑战--Collection+JSON | 
         
         一只菜鸡的成长之路
     </title>
@@ -32,7 +32,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="scnace">
     <meta name="description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,日常积累">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -58,9 +58,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://blog.scnace.cc">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="感谢15有你们 | 一只菜鸡的成长之路">
+    <meta property="og:title" content="JSON的语义化挑战--Collection+JSON | 一只菜鸡的成长之路">
     <meta property="og:description" content="I thought what I&#39;d do was I&#39;d pretend I was one of those deaf-mutes">
-    
+    <meta property="og:article:tag" content="日常积累"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -247,7 +247,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#微信-wechat-篇"><span class="post-toc-number">1.</span> <span class="post-toc-text">微信(wechat)篇:</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Collection-JSON的语义化"><span class="post-toc-number">2.</span> <span class="post-toc-text">Collection+JSON的语义化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#“集合”"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">“集合”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体定义"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">具体定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CRUD"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">CRUD</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分页"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">分页</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -271,20 +271,11 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://ws1.sinaimg.cn/large/005uxZXHly1fg9ipu78t9j322w0uw42q.jpg)">
     
             <p class="article-headline-p">
-                感谢15有你们
+                JSON的语义化挑战--Collection+JSON
             </p>
         </div>
 
@@ -303,7 +294,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>scnace</strong>
-        <span>May 29, 2017</span>
+        <span>Jun 04, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -327,7 +318,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/日常积累/">日常积累</a>
     </ul>
     
 
@@ -343,7 +334,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=感谢15有你们&url=http://blog.scnace.cc//感谢15有你们/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSON的语义化挑战--Collection+JSON&url=http://blog.scnace.cc//JSON的语义化挑战-Collection-JSON/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 Share to Weibo
             </li>
@@ -352,7 +343,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=感谢15有你们&url=http://blog.scnace.cc//感谢15有你们/index.html&via=scnace" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSON的语义化挑战--Collection+JSON&url=http://blog.scnace.cc//JSON的语义化挑战-Collection-JSON/index.html&via=scnace" target="_blank">
             <li class="mdl-menu__item">
                 Share to Twitter
             </li>
@@ -361,7 +352,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//感谢15有你们/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.scnace.cc//JSON的语义化挑战-Collection-JSON/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Facebook
             </li>
@@ -370,7 +361,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//感谢15有你们/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.scnace.cc//JSON的语义化挑战-Collection-JSON/index.html" target="_blank">
             <li class="mdl-menu__item">
                 Share to Google+
             </li>
@@ -394,73 +385,55 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>起因：除夕好多朋友来拜年啊 有熟的 有已经生（疏）了的。然后有些人的祝福实在没空回啊，然后，突发奇想要写一篇回忆杀来说说跟这些人拜年的人的交集了。虽然难度有点大 可能本鸡记性不是太好，点到为止点到为止蛤~</p>
-<h1 id="微信-wechat-篇"><a href="#微信-wechat-篇" class="headerlink" title="微信(wechat)篇:"></a>微信(wechat)篇:</h1><p>(不要问为毛微信先 因为微信里抢的红包多啊(滑稽</p>
-<p>0.开花女神</p>
-<p>拜年时间:2016.2.7 00:40</p>
-<p>Name：章凯华</p>
-<p>Codename:zkhCreator</p>
-<p>交集:说起来还是要好好感谢下女神的，毕竟当初是他安利我进的实验室(去抱大神们的大腿)的，也听到了好多黑历史，嘿嘿嘿。大概是因为志同道合吧，一直都挺聊得来的(话题包括但不仅仅是什么新番啦  什么学校的XM异常啦 学校哪里新开店可以吃吃吃啦  当然还有中二病啦).算了 这货接下来的就懒得写了，毕竟是。。</p>
-<p>1.Vincent</p>
-<p>拜年时间:2016.2.7 15:33</p>
-<p>Codename：Vincent</p>
-<p>交集：我记得好像是帮这位南京菊苣的好朋友搭了安德鲁手机端的ss  他市场下的不行  然后我就去官网 扔了个下载包给他的朋友。最后安利的那个名额好像被这位菊苣拿走了 窝还是保持着安利0的处男之身(大污</p>
-<p>2.钱多多</p>
-<p>拜年时间：2016.2.7 17:02</p>
-<p>昵称:钱多多</p>
-<p>交集：这位大概是临安十九楼的负责人吧。那天来工作室玩的。然后 就安利了我 一块钱买了两个柚子吃(TM就知道吃！  ，然后好像给了他一次重新一元购的机会？  反正 柚子好像被吧唧他们抢走了一个  记得是挺甜的(</p>
-<p>3.丿凡</p>
-<p>拜年时间：2016.2.7 17:37</p>
-<p>昵称：丿凡</p>
-<p>交集：就是因为开花女神[0]认识的吧 是电脑医院的医生~ 据说有过一段神奇的恋爱经历。后来才知道 和 披萨跟好妹妹他们一个班的。。。在“怎么搓炉石”等问题上(研究个毛 这种看脸的游戏！)展开过讨论。。虽然表扬一下你不群发一个个字打过去的精神，但是至于你说的“祝敏敏在新的一年里和喜欢的妹子生猴子”这绝逼是不经过思考的伪命题啊！ 首先。。。。。。</p>
-<p>4.超超</p>
-<p>大名：何威超</p>
-<p>拜年时间：2016.2.7 18:07</p>
-<p>交集：(这个难度有点大了)应该是我少数几位小学同学还有微信联系的吧~ 记得是小学的老大哥来着，那时候小学几个一起的玩伴中感情最深的吧。哈哈，小学阶段的榜样一般的人物，什么技能点都点，每次都被老师表扬，而且一副dont care的样子 瞬间帅爆！好像 小学被某女生追过 嘿嘿嘿。听说接下来在杭二混得不是很好的消息的时候简直不敢相信啊！还有16岁的时候 去陪打台球也被虐出鸡蛋啊!反正 就是男神一般的人物！主要是脸长得好看(</p>
-<p>5.甜美女神</p>
-<p>拜年时间：2016.2.7 18:23</p>
-<p>大名：周甜美</p>
-<p>交集：应该是在老乡群认识的妹子吧。记得是大一暑假的时候(记得很清楚是因为那时候正好去看了8.7的时候还在老乡群跟甜美扯淡). 反正 我不管 甜美就是土豪！ 并且“会玩”。。 生日叫我们去的那间大西门二楼隐秘的bar 足以说明了其“会玩”！并且在5分钟内教我学会了玩骰子，窝简直不敢相信。虽然被灌酒 但是冲着我们每次聚叫她 她都会来玩，本鸡认了！反正 甜美女神在我印象里就是有男朋友还装没有的土豪(完了  又要被打了！</p>
-<p>——–中间折叠 计潮老板(这个真心难！有空在补  涉及到了童年黑历史了！ 和 俺妈——</p>
-<p>8.KONAN</p>
-<p>大名：郑楠</p>
-<p>拜年时间：2016.2.7  19:20</p>
-<p>昵称：柯南</p>
-<p>交集：利益相关：室友</p>
-<p>别以为你用零食封住了我的嘴，我就不会说你是个基佬了！</p>
-<p>打300嫌我菜也就算了，还TM说我是个死宅！</p>
-<p>我哪里宅了  明明是个阳光少年！</p>
-<p>说我一辈子找不到妹子！ 还TM激将！</p>
-<p>。。。。。。。。。</p>
-<p>（省略描述寝室日常十八禁内容的说明）</p>
-<p>好  说完了。</p>
-<p>9.高大美女</p>
-<p>大名：就不告诉你</p>
-<p>拜年时间：2016.2.7 19:22</p>
-<p>交集：大一玩COC的时候认识哒  感觉是一个很坚决的妹子。每次部落战都会认真打的。然后就莫名其妙地被卫斌大神骗了，然后就发了皂片，然后就成了微信好友，然后就互换了皂片，然后就去南京玩的时候去面了，然后就互换了号码， 然后就感觉妹子还可以嘛  有种很久没有的“跟皂片上长的差不多”的感觉。每次称呼 都以“计大帅哥”和“高大美女”开头 真是谐到不行。</p>
-<p>10.Poppy</p>
-<p>昵称：poppy</p>
-<p>拜年时间：2016.2.7 19:33</p>
-<p>交集：生！不造是谁出卖我的！来找我谈Project(app)的,idea不好  价格不尴不尬 就吹了 貌似、。。。。</p>
-<p>11.钱佳瑶</p>
-<p>大名：钱佳瑶</p>
-<p>拜年时间：2016.2.7 19:55</p>
-<p>交集：额。。。记得好想是初中同学吧，然后一个高中，正好在隔壁班貌似，依稀记得好像是蛮强壮但是人蛮好的大姐姐？ 记得也是比较“会玩”(合群)类型的。记得她们那一群好像有好几个妹子。。诶，好吧，编不下去了，好像本来就不大熟2333。。。。。</p>
-<p>12.猫猫</p>
-<p>codename：MaoMao</p>
-<p>拜年时间：2016.2.7 20:01</p>
-<p>交集：应该是最初一起打星际里面大群的那些人吧，后来就加了QQ。。。记得是个P民，暴兵猛如虎，把我打得一愣一愣的，为毛我已经是RUSH开局了，他正常运营还TM比我兵多！后来 在有小组织之后就退了大群，这些牛逼的菊苣们的英姿就再也欣赏不到了。至此，音讯全无，后来听说他afk(迫于生活？)就去做微商了，诶！也算是归隐江湖了吧（武侠片即视感</p>
-<p>13.钱雨欣</p>
-<p>大名：钱雨欣</p>
-<p>时间：2016.2.7 20:04</p>
-<p>交集：应该（肯定）是初中同学了，记得她一直是一位很安静地呆在角落默默做学问的学霸，(什么？我？我肯定是炒鸡活跃的阳光男孩啊!)成绩也一直不错，依稀记得好像(跟我)说过话的吧，好像是一个站点等校车的？蛤蛤  那些年一起追过的南2！(虽然后来我转西2了) .好像偏题了，噫，好像去年还一起参加过电商大赛(虽然此时学校已不同  这个社会(天朝)能静下心来做学问的人是越来越少了，希望可以一直坚持吧~</p>
-<p>14.宋老师</p>
-<p>大名：宋聪谊</p>
-<p>昵称：男神！ 帅比！ 宋老师！妹子杀手！ 1米68下的妹子都不要桑苏！发誓要抢鸡的女朋友的损友！贴吧被表白N(N&gt;=10)次君！</p>
-<p>属性：呆萌！无意卖萌！就是要萌你一脸！打死我也不跟xxx搞基！</p>
-<p>交集：蛤蛤，终于写到宋老师了） 和宋老师的相识 应该是在刚升大二的那次老乡饭局上(怎么又是吃！）,“诶  这么巧啊 你后面两个字也是思敏啊  我以前也叫宋思敏的诶 但是俺妈后来说不好 就改了名字叫聪谊了” 一副很呆萌的眼神看着我 ,（好像知道这件事的也只有我 他 和吧唧 三个人了） 为什么他说个历史都要无意卖萌，可见 萌 已经深入其骨髓了啊喂！后来就是上课经常坐在一块地方的，发现宋老师听课炒鸡认真的啊喂，老师，你不好好讲都对不起这种好同学的！当然 学霸的唯一标识就是：奖学金的常年卫冕。总结下：印象中（什么印象中啊！本来就是事实了！）宋老师就是个认真读书 恶意卖萌的乖宝宝啊~      （宋老师的留言是：基佬(&lt;-他每次路上看见我都是这么叫我的，本来是叫鸡的 现在多了个佬字 总觉得不是滋味！)，新年快乐！   对于这么简单的新年问候 我只能说  后排宋老师大量高能卖萌照无PS原版出售，免费！全部免费！还附带宋老师联系方式！ 要的妹子 请确保自己穿鞋168以上 并把照片发给本鸡 因为他说过“鸡(佬)喜欢的妹子我肯定喜欢！” 本鸡审核后 会通知宋老师 谢谢配合！</p>
-<p>15.梁育堂</p>
-<p>——————妈蛋，好多啊，睡醒再更——————</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然而,作为一种单纯的单纯的文本表述格式,JSON是缺少严格的语义的,定义比较随意的JSON可能造成交互上的困惑,如果有一种标准化的JSON格式,并且让大家都遵守这个标准,那么肯定会节省很多时间和多余的理解JSON语义的工作。在<code>《RESTFUL WEB APIs》</code>的安利下,我决定尝试下<a href="http://amundsen.com/media-types/collection/format/" target="_blank" rel="external">Collection+JSON</a>,这个号称 <strong>最有希望的JSON的fiat标准</strong>。</p>
+<h2 id="Collection-JSON的语义化"><a href="#Collection-JSON的语义化" class="headerlink" title="Collection+JSON的语义化"></a>Collection+JSON的语义化</h2><h3 id="“集合”"><a href="#“集合”" class="headerlink" title="“集合”"></a>“集合”</h3><p>就像名字一样,Collection+JSON的设计中到处都在体现”集合模式”的概念。</p>
+<p>一个集合可以看成是一组资源的聚合,一个集合中会包含指向这些资源的链接和对这些资源的描述。从这也可以看出,这个标准也符合REST的设计规范。</p>
+<blockquote>
+<p>集合: 以链接方式罗列其他资源的资源。</p>
+</blockquote>
+<h3 id="具体定义"><a href="#具体定义" class="headerlink" title="具体定义"></a>具体定义</h3><p>先给出一个Request和Response的具体描述:</p>
+<ul>
+<li>Request</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">GET /simpleCollection/ HTTP/1.1</div><div class="line">Host: blog.scnace.cc</div><div class="line">Accept: application/vnd.collection+json</div><div class="line">```                    </div><div class="line"></div><div class="line">* Response</div></pre></td></tr></table></figure>
+<p>//Response Header<br>200 OK HTTP/1.1<br>Content-Type: application/vnd.collection+json<br>Content-Length: xxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```JSON</div><div class="line">&#123;&quot;collection&quot;:&#123;</div><div class="line">  &quot;version&quot;:&quot;1.0&quot;,</div><div class="line">  &quot;href&quot;: &quot;https://blog.scnace.cc/api/&quot;,</div><div class="line">  &quot;items&quot;:[&#123;</div><div class="line">        &quot;href&quot;: &quot;/api/post/1&quot;,</div><div class="line">        &quot;data&quot;: [</div><div class="line">          &#123;&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi nace :)&quot;&#125;,</div><div class="line">          &#123;&quot;name&quot;:&quot;other name&quot;,&quot;value&quot;:&quot;other value&quot;&#125;</div><div class="line">        ],</div><div class="line">    &#125;],</div><div class="line">  &quot;links&quot;:[</div><div class="line">    &#123;&quot;href&quot;:&quot;/logo.png&quot;,&quot;rel&quot;:&quot;icon&quot;&#125;</div><div class="line">  ],</div><div class="line">  &quot;queries&quot;:[&#123;</div><div class="line">    &quot;href&quot;:&quot;/api/search&quot;,</div><div class="line">    &quot;rel&quot;:&quot;search&quot;,</div><div class="line">    &quot;prompt&quot;: &quot;Lets search sth.&quot;,</div><div class="line">    &quot;data&quot;:[</div><div class="line">        &#123;&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;nace&quot;&#125;</div><div class="line">      ]</div><div class="line">    &#125;],</div><div class="line">    &quot;template&quot;:&#123;</div><div class="line">      &quot;data&quot;:[</div><div class="line">        &#123;&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi nace,nice to meet you:)&quot;,&quot;prompt&quot;:&quot;New Text Message&quot;&#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如上就是一个标准的Collection+JSON的文档,它将包含如下字段:</p>
+<ul>
+<li>href : 指向集合本身的永久链接(Response Body);</li>
+<li>items: 包含指向集合成员的链接,以及他们的部分表述(Response Body);</li>
+<li>links: 指向其他与此集合相关资源的链接;可能是一张图片 或是 一段视频(Response Body);</li>
+<li>queries: 用于搜索此集合的控件(Request Body);</li>
+<li>template: 用于向集合添加新的子集;</li>
+</ul>
+<h3 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h3><p>  Collection+JSON标准下的增删改查同样通过<code>RESTful</code>接口来实现:</p>
+<ul>
+<li>Create:在集合中插入新信息通过 <strong>写入模板</strong> 实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//Request Header</div><div class="line"></div><div class="line">POST /simpleCollection/ HTTP/1.1</div><div class="line">Host: blog.scnace.cc</div><div class="line">Accept: application/vnd.collection+json</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//Request Body</div><div class="line">&#123;</div><div class="line">  "template":&#123;</div><div class="line">    "data":[</div><div class="line">      &#123;"name":"text","value":"Hi nace,nice to meet you:)","prompt":"New Text Message"&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>name,value是一对k,v结构的数据;prompt是对这条数据的说明或者注释。</p>
+</blockquote>
+<ul>
+<li>Read:在集合中搜索信息通过 <strong>搜索控件</strong> 实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//Request Header</div><div class="line"></div><div class="line">POST /simpleCollection/ HTTP/1.1</div><div class="line">Host: blog.scnace.cc</div><div class="line">Accept: application/vnd.collection+json</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//Request Body</div><div class="line">&#123;</div><div class="line">  "queries":[&#123;</div><div class="line">    "href":"/api/search",</div><div class="line">    "rel":"search",</div><div class="line">    "prompt": "Lets search sth.",</div><div class="line">    "data":[</div><div class="line">        &#123;"name":"start","value":"na"&#125;,</div><div class="line">        &#123;"name":"end","value":"ce"&#125;</div><div class="line">      ]</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Update:向集合中的子项<code>PUT</code> <strong>写入模板</strong> 来修改子项的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//Request Header</div><div class="line"></div><div class="line">PUT /api/post/1 HTTP/1.1</div><div class="line">Host: blog.scnace.cc</div><div class="line">Accept: application/vnd.collection+json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"template"</span>:&#123;</div><div class="line">    <span class="attr">"data"</span>:[</div><div class="line">      &#123;<span class="attr">"name"</span>:<span class="string">"text"</span>,<span class="attr">"value"</span>:<span class="string">"Hi bizu:)"</span>,<span class="attr">"prompt"</span>:<span class="string">"New Text Message"</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Delete:向集合中的子项发送<code>DELETE</code>来删除子项的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//Request Header</div><div class="line"></div><div class="line">DELETE /api/post/1 HTTP/1.1</div><div class="line">Host: blog.scnace.cc</div><div class="line">Accept: application/vnd.collection+json</div></pre></td></tr></table></figure>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>在处理较多子集的场景中,<strong>分页</strong> 是标准中不可或缺的一环,但是,Collection+JSON并没有显示地处理这个问题。办法总是会有的,分页这种平常的需求也是肯定要满足的,于是,我们可以采用关联其他媒体资源的方法实现分页:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"links"</span>:[&#123;</div><div class="line">    <span class="attr">"name"</span>:<span class="string">"next_page"</span>,</div><div class="line">    <span class="attr">"rel"</span>:<span class="string">"next"</span>,</div><div class="line">    <span class="attr">"href"</span>:<span class="string">"/api/post/2"</span>,</div><div class="line">    <span class="attr">"render"</span>: <span class="string">"link"</span>,</div><div class="line">    <span class="attr">"prompt"</span>:<span class="string">"Next"</span></div><div class="line">  &#125;,&#123;</div><div class="line">    <span class="attr">"name"</span>:<span class="string">"previous_page"</span>,</div><div class="line">    <span class="attr">"rel"</span>:<span class="string">"previous"</span>,</div><div class="line">    <span class="attr">"href"</span>:<span class="string">"/api/post/pre"</span>,</div><div class="line">    <span class="attr">"render"</span>: <span class="string">"link"</span>,</div><div class="line">    <span class="attr">"prompt"</span>:<span class="string">"Prev"</span></div><div class="line">  &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><blockquote>
+<p>这个标准工具包已经在我Side-Project的TODO List里面了233</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://amundsen.com/media-types/collection/format/" target="_blank" rel="external">个人主页的Collection+JSON说明</a></p>
+<p><a href="https://github.com/collection-json" target="_blank" rel="external">GitHub</a></p>
 
     
 
@@ -482,8 +455,8 @@
         <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://blog.scnace.cc/感谢15有你们/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://blog.scnace.cc/感谢15有你们/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://blog.scnace.cc/JSON的语义化挑战-Collection-JSON/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://blog.scnace.cc/JSON的语义化挑战-Collection-JSON/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     queue.offer(function() {
             (function() { // DON'T EDIT BELOW THIS LINE
@@ -514,21 +487,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/当现实变得触手可以/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Newer
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/改变mysql默认密码/" id="post_nav-older" class="next-content">
+        <a href="/一个weui+we7图片上传的方案/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
