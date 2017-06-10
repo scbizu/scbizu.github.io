@@ -448,8 +448,9 @@
 <p>在日常的开发中 我们往往需要在一个LOOP中实现并发 这时候往往这么写:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>但是这样就会遇到一个问题:得到的foo永远都是<code>index==len(foos)-1</code>的foo值,这是因为goroutine的延迟求值,这里每次go func的匿名方法并不会被马上执行,当LOOP 执行完的时候才会去执行展开其中的Goroutine.所以正确的写法应该是每次执行<code>go func</code>的时候把foo带进去,让goroutine去保存这个状态。具体的代码如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(foo TYPE)</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;(foo)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>关于反射的一些知识<br>反射是在Runtime层读取对象的内存信息与类型;但是由于没有对象的头指针,无法做到靠其自身来解析对象的类型。依靠<code>interface{}</code>来实现反射,<code>i interface{}</code>可以保存参数的<strong>类型</strong>和<strong>数据</strong></li>
+<li>关于反射的一些知识</li>
 </ul>
+<p>反射是在Runtime层读取对象的内存信息与类型;但是由于没有对象的头指针,无法做到靠其自身来解析对象的类型。依靠<code>interface{}</code>来实现反射,<code>i interface{}</code>可以保存参数的<strong>类型</strong>和<strong>数据</strong></p>
 <blockquote>
 <p>这里的<code>interface{}</code>只是对象的一个复制,并且是不可寻址的,所以,要改变对象的信息只能传入指向此对象的指针</p>
 </blockquote>
@@ -460,6 +461,18 @@
 </ul>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E4%BE%A7%E9%9D%A2%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="external">什么是AOP?</a></p>
 <p>在Golang中,反射(reflect)很好地切合了AOP的主题。通过<code>reflect</code>在Runtime的时候动态执行方法,当我们用AOP的思想抽象出一个切面之后,也许这个切面是一个日志模块,或是一个审计模块(这些模块具有一个共同点:永远不需要也不可能被需要耦合到业务代码中去)。也可以把这些模块看成一个代码hook，这些模块在不用更改业务代码的同时调用业务代码中的逻辑。一次简单的尝试如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> LogModule <span class="keyword">struct</span>&#123;&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lg LogModule)</span><span class="title">logsth</span><span class="params">()</span><span class="params">(<span class="keyword">string</span>,error)</span></span>&#123;</div><div class="line">  <span class="comment">//log sth ...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  logm：=<span class="built_in">new</span>(LogModule)</div><div class="line">  reflectLog:=reflect.ValueOf(logm)</div><div class="line">  m:=reflectLog.MethodByName(<span class="string">"logsth"</span>)</div><div class="line">  in:=[]reflect.Value&#123;&#125;</div><div class="line">  <span class="comment">//Call logsth in Runtime</span></div><div class="line">  out:=m.Call(in)</div><div class="line">  <span class="comment">//res</span></div><div class="line">  <span class="keyword">for</span> _,res:=<span class="keyword">range</span> out&#123;</div><div class="line">    <span class="built_in">println</span>(res)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>在Golang中使用Set</li>
+</ul>
+<p>首先,Golang中是没有<code>built-in</code>的<code>set</code>关键字的。所以,要实现类似<code>set</code>的数据结构,需要使用<code>map</code>和<code>key</code>来组合成一个<code>set</code>。</p>
+<blockquote>
+<p>这里的set更多的指的是一个FIFO的map也就是一个ordered-map。</p>
+</blockquote>
+<p>比如,我们现在有一个map:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">foo:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</div><div class="line">foo[<span class="string">"go"</span>]=<span class="string">"go"</span></div><div class="line">foo[<span class="string">"js"</span>]=<span class="string">"js"</span></div><div class="line">foo[<span class="string">"php"</span>]=<span class="string">"php"</span></div></pre></td></tr></table></figure></p>
+<p>然后,我们发现遍历这个map的时候,key的顺序有可能是会被更换的:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> key,value:=<span class="keyword">range</span> foo&#123;</div><div class="line">  <span class="comment">//key,value的值并不唯一</span></div><div class="line">  <span class="built_in">println</span>(key,value)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是为什么呢?其实仔细想一想就知道,我们为什么要指望<code>map</code>来向<code>set</code>一样来工作呢?这本来就是两个数据结构啊！所以,我们要的是什么？在这种场景下,我们需要的只是<strong>key按一定顺序排列的map中对应的值</strong>，经过这层思考之后,就可以很快的得出代码：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//按你想要的顺序遍历map吧..</span></div><div class="line">keys:=[]<span class="keyword">string</span>&#123;<span class="string">"go"</span>,<span class="string">"js"</span>,<span class="string">"php"</span>&#125;</div><div class="line"><span class="keyword">for</span> _,key:=<span class="keyword">range</span> keys&#123;</div><div class="line">  <span class="built_in">println</span>(key，foo[key])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再反过来想想 我们为什么希望map按照FIFO顺序来呢?终究是对map的理解出现了误解。<br>这时候静下来 好好读读<a href="https://blog.golang.org/go-maps-in-action" target="_blank" rel="external">Go blog</a>的说明,就会有豁然开朗的感觉了吧：）</p>
 
     
 
@@ -513,7 +526,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/xampp CORS跨域请求失败/" id="post_nav-newer" class="prev-content">
+        <a href="/Docker下ES及其集群的搭建/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -527,7 +540,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/一次爬方正教务处的成功实践/" id="post_nav-older" class="next-content">
+        <a href="/goeclipse配置指南/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
