@@ -388,12 +388,19 @@
         <h2 id="舍弃H2OS"><a href="#舍弃H2OS" class="headerlink" title="舍弃H2OS"></a>舍弃H2OS</h2><p>虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 <strong>百毒输入法OnePlus定制版</strong> 就有一种强烈的反感,一上手就装上了Google全套,终于用着爽了一点,但是有时候打开Google Now的应用列表,看着不能卸的预装应用总会觉得挺变扭的。</p>
 <p>终于,由于不知道是什么APP经常往我桌面上扔莫名其妙的icon,终于忍无可忍开始动手刷氧OS。本来刚上手就想刷氧OS的，可是那时候一来工作上的事比较忙,二来一加官方没有出最新的Oxygen的ROM,所以只好先放着。</p>
 <p>好奇桌面为啥会 <strong>出现莫名其妙的icon</strong> 的同学可以看下这个<a href="https://www.v2ex.com/t/371720" target="_blank" rel="external">帖子</a>,好像是通过在APP管理里面停用默认浏览器就可以fix了。</p>
-<h2 id="Hello-OxygenOS"><a href="#Hello-OxygenOS" class="headerlink" title="Hello OxygenOS"></a>Hello OxygenOS</h2><h3 id="准备-Preparing"><a href="#准备-Preparing" class="headerlink" title="准备(Preparing)"></a>准备(Preparing)</h3><p>先列一下需要准备的工具(由于博主是macOS下刷的,所以工具会比较通用):
-<em> 推荐用 <strong>类似Google Drive</strong> 的东西做好当前数据的备份,然后对手机进行 <strong>双清</strong> 操作.
-</em> <a href="https://developer.android.com/studio/releases/platform-tools.html" target="_blank" rel="external">platform sdk</a>:其中会包含adb shell 和 fastboot 等一系列工具
-<em> <a href="https://forum.xda-developers.com/oneplus-5/development/twrp-oneplus-5-wip-t3626134" target="_blank" rel="external">TWRP for OnePlus5</a>: 也可以直接在<a href="https://drive.google.com/file/d/0B0pr-ZA5b-1pdmdLNDFoTWtUX1k/view" target="_blank" rel="external">这里(自备梯子)</a> 或者 <a href="https://pan.baidu.com/s/1bpxomJH" target="_blank" rel="external">这里(不需要梯子)</a>下载,<a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/" target="_blank" rel="external">官方</a>现在也提供了一加5 氧OS的TWEP Rec(拉到页面最下面会看到 <strong>Download Oxygen Recovey (Optional)</strong> 字样).
-</em> <a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/" target="_blank" rel="external">Oxygen 4.5.3</a>:官方的ROM包,较大,推荐使用做过下载优化的下载工具下载
-* <a href="https://www.android.com/filetransfer/" target="_blank" rel="external">文件传输工具</a>:可以参考Google官方的<a href="https://support.google.com/nexus/answer/2840804" target="_blank" rel="external">FAQ</a></p>
+<h2 id="Hello-OxygenOS"><a href="#Hello-OxygenOS" class="headerlink" title="Hello OxygenOS"></a>Hello OxygenOS</h2><h3 id="准备-Preparing"><a href="#准备-Preparing" class="headerlink" title="准备(Preparing)"></a>准备(Preparing)</h3><p>先列一下需要准备的工具(由于博主是macOS下刷的,所以工具会比较通用):</p>
+<ul>
+<li><p>推荐用 <strong>类似Google Drive</strong> 的东西做好当前数据的备份,然后对手机进行 <strong>双清</strong> 操作.</p>
+</li>
+<li><p><a href="https://developer.android.com/studio/releases/platform-tools.html" target="_blank" rel="external">platform sdk</a>:其中会包含adb shell 和 fastboot 等一系列工具</p>
+</li>
+<li><p><a href="https://forum.xda-developers.com/oneplus-5/development/twrp-oneplus-5-wip-t3626134" target="_blank" rel="external">TWRP for OnePlus5</a>: 也可以直接在<a href="https://drive.google.com/file/d/0B0pr-ZA5b-1pdmdLNDFoTWtUX1k/view" target="_blank" rel="external">这里(自备梯子)</a> 或者 <a href="https://pan.baidu.com/s/1bpxomJH" target="_blank" rel="external">这里(不需要梯子)</a>下载,<a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/" target="_blank" rel="external">官方</a>现在也提供了一加5 氧OS的TWEP Rec(拉到页面最下面会看到 <strong>Download Oxygen Recovey (Optional)</strong> 字样).</p>
+</li>
+<li><p><a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/" target="_blank" rel="external">Oxygen 4.5.3</a>:官方的ROM包,较大,推荐使用做过下载优化的下载工具下载</p>
+</li>
+<li><p><a href="https://www.android.com/filetransfer/" target="_blank" rel="external">文件传输工具</a>:可以参考Google官方的<a href="https://support.google.com/nexus/answer/2840804" target="_blank" rel="external">FAQ</a></p>
+</li>
+</ul>
 <h3 id="使用adb和fastboot解锁Bootloader-Unlock-your-device"><a href="#使用adb和fastboot解锁Bootloader-Unlock-your-device" class="headerlink" title="使用adb和fastboot解锁Bootloader(Unlock your device)"></a>使用adb和fastboot解锁Bootloader(Unlock your device)</h3><blockquote>
 <p>进入这里之前,请确保已经正确下载好了<a href="https://developer.android.com/studio/releases/platform-tools.html" target="_blank" rel="external">platform sdk</a>.</p>
 </blockquote>
