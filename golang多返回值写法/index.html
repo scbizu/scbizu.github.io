@@ -394,14 +394,15 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>看热闹不嫌事大系列——–&gt;<a href="https://www.zhihu.com/question/20132013" target="_blank" rel="external">如何看待函数返回多个值的设计?     From  知乎</a></p>
+        <p>看热闹不嫌事大系列--------&gt;<a href="https://www.zhihu.com/question/20132013" target="_blank" rel="external">如何看待函数返回多个值的设计?     From  知乎</a></p>
 <p>这个号称是Golang特性之一的  多返回值写法 给开发者带来了许多便捷的地方，由于Golang的语法中规定没有使用过只是初始化了的变量会报错,所以，引入了多返回值的方法，因为这样做就可以用<code>_</code>来舍弃掉之前声明但是又不想使用的变量了。</p>
 <p>先来看一段多返回值的标准写法:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">  &quot;fmt&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func dataOp(data1 float32 ,data2 float32)(float32,float32)&#123;</div><div class="line"></div><div class="line">    return data1+data2,data1*data2</div><div class="line">    &#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">   var x float32</div><div class="line">   var y float32</div><div class="line">    x=1.1</div><div class="line">    y=2.2</div><div class="line">    added,mutied:=dataOp(x,y)</div><div class="line">    fmt.Printf(&quot;%f,%f&quot;,added,mutied);   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>顾名思义,也就是dataOp()返回了两个值。(e.g.中是data1+data2和 data1*data2).然后调用的时候的写法就是定义两个变量来接收dataOp的返回值。</p>
 <p>然而返回值的先后顺序也必须的一一对应的。</p>
 <p>改一下代码，我们舍弃掉第一个返回值。</p>
-<p>Change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">added,mutied:=dataOp(x,y)</div></pre></td></tr></table></figure></p>
+<p>Change
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">added,mutied:=dataOp(x,y)</div></pre></td></tr></table></figure></p>
 <p>To</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_,mutied:=dataOp(x,y)</div></pre></td></tr></table></figure>
 <p>验证结果后会发现,返回的是乘积值:2.420000</p>

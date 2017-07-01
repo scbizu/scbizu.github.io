@@ -394,7 +394,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>golang提供了结构体到特定格式json/xml/… 转换的便捷途径</p>
+        <p>golang提供了结构体到特定格式json/xml/... 转换的便捷途径</p>
 <p>我们通过json包 很方便的就可以进行struct到json转换。</p>
 <p>举个栗子:</p>
 <p>现在有这么一个结构体:</p>
@@ -414,16 +414,16 @@
 <li><code>&quot;-&quot;</code>: e.g:<code>json:&quot;-&quot;</code> 这个tag会导致该field 会被当前的package忽略掉。</li>
 </ul>
 <ul>
-<li>“(string)”:e.g.:<code>json:</code>json:”foo”<code>这个tag会导致转成json后 key变为**foo  ,而不再是Field name(default key)**</code></li>
+<li>&quot;(string)&quot;:e.g.:<code>json:</code>json:&quot;foo&quot;<code>这个tag会导致转成json后 key变为**foo  ,而不再是Field name(default key)**</code></li>
 </ul>
 <ul>
-<li>“(string),omitempty”:在上一个tag上面添加了一条规则-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></li>
+<li>&quot;(string),omitempty&quot;:在上一个tag上面添加了一条规则-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></li>
 </ul>
 <ul>
-<li>“,omitempty”:在第一条规则下添加-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></li>
+<li>&quot;,omitempty&quot;:在第一条规则下添加-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></li>
 </ul>
 <ul>
-<li>“,string”:只用于以下类型:string, floating point, integer,  boolean  。字段值(value)也会被json编码。(常用于与JS的交互)</li>
+<li>&quot;,string&quot;:只用于以下类型:string, floating point, integer,  boolean  。字段值(value)也会被json编码。(常用于与JS的交互)</li>
 </ul>
 <p>由于书上都没有介绍  这边记录下。。。。</p>
 <p>实验代码在gist上。。。。</p>
@@ -494,7 +494,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2016年度总结之认知/" id="post_nav-older" class="next-content">
+        <a href="/hello-world/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -395,7 +395,8 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h2><p>在遇到需要登录的场景下,往往需要一次302/301跳转,然而我们的Client会跟着一起跳转,这时如果获取<code>response.Cookie()</code>的话,获取到的是跳转后页面的Cookie,会导致登录页面的<code>Set-Cookie</code>丢失掉,从而会导致登录失败。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><p>在查过一些资料之后,发现Golang引入了类似PY的<code>CookieJar</code>,用来存储Client发起请求时产生的Cookies.使用的时候,需要在Client中设置Jar：<code>Client.Jar=jar</code>,获取302/301的跳转时产生的Cookie用到CookieJar就很简单了,用<code>CookieJar.Cookie(Domain)</code>，比如 <a href="http://www.example.com/login" target="_blank" rel="external">http://www.example.com/login</a> 会执行一次302/301跳转,在执行POST操作之后,调用一次<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ParsedURL,_:=url.Parse(<span class="string">"http://www.example.com/login"</span>)</div><div class="line">resCookie:=Client.Jar.Cookies(ParsedURL)</div></pre></td></tr></table></figure></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><p>在查过一些资料之后,发现Golang引入了类似PY的<code>CookieJar</code>,用来存储Client发起请求时产生的Cookies.使用的时候,需要在Client中设置Jar：<code>Client.Jar=jar</code>,获取302/301的跳转时产生的Cookie用到CookieJar就很简单了,用<code>CookieJar.Cookie(Domain)</code>，比如 http://www.example.com/login 会执行一次302/301跳转,在执行POST操作之后,调用一次
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ParsedURL,_:=url.Parse(<span class="string">"http://www.example.com/login"</span>)</div><div class="line">resCookie:=Client.Jar.Cookies(ParsedURL)</div></pre></td></tr></table></figure></p>
 <p>那么这里的<code>resCookie</code>即是拦截到的302/301跳转时的Cookie.</p>
 
     

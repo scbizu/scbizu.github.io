@@ -411,7 +411,7 @@
 <p>然而 有个卵啊 根本找不到需要的image控件啊！</p>
 <p>(后悔一开始没用IDE的global search 明明被这该死的manual坑了这么多次了</p>
 <p>开始global search这个函数  幸运的是 在./web/common/里面发现了它！哦  意思是基础控件 欺负我傻咯。。 找到这个函数,看了一眼代码(因为不用看$opinion和$default),所以代码的阅读可以很快。我们发现了他的机制：就是uploadFile啊,没什么特别的, 只是要注意一下tomedia()这个函数,它可以强转http绝对路径,之后会用到的。</p>
-<p>接下来 开始自己写form(注意:为确保文件的正确上传,请确保设置form表单属性  enctype=”multipart/form-data”)  根据weui的写法 用一下他的样式表 weui的安装与应用这边不说了 wiki里有写用nodejs用npm下下来用就好了。如下：</p>
+<p>接下来 开始自己写form(注意:为确保文件的正确上传,请确保设置form表单属性  enctype=&quot;multipart/form-data&quot;)  根据weui的写法 用一下他的样式表 weui的安装与应用这边不说了 wiki里有写用nodejs用npm下下来用就好了。如下：</p>
 <pre><code>&lt;code&gt;
   &lt;div class=&quot;weui_cell_bd weui_cell_primary&quot;&gt;
  &lt;div class=&quot;weui_uploader&quot;&gt;

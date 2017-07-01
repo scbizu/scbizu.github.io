@@ -433,11 +433,12 @@ CREATE database database_name(数据库名称)
     UPDATE user SET username=&apos;scbizu&apos; WHERE username=&apos;scnace&apos;
     //选取表中名字为scnace的Record
     SELECT * FROM user WHERE username=`scnace`
-</code></pre><p><em>Extension:</em><strong>面试</strong>中的SQL喜欢出的题:</p>
-<ol>
-<li>连表查询:<br>1.1. 左连接(<strong>LEFT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="external">LEFT JOIN Declaration and usecase</a><br>1.2. 右连接(<strong>RIGHT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_right.asp" target="_blank" rel="external">RIGHT JOIN Declaration and usecase</a><br>1.3. 全连接(<strong>FULL JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_full.asp" target="_blank" rel="external">FULL JOIN Declaration and Usecase</a></li>
-<li>数据库基本操作</li>
-</ol>
+</code></pre><p><em>Extension:</em><strong>面试</strong>中的SQL喜欢出的题:
+1. 连表查询:
+   1.1. 左连接(<strong>LEFT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="external">LEFT JOIN Declaration and usecase</a>
+   1.2. 右连接(<strong>RIGHT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_right.asp" target="_blank" rel="external">RIGHT JOIN Declaration and usecase</a>
+   1.3. 全连接(<strong>FULL JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_full.asp" target="_blank" rel="external">FULL JOIN Declaration and Usecase</a>
+2. 数据库基本操作</p>
 <ul>
 <li>包的引入和定义import和package</li>
 </ul>
@@ -463,7 +464,7 @@ Package cn.edu.zafu;//Package
     //System.out.printf(&quot;%d %s&quot;,(Integer),(String));
 }
 </code></pre><ul>
-<li>流程控制语句—条件语句 if switch</li>
+<li>流程控制语句---条件语句 if switch</li>
 </ul>
 <pre><code>  if(_condition){
     //ADD YOUR CODE HERE to do under the  _condition
@@ -506,7 +507,8 @@ double d=3.5;
 byte b=1;
 static final String name=&quot;nace&quot;;
 </code></pre><blockquote>
-<p> Note:Java变量类型<a href="https://en.wikipedia.org/wiki/Final_(Java" target="_blank" rel="external">final</a>)<br>                   <a href="http://beginnersbook.com/2013/04/java-static-class-block-methods-variables/" target="_blank" rel="external">static关键字</a></p>
+<p> Note:Java变量类型<a href="https://en.wikipedia.org/wiki/Final_(Java" target="_blank" rel="external">final</a>)
+                   <a href="http://beginnersbook.com/2013/04/java-static-class-block-methods-variables/" target="_blank" rel="external">static关键字</a></p>
 </blockquote>
 <ul>
 <li>数组的定义  数组的遍历</li>
@@ -525,7 +527,8 @@ System.out.print(str2.indexOf(&quot;S&quot;));
 System.out.print(str2.indexOf(&quot;S&quot;,6));//Start with 1.
 System.out.print(str2.charAt(1));
 </code></pre><blockquote>
-<p> Note:关于<a href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html" target="_blank" rel="external">String.format()</a><br>       关于<a href="http://www.tutorialspoint.com/java/java_string_charat.htm" target="_blank" rel="external">String.chatAt()</a></p>
+<p> Note:关于<a href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html" target="_blank" rel="external">String.format()</a>
+       关于<a href="http://www.tutorialspoint.com/java/java_string_charat.htm" target="_blank" rel="external">String.chatAt()</a></p>
 </blockquote>
 <ul>
 <li>ArrayList HashSet HashMap的定义和遍历</li>
@@ -600,7 +603,9 @@ for(String str:arr){
 <ul>
 <li>java中的排序</li>
 </ul>
-<blockquote><br>  collection.sort()两种实现  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="external">Comparable</a>和<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="external">Comparator</a><br></blockquote>
+<blockquote>
+  collection.sort()两种实现  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="external">Comparable</a>和<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="external">Comparator</a>
+</blockquote>
 
 
 
@@ -850,7 +855,11 @@ public interface inter {
 <li>session的使用</li>
 </ul>
 <h2 id="创建和声明Session"><a href="#创建和声明Session" class="headerlink" title="创建和声明Session"></a>创建和声明Session</h2><p>  HttpSession mysession=request,getSession();</p>
-<blockquote><br><br>&gt;<br>&gt; Note:The <code>getSession()</code> method should be called before anything is written to the response stream.<br></blockquote>
+<blockquote>
+
+&gt;
+&gt; Note:The <code>getSession()</code> method should be called before anything is written to the response stream.
+</blockquote>
 
 
 
@@ -919,7 +928,7 @@ mysession.getAttributeNames(); //return an array of sessions
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/hello-world/" id="post_nav-newer" class="prev-content">
+        <a href="/2016年度总结之认知/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>

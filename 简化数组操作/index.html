@@ -398,13 +398,14 @@
 <h3 id="方法介绍："><a href="#方法介绍：" class="headerlink" title="方法介绍："></a>方法介绍：</h3><p>可能很多人 会使用array_push函数，但是看一下php manual上摘录下来的原话:</p>
 <p><strong>Note</strong>: 如果用 <strong>array_push()</strong> 来给数组增加一个单元，还不如用 <code>$array[] =</code> ，因为这样没有调用函数的额外负担。</p>
 <p>（还有真是不懂为什么要用push  明明<code>$array[$key]=$value</code> 又简单又高效啊~）</p>
-<h3 id="代码试验"><a href="#代码试验" class="headerlink" title="代码试验:"></a>代码试验:</h3><p>先尝试构建一个原始(二维)数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$arr=array(&quot;1&quot;=&gt;array(&quot;a&quot;=&gt;&quot;a&quot;,&quot;b&quot;=&gt;&quot;b&quot;));</div></pre></td></tr></table></figure></p>
+<h3 id="代码试验"><a href="#代码试验" class="headerlink" title="代码试验:"></a>代码试验:</h3><p>先尝试构建一个原始(二维)数组:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$arr=array(&quot;1&quot;=&gt;array(&quot;a&quot;=&gt;&quot;a&quot;,&quot;b&quot;=&gt;&quot;b&quot;));</div></pre></td></tr></table></figure></p>
 <p>用 var_dump()(或是print_r())看一下这个的结构:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1 =&gt;</div><div class="line">    &apos;a&apos;=&gt;string &apos;a&apos;</div><div class="line">    &apos;b&apos;=&gt;string &apos;b&apos;</div></pre></td></tr></table></figure>
-<p>目的是在”b”=&gt;”b”($key=&gt;$value)下添加一个新的键值对</p>
-<p>如:”c”=&gt;”c”</p>
+<p>目的是在&quot;b&quot;=&gt;&quot;b&quot;($key=&gt;$value)下添加一个新的键值对</p>
+<p>如:&quot;c&quot;=&gt;&quot;c&quot;</p>
 <p>第一步:拆开来foreach($arr as $k=&gt;$v),这步应该没有什么疑问才对;</p>
-<p>第二步:里面那层取出来,$v[$newKeyName]=&gt;$newValue (e.g. $v[“c”]=&gt;”c”)</p>
+<p>第二步:里面那层取出来,$v[$newKeyName]=&gt;$newValue (e.g. $v[&quot;c&quot;]=&gt;&quot;c&quot;)</p>
 <p>第三步:再装回去，$arr[$k]=$v ;</p>
 <p>以上三步就可以实现<strong> 追加键值对</strong>了。。</p>
 <p>变为三维(+)数组也同理操作即可。</p>

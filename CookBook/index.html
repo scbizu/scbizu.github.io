@@ -389,64 +389,36 @@
 <h3 id="About-Code"><a href="#About-Code" class="headerlink" title="About Code"></a>About Code</h3><blockquote>
 <p>位运算符</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>位运算符</th>
-<th>语义/Semantics</th>
-<th>e.g.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>按位与/AND</td>
-<td>0101 &amp; 0011 = 0001</td>
-</tr>
-<tr>
-<td>I</td>
-<td>按位或/OR</td>
-<td>0101 I 0011 = 0111</td>
-</tr>
-<tr>
-<td>^</td>
-<td>按位异或/XOR</td>
-<td>0101 ^ 0011 = 0110</td>
-</tr>
-<tr>
-<td>^&amp;</td>
-<td>位清除/AND NOT</td>
-<td>0110 &amp;^ 1011 = 0100</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>位左移/LEFT SHIFT</td>
-<td>0001 &lt;&lt; 3 = 1000</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>位右移/Right SHIFT</td>
-<td>1000 &gt;&gt; 3 = 0001</td>
-</tr>
-</tbody>
-</table>
+<p>|位运算符|语义/Semantics|e.g.|
+|---|---|---|
+|&amp;|按位与/AND|0101 &amp; 0011 = 0001|
+|I|按位或/OR|0101 I 0011 = 0111|
+|^|按位异或/XOR|0101 ^ 0011 = 0110|
+|^&amp;|位清除/AND NOT|0110 &amp;^ 1011 = 0100|
+|&lt;&lt;|位左移/LEFT SHIFT|0001 &lt;&lt; 3 = 1000|
+|&gt;&gt;|位右移/Right SHIFT| 1000 &gt;&gt; 3 = 0001|</p>
 <blockquote>
 <p>TIPS: 位清除(bit clear/AND NOT) 与 异或(XOR) 虽然结果表现的一致 但是 实际表述并不一样。</p>
 </blockquote>
-<p>位移操作的右操作数必须要是<code>uint</code>类型<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">b=:<span class="number">23</span></div><div class="line">x:=<span class="number">1</span> &lt;&lt; b  <span class="comment">//panic: (shift count type int,must be unsigned integer)</span></div><div class="line"><span class="comment">//Right Code</span></div><div class="line"><span class="keyword">var</span> t <span class="keyword">uint</span></div><div class="line">t = <span class="number">2</span></div><div class="line">x:=<span class="number">1</span> &lt;&lt; t</div><div class="line"><span class="built_in">println</span>(x) <span class="comment">// 4</span></div></pre></td></tr></table></figure></p>
+<p>位移操作的右操作数必须要是<code>uint</code>类型
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">b=:<span class="number">23</span></div><div class="line">x:=<span class="number">1</span> &lt;&lt; b  <span class="comment">//panic: (shift count type int,must be unsigned integer)</span></div><div class="line"><span class="comment">//Right Code</span></div><div class="line"><span class="keyword">var</span> t <span class="keyword">uint</span></div><div class="line">t = <span class="number">2</span></div><div class="line">x:=<span class="number">1</span> &lt;&lt; t</div><div class="line"><span class="built_in">println</span>(x) <span class="comment">// 4</span></div></pre></td></tr></table></figure></p>
 <h3 id="About-Arch"><a href="#About-Arch" class="headerlink" title="About Arch"></a>About Arch</h3><h3 id="Best-Practice-in-Golang"><a href="#Best-Practice-in-Golang" class="headerlink" title="Best Practice in Golang"></a>Best Practice in Golang</h3><ul>
 <li>类型转换</li>
 </ul>
-<p>在一些高性能场景中,类型转换不能使用type(foo)的形式,可以考虑用unsafe包 从底层存储方式进行转换 会高效很多：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">toString</span><span class="params">(foo []<span class="keyword">byte</span>)</span><span class="title">string</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> *(*<span class="keyword">string</span>)(unsafe.Pointer(&amp;foo))</div><div class="line">&#125;</div><div class="line"><span class="comment">//其他转换同理</span></div></pre></td></tr></table></figure></p>
+<p>在一些高性能场景中,类型转换不能使用type(foo)的形式,可以考虑用unsafe包 从底层存储方式进行转换 会高效很多：
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">toString</span><span class="params">(foo []<span class="keyword">byte</span>)</span><span class="title">string</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> *(*<span class="keyword">string</span>)(unsafe.Pointer(&amp;foo))</div><div class="line">&#125;</div><div class="line"><span class="comment">//其他转换同理</span></div></pre></td></tr></table></figure></p>
 <ul>
 <li>构建字符串</li>
 </ul>
-<p>字符串相加在数量很多的场景下,性能会变得非常差,因为每次都会给新的string重新分配内存。所以,在需要相加的字符串很多的情况下,用<code>strings</code>包的<code>Join()</code>或者<code>bytes</code>包的<code>WriteString()/WriteBytes()</code>,一次性分配好需要分配的内存就会让性能提升很多.<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">enlargeString</span><span class="params">(foo <span class="keyword">string</span>,boo <span class="keyword">string</span>)</span><span class="title">string</span></span>&#123;</div><div class="line">  <span class="keyword">var</span> buf bytes.Buffer</div><div class="line">  buf.WriteString(foo)</div><div class="line">  <span class="keyword">for</span> (i:=<span class="number">0</span>;i&lt;aLargeNumber;i++)&#123;</div><div class="line">    buf.WriteString(boo)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> buf.String()  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>字符串相加在数量很多的场景下,性能会变得非常差,因为每次都会给新的string重新分配内存。所以,在需要相加的字符串很多的情况下,用<code>strings</code>包的<code>Join()</code>或者<code>bytes</code>包的<code>WriteString()/WriteBytes()</code>,一次性分配好需要分配的内存就会让性能提升很多.
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">enlargeString</span><span class="params">(foo <span class="keyword">string</span>,boo <span class="keyword">string</span>)</span><span class="title">string</span></span>&#123;</div><div class="line">  <span class="keyword">var</span> buf bytes.Buffer</div><div class="line">  buf.WriteString(foo)</div><div class="line">  <span class="keyword">for</span> (i:=<span class="number">0</span>;i&lt;aLargeNumber;i++)&#123;</div><div class="line">    buf.WriteString(boo)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> buf.String()  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>避免Goroutine中的延迟求值</li>
 </ul>
-<p>在日常的开发中 我们往往需要在一个LOOP中实现并发 这时候往往这么写:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但是这样就会遇到一个问题:得到的foo永远都是<code>index==len(foos)-1</code>的foo值,这是因为goroutine的延迟求值,这里每次go func的匿名方法并不会被马上执行,当LOOP 执行完的时候才会去执行展开其中的Goroutine.所以正确的写法应该是每次执行<code>go func</code>的时候把foo带进去,让goroutine去保存这个状态。具体的代码如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(foo TYPE)</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;(foo)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在日常的开发中 我们往往需要在一个LOOP中实现并发 这时候往往这么写:
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这样就会遇到一个问题:得到的foo永远都是<code>index==len(foos)-1</code>的foo值,这是因为goroutine的延迟求值,这里每次go func的匿名方法并不会被马上执行,当LOOP 执行完的时候才会去执行展开其中的Goroutine.所以正确的写法应该是每次执行<code>go func</code>的时候把foo带进去,让goroutine去保存这个状态。具体的代码如下:
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//foos is a array slice or else which can be ranged</span></div><div class="line"><span class="keyword">for</span> _,foo:=<span class="keyword">range</span> foos&#123;</div><div class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(foo TYPE)</span></span>&#123;</div><div class="line">    <span class="comment">//do sth with foo</span></div><div class="line">  &#125;(foo)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>关于反射的一些知识</li>
 </ul>
@@ -460,7 +432,8 @@
 <li>Golang中的AOP(面向切面编程)</li>
 </ul>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E4%BE%A7%E9%9D%A2%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="external">什么是AOP?</a></p>
-<p>在Golang中,反射(reflect)很好地切合了AOP的主题。通过<code>reflect</code>在Runtime的时候动态执行方法,当我们用AOP的思想抽象出一个切面之后,也许这个切面是一个日志模块,或是一个审计模块(这些模块具有一个共同点:永远不需要也不可能被需要耦合到业务代码中去)。也可以把这些模块看成一个代码hook，这些模块在不用更改业务代码的同时调用业务代码中的逻辑。一次简单的尝试如下:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> LogModule <span class="keyword">struct</span>&#123;&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lg LogModule)</span><span class="title">logsth</span><span class="params">()</span><span class="params">(<span class="keyword">string</span>,error)</span></span>&#123;</div><div class="line">  <span class="comment">//log sth ...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  logm：=<span class="built_in">new</span>(LogModule)</div><div class="line">  reflectLog:=reflect.ValueOf(logm)</div><div class="line">  m:=reflectLog.MethodByName(<span class="string">"logsth"</span>)</div><div class="line">  in:=[]reflect.Value&#123;&#125;</div><div class="line">  <span class="comment">//Call logsth in Runtime</span></div><div class="line">  out:=m.Call(in)</div><div class="line">  <span class="comment">//res</span></div><div class="line">  <span class="keyword">for</span> _,res:=<span class="keyword">range</span> out&#123;</div><div class="line">    <span class="built_in">println</span>(res)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在Golang中,反射(reflect)很好地切合了AOP的主题。通过<code>reflect</code>在Runtime的时候动态执行方法,当我们用AOP的思想抽象出一个切面之后,也许这个切面是一个日志模块,或是一个审计模块(这些模块具有一个共同点:永远不需要也不可能被需要耦合到业务代码中去)。也可以把这些模块看成一个代码hook，这些模块在不用更改业务代码的同时调用业务代码中的逻辑。一次简单的尝试如下:
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> LogModule <span class="keyword">struct</span>&#123;&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lg LogModule)</span><span class="title">logsth</span><span class="params">()</span><span class="params">(<span class="keyword">string</span>,error)</span></span>&#123;</div><div class="line">  <span class="comment">//log sth ...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  logm：=<span class="built_in">new</span>(LogModule)</div><div class="line">  reflectLog:=reflect.ValueOf(logm)</div><div class="line">  m:=reflectLog.MethodByName(<span class="string">"logsth"</span>)</div><div class="line">  in:=[]reflect.Value&#123;&#125;</div><div class="line">  <span class="comment">//Call logsth in Runtime</span></div><div class="line">  out:=m.Call(in)</div><div class="line">  <span class="comment">//res</span></div><div class="line">  <span class="keyword">for</span> _,res:=<span class="keyword">range</span> out&#123;</div><div class="line">    <span class="built_in">println</span>(res)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>在Golang中使用Set</li>
 </ul>
@@ -468,11 +441,14 @@
 <blockquote>
 <p>这里的set更多的指的是一个FIFO的map也就是一个ordered-map。</p>
 </blockquote>
-<p>比如,我们现在有一个map:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">foo:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</div><div class="line">foo[<span class="string">"go"</span>]=<span class="string">"go"</span></div><div class="line">foo[<span class="string">"js"</span>]=<span class="string">"js"</span></div><div class="line">foo[<span class="string">"php"</span>]=<span class="string">"php"</span></div></pre></td></tr></table></figure></p>
+<p>比如,我们现在有一个map:
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">foo:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</div><div class="line">foo[<span class="string">"go"</span>]=<span class="string">"go"</span></div><div class="line">foo[<span class="string">"js"</span>]=<span class="string">"js"</span></div><div class="line">foo[<span class="string">"php"</span>]=<span class="string">"php"</span></div></pre></td></tr></table></figure></p>
 <p>然后,我们发现遍历这个map的时候,key的顺序有可能是会被更换的:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> key,value:=<span class="keyword">range</span> foo&#123;</div><div class="line">  <span class="comment">//key,value的值并不唯一</span></div><div class="line">  <span class="built_in">println</span>(key,value)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是为什么呢?其实仔细想一想就知道,我们为什么要指望<code>map</code>来向<code>set</code>一样来工作呢?这本来就是两个数据结构啊！所以,我们要的是什么？在这种场景下,我们需要的只是<strong>key按一定顺序排列的map中对应的值</strong>，经过这层思考之后,就可以很快的得出代码：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//按你想要的顺序遍历map吧..</span></div><div class="line">keys:=[]<span class="keyword">string</span>&#123;<span class="string">"go"</span>,<span class="string">"js"</span>,<span class="string">"php"</span>&#125;</div><div class="line"><span class="keyword">for</span> _,key:=<span class="keyword">range</span> keys&#123;</div><div class="line">  <span class="built_in">println</span>(key，foo[key])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>再反过来想想 我们为什么希望map按照FIFO顺序来呢?终究是对map的理解出现了误解。<br>这时候静下来 好好读读<a href="https://blog.golang.org/go-maps-in-action" target="_blank" rel="external">Go blog</a>的说明,就会有豁然开朗的感觉了吧：）</p>
+<p>这是为什么呢?其实仔细想一想就知道,我们为什么要指望<code>map</code>来向<code>set</code>一样来工作呢?这本来就是两个数据结构啊！所以,我们要的是什么？在这种场景下,我们需要的只是<strong>key按一定顺序排列的map中对应的值</strong>，经过这层思考之后,就可以很快的得出代码：
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//按你想要的顺序遍历map吧..</span></div><div class="line">keys:=[]<span class="keyword">string</span>&#123;<span class="string">"go"</span>,<span class="string">"js"</span>,<span class="string">"php"</span>&#125;</div><div class="line"><span class="keyword">for</span> _,key:=<span class="keyword">range</span> keys&#123;</div><div class="line">  <span class="built_in">println</span>(key，foo[key])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再反过来想想 我们为什么希望map按照FIFO顺序来呢?终究是对map的理解出现了误解。
+这时候静下来 好好读读<a href="https://blog.golang.org/go-maps-in-action" target="_blank" rel="external">Go blog</a>的说明,就会有豁然开朗的感觉了吧：）</p>
 
     
 

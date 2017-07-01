@@ -395,19 +395,19 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="前情回顾"><a href="#前情回顾" class="headerlink" title="前情回顾:"></a>前情回顾:</h2><p>之前的<a href="http://blog.scnace.cc/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/">一次爬教务处的成功实践</a>里面记录了一些在爬教务处时需要注意的点。并PO出了一份<a href="http://beego.me/" target="_blank" rel="external">Beego</a>写的教务处的<a href="https://github.com/scbizu/Zafu_jwcInterface" target="_blank" rel="external">API版本</a>.但是由于没有前端配合,加上自己懒得写,所以大概就这样烂尾了。。。了。。。</p>
-<h2 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想:"></a>突发奇想:</h2><p>在确定了实习工作之后,由于也不是太忙的原因,所以,在某天某个契机(由于课程格子for Android的自启和后台驻留太频繁,一怒之下就卸了,然而会学校才发现确实需要查课程的终端)的引导下,开了<a href="https://github.com/scbizu/cmd_zafu" target="_blank" rel="external">cmd_zafu</a>这个坑,说来也是巧合,自从那段时间喜欢上把啥都放在Terminal之后,发现这样做确实会提升不少效率,大概是我的审美经常被机油们吐槽的缘故,所以,才会发现一片新大陆啊,作为一头后端猿,本身也不是很在意前端的渲染…(反正一定要写就是<a href="http://www.bootcss.com/" target="_blank" rel="external">Bootstrap</a>)</p>
+<h2 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想:"></a>突发奇想:</h2><p>在确定了实习工作之后,由于也不是太忙的原因,所以,在某天某个契机(由于课程格子for Android的自启和后台驻留太频繁,一怒之下就卸了,然而会学校才发现确实需要查课程的终端)的引导下,开了<a href="https://github.com/scbizu/cmd_zafu" target="_blank" rel="external">cmd_zafu</a>这个坑,说来也是巧合,自从那段时间喜欢上把啥都放在Terminal之后,发现这样做确实会提升不少效率,大概是我的审美经常被机油们吐槽的缘故,所以,才会发现一片新大陆啊,作为一头后端猿,本身也不是很在意前端的渲染...(反正一定要写就是<a href="http://www.bootcss.com/" target="_blank" rel="external">Bootstrap</a>)</p>
 <h2 id="一些尝试"><a href="#一些尝试" class="headerlink" title="一些尝试"></a>一些尝试</h2><ul>
 <li>基本功能(已经实现)</li>
 <li>用golang的Opencv库 做图像处理,再用<code>gosseract</code>直接识别出验证码提交。</li>
 <li>添加<code>Goroutine</code>,多线程请求教务处。<blockquote>
-<p>可能在实现免验证码之后会继续鸽一段时间…..</p>
+<p>可能在实现免验证码之后会继续鸽一段时间.....</p>
 </blockquote>
 </li>
 </ul>
 <h2 id="食用步骤"><a href="#食用步骤" class="headerlink" title="食用步骤:"></a>食用步骤:</h2><ul>
-<li>首先在cmd_zafu的<a href="https://github.com/scbizu/cmd_zafu/releases" target="_blank" rel="external">Release页面</a>下载对应自己平台(Win/Linux/macOS)的应用程序(我只编译了amd64的,这大概是主流PC机CPU架构,有需要其他架构的同学可以找我…)</li>
+<li>首先在cmd_zafu的<a href="https://github.com/scbizu/cmd_zafu/releases" target="_blank" rel="external">Release页面</a>下载对应自己平台(Win/Linux/macOS)的应用程序(我只编译了amd64的,这大概是主流PC机CPU架构,有需要其他架构的同学可以找我...)</li>
 <li>然后打开自己的Terminal(Linux:<code>Ctrl</code>+<code>alt</code>+<code>t</code>,Win:<code>win</code>+<code>R</code>),切换到下载的目录(e.g.:/scnace/)..</li>
-<li><p>输入命令<code>./jwcconn -h</code>查看使用帮助….</p>
+<li><p>输入命令<code>./jwcconn -h</code>查看使用帮助....</p>
 <pre><code>&gt; 你需要 输入 你的学号(-u/--username)和你的密码(-p/--password)，还有你想查询的种类(-t/--type:`score` OR `course` OR `exam`)
 </code></pre></li>
 <li><p>然后你会在本目录接收到一张验证码的图(code.gif),输入验证码上的字母/数字,换图也可以按<code>0</code>,重新发起Request请求,接收到新的验证码。</p>
@@ -416,7 +416,7 @@
 </ul>
 <p>综上,其实是很简单,很流畅的一个流程。</p>
 <h2 id="方便使用"><a href="#方便使用" class="headerlink" title="方便使用"></a>方便使用</h2><ul>
-<li><p>我经常使用的命令 会给他设为全局命令 并加上alias 这样使用效率会高出很多 就免去了多余的cd步骤 …</p>
+<li><p>我经常使用的命令 会给他设为全局命令 并加上alias 这样使用效率会高出很多 就免去了多余的cd步骤 ...</p>
 <ul>
 <li><p>macOS/Linux等类Unix用户:可以把<code>jwcconn</code>放置(mv)到<code>/usr/bin</code>目录下</p>
 </li>
@@ -428,7 +428,7 @@
 <p>其实会<code>bash</code>的人 不用看都心知肚明了~  另外, 在哪个目录下运行 验证码就会出现在哪里哦～</p>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><ul>
 <li><p>Q: <code>jwcconn</code>会不会摄取我的隐私呢?</p>
-<p>A: 放心,<code>jwcconn</code> <strong>不涉及任何数据库存储的操作</strong>,只涉及到与JWC的通信。另外,我虽然不是个好人,但是也不会这么下流啊….</p>
+<p>A: 放心,<code>jwcconn</code> <strong>不涉及任何数据库存储的操作</strong>,只涉及到与JWC的通信。另外,我虽然不是个好人,但是也不会这么下流啊....</p>
 </li>
 <li><p>Q:所以这东西设计的目的是什么?</p>
 <p>A:如上所说,这东西适合 <strong>不想用(不信任)移动端的闭源APP,并且频繁使用PC的人群</strong> (其实就是我实习空闲之余,撸出来自用的小工具,分享给大家,如果也迎合了你们的需求,那我也很开心呀 :} )</p>
@@ -444,7 +444,7 @@
 <li><a href="https://github.com/scbizu/mahonia" target="_blank" rel="external">mahonia</a>:用来进行utf-8和GBK的互转.</li>
 <li><del><a href="https://github.com/qiniu/iconv" target="_blank" rel="external">iconv</a>:需要GCC依赖,故用mahonia代替</del></li>
 </ul>
-<p>以上….</p>
+<p>以上....</p>
 
     
 
@@ -498,7 +498,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/为go get护航 /" id="post_nav-newer" class="prev-content">
+        <a href="/一次爬方正教务处的成功实践/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -512,7 +512,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/从遍历DOM树谈DFS和BFS/" id="post_nav-older" class="next-content">
+        <a href="/为go get护航 /" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

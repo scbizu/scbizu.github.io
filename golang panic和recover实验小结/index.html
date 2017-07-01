@@ -450,7 +450,7 @@ defer block 0
 recover in ifpanic() 3
 Return normally ...
 </code></pre><p>有趣的是  如果我们去掉Ifpanic()里面的defer关键字(让其马上执行,不延迟)</p>
-<p>即 defer func(){}()  —&gt;  func(){}()</p>
+<p>即 defer func(){}()  ---&gt;  func(){}()</p>
 <p>输出马上就会变为:</p>
 <pre><code>Calling panic block
 Printing now 0
