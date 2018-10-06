@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>golang结构体和json之间的转换小结 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="golang提供了结构体到特定格式json/xml/&amp;hellip; 转换的便捷途径 我们通过json包 很方便的就可以进行struct到json" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/golang%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8Cjson%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B0%8F%E7%BB%93/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="golang结构体和json之间的转换小结" />
+<meta property="og:description" content="golang提供了结构体到特定格式json/xml/&hellip; 转换的便捷途径 我们通过json包 很方便的就可以进行struct到json" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/golang%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8Cjson%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B0%8F%E7%BB%93/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="golang结构体和json之间的转换小结">
+<meta itemprop="description" content="golang提供了结构体到特定格式json/xml/&hellip; 转换的便捷途径 我们通过json包 很方便的就可以进行struct到json">
+
+
+
+<meta itemprop="wordCount" content="665">
+
+
+
+<meta itemprop="keywords" content="in action,golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="golang结构体和json之间的转换小结"/>
+<meta name="twitter:description" content="golang提供了结构体到特定格式json/xml/&hellip; 转换的便捷途径 我们通过json包 很方便的就可以进行struct到json"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">golang结构体和json之间的转换小结</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            
+              <a href="/categories/golang/"> golang </a>
+            
+          </div>
+        <span class="more-meta"> 665 words </span>
+        <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>golang提供了结构体到特定格式json/xml/&hellip; 转换的便捷途径</p>
+
+<p>我们通过json包 很方便的就可以进行struct到json转换。</p>
+
+<p>举个栗子:</p>
+
+<p>现在有这么一个结构体:</p>
+
+<pre><code>type JsonFor struct {
+    Foo   string `json:&quot;foo&quot;`
+    Foo_s string `json:&quot;foo_s&quot;`
+    Foo_t string `json:&quot;foo_t,omitempty&quot;`
+}
+</code></pre>
+
+<p>结构体字段的<strong>字段(field)</strong>最后的一串(string 之后的)叫做<strong>标记(tag)</strong>.</p>
+
+<p>双引号中的字符串是转换成json之后的 json字段名(key)</p>
+
+<p>(当然 也可以不加这个tags 那么json之后的会是default key 也就是你的字段名(filed name)</p>
+
+<p>下面说一下 这些tags的用法(optional comma and options):</p>
+
+<ul>
+<li><p><code>什么东西都不加</code>：上面说过   不加tag  struct 的filed name就是<strong>json的default key</strong>。</p></li>
+
+<li><p><code>&quot;-&quot;</code>: e.g:<code>json:&quot;-&quot;</code> 这个tag会导致该field 会被当前的package忽略掉。</p></li>
+
+<li><p>&rdquo;(string)&rdquo;:e.g.:<code>json:</code>json:&ldquo;foo&rdquo;<code>这个tag会导致转成json后 key变为**foo  ,而不再是Field name(default key)**</code></p></li>
+
+<li><p>&rdquo;(string),omitempty&rdquo;:在上一个tag上面添加了一条规则-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></p></li>
+
+<li><p>&rdquo;,omitempty&rdquo;:在第一条规则下添加-&gt;如果当前字段为<strong>空值(empty)  那么忽略这个字段</strong></p></li>
+
+<li><p>&rdquo;,string&rdquo;:只用于以下类型:string, floating point, integer,  boolean  。字段值(value)也会被json编码。(常用于与JS的交互)</p></li>
+</ul>
+
+<p>由于书上都没有介绍  这边记录下。。。。</p>
+
+<p>实验代码在gist上。。。。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/in-action/">in action</a>
+          
+          <a href="/tags/golang/">golang</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/golang%E7%9A%84%E4%B8%80%E4%B8%AAocr%E5%BA%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">golang的一个OCR库</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/j2ee%E5%A4%8D%E4%B9%A0/">
+            <span class="next-text nav-default">j2ee复习</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

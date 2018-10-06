@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wordpress on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/wordpress/</link>
+    <description>Recent content in Wordpress on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次博客搬家</title>
+      <link>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</guid>
+      <description>为什么要搬家? 一直想找一个轻量级的blog框架 觉得wordpress太重了 每次想写点东西都要进到wp的后台 而且离开了自己一直喜欢的Edito</description>
+    </item>
+    
+  </channel>
+</rss>

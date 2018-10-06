@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教务处 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/%E6%95%99%E5%8A%A1%E5%A4%84/</link>
+    <description>Recent content in 教务处 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/%E6%95%99%E5%8A%A1%E5%A4%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一次爬方正教务处的成功实践</title>
+      <link>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/</guid>
+      <description>前戏 不知道从什么时候开始,搞教务处已经成了我山CS专业的学生学习一门新的WEB语言(只要跟web沾边的) Java PHP Python NodeJS Golang&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

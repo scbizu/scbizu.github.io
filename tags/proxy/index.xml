@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proxy on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/proxy/</link>
+    <description>Recent content in Proxy on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>天朝局域网内go get的正确姿势</title>
+      <link>https://blog.scnace.me/post/%E4%B8%BAgo-get%E6%8A%A4%E8%88%AA-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%BAgo-get%E6%8A%A4%E8%88%AA-/</guid>
+      <description>前言 Golang获取包最简单的方法就是直接执行go get xxxx,与此同时,这也是Golang被诟病很多的一点 非常不利于版本管理 个人的工作环境可</description>
+    </item>
+    
+  </channel>
+</rss>

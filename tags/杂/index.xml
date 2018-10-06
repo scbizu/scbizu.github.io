@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>杂 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/%E6%9D%82/</link>
+    <description>Recent content in 杂 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/%E6%9D%82/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>当现实变得触手可及</title>
+      <link>https://blog.scnace.me/post/%E5%BD%93%E7%8E%B0%E5%AE%9E%E5%8F%98%E5%BE%97%E8%A7%A6%E6%89%8B%E5%8F%AF%E4%BB%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%BD%93%E7%8E%B0%E5%AE%9E%E5%8F%98%E5%BE%97%E8%A7%A6%E6%89%8B%E5%8F%AF%E4%BB%A5/</guid>
+      <description>试着劝过自己 别急 等大厂秋招吧 呐 大概就是这颗躁动不安的心吧 序 又深夜了,突然,提不起什么兴趣去继续看摊开在床上的 《设计模式之禅》.上个礼拜本来打</description>
+    </item>
+    
+  </channel>
+</rss>

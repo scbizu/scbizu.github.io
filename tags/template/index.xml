@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Template on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/template/</link>
+    <description>Recent content in Template on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/template/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>修改Golang template语法</title>
+      <link>https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</guid>
+      <description>前言 记得之前看过V站(v2ex)的一个讨论帖,内容就是关于前端的模板语法会跟后端的模板语法冲突.我也同意 统一渲染 的观点,比如 由后端统一进行d</description>
+    </item>
+    
+  </channel>
+</rss>

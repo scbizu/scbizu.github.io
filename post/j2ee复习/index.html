@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>j2ee复习 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="j2ee复习" />
+<meta property="og:description" content="J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="j2ee复习">
+<meta itemprop="description" content="J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut">
+
+
+
+<meta itemprop="wordCount" content="1716">
+
+
+
+<meta itemprop="keywords" content="Examination,J2ee," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="j2ee复习"/>
+<meta name="twitter:description" content="J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">j2ee复习</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/#%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> #伪技术相关 </a>
+            
+              <a href="/categories/java-web/"> JAVA WEB </a>
+            
+          </div>
+        <span class="more-meta"> 1716 words </span>
+        <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#j2ee复习资料">J2EE复习资料</a>
+<ul>
+<li>
+<ul>
+<li><a href="#进入mysql命令行界面-console">进入Mysql命令行界面(Console)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#创建和声明session">创建和声明Session</a></li>
+<li><a href="#测试session是否创建成功">测试Session是否创建成功</a></li>
+<li><a href="#在session中绑定数据">在session中绑定数据</a></li>
+<li><a href="#获得session数据">获得session数据</a></li>
+<li><a href="#解绑session-移除">解绑session  移除</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="j2ee复习资料">J2EE复习资料</h2>
+
+<blockquote>
+<p>原稿:12届学长 区长  编辑者:13届学沫 nace</p>
+</blockquote>
+
+<ul>
+<li><p>java的编译命令:java 和 javac</p>
+
+<p>javac demo.java
+java  demo</p></li>
+
+<li><p>Tomcat的命令:<strong>startup</strong>和<strong>shutdown</strong></p></li>
+
+<li><p>Mysql基本命令:建表(Create),删表(DROP),查询(UPDATE)</p></li>
+</ul>
+
+<h4 id="进入mysql命令行界面-console">进入Mysql命令行界面(Console)</h4>
+
+<pre><code>mysql -h localhost -u root -p 123456(这里是写你设置的mysql密码,默认是空)
+
+
+
+
+
+
+CREATE database database_name(数据库名称)
+    DROP database database_name
+    //新建user用户表
+    CREATE TABLE user(
+        id int primary key auto_increment,
+        username varchar(20) not null,
+        password varchar(20) not null
+     );
+    //删除user用户表
+    DROP table user
+    //插入新的数据
+    INSERT INTO user(`username`,`password`) values(`scnace`,`123456`)
+    //删除user表中名字是scnace的记录
+    DELETE FROM user where `username`=`scnace`
+    //更改表中名字为scnace的数据为scbizu
+    UPDATE user SET username='scbizu' WHERE username='scnace'
+    //选取表中名字为scnace的Record
+    SELECT * FROM user WHERE username=`scnace`
+</code></pre>
+
+<p><em>Extension:</em><strong>面试</strong>中的SQL喜欢出的题:
+1. 连表查询:
+   1.1. 左连接(<strong>LEFT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_left.asp">LEFT JOIN Declaration and usecase</a>
+   1.2. 右连接(<strong>RIGHT JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_right.asp">RIGHT JOIN Declaration and usecase</a>
+   1.3. 全连接(<strong>FULL JOIN</strong>):<a href="http://www.w3school.com.cn/sql/sql_join_full.asp">FULL JOIN Declaration and Usecase</a>
+2. 数据库基本操作</p>
+
+<ul>
+<li><p>包的引入和定义import和package</p>
+
+<pre><code>Import java.util.Scanner;
+Import java.io.*;
+Package cn.edu.zafu;//Package
+</code></pre></li>
+
+<li><p>Java控制台(cmd&amp;&amp;IDE)下的输入输出:</p></li>
+</ul>
+
+<blockquote>
+<p>Scanner和System.out.print()语句</p>
+</blockquote>
+
+<pre><code>    Scanner scanner=new Scanner(System.in);
+    while(scanner.hasNext()){
+    //scanner.next();
+    //scanner.nextInt();
+    //scanner.nextBoolean();
+    //scanner.nextDouble();
+    //scanner.nextFloat();
+       //System.out.***
+    //System.out.print();
+    //System.out.println();
+    //System.out.printf(&quot;%d %s&quot;,(Integer),(String));
+}
+</code></pre>
+
+<ul>
+<li><p>流程控制语句&mdash;条件语句 if switch</p>
+
+<p>if(_condition){
+    //ADD YOUR CODE HERE to do under the  _condition
+    }else{
+    //* otherwise&hellip;.
+    }</p>
+
+<p>switch(_condition){
+case _condition_0:
+    break;
+case _condition_1:
+    break;
+default:
+    break;
+}</p></li>
+
+<li><p>循环语句 for while</p>
+
+<p>for(int i=0;i&lt;args.length;i++){
+      //Traversal The Array
+       String str=args[i];
+    }
+    while(i&lt;5){
+       i++;
+    }</p></li>
+
+<li><p>变量定义 (普通变量定义及初始化 静态变量定义 常量定义)</p>
+
+<pre><code>int i=5;
+boolean flag=true;
+float f=3.0f;
+double d=3.5;
+byte b=1;
+static final String name=&quot;nace&quot;;
+</code></pre></li>
+</ul>
+
+<blockquote>
+<p>Note:Java变量类型<a href="https://en.wikipedia.org/wiki/Final_(Java)">final</a>
+                   <a href="http://beginnersbook.com/2013/04/java-static-class-block-methods-variables/">static关键字</a></p>
+</blockquote>
+
+<ul>
+<li><p>数组的定义  数组的遍历</p>
+
+<p>int a[]=int[]{1,2,3,4,5};
+for(int i=0;i &lt;a.length;i++){
+    System.out.println(a[i]);
+}</p></li>
+
+<li><p>字符串的使用 定义字符串 格式化字符串 字符串查找 etc.</p>
+
+<pre><code>String str1=String.format(&quot;%s %d&quot;,&quot;nace&quot;,2);
+//Source Data to be searched
+String str2=&quot;naceoncelovedapuregirl.&quot;;
+System.out.print(str2.indexOf(&quot;S&quot;));
+System.out.print(str2.indexOf(&quot;S&quot;,6));//Start with 1.
+System.out.print(str2.charAt(1));
+</code></pre></li>
+</ul>
+
+<blockquote>
+<p>Note:关于<a href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html">String.format()</a>
+       关于<a href="http://www.tutorialspoint.com/java/java_string_charat.htm">String.chatAt()</a></p>
+</blockquote>
+
+<ul>
+<li><p>ArrayList HashSet HashMap的定义和遍历</p>
+
+<p>List<string> array=new ArrayList<String>();
+array.add(&ldquo;1&rdquo;);
+array.add(&ldquo;2&rdquo;);
+array.add(&ldquo;3&rdquo;);
+//Travelsal the ArrayList with Iterator
+for(Iterator iterator=arr.iterator();iterator.hasNext();){
+String str=(String)iterator.next();
+System.out.println(str);
+}
+for(String str:arr){
+  System.out.println(str);
+}</p>
+
+<p>//HashSet
+    HashSet<String> set=new HashSet<String>();
+    set.add(&ldquo;1&rdquo;);
+    set.add(&ldquo;2&rdquo;);
+    set.add(&ldquo;3&rdquo;);
+    //Travelsal the HashMap with Iterator
+    for(Iterator ite =set.iterator();iterator.hasNext();){
+    String str=(String)ite.next();
+    System.out.println(str);
+    }
+    //for-each Travelsal
+    for(String str:set){
+      System.out.println(str);
+    }</p>
+
+<pre><code>//HashMap Code.....
+HashMap&lt;Integer,String&gt; map=new HashMap&lt;Integer,String&gt;();
+//put(index,value)  and Start with 1
+map.put(1,&quot;1&quot;);
+map.put(2,&quot;2&quot;);
+//Iterator Travelsal
+Set&lt;Entry&lt;Integer,String&gt;&gt; entrySet=map.entrySet();
+for(Iterator iter =entrySet.iterator();iter.hasNext();){
+    Entry&lt;Integer,String&gt; entry=(Entry&lt;Integer,String&gt;) iter.next();
+    System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+}
+//for-each Travelsal
+for(Entry&lt;Integer,String&gt;entry:entrySet){
+   System.out.println(entry.getKey()+&quot;:&quot;+entry.getValue());
+}
+</code></pre></li>
+
+<li><p>JDBC连接字符串  Tomcat资源定义含义</p>
+
+<p>try{
+      String url=&ldquo;jdbc:mysql://localhost:3306/test_nace&rdquo;;
+      //if you wanna Unicode is utf-8
+    //  String url=&ldquo;jdbc:mysql://localhost:3306/test_nace?useUnicode=true&characterEncoding;=Utf-8&rdquo;;
+      String driver=&ldquo;com.mysql.jdbc.Driver&rdquo;;
+      String username=&ldquo;root&rdquo;;
+      String password=&ldquo;&rdquo;;//默认为空
+      Class.forName(driver);
+      Connection conn=DriverManager.getConnnection(url,username,password);
+      System.out.println(conn);
+    }catch(Exception e){
+      e.printStackTrace();
+    }</p></li>
+</ul>
+
+<blockquote>
+<p>Note:<a href="https://docs.jelastic.com/connection-to-db-via-jndi">JNDI:j2ee另一种连接数据库的方式,通过设置xml</a></p>
+</blockquote>
+
+<ul>
+<li>java中的排序</li>
+</ul>
+
+<blockquote>
+  collection.sort()两种实现  [Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)和[Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html)
+</blockquote>
+
+<pre><code>    /**
+      *sort.java
+      */
+       package practice;
+
+
+import java.util.*;
+/**
+ *
+ * @author My scnace
+ *
+ */
+public class sort {
+
+    public static void main(String[] args) {
+ //ArrayLists中的对象String 本身含有compareTo方法，所以可以直接调用sort方法，按自然顺序排序，即升序排序
+        List&lt;String&gt; first_array=new ArrayList&lt;String&gt;();
+        List&lt;realclass&gt; classarray=new ArrayList&lt;realclass&gt;();
+
+        //子弹装填  loading.....
+        first_array.add(&quot;a&quot;);
+        first_array.add(&quot;c&quot;);
+        first_array.add(&quot;b&quot;);        
+        //Compare To  Collections.sort排序
+        Collections.sort(first_array);
+        //Shooting....
+        Result res=new Result();
+     //   res.outPrinter(first_array);
+
+        //realclass real=new realclass();
+
+        //Sort the Class
+          //装填开始.....
+        classarray.add(new realclass(2,&quot;a&quot;));
+        classarray.add(new realclass(1,&quot;c&quot;));
+        classarray.add(new realclass(3,&quot;b&quot;));
+
+        Collections.sort(classarray);
+      // Collections.sort(classarray,new realclass());
+        //Shooting.....
+        Result res2=new Result();
+        res2.outclassPriter(classarray);    
+    }
+}
+
+
+
+
+
+
+
+      /**
+     *realclass.java
+     */
+      package practice;
+
+import java.lang.*;
+import java.util.*;
+
+public class realclass implements Comparator&lt;realclass&gt;,Comparable&lt;realclass&gt;{
+
+    private int index;
+
+    private String foo;
+
+    //空值构造
+    realclass(){}
+    //带参构造
+    realclass(int index,String foo){
+        this.index=index;
+        this.foo=foo;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
+    }
+
+    public int compareTo(realclass real){
+        return (this.foo).compareTo(real.foo);
+    }
+
+    @Override
+    public int compare(realclass o1, realclass o2) {
+        // TODO Auto-generated method stub
+        return o1.getIndex()-o2.getIndex();
+    }
+}
+
+
+
+
+
+
+    /**
+     *result.java
+     */
+
+package practice;
+
+import java.util.List;
+
+public class Result {
+
+    public String outer;
+
+    public  void outPrinter(List&lt;String&gt; out){
+        //Tranversal
+        for(String str:out){
+            System.out.println(str);
+        }
+    }
+
+    public void outclassPriter(List&lt;realclass&gt; out){
+        //Tranversal
+        for(realclass real:out){
+            System.out.println(real.getIndex()+&quot;,&quot;+real.getFoo());
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li><p>类的定义,继承(关键字 extends)</p>
+
+<pre><code>/**
+*first.java
+*/
+</code></pre>
+
+<p>package practice;</p>
+
+<p>import java.util.*;
+public abstract class first {</p>
+
+<pre><code>private int mynum;
+
+private String mystr;
+//含参构造
+first(int hernum,String herstr){
+    this.mynum=hernum;
+    this.mystr=herstr;
+}
+//不含参数构造
+first(){
+    this.mynum=23;
+    this.mystr=&amp;quot;nace&amp;quot;;
+}
+//方法
+public void Sayhellotoher(){
+    System.out.println(&amp;quot;Hi,My num is&amp;quot;+this.mynum);
+}
+//虚函数
+public abstract void Saymyname();
+</code></pre>
+
+<p>}</p>
+
+<pre><code>/**
+*second.java
+*/
+</code></pre>
+
+<p>package practice;</p>
+
+<p>public class second extends first implements inter{</p>
+
+<pre><code>public second() {
+    // TODO Auto-generated constructor stub
+       //构造父类
+    super();        
+}
+
+ second(int mynum,String mystr){
+     //含参构造
+     super(mynum,mystr);
+ }
+@Override
+public void Saymyname() {
+    // TODO Auto-generated method stub
+    super.Sayhellotoher();
+}
+</code></pre>
+
+<p>@Override
+   public void howto(){
+       System.out.println(&quot;I do not kown&quot;);
+   }
+}</p>
+
+<p>package practice;</p>
+
+<p>/**</p>
+
+<ul>
+<li>rooter.java</li>
+
+<li><p>@author My Protoss
+*
+*/
+public class rooter {</p>
+
+<p>public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    second se=new second();
+    se.Saymyname();
+    se.howto();
+}</p></li>
+</ul>
+
+<p>}</p>
+
+<p>/**
+ *inter.java
+ */
+package practice;</p>
+
+<p>public interface inter {</p>
+
+<pre><code>public default   void howto(){
+    System.out.println(&amp;quot;Hi Nace&amp;quot;);
+}
+</code></pre>
+
+<p>}</p></li>
+
+<li><p>session的使用</p></li>
+</ul>
+
+<h2 id="创建和声明session">创建和声明Session</h2>
+
+<p>HttpSession mysession=request,getSession();</p>
+
+<blockquote>
+
+>
+> Note:The `getSession()` method should be called before anything is written to the response stream.
+</blockquote>
+
+<h2 id="测试session是否创建成功">测试Session是否创建成功</h2>
+
+<pre><code>String mySessionID = mySession.getId();
+</code></pre>
+
+<h2 id="在session中绑定数据">在session中绑定数据</h2>
+
+<p>mysession.setAttribute(&quot;key&quot;,value);</p>
+
+<h2 id="获得session数据">获得session数据</h2>
+
+<pre><code>mysession.getAttribute(&amp;quot;key&amp;quot;);//return an object
+
+mysession.getAttributeNames(); //return an array of sessions
+</code></pre>
+
+<h2 id="解绑session-移除">解绑session  移除</h2>
+
+<pre><code>mysession.removesession(&amp;quot;key&amp;quot;);
+</code></pre>
+
+<ul>
+<li>Struts2</li>
+</ul>
+
+<p><a href="https://cwiki.apache.org/confluence/display/WW/struts.xml+Examples">Struts2 Manual</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/examination/">Examination</a>
+          
+          <a href="/tags/j2ee/">J2ee</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/golang%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8Cjson%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B0%8F%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">golang结构体和json之间的转换小结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/linux-mint%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9/">
+            <span class="next-text nav-default">linux mint下修改默认中文文件夹</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Examination on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/examination/</link>
+    <description>Recent content in Examination on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/examination/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>j2ee复习</title>
+      <link>https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/</guid>
+      <description>J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut</description>
+    </item>
+    
+  </channel>
+</rss>

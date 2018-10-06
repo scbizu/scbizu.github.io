@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日常积累 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/</link>
+    <description>Recent content in 日常积累 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JSON的语义化挑战--Collection&#43;JSON</title>
+      <link>https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/</guid>
+      <description>背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然</description>
+    </item>
+    
+    <item>
+      <title>ShadowSocksX查看已经储存的Server信息</title>
+      <link>https://blog.scnace.me/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/</guid>
+      <description>我什么都不知道,就单纯记录下之后可能用的到的命令行: ʕ ◔ ϖ ◔ ʔ ➜ ~ cd ~/Library ʕ ◔ ϖ ◔ ʔ ➜ Library cd Preferences ʕ ◔ ϖ ◔ ʔ ➜ Preferences cp ~/Library/Preferences/clowwindy.ShadowsocksX.plist ~/backups #备份plist 以防之后操作失误</description>
+    </item>
+    
+  </channel>
+</rss>

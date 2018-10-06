@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用adb&#43;fastboot升级一加5到氧OS - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/oneplus5-with-oxygen/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="用adb&#43;fastboot升级一加5到氧OS" />
+<meta property="og:description" content="舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/oneplus5-with-oxygen/" />
+
+
+
+<meta property="article:published_time" content="2017-06-30T02:15:10&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-06-30T02:15:10&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="用adb&#43;fastboot升级一加5到氧OS">
+<meta itemprop="description" content="舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强">
+
+
+<meta itemprop="datePublished" content="2017-06-30T02:15:10&#43;00:00" />
+<meta itemprop="dateModified" content="2017-06-30T02:15:10&#43;00:00" />
+<meta itemprop="wordCount" content="1686">
+
+
+
+<meta itemprop="keywords" content="搞机日常,作死," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用adb&#43;fastboot升级一加5到氧OS"/>
+<meta name="twitter:description" content="舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">用adb&#43;fastboot升级一加5到氧OS</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-06-30 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%9E%81%E5%AE%A2/"> 伪极客 </a>
+            
+          </div>
+        <span class="more-meta"> 1686 words </span>
+        <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#舍弃h2os">舍弃H2OS</a></li>
+<li><a href="#hello-oxygenos">Hello OxygenOS</a>
+<ul>
+<li><a href="#准备-preparing">准备(Preparing)</a></li>
+<li><a href="#使用adb和fastboot解锁bootloader-unlock-your-device">使用adb和fastboot解锁Bootloader(Unlock your device)</a></li>
+<li><a href="#刷入twrp-rec-flash-twrp">刷入TWRP Rec(Flash TWRP)</a></li>
+<li><a href="#选择ota升级包-choose-your-oxygen-rom">选择OTA升级包(Choose your oxygen ROM)</a></li>
+</ul></li>
+<li><a href="#使用体验">使用体验</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="舍弃h2os">舍弃H2OS</h2>
+
+<p>虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 <strong>百毒输入法OnePlus定制版</strong> 就有一种强烈的反感,一上手就装上了Google全套,终于用着爽了一点,但是有时候打开Google Now的应用列表,看着不能卸的预装应用总会觉得挺变扭的。</p>
+
+<p>终于,由于不知道是什么APP经常往我桌面上扔莫名其妙的icon,终于忍无可忍开始动手刷氧OS。本来刚上手就想刷氧OS的，可是那时候一来工作上的事比较忙,二来一加官方没有出最新的Oxygen的ROM,所以只好先放着。</p>
+
+<p>好奇桌面为啥会 <strong>出现莫名其妙的icon</strong> 的同学可以看下这个<a href="https://www.v2ex.com/t/371720">帖子</a>,好像是通过在APP管理里面停用默认浏览器就可以fix了。</p>
+
+<h2 id="hello-oxygenos">Hello OxygenOS</h2>
+
+<h3 id="准备-preparing">准备(Preparing)</h3>
+
+<p>先列一下需要准备的工具(由于博主是macOS下刷的,所以工具会比较通用):</p>
+
+<ul>
+<li>推荐用 <strong>类似Google Drive</strong> 的东西做好当前数据的备份,然后对手机进行 <strong>双清</strong> 操作.</li>
+<li><a href="https://developer.android.com/studio/releases/platform-tools.html">platform sdk</a>:其中会包含adb shell 和 fastboot 等一系列工具</li>
+<li><a href="https://forum.xda-developers.com/oneplus-5/development/twrp-oneplus-5-wip-t3626134">TWRP for OnePlus5</a>: 也可以直接在<a href="https://drive.google.com/file/d/0B0pr-ZA5b-1pdmdLNDFoTWtUX1k/view">这里(自备梯子)</a> 或者 <a href="https://pan.baidu.com/s/1bpxomJH">这里(不需要梯子)</a>下载,<a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/">官方</a>现在也提供了一加5 氧OS的TWEP Rec(拉到页面最下面会看到 <strong>Download Oxygen Recovey (Optional)</strong> 字样).</li>
+<li><a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/">Oxygen 4.5.3</a>:官方的ROM包,较大,推荐使用做过下载优化的下载工具下载</li>
+<li><a href="https://www.android.com/filetransfer/">文件传输工具</a>:可以参考Google官方的<a href="https://support.google.com/nexus/answer/2840804">FAQ</a></li>
+</ul>
+
+<h3 id="使用adb和fastboot解锁bootloader-unlock-your-device">使用adb和fastboot解锁Bootloader(Unlock your device)</h3>
+
+<blockquote>
+<p>进入这里之前,请确保已经正确下载好了<a href="https://developer.android.com/studio/releases/platform-tools.html">platform sdk</a>.</p>
+</blockquote>
+
+<p>那么插入USB数据线,开搞!</p>
+
+<p>打开手机的 <strong>开发者模式</strong>(传说中的点击7下版本号大法),BTW,点击安卓系统版本号(如果是Android 7+的话)会有捉猫游戏的彩蛋(逃</p>
+
+<p>打开开发者模式里面的USB Debuging，然后</p>
+
+<pre><code># cd 到 platform-tools对应的文件夹
+# 首先检查下USB连接是否正常
+$ ./adb devices
+# 正常情况下 应该会输出一个序列号.
+
+</code></pre>
+
+<p>打开 <strong>开发者模式 -&gt; OEM 解锁</strong>,之后 启用 <strong>高级重启</strong>;</p>
+
+<p>接下来有两种方法进入bootloader:</p>
+
+<p>命令行(adb):</p>
+
+<pre><code># cd 到 platform-tools对应的文件夹
+$ ./adb reboot bootloader
+</code></pre>
+
+<p>手动模式: 长按电源键 关闭手机；完全关闭之后,长按 电源键 和 音量<code>↓</code>键 选择进入bootloader。</p>
+
+<p>进入bootloader;</p>
+
+<pre><code># cd 到 platform-tools对应的文件夹
+# 确保USB连接正常
+$ ./fastboot devices
+# 正常情况下 应该会输出一个序列号.
+
+# 解锁bootloader
+$ ./fastboot oem unlock
+</code></pre>
+
+<p>不出意外的话 手机这时又会进入重启 继续进入fastboot模式。</p>
+
+<h3 id="刷入twrp-rec-flash-twrp">刷入TWRP Rec(Flash TWRP)</h3>
+
+<blockquote>
+<p>进入这步之前 请确保你已经准备好了 <a href="https://forum.xda-developers.com/oneplus-5/development/twrp-oneplus-5-wip-t3626134">TWRP for OnePlus5</a></p>
+</blockquote>
+
+<pre><code># cd 到 platform-tools对应的文件夹
+# 准备刷入TWRP REC;刷其他型号的TWRP Rec会报错;
+$ ./fastboot flash recovery $where_you_store_your_rec #$where_you_store_your_rec需要换成你TWRP下载到本地的位置
+#进入TWRP recovery
+$ ./fastboot boot $where_you_store_your_rec
+#$where_you_store_your_rec需要换成你TWRP下载到本地的位置
+</code></pre>
+
+<p>这样手机上就进入TWRP了,选择对System可写之后(即移动滑块到最右端,怕麻烦还可以勾选 <strong>Nerve show this screen during boot again</strong>),就可以选择TWRP对系统的操作了。</p>
+
+<h3 id="选择ota升级包-choose-your-oxygen-rom">选择OTA升级包(Choose your oxygen ROM)</h3>
+
+<blockquote>
+<p>进入这步之前请确保你已经下载了<a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/">Oxygen 4.5.3</a>,并且已经通过 <strong>文件传输工具</strong> 把文件传到了手机的文件系统中</p>
+</blockquote>
+
+<p>选择<code>Install(安装)</code>标签,找到在手机文件系统中存在的Oxygen的ROM,勾选 检验文件,然后滑块滑到最右侧开始刷入Oxygen ORM。</p>
+
+<p>等待一会后 就可以让手机Reboot,进入OxygenOS啦！</p>
+
+<p>刷机之后 推荐把bootloader重新锁起来.</p>
+
+<pre><code># cd 到 platform-tools对应的文件夹
+$ ./fastboot oem lock
+</code></pre>
+
+<h2 id="使用体验">使用体验</h2>
+
+<p>作为Google服务深度依赖者/爱好折(zuo)腾(si)的geeker,还是极度推荐刷氧OS的,可以极大力度的避开内置流氓软件的骚扰和套路。当然,使用氧OS的前提就是你要有一把好的梯子。。</p>
+
+<p>(APP列表清净的感觉实在是太美好了! 终于能体验到真*原生了！坐等Android 8 了~)</p>
+
+<p>之后 应该还会更新更多的使(zuo)用(si)体(jing)验(li)  （的吧）。</p>
+
+<p>以上。</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="http://downloads.oneplus.net/oneplus-5/oneplus_5_oxygenos_4.5.3/">oneplus</a></li>
+<li><a href="https://www.chiphell.com/thread-1695757-1-1.html">一加3 Root教程</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2017-06-30</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%90%9E%E6%9C%BA%E6%97%A5%E5%B8%B8/">搞机日常</a>
+          
+          <a href="/tags/%E4%BD%9C%E6%AD%BB/">作死</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/alfredworkflowv3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">效率神器之Alfred Workflow</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/head-to-context/">
+            <span class="next-text nav-default">那么就开始使用Context吧</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工作点滴 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/categories/%E5%B7%A5%E4%BD%9C%E7%82%B9%E6%BB%B4/</link>
+    <description>Recent content in 工作点滴 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/categories/%E5%B7%A5%E4%BD%9C%E7%82%B9%E6%BB%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从遍历DOM树谈BFS和DFS</title>
+      <link>https://blog.scnace.me/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/</guid>
+      <description>工作点滴(闲谈) 这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/</description>
+    </item>
+    
+  </channel>
+</rss>

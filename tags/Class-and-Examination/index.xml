@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Class and Examination on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/class-and-examination/</link>
+    <description>Recent content in Class and Examination on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/class-and-examination/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>操作系统复习</title>
+      <link>https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</guid>
+      <description>操作系统复习资料 根据《计算机操作系统教程》(第四版)整理 整理人:scnace 一般I/O方式: 联机I/O方式: 适用:交互式系统 实现方式:外围设</description>
+    </item>
+    
+    <item>
+      <title>软件工程考试整理</title>
+      <link>https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/</guid>
+      <description>题型： 选择题：15x2 = 30分 填空题：10x1 = 10分 简答题：4~5题，共30分。 分析设计题：3题，共30分。 第1章 什么是软件危机，典型表现</description>
+    </item>
+    
+  </channel>
+</rss>

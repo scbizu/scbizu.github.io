@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Astral on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/astral/</link>
+    <description>Recent content in Astral on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/astral/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>嘛,说说我与Astral的故事吧(第一弹)</title>
+      <link>https://blog.scnace.me/post/the-story-about-astal-and-me-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/the-story-about-astal-and-me-1/</guid>
+      <description>嘛,说说我和Astral的故事吧(第一弹) From Wechat bot to Telegram bot 在序篇中,我曾提到写Astral的初衷是个Wechat Bot,所以,在引入了wecha</description>
+    </item>
+    
+    <item>
+      <title>嘛,说说我与Astral的故事吧(第零弹)</title>
+      <link>https://blog.scnace.me/post/astral-0ea3c4c0-acbf-48be-a1af-9660474dd0e2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/astral-0ea3c4c0-acbf-48be-a1af-9660474dd0e2/</guid>
+      <description>嘛,说说我与Astral的故事吧(第零弹) GitHub Repo Who is Astral Astral是个有趣的名字,这个名字出自《游戏王Zexal》, 是主角游马来自异世界(星光</description>
+    </item>
+    
+  </channel>
+</rss>

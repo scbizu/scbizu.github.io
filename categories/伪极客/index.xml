@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>伪极客 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/categories/%E4%BC%AA%E6%9E%81%E5%AE%A2/</link>
+    <description>Recent content in 伪极客 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    <lastBuildDate>Fri, 30 Jun 2017 02:15:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.scnace.me/categories/%E4%BC%AA%E6%9E%81%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用adb&#43;fastboot升级一加5到氧OS</title>
+      <link>https://blog.scnace.me/post/oneplus5-with-oxygen/</link>
+      <pubDate>Fri, 30 Jun 2017 02:15:10 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/oneplus5-with-oxygen/</guid>
+      <description>舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强</description>
+    </item>
+    
+  </channel>
+</rss>

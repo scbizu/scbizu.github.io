@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>golang bufio实验 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="Who is he? 好了 开始今天的包 嗯 今天的包的名字是bufio . 他呢 就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O 他包含了io.Reader" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/golang-bufio%E5%AE%9E%E9%AA%8C/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="golang bufio实验" />
+<meta property="og:description" content="Who is he? 好了 开始今天的包 嗯 今天的包的名字是bufio . 他呢 就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O 他包含了io.Reader" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/golang-bufio%E5%AE%9E%E9%AA%8C/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="golang bufio实验">
+<meta itemprop="description" content="Who is he? 好了 开始今天的包 嗯 今天的包的名字是bufio . 他呢 就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O 他包含了io.Reader">
+
+
+
+<meta itemprop="wordCount" content="975">
+
+
+
+<meta itemprop="keywords" content="in action,golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="golang bufio实验"/>
+<meta name="twitter:description" content="Who is he? 好了 开始今天的包 嗯 今天的包的名字是bufio . 他呢 就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O 他包含了io.Reader"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">golang bufio实验</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            
+              <a href="/categories/golang/"> golang </a>
+            
+          </div>
+        <span class="more-meta"> 975 words </span>
+        <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#who-is-he">Who is he?</a></li>
+<li><a href="#how-to">How TO?</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="who-is-he">Who is he?</h2>
+
+<p>好了 开始今天的包</p>
+
+<p>嗯  今天的包的名字是bufio  .</p>
+
+<p>他呢   就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O   他包含了io.Reader 和 io.Writer 。</p>
+
+<h2 id="how-to">How TO?</h2>
+
+<p>在用之前当然先要New一下咯。</p>
+
+<p>Like this:</p>
+
+<pre><code>scanner:=bufio.NewScanner(r io.Reader)
+</code></pre>
+
+<p>这里的r io.Reader是一个io.Reader类型的参数,比如os.Stdin,net.conn啥的 都是可以直接扔进去的。</p>
+
+<p>当然 有io.Reader 怎么能没有io.Writer 说了他们是一对啊(雾</p>
+
+<p>So,Like this:</p>
+
+<pre><code>writer:=bufio.NewWriter(r io.Writer)
+</code></pre>
+
+<p>同理   这个io.Writer里面也可以扔stdout了</p>
+
+<p>然后就是从缓存中慢慢输出的过程了</p>
+
+<p>就像这样(默认引入了fmt包):</p>
+
+<pre><code>fmt.Fprint(writer,&quot;Hello&quot;)
+
+fmt.Fprint(writer,&quot;World&quot;)
+
+//At last Flush it!
+
+writer.Flush();
+</code></pre>
+
+<p>啊呀 ，偏了偏了;</p>
+
+<p>Scanner还没写完诶；</p>
+
+<p>不过其实也大同小异；</p>
+
+<p>也不过是遍历 io.Reader嘛 ;</p>
+
+<p>遍历io.Reader需要用到r.Scan()方法;</p>
+
+<p>来看下Scan方法的原型</p>
+
+<pre><code>func (s *Scanner) Scan() bool
+</code></pre>
+
+<p>So, Scan方法返回的是boolean值,不加的话 会直接跳过输入(Stdin) 。所以,想要遍历输入的话 一定要加上scanner.Scan()。</p>
+
+<p>所以 我们就来试试呗:</p>
+
+<pre><code>for scanner.Scan(){
+    fmt.Println(scanner.Text())
+}
+</code></pre>
+
+<p>(s *Scanner).Text()方法就不用说了 就是获取到scanner里面的那一坨,然后把string类型扔回给你;</p>
+
+<p>所以这样就可以实现I/O了(不是脚本哦!)</p>
+
+<p>既然写都写了  那肯定不能忘掉(s *Scanner).Split()咯</p>
+
+<p>Split()好用的地方应该是在可以带一个Split func吧~</p>
+
+<p>比如bufio.ScanWords()就是一个split func  (用来分割输入的  逐字咯)</p>
+
+<p>再如bufio.ScanBytes()也是一个split func()  (返回字节)</p>
+
+<p>还有bufio.ScanLines()也是一个split func() (返回一行&lt;-带有换行标记的行  返回的行不会带有这些标记 所以可能是空行 可以用来做读到末尾的flag)</p>
+
+<p>(不知不觉就队形了~)</p>
+
+<p>喂 不要忘了 转码输出的我啊  bufio.ScanRune()如是喊道  (他可以返回字符的UTF8字符 万恶的中文字?(大雾))</p>
+
+<p>bufio 的 Type的话好像就剩一个bufio.Reader()没有提起了 然而我都不想提&gt;&hellip;&lt; 因为跟Writer的用法实际上差不了多少。</p>
+
+<p>所以 就写到这里吧  有什么不对的地方尽管拍砖  预计下一个net包 明天抵达战场(FLAG高高挂起  被歪果仁评论了 感觉好稀奇  虽然我知道只是。。。。。某个莫名其妙的爬虫或者钓鱼网站看上我了(哭</p>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/01/gopher_head.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/01/gopher_head-300x161.png" alt="gopher_head" /></a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/in-action/">in action</a>
+          
+          <a href="/tags/golang/">golang</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/goeclipse%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">goeclipse配置指南</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/golang-channel%E5%AE%9E%E9%AA%8C/">
+            <span class="next-text nav-default">golang channel实验</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

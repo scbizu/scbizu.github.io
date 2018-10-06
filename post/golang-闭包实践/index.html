@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>golang 闭包实践 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="Problem 前几天在 知乎 上看到了一个很好的问题 回答中也有很多干货 于是 我也想加深一下对闭包的理解 于是 写下了这篇部落格。 Description 作用域(scopes) 作用域,它" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/golang-%E9%97%AD%E5%8C%85%E5%AE%9E%E8%B7%B5/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="golang 闭包实践" />
+<meta property="og:description" content="Problem 前几天在 知乎 上看到了一个很好的问题 回答中也有很多干货 于是 我也想加深一下对闭包的理解 于是 写下了这篇部落格。 Description 作用域(scopes) 作用域,它" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/golang-%E9%97%AD%E5%8C%85%E5%AE%9E%E8%B7%B5/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="golang 闭包实践">
+<meta itemprop="description" content="Problem 前几天在 知乎 上看到了一个很好的问题 回答中也有很多干货 于是 我也想加深一下对闭包的理解 于是 写下了这篇部落格。 Description 作用域(scopes) 作用域,它">
+
+
+
+<meta itemprop="wordCount" content="1195">
+
+
+
+<meta itemprop="keywords" content="in action,golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="golang 闭包实践"/>
+<meta name="twitter:description" content="Problem 前几天在 知乎 上看到了一个很好的问题 回答中也有很多干货 于是 我也想加深一下对闭包的理解 于是 写下了这篇部落格。 Description 作用域(scopes) 作用域,它"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">golang 闭包实践</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            
+              <a href="/categories/golang/"> golang </a>
+            
+          </div>
+        <span class="more-meta"> 1195 words </span>
+        <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#some-codes">Some Codes</a></li>
+<li><a href="#extension">Extension</a>
+<ul>
+<li><a href="#topic-真正的对象-vs-闭包">topic 真正的对象 vs 闭包</a></li>
+</ul></li>
+<li><a href="#the-end">THE END</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="problem">Problem</h2>
+
+<p>前几天在 <a href="https://www.zhihu.com/question/34210214">知乎</a>  上看到了一个很好的问题</p>
+
+<p>回答中也有很多干货</p>
+
+<p>于是 我也想加深一下对闭包的理解</p>
+
+<p>于是  写下了这篇部落格。</p>
+
+<h2 id="description">Description</h2>
+
+<ul>
+<li><strong>作用域(scopes)</strong></li>
+</ul>
+
+<p>作用域,它的名字就是对它很好的解释,闭包使得<strong>内部函数可以访问外部的变量。</strong></p>
+
+<p>这种作用域往往就是用(匿名)函数来实现的。</p>
+
+<p>所以 从理解闭包来说  把闭包理解为 <strong>有(记忆)状态的函数块</strong> 比较容易。就像MDN上(对于JavaScript上)写的一样:</p>
+
+<blockquote>
+<p>Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure &lsquo;remembers&rsquo; the environment in which it was created.</p>
+</blockquote>
+
+<p>我们可以利用这个函数(作用域)对一些外部变量进行操作 从而达到我们的目的。</p>
+
+<ul>
+<li><strong>把函数作为值传递(First-Class)</strong></li>
+</ul>
+
+<p>在闭包中,我们把 <strong>函数视为头等公民(first class)</strong> ,把函数当做变量来传递;我们在函数内部随便玩,以达到我们的目的 (比如我们喜欢把函数值赋给变量啦,还是直接return这个函数啦什么的)这么做的好处就是 <strong>打破了原本程序的封闭性,原本的程序就是外部Scope归外部,函数内部的Scope归内部,函数内部的变量,方法什么的都是存在栈(Stack)上的,随着这个的scope的结束而被GC拖走</strong> 。现在就是在两个环境间开了扇传送门,在某个变量快要被GC拖走的时候 我们把他通过闭包保留下来 给他造个分身留下来(有OOP基础的看到这里 也许会将它与this.xxx比较  这个我接下来说~)</p>
+
+<p>当然,匿名函数与闭包才是最棒的CP~ 可以直接在主代码里给扔个func什么的最棒了(如何编写不可维护的代码即视感2333)</p>
+
+<h2 id="some-codes">Some Codes</h2>
+
+<pre><code>//written in Golang
+
+//Created By scance
+
+    package main
+    //Golang的闭包实验
+    import (
+    &quot;fmt&quot;
+    )
+    //闭包写法  返回两个函数
+    func closure(num int)(func(),func(int)){
+        //匿名函数
+        first:=func(){
+            num++
+            fmt.Println(num)    
+            }
+        //匿名函数
+        second:=func(xnum int){
+            xnum++
+            fmt.Println(xnum)
+            }
+        //返回函数
+        return first,second
+        }
+    func main() {
+      //Golang的双返回值写法
+      first,second:=closure(10)
+      first() //11
+     //假装要把12存起来
+      second(12) //13
+      second(12) //13
+    }
+</code></pre>
+
+<pre><code>    package main
+    //Golang的闭包实验
+    import (
+    &quot;fmt&quot;
+    )
+    //第二个闭包
+    func second_closure() (func()){
+        //局部变量count
+        count:=0
+
+        func1:=func(){
+            count++
+            fmt.Println(count)
+            //log.Fatal(count)      
+            }
+        //匿名函数返回
+        return func1
+        }
+    func main() {
+        //函数返回值
+    //      func1:=second_closure()
+    //      func1()  //1
+    //      func1()   //2
+    }
+
+</code></pre>
+
+<pre><code>    package main
+    //Golang的闭包实验
+    import (
+    &quot;fmt&quot;
+    )
+    func main() {
+        //第三个匿名函数
+       func2:=func()(func()){
+            count2:=0
+
+            return func(){
+                count2++
+                fmt.Println(count2)
+                }
+            }()
+
+       func2() //1
+       func2()  //2
+    }
+
+</code></pre>
+
+<h2 id="extension">Extension</h2>
+
+<h3 id="topic-真正的对象-vs-闭包">topic 真正的对象 vs 闭包</h3>
+
+<p>在OOP编程中 我往往会倾向于  用this.xxx来表示一个变量 使它跟这个Class一起共存亡。</p>
+
+<p>但是在函数为主的语言中(JavaScript,Golang等)   我觉得用闭包来实现这种 <strong>switch scope</strong> 不是显得更优(zhuang)雅(bi)嘛 !少写了一个Class不说(主要是懒),可以让这个外部变量打入这个函数式的内部环境,不是显得更方便嘛!</p>
+
+<p>所以  其实 <strong>从实现的效果来说没什么区别</strong> (gc方面其实还有区别),但是用工具而已,纠结太太太深也不好，所以，就当做没区别好了(逃</p>
+
+<p><strong>可能有些地方BB的不怎么准确  我会在接下来更深入的学习中改的(拜</strong></p>
+
+<h2 id="the-end">THE END</h2>
+
+<p>离散数学老师: 所以你在说什么?</p>
+
+<p>[离散数学中的闭包集合](<a href="https://zh.m.wikipedia.org/wiki/%E9%97%AD%E5%8C%85_(%E6%95%B0%E5%AD%A6">https://zh.m.wikipedia.org/wiki/%E9%97%AD%E5%8C%85_(%E6%95%B0%E5%AD%A6</a>)</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/in-action/">in action</a>
+          
+          <a href="/tags/golang/">golang</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">golang panic和recover实验小结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/golang%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%99%E6%B3%95/">
+            <span class="next-text nav-default">golang多返回值写法</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

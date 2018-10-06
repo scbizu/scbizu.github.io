@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crawler on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/crawler/</link>
+    <description>Recent content in Crawler on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/crawler/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于代理池</title>
+      <link>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/</guid>
+      <description>写在前面 在很多个爬虫死于非命之后,果然不出所料,接到了新的需求:新增代理池.其实也不用说,在Web站点和爬虫的斗争中,爬虫太容易就可以伪装自</description>
+    </item>
+    
+    <item>
+      <title>有可能是一种思路不一样的网站内容更新的监测方案</title>
+      <link>https://blog.scnace.me/post/etag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/etag/</guid>
+      <description>Etag(实体标签) ETag是一个不透明的标识符，由Web服务器根据URL上的资源的特定版本而指定。如果那个URL上的资源内容改变，一个新的</description>
+    </item>
+    
+    <item>
+      <title>用CookieJar获取一次302/301跳转的Cookie</title>
+      <link>https://blog.scnace.me/post/%E7%94%A8cookiejar%E6%8B%A6%E6%88%AA%E4%B8%80%E6%AC%A1302%E8%B7%B3%E8%BD%AC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E7%94%A8cookiejar%E6%8B%A6%E6%88%AA%E4%B8%80%E6%AC%A1302%E8%B7%B3%E8%BD%AC/</guid>
+      <description>问题描述: 在遇到需要登录的场景下,往往需要一次302/301跳转,然而我们的Client会跟着一起跳转,这时如果获取response.Coo</description>
+    </item>
+    
+  </channel>
+</rss>

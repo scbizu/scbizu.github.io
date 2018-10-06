@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>记一个有趣的bug - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="先看代码 Go Playground package main import ( &amp;quot;fmt&amp;quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&amp;quot;an&amp;quot;, &amp;quot;interesting&amp;quot;, &amp;quot;bug&amp;quot;} var bugs []*bug bugObj := &amp;amp;bug{ cause: &amp;quot;sth&amp;quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&amp;quot;bug:%v&amp;quot;, *b) } } 其实,不难看" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="记一个有趣的bug" />
+<meta property="og:description" content="先看代码 Go Playground package main import ( &quot;fmt&quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;} var bugs []*bug bugObj := &amp;bug{ cause: &quot;sth&quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&quot;bug:%v&quot;, *b) } } 其实,不难看" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="记一个有趣的bug">
+<meta itemprop="description" content="先看代码 Go Playground package main import ( &quot;fmt&quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;} var bugs []*bug bugObj := &amp;bug{ cause: &quot;sth&quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&quot;bug:%v&quot;, *b) } } 其实,不难看">
+
+
+
+<meta itemprop="wordCount" content="656">
+
+
+
+<meta itemprop="keywords" content="go," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="记一个有趣的bug"/>
+<meta name="twitter:description" content="先看代码 Go Playground package main import ( &quot;fmt&quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;} var bugs []*bug bugObj := &amp;bug{ cause: &quot;sth&quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&quot;bug:%v&quot;, *b) } } 其实,不难看"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">记一个有趣的bug</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            
+          </div>
+        <span class="more-meta"> 656 words </span>
+        <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#先看代码">先看代码</a></li>
+<li><a href="#why">why ?</a></li>
+<li><a href="#改正">改正</a></li>
+<li><a href="#随想">随想</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="先看代码">先看代码</h2>
+
+<blockquote>
+<p><a href="https://play.golang.org/p/FbDGB-h5RP8">Go Playground</a></p>
+</blockquote>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+)
+
+type bug struct {
+	name  string
+	cause string
+}
+
+func main() {
+
+	bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;}
+
+	var bugs []*bug
+
+	bugObj := &amp;bug{
+		cause: &quot;sth&quot;,
+	}
+
+	for idx, bn := range bugNames {
+		bugs = append(bugs, bugObj)
+		bugs[idx].name = bn
+	}
+
+	for _, b := range bugs {
+		fmt.Printf(&quot;bug:%v&quot;, *b)
+	}
+
+}
+
+
+</code></pre>
+
+<p>其实,不难看出,这段代码想要的结果是:<code>bug:{an sth}bug:{interesting sth}bug:{bug sth}</code>,但是结果却变成了:<code>bug:{bug sth}bug:{bug sth}bug:{bug sth}</code></p>
+
+<h2 id="why">why ?</h2>
+
+<p>可能熟悉指针指针的同学一眼就看出来了,这么写是显然不合理的,因为在循环外部的<code>bugObj</code>这里不是一个结构体,而是一个结构体指针,所以,在循环里面<code>bugs[idx]</code>其实操作的一直是同一个<code>bugObj</code>,也就是说,这边的更新操作是不成立的。</p>
+
+<p>具体点说,可以尝试说明下这个循环里面都发生了什么:</p>
+
+<ul>
+<li>idx == 0; bugs[0].name = &ldquo;an&rdquo; =&gt; <code>[]*bug{&amp;bug{name:&quot;an&quot;,cause:&quot;sth&quot;}}</code>  &mdash; √</li>
+<li>idx == 1; bugs[1].name = &ldquo;interesting&rdquo; =&gt; <code>[]*bug{&amp;bug{name:&quot;interesting&quot;,cause:&quot;sth&quot;},&amp;bug{name:&quot;interesting&quot;,cause:&quot;sth&quot;}}</code> &mdash; x(在这次操作中，<code>bugs[0](idx == 0)</code>和 <code>bugs[1](idx == 1)</code>其实指向的是同一个<code>bugObj</code>)</li>
+<li>idx == 2; bugs[2].name = &ldquo;bug&rdquo; =&gt; 同上</li>
+</ul>
+
+<h2 id="改正">改正</h2>
+
+<p>改正其实也很简单,不改变原需求的情况下,把初始化bugObj那段代码移动到循环里面来就是了。</p>
+
+<p>也就是:</p>
+
+<blockquote>
+<p><a href="https://play.golang.org/p/RRJZcZInSds">Go PlayGround</a></p>
+</blockquote>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+)
+
+type bug struct {
+	name  string
+	cause string
+}
+
+func main() {
+
+	bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;}
+
+	var bugs []*bug
+
+	for _, bn := range bugNames {
+
+		bugObj := &amp;bug{
+			name:  bn,
+			cause: &quot;sth&quot;,
+		}
+
+		bugs = append(bugs, bugObj)
+
+	}
+
+	for _, b := range bugs {
+		fmt.Printf(&quot;bug:%v&quot;, *b)
+	}
+
+}
+
+</code></pre>
+
+<h2 id="随想">随想</h2>
+
+<p>滥用指针不是什么好事情,有指针机制可能会让语言很灵活,但是用之前(至少在Code Review的时候)也要先想想清楚,之前跟SY大佬(和Go TG Bot API群的同学)讨论过在TG BOT SDK里面很多地方传的都是结构体数组,而不是结构体指针数组的问题,得到的回答是<code>it is enough</code>。确实是让人无法反驳但是又没啥错的回答呢。虽然这不关上面的那个bug啥事,但是只是想说 <strong>好用的东西也不要去滥用</strong>。</p>
+
+<p>以上。来自一只很久很久没有更新博客的菜鸡。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/go/">go</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">简化数组操作</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/">
+            <span class="next-text nav-default">记一次博客搬家</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

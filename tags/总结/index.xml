@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>总结 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/%E6%80%BB%E7%BB%93/</link>
+    <description>Recent content in 总结 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2016年度总结之认知</title>
+      <link>https://blog.scnace.me/post/2016%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B9%8B%E8%AE%A4%E7%9F%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/2016%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B9%8B%E8%AE%A4%E7%9F%A5/</guid>
+      <description>前面的路似乎向来坑坑洼洼,但是望望之前走过的路,也不是这样吗?这时,即便是你,也会露出不同的笑容吧。 回顾下自己的2016，似乎发生了很多以后</description>
+    </item>
+    
+    <item>
+      <title>下一站,何去何从</title>
+      <link>https://blog.scnace.me/post/nextstep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/nextstep/</guid>
+      <description>终于决定还是离职了,大概是对自己无能的一种默认吧。 Bye，NDASEC 其实早在某短离职的时候 我也想过是不是我也该换个坑。但是,却迟迟没有下决</description>
+    </item>
+    
+  </channel>
+</rss>

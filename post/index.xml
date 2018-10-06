@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/post/</link>
+    <description>Recent content in Posts on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    <lastBuildDate>Sat, 07 Oct 2017 00:06:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.scnace.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nace&#39;s CookBook</title>
+      <link>https://blog.scnace.me/post/cookbook/</link>
+      <pubDate>Sat, 07 Oct 2017 00:06:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/cookbook/</guid>
+      <description>CookBook 这里会记录一些Nace经常碰到的一些不容易记住的编程相关的 专业术语 和 小Tips ; About Code 位运算符 位运算符 语义/Semantics e.g. &amp;amp; 按位与/A</description>
+    </item>
+    
+    <item>
+      <title>效率神器之Alfred Workflow</title>
+      <link>https://blog.scnace.me/post/alfredworkflowv3/</link>
+      <pubDate>Mon, 02 Oct 2017 22:25:21 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/alfredworkflowv3/</guid>
+      <description>效率神器之Alfred Workflow 一个Go的Alfred Workflow简单封装库: https://github.com/scbizu/alfredV3 简介 生活在Mac上的工作者肯定对效率神器 Alfred 不会陌生, 免费版的AP</description>
+    </item>
+    
+    <item>
+      <title>用adb&#43;fastboot升级一加5到氧OS</title>
+      <link>https://blog.scnace.me/post/oneplus5-with-oxygen/</link>
+      <pubDate>Fri, 30 Jun 2017 02:15:10 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/oneplus5-with-oxygen/</guid>
+      <description>舍弃H2OS 虽然,H2OS已经大幅接近原生,但是毕竟是针对国内大环境定制化的系统,刚拿到手看到预装的 百毒输入法OnePlus定制版 就有一种强</description>
+    </item>
+    
+    <item>
+      <title>那么就开始使用Context吧</title>
+      <link>https://blog.scnace.me/post/head-to-context/</link>
+      <pubDate>Sun, 25 Jun 2017 16:49:56 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/head-to-context/</guid>
+      <description>Context并不是银弹,使用时需注意其使用场景。 Context golang的context包的&amp;rdquo;前身&amp;rdquo;来自golang.org</description>
+    </item>
+    
+    <item>
+      <title>2016年度总结之认知</title>
+      <link>https://blog.scnace.me/post/2016%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B9%8B%E8%AE%A4%E7%9F%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/2016%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B9%8B%E8%AE%A4%E7%9F%A5/</guid>
+      <description>前面的路似乎向来坑坑洼洼,但是望望之前走过的路,也不是这样吗?这时,即便是你,也会露出不同的笑容吧。 回顾下自己的2016，似乎发生了很多以后</description>
+    </item>
+    
+    <item>
+      <title>Docker下搭建Elasticsearch及其集群</title>
+      <link>https://blog.scnace.me/post/docker%E4%B8%8Bes%E5%8F%8A%E5%85%B6%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/docker%E4%B8%8Bes%E5%8F%8A%E5%85%B6%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+      <description>Why Docker ? 作为当下大热的Docker,一直有用到工作中的冲动。这次正好有个集群搭建的需求,就毫不犹豫,一脚踏入Docker,容器化的概念方便部署</description>
+    </item>
+    
+    <item>
+      <title>JSON的语义化挑战--Collection&#43;JSON</title>
+      <link>https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/</guid>
+      <description>背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然</description>
+    </item>
+    
+    <item>
+      <title>ShadowSocksX查看已经储存的Server信息</title>
+      <link>https://blog.scnace.me/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/</guid>
+      <description>我什么都不知道,就单纯记录下之后可能用的到的命令行: ʕ ◔ ϖ ◔ ʔ ➜ ~ cd ~/Library ʕ ◔ ϖ ◔ ʔ ➜ Library cd Preferences ʕ ◔ ϖ ◔ ʔ ➜ Preferences cp ~/Library/Preferences/clowwindy.ShadowsocksX.plist ~/backups #备份plist 以防之后操作失误</description>
+    </item>
+    
+    <item>
+      <title>goeclipse配置指南</title>
+      <link>https://blog.scnace.me/post/goeclipse%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/goeclipse%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid>
+      <description>之前用的是Liteide 但是觉得在Lite里面敲代码一点都不优雅啊，所以准备转Goclipse了 还是Eclipse大法吼啊。。 参考文章：Go</description>
+    </item>
+    
+    <item>
+      <title>golang bufio实验</title>
+      <link>https://blog.scnace.me/post/golang-bufio%E5%AE%9E%E9%AA%8C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang-bufio%E5%AE%9E%E9%AA%8C/</guid>
+      <description>Who is he? 好了 开始今天的包 嗯 今天的包的名字是bufio . 他呢 就是证明golang不单单是脚本语言的证据! 他实现了缓冲 I/O 他包含了io.Reader</description>
+    </item>
+    
+    <item>
+      <title>golang channel实验</title>
+      <link>https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/</guid>
+      <description>信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一</description>
+    </item>
+    
+    <item>
+      <title>golang panic和recover实验小结</title>
+      <link>https://blog.scnace.me/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/</guid>
+      <description>认识Panic和Recover Panic 这是Golang中的一个内建函数，可以中断原有的控制流程，进入一个令人恐慌的流程中。当函数F调用Panic，</description>
+    </item>
+    
+    <item>
+      <title>golang 闭包实践</title>
+      <link>https://blog.scnace.me/post/golang-%E9%97%AD%E5%8C%85%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang-%E9%97%AD%E5%8C%85%E5%AE%9E%E8%B7%B5/</guid>
+      <description>Problem 前几天在 知乎 上看到了一个很好的问题 回答中也有很多干货 于是 我也想加深一下对闭包的理解 于是 写下了这篇部落格。 Description 作用域(scopes) 作用域,它</description>
+    </item>
+    
+    <item>
+      <title>golang多返回值写法</title>
+      <link>https://blog.scnace.me/post/golang%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%99%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%99%E6%B3%95/</guid>
+      <description>看热闹不嫌事大系列&amp;mdash;&amp;mdash;&amp;ndash;&amp;gt;如何看待函数返回多个值的设计? From 知乎 这个号称是Golang特性之一的 多返</description>
+    </item>
+    
+    <item>
+      <title>golang常用数据结构</title>
+      <link>https://blog.scnace.me/post/golang%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description>原post:RUSS Cox Blog Go Data Structure 一些常用数据格式如下所示: 图解： i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是</description>
+    </item>
+    
+    <item>
+      <title>golang的一个OCR库</title>
+      <link>https://blog.scnace.me/post/golang%E7%9A%84%E4%B8%80%E4%B8%AAocr%E5%BA%93/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang%E7%9A%84%E4%B8%80%E4%B8%AAocr%E5%BA%93/</guid>
+      <description>嗯，这篇要记录的是 Golang的一个OCR库。名字是 gosseract (基于用途最广泛的一个OCR库tesseract) 遇到的问题是 按照 说明 install tesseract-ocr install go install gosseract go get</description>
+    </item>
+    
+    <item>
+      <title>golang结构体和json之间的转换小结</title>
+      <link>https://blog.scnace.me/post/golang%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8Cjson%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B0%8F%E7%BB%93/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/golang%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8Cjson%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B0%8F%E7%BB%93/</guid>
+      <description>golang提供了结构体到特定格式json/xml/&amp;hellip; 转换的便捷途径 我们通过json包 很方便的就可以进行struct到json</description>
+    </item>
+    
+    <item>
+      <title>j2ee复习</title>
+      <link>https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/j2ee%E5%A4%8D%E4%B9%A0/</guid>
+      <description>J2EE复习资料 原稿:12届学长 区长 编辑者:13届学沫 nace java的编译命令:java 和 javac javac demo.java java demo Tomcat的命令:startup和shut</description>
+    </item>
+    
+    <item>
+      <title>linux mint下修改默认中文文件夹</title>
+      <link>https://blog.scnace.me/post/linux-mint%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/linux-mint%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9/</guid>
+      <description>自从昨天晚上由于吃了中文命名文件夹的亏,所以把OS的所有自带文件夹也改变为英文名字。。 然后 今天早上问题就出现了。。。 以前 桌面 目录的文件(.d</description>
+    </item>
+    
+    <item>
+      <title>php emoji表情无法获取问题</title>
+      <link>https://blog.scnace.me/post/php-emoji%E8%A1%A8%E6%83%85%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/php-emoji%E8%A1%A8%E6%83%85%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</guid>
+      <description>why ? 带Emoji表情的用户名简直就是社交用户三大毒瘤之一(e.g. Instagram,facebook,and wechat); 然而,跟用户说 我不让你用Emoji表情 可能会极大程度激发用户的逆反心理</description>
+    </item>
+    
+    <item>
+      <title>php&amp;jQuery 实现动态链接</title>
+      <link>https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</guid>
+      <description>之前已经遇到过很多次这种问题了。 每次都要去看一遍sf上的解决方案,由于又不是一毛一样的问题,所以,每次都要自己再想一遍整个流程。 So，赶脚 很</description>
+    </item>
+    
+    <item>
+      <title>xampp CORS跨域请求失败</title>
+      <link>https://blog.scnace.me/post/xampp-cors%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/xampp-cors%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5/</guid>
+      <description>What is CORS 咳咳,CORS是一种跨域请求,全称是Cross Origin Resource Sharing; 如果 之前逛过我部落格的同学们可以发现,窝的文章分享侧栏就是因为CORS disabl</description>
+    </item>
+    
+    <item>
+      <title>一个weui&#43;we7图片上传的方案</title>
+      <link>https://blog.scnace.me/post/%E4%B8%80%E4%B8%AAweui&#43;we7%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%80%E4%B8%AAweui&#43;we7%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%B9%E6%A1%88/</guid>
+      <description>写在前面： weui(微信UI)地址传送门 we7 6.0 现已停止维护 为防止侵权 这边就不给传送门辣(百度云盘搜就可以找到,这就不关我的事了) 此文章要解决的</description>
+    </item>
+    
+    <item>
+      <title>一次爬方正教务处的成功实践</title>
+      <link>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/</guid>
+      <description>前戏 不知道从什么时候开始,搞教务处已经成了我山CS专业的学生学习一门新的WEB语言(只要跟web沾边的) Java PHP Python NodeJS Golang&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>一次爬方正教务处的成功实践(第二弹)----jwcconn的第一次Release</title>
+      <link>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%AD%A3%E6%96%B9%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E4%BA%8B%E4%BB%B6%E4%B8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%AD%A3%E6%96%B9%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E4%BA%8B%E4%BB%B6%E4%B8%8B/</guid>
+      <description>前情回顾: 之前的一次爬教务处的成功实践里面记录了一些在爬教务处时需要注意的点。并PO出了一份Beego写的教务处的API版本.但是由于没有前</description>
+    </item>
+    
+    <item>
+      <title>下一站,何去何从</title>
+      <link>https://blog.scnace.me/post/nextstep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/nextstep/</guid>
+      <description>终于决定还是离职了,大概是对自己无能的一种默认吧。 Bye，NDASEC 其实早在某短离职的时候 我也想过是不是我也该换个坑。但是,却迟迟没有下决</description>
+    </item>
+    
+    <item>
+      <title>从遍历DOM树谈BFS和DFS</title>
+      <link>https://blog.scnace.me/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/</guid>
+      <description>工作点滴(闲谈) 这是工作点滴目录下的第一篇文章,上班确实累,老大其实也没怎么带我,就说了几个需求,让我自己去完成,最后完成帮我做次Code/</description>
+    </item>
+    
+    <item>
+      <title>修改Golang template语法</title>
+      <link>https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</guid>
+      <description>前言 记得之前看过V站(v2ex)的一个讨论帖,内容就是关于前端的模板语法会跟后端的模板语法冲突.我也同意 统一渲染 的观点,比如 由后端统一进行d</description>
+    </item>
+    
+    <item>
+      <title>关于JSON的思索</title>
+      <link>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</guid>
+      <description>JavaScript Object Notation 简述 JSON是这几年一下子火爆起来的数据交换格式,在前后端的交互中,JSON也似乎变成了一门必修课,相比之下,反而像XML之类的格式在</description>
+    </item>
+    
+    <item>
+      <title>关于golang的延后执行defer</title>
+      <link>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/</guid>
+      <description>defer:在函数执行到最后时,再进行调用声明了defer的函数。 DEMO： package main import ( &amp;quot;fmt&amp;quot; ) func defer_first(){ fmt.Println(&amp;quot;Hi ! I&#39;m first defer&amp;quot;); } func dataOp(data1 float32 ,data2 float32)(float32,float32){ return data1+data2,data1*data2 } //只有一个defe</description>
+    </item>
+    
+    <item>
+      <title>关于set-cookie的注意事项</title>
+      <link>https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
+      <description>Set-Cookie 关于Set-Cookie的具体说明可以在MDN(参见RFC 6265 section 4.1)上很容易翻到,这边就不细说了。简单说下,就是浏览器(B端)发起请求(</description>
+    </item>
+    
+    <item>
+      <title>关于代理池</title>
+      <link>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/</guid>
+      <description>写在前面 在很多个爬虫死于非命之后,果然不出所料,接到了新的需求:新增代理池.其实也不用说,在Web站点和爬虫的斗争中,爬虫太容易就可以伪装自</description>
+    </item>
+    
+    <item>
+      <title>嘛,说说我与Astral的故事吧(第一弹)</title>
+      <link>https://blog.scnace.me/post/the-story-about-astal-and-me-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/the-story-about-astal-and-me-1/</guid>
+      <description>嘛,说说我和Astral的故事吧(第一弹) From Wechat bot to Telegram bot 在序篇中,我曾提到写Astral的初衷是个Wechat Bot,所以,在引入了wecha</description>
+    </item>
+    
+    <item>
+      <title>嘛,说说我与Astral的故事吧(第零弹)</title>
+      <link>https://blog.scnace.me/post/astral-0ea3c4c0-acbf-48be-a1af-9660474dd0e2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/astral-0ea3c4c0-acbf-48be-a1af-9660474dd0e2/</guid>
+      <description>嘛,说说我与Astral的故事吧(第零弹) GitHub Repo Who is Astral Astral是个有趣的名字,这个名字出自《游戏王Zexal》, 是主角游马来自异世界(星光</description>
+    </item>
+    
+    <item>
+      <title>天朝局域网内go get的正确姿势</title>
+      <link>https://blog.scnace.me/post/%E4%B8%BAgo-get%E6%8A%A4%E8%88%AA-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E4%B8%BAgo-get%E6%8A%A4%E8%88%AA-/</guid>
+      <description>前言 Golang获取包最简单的方法就是直接执行go get xxxx,与此同时,这也是Golang被诟病很多的一点 非常不利于版本管理 个人的工作环境可</description>
+    </item>
+    
+    <item>
+      <title>开启Xampp phpmyadmin外网访问</title>
+      <link>https://blog.scnace.me/post/%E5%BC%80%E5%90%AFxampp-phpmyadmin%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%BC%80%E5%90%AFxampp-phpmyadmin%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/</guid>
+      <description>Xampp确实是样好东西,既然号称是Apache Friend,那么当然也帮我们搭好了PHP的集成环境。 然而, 在Xampp的更新中,phpmy</description>
+    </item>
+    
+    <item>
+      <title>当我们ssh {{user}}@{{ip}} 发生了什么?</title>
+      <link>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Essh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Essh/</guid>
+      <description>当我们需要登录我们的云服务器时,经常会用到ssh命令,但是当我们ssh root@192.168.1.1 时到底发生了什么? 基于ssh-1协议的描述</description>
+    </item>
+    
+    <item>
+      <title>当现实变得触手可及</title>
+      <link>https://blog.scnace.me/post/%E5%BD%93%E7%8E%B0%E5%AE%9E%E5%8F%98%E5%BE%97%E8%A7%A6%E6%89%8B%E5%8F%AF%E4%BB%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%BD%93%E7%8E%B0%E5%AE%9E%E5%8F%98%E5%BE%97%E8%A7%A6%E6%89%8B%E5%8F%AF%E4%BB%A5/</guid>
+      <description>试着劝过自己 别急 等大厂秋招吧 呐 大概就是这颗躁动不安的心吧 序 又深夜了,突然,提不起什么兴趣去继续看摊开在床上的 《设计模式之禅》.上个礼拜本来打</description>
+    </item>
+    
+    <item>
+      <title>思想</title>
+      <link>https://blog.scnace.me/post/%E6%80%9D%E6%83%B3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%80%9D%E6%83%B3/</guid>
+      <description>前言 其实,作为一个程序猿预备役，我是非常不情愿去讨论政治话题的，在互联网的世界里,中国的环境是不如意的。也许是犹豫国家的社会性质本来就不同，</description>
+    </item>
+    
+    <item>
+      <title>感谢15有你们</title>
+      <link>https://blog.scnace.me/post/%E6%84%9F%E8%B0%A215%E6%9C%89%E4%BD%A0%E4%BB%AC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%84%9F%E8%B0%A215%E6%9C%89%E4%BD%A0%E4%BB%AC/</guid>
+      <description>起因：除夕好多朋友来拜年啊 有熟的 有已经生（疏）了的。然后有些人的祝福实在没空回啊，然后，突发奇想要写一篇回忆杀来说说跟这些人拜年的人的交集了</description>
+    </item>
+    
+    <item>
+      <title>操作系统复习</title>
+      <link>https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</guid>
+      <description>操作系统复习资料 根据《计算机操作系统教程》(第四版)整理 整理人:scnace 一般I/O方式: 联机I/O方式: 适用:交互式系统 实现方式:外围设</description>
+    </item>
+    
+    <item>
+      <title>改变mysql默认密码</title>
+      <link>https://blog.scnace.me/post/%E6%94%B9%E5%8F%98mysql%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%94%B9%E5%8F%98mysql%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</guid>
+      <description>官方源POST戳这里 用过的xampp的都应该知道,xampp的mysql/mariaDB的密码是设置为空的，在建站以及开发中这是不被推荐的。</description>
+    </item>
+    
+    <item>
+      <title>无搜索按钮的搜索栏实现</title>
+      <link>https://blog.scnace.me/post/%E6%97%A0%E6%90%9C%E7%B4%A2%E6%8C%89%E9%92%AE%E7%9A%84%E6%90%9C%E7%B4%A2%E6%A0%8F%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%97%A0%E6%90%9C%E7%B4%A2%E6%8C%89%E9%92%AE%E7%9A%84%E6%90%9C%E7%B4%A2%E6%A0%8F%E5%AE%9E%E7%8E%B0/</guid>
+      <description>找不同 先不多说 先上图: 正确答案:明显这时候就是没有右边那个submit按钮比较好看啊，虽然我以前每次Baidu的时候都不会蠢到去按右边的Su</description>
+    </item>
+    
+    <item>
+      <title>有可能是一种思路不一样的网站内容更新的监测方案</title>
+      <link>https://blog.scnace.me/post/etag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/etag/</guid>
+      <description>Etag(实体标签) ETag是一个不透明的标识符，由Web服务器根据URL上的资源的特定版本而指定。如果那个URL上的资源内容改变，一个新的</description>
+    </item>
+    
+    <item>
+      <title>杂</title>
+      <link>https://blog.scnace.me/post/%E6%9D%82/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%9D%82/</guid>
+      <description>确实是很无趣的一天吧。改变自己计划实施的第一天。 本来想去学校里面走走的，但是，终于还是找不到一个合适的理由出门。 反倒是负面情结太多了: 天气好</description>
+    </item>
+    
+    <item>
+      <title>来生再访文件岛</title>
+      <link>https://blog.scnace.me/post/%E6%9D%A5%E7%94%9F%E5%86%8D%E8%AE%BF%E6%96%87%E4%BB%B6%E5%B2%9B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%9D%A5%E7%94%9F%E5%86%8D%E8%AE%BF%E6%96%87%E4%BB%B6%E5%B2%9B/</guid>
+      <description>第一部动漫,第一部日本动漫,第一个从头追到尾的系列,光叔走了,但是无法抹掉我们DMer梦想依旧不灭 微信群: 光叔走了(哭。 我:光叔哪只啊。 微信</description>
+    </item>
+    
+    <item>
+      <title>用CookieJar获取一次302/301跳转的Cookie</title>
+      <link>https://blog.scnace.me/post/%E7%94%A8cookiejar%E6%8B%A6%E6%88%AA%E4%B8%80%E6%AC%A1302%E8%B7%B3%E8%BD%AC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E7%94%A8cookiejar%E6%8B%A6%E6%88%AA%E4%B8%80%E6%AC%A1302%E8%B7%B3%E8%BD%AC/</guid>
+      <description>问题描述: 在遇到需要登录的场景下,往往需要一次302/301跳转,然而我们的Client会跟着一起跳转,这时如果获取response.Coo</description>
+    </item>
+    
+    <item>
+      <title>简化数组操作</title>
+      <link>https://blog.scnace.me/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</guid>
+      <description>场景介绍： 这个方法用在获取到一个(多维)Array后，要对其结构和数据进行变更。这篇介绍往已有键值对的数组后面(the bottom of the stack)添加</description>
+    </item>
+    
+    <item>
+      <title>记一个有趣的bug</title>
+      <link>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/</guid>
+      <description>先看代码 Go Playground package main import ( &amp;quot;fmt&amp;quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&amp;quot;an&amp;quot;, &amp;quot;interesting&amp;quot;, &amp;quot;bug&amp;quot;} var bugs []*bug bugObj := &amp;amp;bug{ cause: &amp;quot;sth&amp;quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&amp;quot;bug:%v&amp;quot;, *b) } } 其实,不难看</description>
+    </item>
+    
+    <item>
+      <title>记一次博客搬家</title>
+      <link>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/</guid>
+      <description>为什么要搬家? 一直想找一个轻量级的blog框架 觉得wordpress太重了 每次想写点东西都要进到wp的后台 而且离开了自己一直喜欢的Edito</description>
+    </item>
+    
+    <item>
+      <title>软件工程考试整理</title>
+      <link>https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/</guid>
+      <description>题型： 选择题：15x2 = 30分 填空题：10x1 = 10分 简答题：4~5题，共30分。 分析设计题：3题，共30分。 第1章 什么是软件危机，典型表现</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solution on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/solution/</link>
+    <description>Recent content in Solution on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    
+	<atom:link href="https://blog.scnace.me/tags/solution/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>php emoji表情无法获取问题</title>
+      <link>https://blog.scnace.me/post/php-emoji%E8%A1%A8%E6%83%85%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/php-emoji%E8%A1%A8%E6%83%85%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</guid>
+      <description>why ? 带Emoji表情的用户名简直就是社交用户三大毒瘤之一(e.g. Instagram,facebook,and wechat); 然而,跟用户说 我不让你用Emoji表情 可能会极大程度激发用户的逆反心理</description>
+    </item>
+    
+    <item>
+      <title>php&amp;jQuery 实现动态链接</title>
+      <link>https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</guid>
+      <description>之前已经遇到过很多次这种问题了。 每次都要去看一遍sf上的解决方案,由于又不是一毛一样的问题,所以,每次都要自己再想一遍整个流程。 So，赶脚 很</description>
+    </item>
+    
+    <item>
+      <title>xampp CORS跨域请求失败</title>
+      <link>https://blog.scnace.me/post/xampp-cors%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/xampp-cors%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5/</guid>
+      <description>What is CORS 咳咳,CORS是一种跨域请求,全称是Cross Origin Resource Sharing; 如果 之前逛过我部落格的同学们可以发现,窝的文章分享侧栏就是因为CORS disabl</description>
+    </item>
+    
+    <item>
+      <title>关于set-cookie的注意事项</title>
+      <link>https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
+      <description>Set-Cookie 关于Set-Cookie的具体说明可以在MDN(参见RFC 6265 section 4.1)上很容易翻到,这边就不细说了。简单说下,就是浏览器(B端)发起请求(</description>
+    </item>
+    
+    <item>
+      <title>开启Xampp phpmyadmin外网访问</title>
+      <link>https://blog.scnace.me/post/%E5%BC%80%E5%90%AFxampp-phpmyadmin%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%BC%80%E5%90%AFxampp-phpmyadmin%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/</guid>
+      <description>Xampp确实是样好东西,既然号称是Apache Friend,那么当然也帮我们搭好了PHP的集成环境。 然而, 在Xampp的更新中,phpmy</description>
+    </item>
+    
+    <item>
+      <title>改变mysql默认密码</title>
+      <link>https://blog.scnace.me/post/%E6%94%B9%E5%8F%98mysql%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E6%94%B9%E5%8F%98mysql%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</guid>
+      <description>官方源POST戳这里 用过的xampp的都应该知道,xampp的mysql/mariaDB的密码是设置为空的，在建站以及开发中这是不被推荐的。</description>
+    </item>
+    
+    <item>
+      <title>简化数组操作</title>
+      <link>https://blog.scnace.me/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</guid>
+      <description>场景介绍： 这个方法用在获取到一个(多维)Array后，要对其结构和数据进行变更。这篇介绍往已有键值对的数组后面(the bottom of the stack)添加</description>
+    </item>
+    
+  </channel>
+</rss>

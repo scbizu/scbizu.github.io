@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>golang常用数据结构 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" />
+  <meta name="description" content="原post:RUSS Cox Blog Go Data Structure 一些常用数据格式如下所示: 图解： i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/golang%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="golang常用数据结构" />
+<meta property="og:description" content="原post:RUSS Cox Blog Go Data Structure 一些常用数据格式如下所示: 图解： i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/golang%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="golang常用数据结构">
+<meta itemprop="description" content="原post:RUSS Cox Blog Go Data Structure 一些常用数据格式如下所示: 图解： i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是">
+
+
+
+<meta itemprop="wordCount" content="1449">
+
+
+
+<meta itemprop="keywords" content="in action,golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="golang常用数据结构"/>
+<meta name="twitter:description" content="原post:RUSS Cox Blog Go Data Structure 一些常用数据格式如下所示: 图解： i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">golang常用数据结构</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            
+              <a href="/categories/golang/"> golang </a>
+            
+          </div>
+        <span class="more-meta"> 1449 words </span>
+        <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一些常用数据格式如下所示">一些常用数据格式如下所示:</a></li>
+<li><a href="#结构体-和-指针-struct-and-pointer">结构体 和 指针 (Struct and pointer)</a></li>
+<li><a href="#字符串-strings">字符串(Strings)</a></li>
+<li><a href="#切片-slices">切片(Slices)</a></li>
+<li><a href="#新建数据格式-new-and-make">新建数据格式 (New AND Make)</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>原post:<a href="http://research.swtch.com/godata">RUSS Cox Blog Go Data Structure</a></p>
+</blockquote>
+
+<h2 id="一些常用数据格式如下所示">一些常用数据格式如下所示:</h2>
+
+<p><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/godata.png" alt="godata" /></p>
+
+<p>图解：</p>
+
+<p>i在memory中表示一个32 bits的数据,也就是4 bytes的数据。也就是说,int 的 底层也是存了4 bytes(32位机)</p>
+
+<p>j也存了4 bytes的数据,也就是说,int32 格式的也是 4 bytes</p>
+
+<p>f也存了4 bytes的数据,也就是说说float32在底层也是4bytes</p>
+
+<p>而 bytes 根据它指定的bytes来赋予内存,(e.g. [5]bytes 就是 5 bytes)</p>
+
+<p>表示Array时 是它里面源数据格式的叠加(e.g. [4]int 也就是4个int格式的叠加 也就是4*4=16 bytes)</p>
+
+<h2 id="结构体-和-指针-struct-and-pointer">结构体 和 指针 (Struct and pointer)</h2>
+
+<p>Go和C语言一样,让开发者自己去掌控指针,而不仅仅局限于使用提供的指针。</p>
+
+<p>下面以 Struct 为例,首先定义一个结构体:</p>
+
+<pre><code>type Point struct {X,Y int}
+</code></pre>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304190938.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304190938-300x79.png" alt="截图20160304190938" /></a></p>
+
+<p>如上:</p>
+
+<p>Point{10,20}两个int数据 加起来一共有8Bytes 是直接存在内存当中的;</p>
+
+<p>而 &amp;Point{10,20}定义了 指向这个Point的指针,所以只有4 bytes,指针指向后面那个Point的首地址。</p>
+
+<p>再如:</p>
+
+<pre><code>type Rect1 struct {min,max Point}
+type Rect2 strcut {min,max *Point}
+</code></pre>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304191715.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304191715-300x38.png" alt="截图20160304191715" /></a></p>
+
+<p>前者表示四个Point格式的数据,一共有16 bytes;</p>
+
+<p>后者其实只有两个Point类型的数据,每个field都会指向真正的数据的首地址,所以,加起来只有8 Bytes;</p>
+
+<h2 id="字符串-strings">字符串(Strings)</h2>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304192549.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304192549-300x94.png" alt="截图20160304192549" /></a></p>
+
+<p>(灰色箭头表示在运行中是这样的,但在程序中不会写出来。)</p>
+
+<p>Golang中的String数据结构 包含一个 <strong>指针</strong> 以及 <strong>一个长度位</strong>。指针位为 4 bytes 长度位也为 4 bytes,加起来是 8 bytes,其中,指针指向字符串的首地址。由于字符串(String)都是一成不变(immutable)的,而且许多字符串共享一个空间是安全的,所以，切片操作时用到的新的字符串结构(包括新的指针和长度位)实际上就是指向源数据。也就是说,在完成切片操作时 不需要进行再次分配与拷贝,从而使得切片操作更有效率地去获取准确的索引。</p>
+
+<h2 id="切片-slices">切片(Slices)</h2>
+
+<p>Slice的数据结构如下所示:</p>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304195102.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304195102-300x63.png" alt="截图20160304195102" /></a></p>
+
+<p>切片操作是对数组(Array)的便捷操作,在日常开发中经常会看到它的身影(<del>卧槽,这reference难道真的要翻译成参考?</del>)</p>
+
+<p>由上图可以看到:</p>
+
+<p>Slice的结构为3个4-bytes 结构 。第一个 4-bytes位是用来存放指向 源数据 的指针的, 第二个 4-bytes位是用来存放字符串长度的,第三个 4-bytes结构是描述数组容量的。</p>
+
+<p>长度:索引操作时的上限;如x[i]  此处即为i的上限</p>
+
+<p>容量:切片操作时的上限;如x[i:j]</p>
+
+<p>就像对字符串切片一样,对数组切片也不会对源进行拷贝:只是新建了一个新的带 指针 长度 容量 的结构。</p>
+
+<p>在例子中我们可以看到在切片操作时的x 并没有复制这个数组 而是新建了一个结构。</p>
+
+<p>当然,例子中的这个新建的y的长度为2,y[0]和y[1]是空的索引值,但是容量为4.y[0:4]就是空值啦~</p>
+
+<p>因为 Slice是多字结构,不是指针,不用去分配内存,而且slice头也可以一直保存在栈中。这种实现方法比C语言中的通过精确指针和长度匹配的方法更简便。Go本来就是这么做的,但是发现这样做意味着每个Slice操作都要分配新的内存给它,即便是在最快的分配情况下,这种做法也给GC(垃圾收集器,Garbage Collection)带来了不小的负担,并且我们还发现,在进行字符串操作时避免使用切片有利于提高程序的性能。</p>
+
+<h2 id="新建数据格式-new-and-make">新建数据格式 (New AND Make)</h2>
+
+<p><a href="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304225726.png"><img src="http://scnace.cc/wordpress/wp-content/uploads/2016/03/截图20160304225726-295x300.png" alt="截图20160304225726" /></a></p>
+
+<p>new() 返回的是 一个指向归零的内存的指针  make() 返回的是 一个复杂的结构，不是指针。</p>
+
+<p>但是由于C/C++的传统new(Point)的形式不被大家提倡,而都改用make(* Point),然而,在实验中发现,这种方法的效果却不如预期的好。</p>
+
+<p>(TO BE CONTINUED&hellip;..)</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/in-action/">in action</a>
+          
+          <a href="/tags/golang/">golang</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/golang%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%99%E6%B3%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">golang多返回值写法</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/golang%E7%9A%84%E4%B8%80%E4%B8%AAocr%E5%BA%93/">
+            <span class="next-text nav-default">golang的一个OCR库</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

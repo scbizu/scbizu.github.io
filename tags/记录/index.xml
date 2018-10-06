@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>记录 on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 记录 on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    <lastBuildDate>Sat, 07 Oct 2017 00:06:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.scnace.me/tags/%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nace&#39;s CookBook</title>
+      <link>https://blog.scnace.me/post/cookbook/</link>
+      <pubDate>Sat, 07 Oct 2017 00:06:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/cookbook/</guid>
+      <description>CookBook 这里会记录一些Nace经常碰到的一些不容易记住的编程相关的 专业术语 和 小Tips ; About Code 位运算符 位运算符 语义/Semantics e.g. &amp;amp; 按位与/A</description>
+    </item>
+    
+  </channel>
+</rss>
