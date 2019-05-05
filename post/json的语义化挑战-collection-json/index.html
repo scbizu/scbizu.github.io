@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="scnace" />
-  <meta name="description" content="背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="scnace" /><meta name="description" content="背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
 
 
 <meta property="og:title" content="JSON的语义化挑战--Collection&#43;JSON" />
@@ -55,26 +44,12 @@
 <meta property="og:url" content="https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/" />
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <meta itemprop="name" content="JSON的语义化挑战--Collection&#43;JSON">
 <meta itemprop="description" content="背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然">
 
 
 
-<meta itemprop="wordCount" content="1124">
+<meta itemprop="wordCount" content="1126">
 
 
 
@@ -145,21 +120,16 @@
       <div class="post-meta">
         <span class="post-time"> 0001-01-01 </span>
         <div class="post-category">
-            
-              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
-            
-          </div>
-        <span class="more-meta"> 1124 words </span>
-        <span class="more-meta"> 3 mins read </span>
+            <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            </div>
+          <span class="more-meta"> 1126 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -180,11 +150,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -254,8 +219,7 @@ Content-Length: xxx
 }
 }
 }
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>如上就是一个标准的Collection+JSON的文档,它将包含如下字段:</p>
 
@@ -272,14 +236,17 @@ Content-Length: xxx
 <p>Collection+JSON标准下的增删改查同样通过<code>RESTful</code>接口来实现:
 * Create:在集合中插入新信息通过 <strong>写入模板</strong> 实现</p>
 
-<pre><code>//Request Header
+<p>```</p></li>
+</ul>
 
-POST /simpleCollection/ HTTP/1.1
+<p>//Request Header</p>
+
+<p>POST /simpleCollection/ HTTP/1.1
 Host: blog.scnace.cc
-Accept: application/vnd.collection+json
-</code></pre>
+Accept: application/vnd.collection+json</p>
 
-<pre><code class="language-JSON">//Request Body
+<pre><code>```JSON
+//Request Body
 {
   &quot;template&quot;:{
     &quot;data&quot;:[
@@ -294,15 +261,15 @@ Accept: application/vnd.collection+json
 </blockquote>
 
 <ul>
-<li>Read:在集合中搜索信息通过 <strong>搜索控件</strong> 实现</li>
-</ul>
+<li><p>Read:在集合中搜索信息通过 <strong>搜索控件</strong> 实现</p>
 
 <pre><code>//Request Header
 
 POST /simpleCollection/ HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre>
+</code></pre></li>
+</ul>
 
 <pre><code class="language-JSON">//Request Body
 {
@@ -319,15 +286,15 @@ Accept: application/vnd.collection+json
 </code></pre>
 
 <ul>
-<li>Update:向集合中的子项<code>PUT</code> <strong>写入模板</strong> 来修改子项的数据</li>
-</ul>
+<li><p>Update:向集合中的子项<code>PUT</code> <strong>写入模板</strong> 来修改子项的数据</p>
 
 <pre><code>//Request Header
 
 PUT /api/post/1 HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre>
+</code></pre></li>
+</ul>
 
 <pre><code class="language-JSON">{
   &quot;template&quot;:{
@@ -339,15 +306,15 @@ Accept: application/vnd.collection+json
 </code></pre>
 
 <ul>
-<li>Delete:向集合中的子项发送<code>DELETE</code>来删除子项的数据</li>
-</ul>
+<li><p>Delete:向集合中的子项发送<code>DELETE</code>来删除子项的数据</p>
 
 <pre><code>//Request Header
 
 DELETE /api/post/1 HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="分页">分页</h3>
 
@@ -385,7 +352,6 @@ Accept: application/vnd.collection+json
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
@@ -393,32 +359,25 @@ Accept: application/vnd.collection+json
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">0001-01-01</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
   </p>
   
   
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/">日常积累</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/docker%E4%B8%8Bes%E5%8F%8A%E5%85%B6%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/">
+        <a class="prev" href="/post/docker%E4%B8%8Bes%E5%8F%8A%E5%85%B6%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">Docker下搭建Elasticsearch及其集群</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/">
+        <a class="next" href="/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/">
             <span class="next-text nav-default">ShadowSocksX查看已经储存的Server信息</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
@@ -428,9 +387,6 @@ Accept: application/vnd.collection+json
   </article>
         </div>
         
-  
-
-  
 
       </div>
     </main>
@@ -457,9 +413,8 @@ Accept: application/vnd.collection+json
 
   <span class="copyright-year">
     &copy; 
-    
-      2016 - 
-    2018
+    2016 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -472,13 +427,10 @@ Accept: application/vnd.collection+json
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 

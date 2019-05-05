@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="scnace" />
-  <meta name="description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="scnace" /><meta name="description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,35 +34,14 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
 
 
 <meta property="og:title" content="golang channel实验" />
 <meta property="og:description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <meta itemprop="name" content="golang channel实验">
@@ -145,23 +120,17 @@
       <div class="post-meta">
         <span class="post-time"> 0001-01-01 </span>
         <div class="post-category">
-            
-              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
-            
-              <a href="/categories/golang/"> golang </a>
-            
-          </div>
-        <span class="more-meta"> 1451 words </span>
-        <span class="more-meta"> 3 mins read </span>
+            <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            <a href="/categories/golang/"> golang </a>
+            </div>
+          <span class="more-meta"> 1451 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -181,11 +150,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -364,7 +328,6 @@ func main() {
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
@@ -372,34 +335,26 @@ func main() {
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">0001-01-01</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
   </p>
   
   
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/in-action/">in action</a>
-          
           <a href="/tags/golang/">golang</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/golang-bufio%E5%AE%9E%E9%AA%8C/">
+        <a class="prev" href="/post/golang-bufio%E5%AE%9E%E9%AA%8C/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">golang bufio实验</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/">
+        <a class="next" href="/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/">
             <span class="next-text nav-default">golang panic和recover实验小结</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
@@ -409,9 +364,6 @@ func main() {
   </article>
         </div>
         
-  
-
-  
 
       </div>
     </main>
@@ -438,9 +390,8 @@ func main() {
 
   <span class="copyright-year">
     &copy; 
-    
-      2016 - 
-    2018
+    2016 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -453,13 +404,10 @@ func main() {
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 

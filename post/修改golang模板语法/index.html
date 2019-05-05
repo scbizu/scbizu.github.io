@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="scnace" />
-  <meta name="description" content="前言 记得之前看过V站(v2ex)的一个讨论帖,内容就是关于前端的模板语法会跟后端的模板语法冲突.我也同意 统一渲染 的观点,比如 由后端统一进行d" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="scnace" /><meta name="description" content="前言 记得之前看过V站(v2ex)的一个讨论帖,内容就是关于前端的模板语法会跟后端的模板语法冲突.我也同意 统一渲染 的观点,比如 由后端统一进行d" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,35 +34,14 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
 
 
 <meta property="og:title" content="修改Golang template语法" />
 <meta property="og:description" content="前言 记得之前看过V站(v2ex)的一个讨论帖,内容就是关于前端的模板语法会跟后端的模板语法冲突.我也同意 统一渲染 的观点,比如 由后端统一进行d" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <meta itemprop="name" content="修改Golang template语法">
@@ -145,21 +120,16 @@
       <div class="post-meta">
         <span class="post-time"> 0001-01-01 </span>
         <div class="post-category">
-            
-              <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
-            
-          </div>
-        <span class="more-meta"> 1018 words </span>
-        <span class="more-meta"> 3 mins read </span>
+            <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            </div>
+          <span class="more-meta"> 1018 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -173,11 +143,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -209,7 +174,6 @@ resTemp := template.Must(temp.ParseGlob(&quot;static/*.html&quot;))
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
@@ -217,34 +181,26 @@ resTemp := template.Must(temp.ParseGlob(&quot;static/*.html&quot;))
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">0001-01-01</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
   </p>
   
   
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/golang/">golang</a>
-          
           <a href="/tags/template/">template</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/">
+        <a class="prev" href="/post/%E4%BB%8E%E9%81%8D%E5%8E%86dom%E6%A0%91%E8%B0%88dfs%E5%92%8Cbfs/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">从遍历DOM树谈BFS和DFS</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/">
+        <a class="next" href="/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/">
             <span class="next-text nav-default">关于JSON的思索</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
@@ -254,9 +210,6 @@ resTemp := template.Must(temp.ParseGlob(&quot;static/*.html&quot;))
   </article>
         </div>
         
-  
-
-  
 
       </div>
     </main>
@@ -283,9 +236,8 @@ resTemp := template.Must(temp.ParseGlob(&quot;static/*.html&quot;))
 
   <span class="copyright-year">
     &copy; 
-    
-      2016 - 
-    2018
+    2016 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -298,13 +250,10 @@ resTemp := template.Must(temp.ParseGlob(&quot;static/*.html&quot;))
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 
