@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sat, 07 Oct 2017 00:06:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 May 2019 02:05:20 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>https://blog.scnace.me/tags/go/</link>
+      <pubDate>Mon, 06 May 2019 02:05:20 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/tags/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>记录</title>
@@ -162,15 +171,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.scnace.me/tags/elasticsearch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://blog.scnace.me/tags/go/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.scnace.me/tags/go/</guid>
       <description></description>
     </item>
     

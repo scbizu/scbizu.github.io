@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sat, 07 Oct 2017 00:06:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 May 2019 02:05:20 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go os.Pipe()</title>
+      <link>https://blog.scnace.me/post/go-os-pipe/</link>
+      <pubDate>Mon, 06 May 2019 02:05:20 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/go-os-pipe/</guid>
+      <description>记一个有趣的小bug 0x00 起因 (紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。</description>
+    </item>
     
     <item>
       <title>Nace&#39;s CookBook</title>

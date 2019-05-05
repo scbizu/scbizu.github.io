@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Go os.Pipe() - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" /><meta name="description" content="记一个有趣的小bug 0x00 起因 (紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。" /><meta name="keywords" content="os.Pipe()" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/go-os-pipe/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="Go os.Pipe()" />
+<meta property="og:description" content="记一个有趣的小bug 0x00 起因 (紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/go-os-pipe/" />
+<meta property="article:published_time" content="2019-05-06T02:05:20&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-06T02:05:20&#43;08:00"/>
+
+<meta itemprop="name" content="Go os.Pipe()">
+<meta itemprop="description" content="记一个有趣的小bug 0x00 起因 (紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。">
+
+
+<meta itemprop="datePublished" content="2019-05-06T02:05:20&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-06T02:05:20&#43;08:00" />
+<meta itemprop="wordCount" content="1266">
+
+
+
+<meta itemprop="keywords" content="go," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go os.Pipe()"/>
+<meta name="twitter:description" content="记一个有趣的小bug 0x00 起因 (紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Go os.Pipe()</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-06 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+            </div>
+          <span class="more-meta"> 1266 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>记一个有趣的小bug</p>
+</blockquote>
+
+<h2 id="0x00-起因">0x00 起因</h2>
+
+<p>(紫薯布丁) 因为最近在研究mgo和mongo官方的驱动，因为不能让领导觉得我是在划水，所以，肯定要出点研究成果的。唔姆，那么势必要对mgo和mongo-go-driver和我改过之后的mgo在某些方面做个明显的对比，所以，我想了想打算从他们debug模式的log入手来分析他们的行为，按照我之前写Go的经验，这就是一个读取stdout的简单需求嘛，我很快地写出了一版可以用的代码:</p>
+
+<pre><code>func capture(f func()) (string, error) {
+    rescueOut := os.Stdout
+    r, w, err := os.Pipe()
+    if err != nil {
+        return &quot;&quot;, fmt.Errorf(&quot;capture: %s&quot;, err.Error())
+    }
+    os.Stdout = w
+    f()
+    out, err := ioutil.ReadAll(r)
+    if err != nil {
+            log.Fatalf(&quot;capture: %s&quot;, err.Error())
+    }
+    if err := w.Close(); err != nil {
+        return &quot;&quot;, fmt.Errorf(&quot;capture: %s&quot;, err.Error())
+    }
+    os.Stdout = rescueOut
+    return string(out), nil
+}
+</code></pre>
+
+<p>逻辑看上去也非常简单 ，先暂存之前的stdout，然后再把writer指向stdout。这样就可以从reader里面把stdout全部读出来了，之后再恢复之前的stdout。</p>
+
+<p>这代码看上去确实没啥大问题，也能很漂亮地完成需求，直到。。。。</p>
+
+<h2 id="0x01-问题他来了">0x01 问题他来了！</h2>
+
+<p>(紫薯布丁)  一次机缘巧合之下，我打开了mgo全部的调试信息，想观摩下 mgo 的 节点选举 过程。<code>go install</code>,  <code>mongotest</code>, 然后看到了一串panic信息。<code>goroutine deadlock</code> ？？？从代码字面上看根本看不到有地方开启了goroutine ,  (经过一段激烈而又紧张的小黄鸭调试)，基本确定了问题就出在了这个<code>capture</code>,  难道是我的姿势不对？可是我之前都是这么写的啊。</p>
+
+<p>带着这个问题，我开始面向Google debug，看到了基本所有有关的示例和开源项目的代码都是这么写的啊，直到我找到了一个golang/go的一个<a href="https://github.com/golang/go/issues/13142">issue</a>(不得不说我的运气是真的好)。然后Go Team的大佬回复到:</p>
+
+<blockquote>
+<p>gzip.NewReader tries to read the data from the pipe. At the time you call gzip.NewReader, there is nothing writing to the pipe and there are no other goroutines running. That is why you get that crash. The fix is to move the call to gzip.NewReader after you start the goroutine writing to the pipe.</p>
+</blockquote>
+
+<p>按照这个issue的说法，其实这个问题就也可以迎刃而解了。针对这个问题，我大概理了下原因，在stdout过大的情况下，<code>ioutil.ReadAll(r)</code> 这里的r其实是个空的reader，并且一直在等待stdout塞到pipe里面去(也就说这个时刻pipe里面确实什么都没有)，这时候因为也没有其它的goroutine在跑，就导致了这个deadlock的出现。</p>
+
+<h2 id="0x02-涨姿势了">0x02  涨姿势了!</h2>
+
+<p>(紫薯布丁)  参考着那个issue的写法， 我开始对我的代码也进行改造。思路是这样的：既然因为“这时候因为也没有其它的goroutine在跑”，那我自己造个阻塞的channel不就好了，这个channel只要撑到stdout全部写到pipe里面去就可以功成身退了，按照着这个说法，我尝试着写了一版fix:</p>
+
+<pre><code>func capture(f func()) (string, error) {
+    rescueOut := os.Stdout
+    r, w, err := os.Pipe()
+    if err != nil {
+        return &quot;&quot;, fmt.Errorf(&quot;capture: %s&quot;, err.Error())
+    }
+    os.Stdout = w
+    outC := make(chan string)
+    go func() {
+        out, err := ioutil.ReadAll(r)
+        if err != nil {
+            log.Fatalf(&quot;capture: %s&quot;, err.Error())
+        }
+        outC &lt;- string(out)
+    }()
+    f()
+    if err := w.Close(); err != nil {
+        return &quot;&quot;, fmt.Errorf(&quot;capture: %s&quot;, err.Error())
+    }
+    os.Stdout = rescueOut
+    // 在stdout没有全部写到pipe之前，让outC阻塞住
+    return &lt;-outC, nil
+}
+</code></pre>
+
+<p>oh ! nice ! 问题终于解决了。</p>
+
+<h2 id="0x03-问题总结与抽象">0x03 问题总结与抽象</h2>
+
+<p>简单地写了几个playground，可以拿来玩玩:</p>
+
+<ul>
+<li><a href="https://play.golang.org/p/M2fRPi8LErR">stdout很小，所以没有遇到问题</a></li>
+<li><a href="https://play.golang.org/p/NtpJkCEXDX">增加stdout，使得代码可以复现deadlock</a></li>
+<li><a href="https://play.golang.org/p/IllaJSzVgWw">修复deadlock</a></li>
+</ul>
+
+<p>以上，随手记录工作中的乐趣。</p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/go/">go</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/cookbook/">
+            <span class="next-text nav-default">Nace&#39;s CookBook</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
