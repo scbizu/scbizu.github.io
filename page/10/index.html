@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.scnace.me/" />
 
-<meta property="og:updated_time" content="2019-05-06T02:05:20&#43;08:00"/>
+<meta property="og:updated_time" content="2019-10-05T23:50:21&#43;08:00"/>
 
 <meta itemprop="name" content="一只菜鸡的成长之路">
 <meta itemprop="description" content="scnace: with a geeker heart forever">
@@ -109,6 +109,30 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/etag/">有可能是一种思路不一样的网站内容更新的监测方案</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 0001-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 583 words </span>
+        <span class="more-meta"> 2 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Etag(实体标签) ETag是一个不透明的标识符，由Web服务器根据URL上的资源的特定版本而指定。如果那个URL上的资源内容改变，一个新的
+    </div>
+    <div class="read-more">
+      <a href="/post/etag/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E6%9D%82/">杂</a></h1>
@@ -199,29 +223,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%AE%80%E5%8C%96%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/">记一个有趣的bug</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      <div class="post-category">
-          <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
-          </div>
-        <span class="more-meta"> 656 words </span>
-        <span class="more-meta"> 2 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      先看代码 Go Playground package main import ( &quot;fmt&quot; ) type bug struct { name string cause string } func main() { bugNames := []string{&quot;an&quot;, &quot;interesting&quot;, &quot;bug&quot;} var bugs []*bug bugObj := &amp;bug{ cause: &quot;sth&quot;, } for idx, bn := range bugNames { bugs = append(bugs, bugObj) bugs[idx].name = bn } for _, b := range bugs { fmt.Printf(&quot;bug:%v&quot;, *b) } } 其实,不难看
-    </div>
-    <div class="read-more">
-      <a href="/post/%E8%AE%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84bug/" class="read-more-link">Read more..</a>
     </div>
   </div>
 </article>

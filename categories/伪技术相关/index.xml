@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Mon, 06 May 2019 02:05:20 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Oct 2019 23:50:21 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用up来部署AWS Lambda应用</title>
+      <link>https://blog.scnace.me/post/why-i-choose-up-to-deploy-go-serverless-application/</link>
+      <pubDate>Sat, 05 Oct 2019 23:50:21 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/why-i-choose-up-to-deploy-go-serverless-application/</guid>
+      <description>前言 up真香 终于还是来写这篇博客了，本文记录了我的AWS Lambda Function APP 的部署工具从apex up迁移到原生的AWS Lambda Go SDK，然后再迁回`pex up的</description>
+    </item>
     
     <item>
       <title>Go os.Pipe()</title>
