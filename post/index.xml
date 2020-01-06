@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sat, 05 Oct 2019 23:50:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 15:07:44 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Concurrency Pattern</title>
+      <link>https://blog.scnace.me/post/go-concurrency-pattern/</link>
+      <pubDate>Sun, 22 Dec 2019 15:07:44 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/go-concurrency-pattern/</guid>
+      <description>再谈Go的常用并发模型 脱离业务领域谈设计模型都是扯淡，本文旨在抽象几种常用模型，希望在设计业务模型时提供参考 前言 转眼已经快写了三年的Go了，</description>
+    </item>
     
     <item>
       <title>使用up来部署AWS Lambda应用</title>
