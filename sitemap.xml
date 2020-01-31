@@ -8,13 +8,6 @@
   </url>
   
   <url>
-    <loc>https://blog.scnace.me/post/mifi_mini_openwrt/</loc>
-    <lastmod>2020-01-31T16:38:11+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.scnace.me/post/</loc>
     <lastmod>2020-01-31T16:38:11+08:00</lastmod>
     <priority>0</priority>
@@ -36,6 +29,13 @@
     <loc>https://blog.scnace.me/tags/mifi/</loc>
     <lastmod>2020-01-31T16:38:11+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.scnace.me/post/mifi_mini_openwrt/</loc>
+    <lastmod>2020-01-31T16:38:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
