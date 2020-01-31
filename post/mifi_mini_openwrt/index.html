@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mifi_mini_openwrt - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" /><meta name="description" content="mifi mini的openwrt之旅 本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了 ！！ miboy重新归来 之前家里的书房wifi虽" /><meta name="keywords" content="openwrt" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/mifi_mini_openwrt/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="Mifi_mini_openwrt" />
+<meta property="og:description" content="mifi mini的openwrt之旅 本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了 ！！ miboy重新归来 之前家里的书房wifi虽" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/mifi_mini_openwrt/" />
+<meta property="article:published_time" content="2020-01-31T16:38:11&#43;08:00"/>
+<meta property="article:modified_time" content="2020-01-31T16:38:11&#43;08:00"/>
+
+<meta itemprop="name" content="Mifi_mini_openwrt">
+<meta itemprop="description" content="mifi mini的openwrt之旅 本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了 ！！ miboy重新归来 之前家里的书房wifi虽">
+
+
+<meta itemprop="datePublished" content="2020-01-31T16:38:11&#43;08:00" />
+<meta itemprop="dateModified" content="2020-01-31T16:38:11&#43;08:00" />
+<meta itemprop="wordCount" content="1760">
+
+
+
+<meta itemprop="keywords" content="mifi,openwrt," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mifi_mini_openwrt"/>
+<meta name="twitter:description" content="mifi mini的openwrt之旅 本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了 ！！ miboy重新归来 之前家里的书房wifi虽"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mifi_mini_openwrt</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-31 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BF%BB%E8%BD%A6%E7%8E%B0%E5%9C%BA/"> 翻车现场 </a>
+            <a href="/categories/xjb%E6%8A%98%E8%85%BE/"> XJB折腾 </a>
+            </div>
+          <span class="more-meta"> 1760 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="mifi-mini的openwrt之旅">mifi mini的openwrt之旅</h1>
+
+<blockquote>
+<p>本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了  ！！</p>
+</blockquote>
+
+<h2 id="miboy重新归来">miboy重新归来</h2>
+
+<p>之前家里的书房wifi虽说用的就是我毕业的时候从学校带回来的  miwifi  mini  ，但是，固件一直用的很老版本的Pandorabox  , 大概是基于openwrt 14.0x 改的那种吧，然后一直在这上面挂着个梯子用来路由科学上网，但是并不好用，路由间歇性崩溃，甚至都影响到正常的上网了。这次正好趁着过年回来就想着升级下固件，直接换成openwrt的最新版，再上个Clash，满血复活，不是爽的一笔 ？</p>
+
+<h2 id="wdnmd">wdnmd</h2>
+
+<p>所以，第一步就肯定是重刷固件了 ，找了好久才找到Pandorabox的刷固件入口(有点瞎)，上传官网下载的openwrt 19.07，然后，默默地等待奇迹发生。</p>
+
+<p>蓝灯亮起，从闪烁变成常亮了，openwrt固件刷入成功，那就一起来看看发生了啥吧。诶？貌似没有发现默认的open wifi ？没有错， <strong>openwrt在首次刷入时只能从路由器的wan口拉网线出来</strong>。</p>
+
+<p>这都是些小事，接好网线输入192.168.1.1之后进入了openwrt 19.07的 LuCI页面，接着开始配置wifi试试，卧槽？这个AC mode的5G wifi为毛不能选择自动宽度，只能手选20/40/60 ?  试了下，mac在 <sup>40</sup>&frasl;<sub>60</sub>  的宽度下不能连接上这个 wifi，只能选择20 。（苹果官网的路由器配置里面倒是建议选择自动设置宽度的）</p>
+
+<p>不知道是不是这个设置的原因，5G wifi的信号隔两堵墙就完全搜不到了( 也是指我的mac)，然后我只能在卧室的时候使用2.4G的wifi了。</p>
+
+<p>这也不是多大的事，这次刷机的首要需求是给路由器安上Clash，因为我本身在mac上也用了大半年的 Clash了，感觉很不错。如果能在路由上就进行代理，那效果也应该不错。于是，按照 luci-app-clash的安装说明开始安装，第一次 opkg  install 的时候失败了，提示依赖没有满足，因为我记得 opkg会自动向feed里面的src拉取对应的包，所以抱着疑问查看了 opkg的 feed list，看来是因为墙的关系导致pull失败了，于是换了几个国内的镜像站(最后用了清华大学的LEDE)，有一件事挺搞笑的 ，我一直以为miwifi mini是  x86_64 架构的 ，无脑换了x86_64的源之后各种报错，<code>uname -r</code>之后才发现是mips的，更搞的是看cpu proc info竟然是<code>mips_24kc</code>的 ，瞬间就觉得这个路由器应该留着，以后就是古董了XD。</p>
+
+<h2 id="mips-24kc">mips_24kc</h2>
+
+<p>真正劝退我的，不是别的，就是这个<code>mips_24kc</code>的奇葩架构。</p>
+
+<p>在<a href="https://github.com/frainzy1477/luci-app-clash/releases">luci-app-clash</a>装完之后(这其实也有坑，貌似是openwrt19.07的 LuCI 把一些lua的包放到自己的代码库去了，所以有些以前版本的Lua脚本会不适用，详见<a href="https://github.com/frainzy1477/luci-app-clash/issues/140">这个issue</a>)，就轮到要装Clash的Client了。在<a href="https://github.com/frainzy1477/clash_dev/releases">提供的clash release</a>里面没有明确的适合<code>mips_24kc</code>的版本，只能自己碰运气尝试mipsle和mips的版本，这里还要区分softfloat和hardfloat的版本(<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=11177">什么是softfloat/hardfloat</a>)，在骂了无数次fxxk之后，找了一个勉强可以跑起来的版本mips的softfloat的版本，也有不少人在讨论这个事，<a href="https://github.com/antonchen/clash-for-openwrt/issues/1">比如这个</a>，<a href="https://github.com/Dreamacro/clash/issues/192">还有这个</a>。虽然跑起来了，但是跑了没有10分钟就因为内存不足OOM了。出于好奇，查了下V2ray对于<code>mips_24kc</code>的支持，果然有<a href="https://github.com/v2ray/v2ray-core/issues/396">相关issue</a>在讨论这个事，因为mini是<a href="https://wiki.debian.org/InstallingDebianOn/Xiaomi/MiWifi_mini">可以开启FPU模拟的</a>，貌似理论上是可以装上v2ray的，但是，你指望它 tls/ws decrypt/decode 就有点为难它了，可以尝试下最简单的加密倒是有理论可行性的。（不过倒也可以试试用tinygo去编译下Clash试试，也许会有新的发现</p>
+
+<p>即便是Go本身对mips的支持，还是<a href="https://github.com/golang/go/issues?utf8=%E2%9C%93&amp;q=mips">有很多坑的</a>。</p>
+
+<p>呀，话题扯远了，在经历了好几次OOM之后，我放弃Clash(v2ray)了，卸掉luci-app-clash之后，iptable rule貌似也被污染了，内网到外网的请求都被iptable drop掉了，终于，我按下了路由器的reset键刷了老毛子。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>如果下次我有x86的路由器了，我再来折腾openwrt吧。</p>
+
+<p>但是，有一点写在最后，openwrt社区还是很厉害的，即便是19.07最新版，对低端路由器的兼容做得还是很好，至少裸固件是可以跑起来的，而且是CPU占用很低！</p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mifi/">mifi</a>
+          <a href="/tags/openwrt/">openwrt</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/go-concurrency-pattern/">
+            <span class="next-text nav-default">Go Concurrency Pattern</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">copyleft</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

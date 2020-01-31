@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sun, 22 Dec 2019 15:07:44 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 16:38:11 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mifi_mini_openwrt</title>
+      <link>https://blog.scnace.me/post/mifi_mini_openwrt/</link>
+      <pubDate>Fri, 31 Jan 2020 16:38:11 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/mifi_mini_openwrt/</guid>
+      <description>mifi mini的openwrt之旅 本文是劝读者千万不要想不开再去给小米wifi迷你 刷 openwrt 的最新版本了 ！！ miboy重新归来 之前家里的书房wifi虽</description>
+    </item>
     
     <item>
       <title>Go Concurrency Pattern</title>

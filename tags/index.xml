@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sat, 05 Oct 2019 23:50:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 16:38:11 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mifi</title>
+      <link>https://blog.scnace.me/tags/mifi/</link>
+      <pubDate>Fri, 31 Jan 2020 16:38:11 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/tags/mifi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openwrt</title>
+      <link>https://blog.scnace.me/tags/openwrt/</link>
+      <pubDate>Fri, 31 Jan 2020 16:38:11 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/tags/openwrt/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>go</title>
