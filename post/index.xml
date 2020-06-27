@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Fri, 31 Jan 2020 16:38:11 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2020 16:47:48 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DIY MacOS WMS</title>
+      <link>https://blog.scnace.me/post/diy-macos-wms/</link>
+      <pubDate>Sat, 27 Jun 2020 16:47:48 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/diy-macos-wms/</guid>
+      <description>调教属于自己的mac窗口管理器(mWMS) 一个Geeker就要拥有自己的窗口管理器（强行 缘起 自从前年刚入mac生态生态时就在体验各种各样的窗</description>
+    </item>
     
     <item>
       <title>mifi mini with openwrt</title>
