@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sat, 27 Jun 2020 16:47:48 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2020 19:00:06 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.scnace.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Module Migration</title>
+      <link>https://blog.scnace.me/post/go-module-migration/</link>
+      <pubDate>Sun, 04 Oct 2020 19:00:06 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/go-module-migration/</guid>
+      <description>Go Module Migration From GOPATH Vendor 本篇记录了我们团队是怎么从「特殊」的Go Vendor模式迁移到Go Modules，并且怎么在每个项目中管理这些依赖 Vendoring 在介绍Go的</description>
+    </item>
     
     <item>
       <title>DIY MacOS WMS</title>
