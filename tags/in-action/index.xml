@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>in action on 一只菜鸡的成长之路</title>
@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>copyleft</copyright>
-    <lastBuildDate>Sun, 25 Jun 2017 16:49:56 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.scnace.me/tags/in-action/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 25 Jun 2017 16:49:56 +0000</lastBuildDate><atom:link href="https://blog.scnace.me/tags/in-action/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>那么就开始使用Context吧</title>
       <link>https://blog.scnace.me/post/head-to-context/</link>
       <pubDate>Sun, 25 Jun 2017 16:49:56 +0000</pubDate>
       
       <guid>https://blog.scnace.me/post/head-to-context/</guid>
-      <description>Context并不是银弹,使用时需注意其使用场景。 Context golang的context包的&amp;rdquo;前身&amp;rdquo;来自golang.org</description>
+      <description>Context并不是银弹,使用时需注意其使用场景。 Context golang的context包的&amp;quot;前身&amp;quot;来自golang.org/x</description>
     </item>
     
     <item>
@@ -103,21 +99,21 @@
     </item>
     
     <item>
-      <title>关于JSON的思索</title>
-      <link>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</guid>
-      <description>JavaScript Object Notation 简述 JSON是这几年一下子火爆起来的数据交换格式,在前后端的交互中,JSON也似乎变成了一门必修课,相比之下,反而像XML之类的格式在</description>
-    </item>
-    
-    <item>
       <title>关于golang的延后执行defer</title>
       <link>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.scnace.me/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/</guid>
       <description>defer:在函数执行到最后时,再进行调用声明了defer的函数。 DEMO： package main import ( &amp;quot;fmt&amp;quot; ) func defer_first(){ fmt.Println(&amp;quot;Hi ! I&#39;m first defer&amp;quot;); } func dataOp(data1 float32 ,data2 float32)(float32,float32){ return data1+data2,data1*data2 } //只有一个defe</description>
+    </item>
+    
+    <item>
+      <title>关于JSON的思索</title>
+      <link>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/</guid>
+      <description>JavaScript Object Notation 简述 JSON是这几年一下子火爆起来的数据交换格式,在前后端的交互中,JSON也似乎变成了一门必修课,相比之下,反而像XML之类的格式在</description>
     </item>
     
     <item>

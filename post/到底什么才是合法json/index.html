@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/" />
 
-
 <meta itemprop="name" content="关于JSON的思索">
 <meta itemprop="description" content="JavaScript Object Notation 简述 JSON是这几年一下子火爆起来的数据交换格式,在前后端的交互中,JSON也似乎变成了一门必修课,相比之下,反而像XML之类的格式在">
-
-
 
 <meta itemprop="wordCount" content="1480">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -133,41 +135,34 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#javascript-object-notation">JavaScript Object Notation</a>
-<ul>
-<li><a href="#简述">简述</a></li>
-<li><a href="#以前的认识">以前的认识</a></li>
-<li><a href="#说说今天的事">说说今天的事</a></li>
-<li><a href="#scanner-go中判断首字符的函数">scanner.go中判断首字符的函数</a></li>
-</ul></li>
-<li><a href="#end">end</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#javascript-object-notation">JavaScript Object Notation</a>
+      <ul>
+        <li><a href="#简述">简述</a></li>
+        <li><a href="#以前的认识">以前的认识</a></li>
+        <li><a href="#说说今天的事">说说今天的事</a></li>
+        <li><a href="#scannergo中判断首字符的函数">scanner.go中判断首字符的函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#end">end</a></li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h2 id="javascript-object-notation">JavaScript Object Notation</h2>
-
+      <h2 id="javascript-object-notation">JavaScript Object Notation</h2>
 <h3 id="简述">简述</h3>
-
 <p>JSON是这几年一下子火爆起来的数据交换格式,在前后端的交互中,<code>JSON</code>也似乎变成了一门必修课,相比之下,反而像<code>XML</code>之类的格式在数据交互中已经很少听到了。当然,<code>JSON</code>会火起来,大抵是因为 <strong>轻</strong> 和 <strong>易读</strong> 吧。前端的同学和后台的同学都能很快的上手(大概5分钟就能掌握其基本的语法格式)。</p>
-
 <h3 id="以前的认识">以前的认识</h3>
-
 <p>由于大二做项目的时候，IOS的学长说你给我的接口的数据不要用数组啊 要用<code>JSON</code>的格式给我 这样我们两都方便。那时候 还第一次听说<code>JSON</code>。 之后 一直在赶项目进度, 所以 ,那时候理解中的<code>json</code> 无非就是 <code>$jsondata=json_encode(array)</code> 只要把数组的结构封装好 扔给前端 就万事大吉了。以至于 一直到前些日子 还是这么认为的，唯一的区别大概就是换了种写法(在golang中通常都是<code>Marshal</code>一个<code>Struct</code>)。从未去了解过 到底怎样的才算<code>JSON</code> 一定要是有<code>“{}”</code>的？抑或是一定要带着<code>”：“</code>的？</p>
-
 <h3 id="说说今天的事">说说今天的事</h3>
-
 <p>应该是昨天的事了，实习带我的老大看我爬虫撸得差不多了。就凑过来说要给我出道题,让我打开了一个<code>Online JSON Formatter</code>,说了句”<strong>随便输串JSON试试</strong>“  当然 我习惯得输了<code>{&quot;a&quot;:&quot;a&quot;,&quot;b&quot;:[&quot;a&quot;,&quot;b&quot;]}</code>。 然后 Run 了一遍。老大说了句 把它用golang的terminal实现出来吧。。 我在想这还不简单？ 于是昨晚回家 我就很快的用了<code>cli</code>包 和 <code>json</code>包 实现了这个功能  后续 还 ”锦上添花“地加了read unformatted json from file(其实是个意外 偶然发现cli的包竟然自带了read json from file，叫<a href="https://godoc.org/github.com/mkideal/cli#Context.JSONIndent">JSONIndent()</a>,于是很巧得就用上了)和download ouput to file。以为早上去上班的时候 应该老大会表扬我的吧。。。毕竟一个小demo就做得这么精致，然而。。。。。 又是一顿语重心长的教导:&ldquo;别把这个搞得这么华丽，你告诉我你格式化JSON的逻辑是怎样的?&rdquo; &ldquo;啥?逻辑?不就是一个自带的<code>json.Indent()</code>吗&rdquo; ”我的意思是让你自己去实现这个逻辑。。“ 于是 只能打回去自己写<code>Indent()</code> ,这时 因为要自己写这个<code>Indent()</code> 所以 搞清楚到底JSON是怎么一回事 就变得 非常重要了。 当然 正常coder的第一反应 肯定是去查 <code>Indent()</code>的源码  关于真正format的逻辑 其实很简单 就跟 学校每门语言入门时在<code>循环</code>这一章节里提到的 星号正/倒三角 类似的题 花了大概十几分钟就把<code>Format</code>的逻辑写完了 真正感觉自己难以接受的是源码里的那个 <code>scanner</code>的实现。很难理解为什么首字符为什么要判断这么多字符。于是 去了<a href="http://www.json.org/json-zh.html">json.org</a> 终于解开了心里的疑虑。都是 定性思维 的锅啊！ JSON明明还有<code>数组(An ordered list of values)</code> ,<code>字符串(string)</code>,<code>数字(number)</code>的啊。。。</p>
-
-<h3 id="scanner-go中判断首字符的函数">scanner.go中判断首字符的函数</h3>
-
+<h3 id="scannergo中判断首字符的函数">scanner.go中判断首字符的函数</h3>
 <pre><code>// stateBeginValue is the state at the beginning of the input.
 func stateBeginValue(s *scanner, c byte) int {
 	if c &lt;= ' ' &amp;&amp; isSpace(c) {
@@ -217,14 +212,10 @@ func stateBeginValue(s *scanner, c byte) int {
   //json所有格式就这些 没有的话 就只能return error了。
 	return s.error(c, &quot;looking for beginning of value&quot;)
 }
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>UPDATE :</p>
 </blockquote>
-
 <p>自己也撸了个 <a href="https://golang.org/pkg/encoding/json/#Indent">json.Indent()</a>的 <a href="https://gist.github.com/scbizu/3a9b12a822a2563bc406f9aeaae48969">demo</a>  有兴趣的可以看看哈～</p>
-
 <h2 id="end">end</h2>
 
     </div>
@@ -251,13 +242,13 @@ func stateBeginValue(s *scanner, c byte) int {
           <a href="/tags/json/">json</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/">
+        <a class="prev" href="/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">修改Golang template语法</span>
+            <span class="prev-text nav-default">关于golang的延后执行defer</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/">
-            <span class="next-text nav-default">关于golang的延后执行defer</span>
+        <a class="next" href="/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/">
+            <span class="next-text nav-default">关于set-cookie的注意事项</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -266,6 +257,10 @@ func stateBeginValue(s *scanner, c byte) int {
   </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
@@ -293,13 +288,10 @@ func stateBeginValue(s *scanner, c byte) int {
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -309,7 +301,17 @@ func stateBeginValue(s *scanner, c byte) int {
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

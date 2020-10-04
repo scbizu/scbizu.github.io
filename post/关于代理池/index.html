@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/" />
 
-
 <meta itemprop="name" content="关于代理池">
 <meta itemprop="description" content="写在前面 在很多个爬虫死于非命之后,果然不出所料,接到了新的需求:新增代理池.其实也不用说,在Web站点和爬虫的斗争中,爬虫太容易就可以伪装自">
-
-
 
 <meta itemprop="wordCount" content="1378">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -132,43 +134,34 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#写在前面">写在前面</a></li>
-<li><a href="#代理池">代理池</a></li>
-<li><a href="#需要注意的点">需要注意的点</a></li>
-<li><a href="#使用">使用</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#写在前面">写在前面</a></li>
+    <li><a href="#代理池">代理池</a></li>
+    <li><a href="#需要注意的点">需要注意的点</a></li>
+    <li><a href="#使用">使用</a></li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h2 id="写在前面">写在前面</h2>
-
+      <h2 id="写在前面">写在前面</h2>
 <p>在很多个爬虫死于非命之后,果然不出所料,接到了新的需求:新增代理池.其实也不用说,在Web站点和爬虫的斗争中,爬虫太容易就可以伪装自己了,通过更换UA(User Agent),甚至切换高匿代理.Web站点在明,而爬虫在暗,所以,在爬虫界一直有句话:只要是能通过Brower访问的地方,爬虫一样可以。在模仿浏览器行为上,爬虫已经有很成熟的解决方案,各大语言也有自己的专属爬虫框架,比如<code>Python</code>的<code>Scrapy</code>，<code>Golang</code>的<code>go-spider</code>和幽灵蛛  <code>pholcus</code> 等等。这种由爬虫代替人工更方便的采集数据的方式,在<code>大数据</code>中被广泛运用。。</p>
-
 <h2 id="代理池">代理池</h2>
-
 <p>那么代理池在爬虫框架中应该可以被看作是一个血槽,代理池里面对应的<strong>IP</strong>,<strong>端口</strong>,<strong>协议</strong>记录是保证爬虫在遭到Web站点封锁之后的后续谋生手段。在Web站点看来,由于你已经切换了IP,就相当于是换了一个地方(终端)登录。然而,有些代理还是会被Web站点收录,将其拉入黑名单,(效果可以参考用代理在Wikipedia改词条时会提示正在使用代理。)这类容易被检测到的代理称之为<strong>透明代理</strong>,而要完全为伪装自己就要用高匿的代理,这类代理较小概率被识别为代理。</p>
-
 <h2 id="需要注意的点">需要注意的点</h2>
-
 <p>前面说过 代理 无非只有 <strong>IP</strong> <strong>端口(Port)</strong> <strong>协议(protocol)</strong> ,我们只要在发起Request的时候去使用那条代理就可以了。那么就变成了 源-&gt;代理-&gt;目标 的形式。</p>
-
 <ul>
 <li>Protocol: 分为 HTTP 和 HTTPS .HTTP 和 HTTPS 啥区别就不再说了。</li>
 <li>IP:</li>
-<li>Port:<del>需要注意的是,在拼接代理记录时,在Port前要留有空格.比如 <a href="http://127.0.0.1：1080">http://127.0.0.1：1080</a> 应该 要拼接成 <a href="http://127.0.0.1:">http://127.0.0.1:</a> 1080.这个也是我今天遇到的比较大的坑了。也许是<code>parse</code>时造成的,但我还是比较偏向直接在原始字符串中添加空格。</del>其实 很多次都会犯很愚蠢的错误,Go在添加Proxy时(Client中的Transport),如果,把parse的error丢弃掉,在失败(代理格式不合法)的情况下还是会用本地的IP继续发起Request,所以,切记在添加Proxy时前对URL的<code>Parse</code>一定要去检查<code>Parse</code>是否报错,所以,划掉部分就因为格式不正确却把error丢弃才会有一种代理可用的假象,最终的代理记录还是protocol://ip:port/ 的格式。</li>
+<li>Port:<!-- raw HTML omitted -->需要注意的是,在拼接代理记录时,在Port前要留有空格.比如 http://127.0.0.1：1080 应该 要拼接成 http://127.0.0.1: 1080.这个也是我今天遇到的比较大的坑了。也许是<code>parse</code>时造成的,但我还是比较偏向直接在原始字符串中添加空格。<!-- raw HTML omitted -->其实 很多次都会犯很愚蠢的错误,Go在添加Proxy时(Client中的Transport),如果,把parse的error丢弃掉,在失败(代理格式不合法)的情况下还是会用本地的IP继续发起Request,所以,切记在添加Proxy时前对URL的<code>Parse</code>一定要去检查<code>Parse</code>是否报错,所以,划掉部分就因为格式不正确却把error丢弃才会有一种代理可用的假象,最终的代理记录还是protocol://ip:port/ 的格式。</li>
 </ul>
-
 <h2 id="使用">使用</h2>
-
 <p>在使用上,我现在是维护了一个比较多代理的db，但是,后来想想,这种方法效率并不高,因为要考虑到在取代理时 代理本身就是可用的。而可能在db里的代理 在一段时间未用后不可用了,所以在使用的时候,我还写了个isValid在判断代理是否还是可用。但是 在经过一番思考之后 我觉得可以重构,如果去维护一个更轻量的队列是不是更完美,控制在10个左右,而在启动代理池时,其本身是空的 需要调用Crawl去现抓 这样应该就可以保证代理在没有isValid下的最大可用性了。但是,一切的一切还是要等到我重构完了 才会知道。</p>
-
 <p>实测之后发现,代理的过期时间太快了,平均一次Request之后就会失效,免费代理的稳定性实在堪忧,如果还把记录放在DB里面,势必大部分时间都会浪费在DB 的I/O上,所以在代理失效后 我选择不重新插入DB 而是放到内存的数据结构(list)中去 这样在爬虫切换代理的过程中 DB只有View而不需要Update 在爬虫结束后再把list重新放回DB中 尽量把对DB的依赖降到最小 把时间集中在Request上.
 以上。</p>
 
@@ -211,6 +204,10 @@
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -237,13 +234,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -253,7 +247,17 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

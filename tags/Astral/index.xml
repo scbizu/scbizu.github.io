@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Astral on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Astral on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/astral/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/astral/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>嘛,说说我与Astral的故事吧(第一弹)</title>
       <link>https://blog.scnace.me/post/the-story-about-astal-and-me-1/</link>

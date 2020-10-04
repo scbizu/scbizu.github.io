@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>重要课程 on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 重要课程 on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/categories/%E9%87%8D%E8%A6%81%E8%AF%BE%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/categories/%E9%87%8D%E8%A6%81%E8%AF%BE%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>操作系统复习</title>
       <link>https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</link>

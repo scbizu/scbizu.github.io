@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,13 +44,10 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E4%B8%80%E6%AC%A1%E7%88%AC%E6%96%B9%E6%AD%A3%E6%95%99%E5%8A%A1%E5%A4%84%E7%9A%84%E6%88%90%E5%8A%9F%E5%AE%9E%E8%B7%B5/" />
 
-
 <meta itemprop="name" content="一次爬方正教务处的成功实践">
 <meta itemprop="description" content="前戏 不知道从什么时候开始,搞教务处已经成了我山CS专业的学生学习一门新的WEB语言(只要跟web沾边的) Java PHP Python NodeJS Golang&hellip;">
 
-
-
-<meta itemprop="wordCount" content="2125">
+<meta itemprop="wordCount" content="2077">
 
 
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -123,7 +125,7 @@
             <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 2125 words </span>
+          <span class="more-meta"> 2077 words </span>
           <span class="more-meta"> 5 mins read </span>
         
       </div>
@@ -133,67 +135,49 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#前戏">前戏</a></li>
-<li><a href="#入戏">入戏</a></li>
-<li><a href="#how-to-do">HOW TO DO</a>
-<ul>
-<li><a href="#step-1">STEP 1</a></li>
-<li><a href="#step-2">STEP 2</a></li>
-<li><a href="#step3">STEP3:</a></li>
-<li><a href="#step4">STEP4:</a></li>
-<li><a href="#step5">STEP5:</a></li>
-<li><a href="#step-6">STEP 6:</a></li>
-<li><a href="#end">END</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#前戏">前戏</a></li>
+    <li><a href="#入戏">入戏</a></li>
+    <li><a href="#how-to-do">HOW TO DO</a>
+      <ul>
+        <li><a href="#step-1">STEP 1</a></li>
+        <li><a href="#step-2">STEP 2</a></li>
+        <li><a href="#step3">STEP3:</a></li>
+        <li><a href="#step4">STEP4:</a></li>
+        <li><a href="#step5">STEP5:</a></li>
+        <li><a href="#step-6">STEP 6:</a></li>
+        <li><a href="#end">END</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h2 id="前戏">前戏</h2>
-
+      <h2 id="前戏">前戏</h2>
 <p>不知道从什么时候开始,搞教务处已经成了我山CS专业的学生学习一门新的WEB语言(只要跟web沾边的)  Java PHP Python NodeJS Golang&hellip;.等不同版本就这样一一诞生，当然 我也不例外 这次用golang实现模拟登陆教务处并获取课表 成绩等信息。(额  问我为什么喜欢搞教务处  大概是因为教务处的页面实在太丑了 然后每次都要我去评教 评教的Button ，Chrome竟然不兼容!这么烂的东西,评你【友善度】个【友善度】啊！</p>
-
 <h2 id="入戏">入戏</h2>
-
 <p>其实 去年自学PHP cURL的时候 我也试过模拟登陆教务处  那时候还做了个查分数的模块挂在微信上(但是人一多真的会炸啊2333  因为那时候服务器还在HK 所以被别人吐槽慢的跟什么一样了)    去年的时候 是看着<a href="http://www.blogfshare.com/php-curl-zhengfang.html">这篇PHP解决方案</a>来一步步操作的 虽然也遇到了一些问题 但是自己都解决啦~~</p>
-
 <p>我还记得 那篇部落格里有一句话简直就像一个Flag一样 插在了那里  我当时看的时候就觉得药丸，药丸。。。。</p>
-
-<blockquote>好吧，这只是正方，如果在服务器后台加一个判断，如果验证码为空，直接返回登陆失败了！！！黑线！！！GG 了。。。</blockquote>
-
+<!-- raw HTML omitted -->
 <p>然后。。。</p>
-
 <p>然后。。。</p>
-
 <p>然后。。。</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlbyiaxyuj30xb0can24" alt="flag" /></p>
-
+<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlbyiaxyuj30xb0can24" alt="flag"></p>
 <p>正方的程序猿肯定也看到了这篇部落格(嗯 肯定是这样！)</p>
-
 <p>怪不得 寒假老是接到小伙伴的反馈 说我的东西崩掉了(原来真的是这样)</p>
-
-<p>所以,还是用<strong>通用办法(我连验证码一起抓还不行吗!)</strong>吧。。</p>
-
+<p>所以,还是用**通用办法(我连验证码一起抓还不行吗!)**吧。。</p>
 <h2 id="how-to-do">HOW TO DO</h2>
-
 <p>我尽量说一下通用步骤:</p>
-
 <h3 id="step-1">STEP 1</h3>
-
 <p>请求还是要发的,第一步要去教务处的Login界面 去拿VIEWSTATE 和 VIEWSTATEGENERATOR，这两货我就不多说了,之前的链接里面有说明。<strong>还多了一步,就是这个操作也要拿下Cookie</strong>(STEP2要用到)</p>
-
 <h3 id="step-2">STEP 2</h3>
-
 <p>竟然验证码已经绕不过去了 那我们就不绕了。我们通过F12检查发现 验证码也是有地址的(./CheckCode.aspx),我们<strong>把Step1拿到的cookies带上去发Get请求到这个地址</strong>，不要废话,拿了Body体就走,然后把body里面的gif缓存在本地。这边给下示范:</p>
-
 <pre><code>    // 获取验证码
     var verify_code string
     for {
@@ -209,114 +193,73 @@
            break
        }
 </code></pre>
-
 <p>当然 我用了带break的while(true){}循环  憋说了 已经因为l1不分被嘲笑了无数次了(泪)</p>
-
 <h3 id="step3">STEP3:</h3>
-
 <p>在STEP2确认测试通过的前提下,也就是本地存在了那张gif图片(测试的时候gif图片我是用ie打开的,因为<strong>读写要尽可能分离</strong>),接下来就是比较重要的post环节了,其实上面那篇php的实现里面已经写得很详细了,我这边由于是golang版本的，golang 1.5 新加了跟python一样的cookiejar .Client带cookiejar实现抓取实在是太爽了,蛤蛤蛤。。哦,<strong>对了,强调一点,由于这破JWC看起来像是上世纪的产物,所以,不要忘了把你的utf-8转成gbk2312哦,这个是个坑,勿入~</strong></p>
-
 <p>golang的话 可以考虑一下这个库</p>
-
 <pre><code>&quot;github.com/scbizu/mahonia&quot;
 </code></pre>
-
 <p>当然 七牛的库也不错</p>
-
 <pre><code>&quot;github.com/qiniu/iconv&quot;
 </code></pre>
-
 <p>其他的lang乃们就自己找吧(吐舌头~</p>
-
 <p>这里我也贴个代码吧~</p>
-
-<pre><code class="language-go">    /**
-    *模拟post表单
-    */
-    func post(Rurl string,c *http.Client,username string,password string,verify_code string,VIEWSTATE string,VIEWSTATEGENERATOR string,temp_cookies []*http.Cookie) []*http.Cookie{
-        postValue:=url.Values{}
-        cd:=mahonia.NewEncoder(&quot;gb2312&quot;)
-        rb:=cd.ConvertString(&quot;学生&quot;)
-        //准备POST的数据
-        postValue.Add(&quot;txtUserName&quot;,username)
-        postValue.Add(&quot;TextBox2&quot;,password)
-        postValue.Add(&quot;txtSecretCode&quot;,verify_code)
-        postValue.Add(&quot;__VIEWSTATE&quot;,VIEWSTATE)
-        postValue.Add(&quot;__VIEWSTATEGENERATOR&quot;,VIEWSTATEGENERATOR)
-        postValue.Add(&quot;Button1&quot;,&quot;&quot;)
-        postValue.Add(&quot;lbLanguage&quot;,&quot;&quot;)
-        postValue.Add(&quot;hidPdrs&quot;,&quot;&quot;)
-        postValue.Add(&quot;hidsc&quot;,&quot;&quot;)
-        postValue.Add(&quot;RadioButtonList1&quot;,rb)
-        //开始POST   这次POST到登陆界面   带上第一次请求的cookie 和 验证码  和 一些必要的数据
-        postUrl,_:=url.Parse(Rurl)
-        Jar,_:=cookiejar.New(nil)
-        Jar.SetCookies(postUrl,temp_cookies)
-        c.Jar=Jar   
-        resp,_:=c.PostForm(Rurl,postValue)
-        cookies:=resp.Cookies()
-        return cookies
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#75715e">/**
+</span><span style="color:#75715e">    *模拟post表单
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">post</span>(<span style="color:#a6e22e">Rurl</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>,<span style="color:#a6e22e">username</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">password</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">verify_code</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">VIEWSTATE</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">VIEWSTATEGENERATOR</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">temp_cookies</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Cookie</span>) []<span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Cookie</span>{
+        <span style="color:#a6e22e">postValue</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">Values</span>{}
+        <span style="color:#a6e22e">cd</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">mahonia</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#e6db74">&#34;gb2312&#34;</span>)
+        <span style="color:#a6e22e">rb</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">cd</span>.<span style="color:#a6e22e">ConvertString</span>(<span style="color:#e6db74">&#34;学生&#34;</span>)
+        <span style="color:#75715e">//准备POST的数据
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;txtUserName&#34;</span>,<span style="color:#a6e22e">username</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;TextBox2&#34;</span>,<span style="color:#a6e22e">password</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;txtSecretCode&#34;</span>,<span style="color:#a6e22e">verify_code</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;__VIEWSTATE&#34;</span>,<span style="color:#a6e22e">VIEWSTATE</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;__VIEWSTATEGENERATOR&#34;</span>,<span style="color:#a6e22e">VIEWSTATEGENERATOR</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;Button1&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;lbLanguage&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;hidPdrs&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;hidsc&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>)
+        <span style="color:#a6e22e">postValue</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;RadioButtonList1&#34;</span>,<span style="color:#a6e22e">rb</span>)
+        <span style="color:#75715e">//开始POST   这次POST到登陆界面   带上第一次请求的cookie 和 验证码  和 一些必要的数据
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">postUrl</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">Rurl</span>)
+        <span style="color:#a6e22e">Jar</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">cookiejar</span>.<span style="color:#a6e22e">New</span>(<span style="color:#66d9ef">nil</span>)
+        <span style="color:#a6e22e">Jar</span>.<span style="color:#a6e22e">SetCookies</span>(<span style="color:#a6e22e">postUrl</span>,<span style="color:#a6e22e">temp_cookies</span>)
+        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Jar</span>=<span style="color:#a6e22e">Jar</span>   
+        <span style="color:#a6e22e">resp</span>,<span style="color:#a6e22e">_</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">PostForm</span>(<span style="color:#a6e22e">Rurl</span>,<span style="color:#a6e22e">postValue</span>)
+        <span style="color:#a6e22e">cookies</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Cookies</span>()
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cookies</span>
         }
-</code></pre>
-
-<h3 id="step4">STEP4:</h3>
-
+</code></pre></div><h3 id="step4">STEP4:</h3>
 <p>看到这里说明你已经快接近成功了。</p>
-
 <p>拿着上面登陆成功的cookie去登陆成功的页面(<strong>./xs_main.aspx?xh=YOUR STUDENT No.</strong>)看看 是否能出现意料之中的body 没有的话  再仔细检查一下自己的STEP3 慢慢来 不要急 喝杯水 继续呗~</p>
-
 <p>成功了的话 也不要以为JWC就是任你行了 Naive 还是有坑的。。。</p>
-
-<p>如果 有一定web基础的同学<strong>肯定按下了F12 然后打开个人课表。</strong>没错，所以你看到了下面的页面其实都是假象(<iframe>) 真正的页面只有点了Network的人才会明白 。</p>
-
+<p>如果 有一定web基础的同学**肯定按下了F12 然后打开个人课表。**没错，所以你看到了下面的页面其实都是假象(<!-- raw HTML omitted -->) 真正的页面只有点了Network的人才会明白 。</p>
 <p>没错 就是它(<strong>./xskbcx.aspx?xh=YOUR STUDENT No.&amp;xm=urlencode(YOUR NAME)&amp;gnmkdm=N121603</strong>)</p>
-
 <p>其实，老司机告诉你，其实xm和gnmkdm都是可选的get set value 你只要get上去你自己的xh就可以了</p>
-
 <p>Like this : <strong>./xskbcx.aspx?xh=YOUR STUDENT No</strong></p>
-
 <h3 id="step5">STEP5:</h3>
-
 <p>如果泥还看下去,说明你遇到问题了 是不是发现Get上去了 却<strong>response给了你302</strong>啊 嘿嘿嘿  就是这个神奇的302的,</p>
-
 <p>这时候查看header里的Location还是空,是不是感觉整个人都要崩溃了,我在这里也懵逼了<strong>一个晚上+一个上午</strong></p>
-
 <p>直到&hellip;&hellip;..</p>
-
 <p><strong>一个苹果掉在了我的头上。。。。</strong></p>
-
 <p>怎么可能  我又不是牛顿。。。</p>
-
 <p>我偶然间 <strong>对比了两次request头</strong></p>
-
 <p>来，我们来看看:</p>
-
-<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcadh5jdj311j05bt9w" alt="norefer" /> 
-<img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcb8tr9rj311x05z0ue" alt="hasrefer" /></p>
-
+<p><img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcadh5jdj311j05bt9w" alt="norefer"> 
+<img src="https://ws1.sinaimg.cn/large/005uxZXHgy1fdlcb8tr9rj311x05z0ue" alt="hasrefer"></p>
 <p>可以 很清楚的看到 <strong>不是cookie的锅</strong>(把你的光标从post函数上离开)</p>
-
 <p>200的尝试  有referer头!</p>
-
 <p>就是因为这个重定向头 导致你一直302;</p>
-
 <p>此时 仿佛中了500w一般开心吧~</p>
-
 <p>知道了这个梗 我们在Request里面设置一个重定向:</p>
-
 <p>Like this:</p>
-
-<pre><code class="language-go">      req.Header.Set(&quot;Referer&quot;,courseURL)
-</code></pre>
-
-<h3 id="step-6">STEP 6:</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">      <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Referer&#34;</span>,<span style="color:#a6e22e">courseURL</span>)
+</code></pre></div><h3 id="step-6">STEP 6:</h3>
 <p>好了 JWC可以任你行了 去玩吧~ Enjoy your time，guys!</p>
-
 <h3 id="end">END</h3>
-
-<p>最后 贴上源码地址:<a href="https://github.com/scbizu/Zafu_jwcInterface">https://github.com/scbizu/Zafu_jwcInterface</a></p>
-
+<p>最后 贴上源码地址:https://github.com/scbizu/Zafu_jwcInterface</p>
 <p>萌新  弱弱地求一发Follow(Star就算了  受不起)</p>
 
     </div>
@@ -359,6 +302,10 @@
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -385,13 +332,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -401,7 +345,17 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

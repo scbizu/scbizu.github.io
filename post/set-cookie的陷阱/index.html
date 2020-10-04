@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/set-cookie%E7%9A%84%E9%99%B7%E9%98%B1/" />
 
-
 <meta itemprop="name" content="关于set-cookie的注意事项">
 <meta itemprop="description" content="Set-Cookie 关于Set-Cookie的具体说明可以在MDN(参见RFC 6265 section 4.1)上很容易翻到,这边就不细说了。简单说下,就是浏览器(B端)发起请求(">
-
-
 
 <meta itemprop="wordCount" content="669">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -132,29 +134,24 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#set-cookie">Set-Cookie</a></li>
-<li><a href="#注意点">注意点</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#set-cookie">Set-Cookie</a></li>
+    <li><a href="#注意点">注意点</a></li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h2 id="set-cookie">Set-Cookie</h2>
-
+      <h2 id="set-cookie">Set-Cookie</h2>
 <p>关于Set-Cookie的具体说明可以在<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie">MDN</a>(参见RFC 6265 section 4.1)上很容易翻到,这边就不细说了。简单说下,就是浏览器(B端)发起请求(Request),接到服务器端(S端)的响应(Response)的时候会检查Response的Header中的Set-Cookie字段,如果存在,那么浏览器就会把这个字段加到Request的Cookie中去。</p>
-
 <h2 id="注意点">注意点</h2>
-
 <p>在爬虫的实践中,很多时候都需要获取到页面的Cookie,来高效地模仿浏览器行为。对于没有<code>Set-Cookie</code>的页面 可能一次Request就可以拿到这个页面的Cookie,之后的模拟登录操作也会手到擒来。但是,很多人会有疑惑,为什么登陆的操作会没有成功?这时不妨静下心来,仔细分析下报文,你会发现这时你Request Header的Cookie字段 跟 正常浏览时对应不起来。看了下Resonse Header又会发现多出了<code>Set-Cookie</code>字段 <strong>这个字段就是服务器返回给你的Cookie ,是可以通过<code>Response.Cookies()</code>获取到的。</strong></p>
-
 <p>既然知道了这个是Server给我们的应答Cookie ,接下来就比较好办了。我们需要做的就是模仿浏览器,重新发起一次带着这些Cookie的Request给服务器就可以了。</p>
-
 <p>所以,看到Response Header里面有<code>Set-Cookie</code>字段时,我们需要发起两次请求.通用爬虫可以跟浏览器一样,<strong>第一次Request检查Response Header里的Set-Cookie字段,第二次Request再带上Server 返回的Cookie去进行模拟登录等操作。</strong></p>
 
     </div>
@@ -179,9 +176,9 @@
           <a href="/tags/solution/">Solution</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%85%B3%E4%BA%8Egolang%E7%9A%84%E5%BB%B6%E5%90%8E%E6%89%A7%E8%A1%8Cdefer/">
+        <a class="prev" href="/post/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%89%8D%E6%98%AF%E5%90%88%E6%B3%95json/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">关于golang的延后执行defer</span>
+            <span class="prev-text nav-default">关于JSON的思索</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/">
@@ -194,6 +191,10 @@
   </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
@@ -221,13 +222,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -237,7 +235,17 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>总结 on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 总结 on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2016年度总结之认知</title>
       <link>https://blog.scnace.me/post/2016%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E4%B9%8B%E8%AE%A4%E7%9F%A5/</link>

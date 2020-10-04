@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>日常积累 on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 日常积累 on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JSON的语义化挑战--Collection&#43;JSON</title>
       <link>https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/</link>

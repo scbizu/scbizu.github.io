@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" />
@@ -36,7 +36,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -44,12 +45,9 @@
 <meta property="og:description" content="scnace: with a geeker heart forever" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.scnace.me/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" />
-
-<meta property="og:updated_time" content="2019-10-05T23:50:21&#43;08:00"/>
-
+<meta property="og:updated_time" content="2019-10-05T23:50:21+08:00" />
 <meta itemprop="name" content="伪技术相关">
 <meta itemprop="description" content="scnace: with a geeker heart forever">
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="伪技术相关"/>
 <meta name="twitter:description" content="scnace: with a geeker heart forever"/>
@@ -81,6 +79,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -99,6 +99,8 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
+      </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
   </ul>
@@ -116,8 +118,8 @@
         0001-01-01
       </span>
       <span class="archive-post-title">
-        <a href="/post/%E5%85%B3%E4%BA%8Essh/" class="archive-post-link">
-          当我们ssh {{user}}@{{ip}} 发生了什么?
+        <a href="/post/golang-panic%E5%92%8Crecover%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93/" class="archive-post-link">
+          golang panic和recover实验小结
         </a>
       </span>
     </div><div class="archive-post">
@@ -125,8 +127,8 @@
         0001-01-01
       </span>
       <span class="archive-post-title">
-        <a href="/post/%E4%B8%BAgo-get%E6%8A%A4%E8%88%AA-/" class="archive-post-link">
-          天朝局域网内go get的正确姿势
+        <a href="/post/golang-%E9%97%AD%E5%8C%85%E5%AE%9E%E8%B7%B5/" class="archive-post-link">
+          golang 闭包实践
         </a>
       </span>
     </div><div class="archive-post">
@@ -134,8 +136,8 @@
         0001-01-01
       </span>
       <span class="archive-post-title">
-        <a href="/post/astral-0ea3c4c0-acbf-48be-a1af-9660474dd0e2/" class="archive-post-link">
-          嘛,说说我与Astral的故事吧(第零弹)
+        <a href="/post/golang%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%99%E6%B3%95/" class="archive-post-link">
+          golang多返回值写法
         </a>
       </span>
     </div><div class="archive-post">
@@ -143,8 +145,8 @@
         0001-01-01
       </span>
       <span class="archive-post-title">
-        <a href="/post/the-story-about-astal-and-me-1/" class="archive-post-link">
-          嘛,说说我与Astral的故事吧(第一弹)
+        <a href="/post/golang%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-post-link">
+          golang常用数据结构
         </a>
       </span>
     </div><div class="archive-post">
@@ -152,8 +154,8 @@
         0001-01-01
       </span>
       <span class="archive-post-title">
-        <a href="/post/%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%90%86%E6%B1%A0/" class="archive-post-link">
-          关于代理池
+        <a href="/post/golang%E7%9A%84%E4%B8%80%E4%B8%AAocr%E5%BA%93/" class="archive-post-link">
+          golang的一个OCR库
         </a>
       </span>
     </div>
@@ -198,13 +200,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -214,7 +213,10 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

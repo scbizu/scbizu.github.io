@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,13 +44,10 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/json%E7%9A%84%E8%AF%AD%E4%B9%89%E5%8C%96%E6%8C%91%E6%88%98-collection-json/" />
 
-
 <meta itemprop="name" content="JSON的语义化挑战--Collection&#43;JSON">
 <meta itemprop="description" content="背景 在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然">
 
-
-
-<meta itemprop="wordCount" content="1126">
+<meta itemprop="wordCount" content="1121">
 
 
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -122,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/%E4%BC%AA%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/"> 伪技术相关 </a>
             </div>
-          <span class="more-meta"> 1126 words </span>
+          <span class="more-meta"> 1121 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -132,97 +134,84 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#背景">背景</a></li>
-<li><a href="#collection-json的语义化">Collection+JSON的语义化</a>
-<ul>
-<li><a href="#集合">“集合”</a></li>
-<li><a href="#具体定义">具体定义</a></li>
-<li><a href="#crud">CRUD</a></li>
-<li><a href="#分页">分页</a></li>
-<li><a href="#实现">实现</a></li>
-</ul></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#collectionjson的语义化">Collection+JSON的语义化</a>
+      <ul>
+        <li><a href="#集合">“集合”</a></li>
+        <li><a href="#具体定义">具体定义</a></li>
+        <li><a href="#crud">CRUD</a></li>
+        <li><a href="#分页">分页</a></li>
+        <li><a href="#实现">实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h2 id="背景">背景</h2>
-
+      <h2 id="背景">背景</h2>
 <p>在长达数十年的API表述格式的竞争中,XML终究还是败下阵来,JSON因为他的简洁以及对JavaScript的友好,被大肆地铺开使用。然而,作为一种单纯的单纯的文本表述格式,JSON是缺少严格的语义的,定义比较随意的JSON可能造成交互上的困惑,如果有一种标准化的JSON格式,并且让大家都遵守这个标准,那么肯定会节省很多时间和多余的理解JSON语义的工作。在<code>《RESTFUL WEB APIs》</code>的安利下,我决定尝试下<a href="http://amundsen.com/media-types/collection/format/">Collection+JSON</a>,这个号称 <strong>最有希望的JSON的fiat标准</strong>。</p>
-
-<h2 id="collection-json的语义化">Collection+JSON的语义化</h2>
-
+<h2 id="collectionjson的语义化">Collection+JSON的语义化</h2>
 <h3 id="集合">“集合”</h3>
-
-<p>就像名字一样,Collection+JSON的设计中到处都在体现&rdquo;集合模式&rdquo;的概念。</p>
-
+<p>就像名字一样,Collection+JSON的设计中到处都在体现&quot;集合模式&quot;的概念。</p>
 <p>一个集合可以看成是一组资源的聚合,一个集合中会包含指向这些资源的链接和对这些资源的描述。从这也可以看出,这个标准也符合REST的设计规范。</p>
-
 <blockquote>
 <p>集合: 以链接方式罗列其他资源的资源。</p>
 </blockquote>
-
 <h3 id="具体定义">具体定义</h3>
-
 <p>先给出一个Request和Response的具体描述:</p>
-
 <ul>
-<li><p>Request</p>
-
+<li>Request</li>
+</ul>
 <pre><code>GET /simpleCollection/ HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre></li>
-
-<li><p>Response</p>
-
+</code></pre><ul>
+<li>Response</li>
+</ul>
 <pre><code>//Response Header
 200 OK HTTP/1.1
 Content-Type: application/vnd.collection+json
 Content-Length: xxx
-</code></pre></li>
-
-<li><p>Document</p>
-
-<pre><code class="language-JSON">{&quot;collection&quot;:{
-&quot;version&quot;:&quot;1.0&quot;,
-&quot;href&quot;: &quot;https://blog.scnace.cc/api/&quot;,
-&quot;items&quot;:[{
-    &quot;href&quot;: &quot;/api/post/1&quot;,
-    &quot;data&quot;: [
-      {&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi nace :)&quot;},
-      {&quot;name&quot;:&quot;other name&quot;,&quot;value&quot;:&quot;other value&quot;}
-    ],
-}],
-&quot;links&quot;:[
-{&quot;href&quot;:&quot;/logo.png&quot;,&quot;rel&quot;:&quot;icon&quot;}
-],
-&quot;queries&quot;:[{
-&quot;href&quot;:&quot;/api/search&quot;,
-&quot;rel&quot;:&quot;search&quot;,
-&quot;prompt&quot;: &quot;Lets search sth.&quot;,
-&quot;data&quot;:[
-    {&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;nace&quot;}
-  ]
-}],
-&quot;template&quot;:{
-  &quot;data&quot;:[
-    {&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi nace,nice to meet you:)&quot;,&quot;prompt&quot;:&quot;New Text Message&quot;}
-  ]
+</code></pre><ul>
+<li>Document</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">{<span style="color:#f92672">&#34;collection&#34;</span>:{
+  <span style="color:#f92672">&#34;version&#34;</span>:<span style="color:#e6db74">&#34;1.0&#34;</span>,
+  <span style="color:#f92672">&#34;href&#34;</span>: <span style="color:#e6db74">&#34;https://blog.scnace.cc/api/&#34;</span>,
+  <span style="color:#f92672">&#34;items&#34;</span>:[{
+        <span style="color:#f92672">&#34;href&#34;</span>: <span style="color:#e6db74">&#34;/api/post/1&#34;</span>,
+        <span style="color:#f92672">&#34;data&#34;</span>: [
+          {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;Hi nace :)&#34;</span>},
+          {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;other name&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;other value&#34;</span>}
+        ],
+    }],
+  <span style="color:#f92672">&#34;links&#34;</span>:[
+    {<span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;/logo.png&#34;</span>,<span style="color:#f92672">&#34;rel&#34;</span>:<span style="color:#e6db74">&#34;icon&#34;</span>}
+  ],
+  <span style="color:#f92672">&#34;queries&#34;</span>:[{
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;/api/search&#34;</span>,
+    <span style="color:#f92672">&#34;rel&#34;</span>:<span style="color:#e6db74">&#34;search&#34;</span>,
+    <span style="color:#f92672">&#34;prompt&#34;</span>: <span style="color:#e6db74">&#34;Lets search sth.&#34;</span>,
+    <span style="color:#f92672">&#34;data&#34;</span>:[
+        {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;nace&#34;</span>}
+      ]
+    }],
+    <span style="color:#f92672">&#34;template&#34;</span>:{
+      <span style="color:#f92672">&#34;data&#34;</span>:[
+        {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;Hi nace,nice to meet you:)&#34;</span>,<span style="color:#f92672">&#34;prompt&#34;</span>:<span style="color:#e6db74">&#34;New Text Message&#34;</span>}
+      ]
+    }
+  }
 }
-}
-}
-</code></pre>
-
-<p>如上就是一个标准的Collection+JSON的文档,它将包含如下字段:</p>
-
+</code></pre></div><p>如上就是一个标准的Collection+JSON的文档,它将包含如下字段:</p>
 <ul>
 <li>href : 指向集合本身的永久链接(Response Body);</li>
 <li>items: 包含指向集合成员的链接,以及他们的部分表述(Response Body);</li>
@@ -230,124 +219,94 @@ Content-Length: xxx
 <li>queries: 用于搜索此集合的控件(Request Body);</li>
 <li>template: 用于向集合添加新的子集;</li>
 </ul>
-
 <h3 id="crud">CRUD</h3>
-
-<p>Collection+JSON标准下的增删改查同样通过<code>RESTful</code>接口来实现:
-* Create:在集合中插入新信息通过 <strong>写入模板</strong> 实现</p>
-
-<p>```</p></li>
-</ul>
-
-<p>//Request Header</p>
-
-<p>POST /simpleCollection/ HTTP/1.1
-Host: blog.scnace.cc
-Accept: application/vnd.collection+json</p>
-
-<pre><code>```JSON
-//Request Body
-{
-  &quot;template&quot;:{
-    &quot;data&quot;:[
-      {&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi nace,nice to meet you:)&quot;,&quot;prompt&quot;:&quot;New Text Message&quot;}
-    ]
-  }
-}
-</code></pre>
-
-<blockquote>
-<p>name,value是一对k,v结构的数据;prompt是对这条数据的说明或者注释。</p>
-</blockquote>
-
+<p>Collection+JSON标准下的增删改查同样通过<code>RESTful</code>接口来实现:</p>
 <ul>
-<li><p>Read:在集合中搜索信息通过 <strong>搜索控件</strong> 实现</p>
-
+<li>Create:在集合中插入新信息通过 <strong>写入模板</strong> 实现</li>
+</ul>
 <pre><code>//Request Header
 
 POST /simpleCollection/ HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre></li>
-</ul>
-
-<pre><code class="language-JSON">//Request Body
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#960050;background-color:#1e0010">//Request</span> <span style="color:#960050;background-color:#1e0010">Body</span>
 {
-  &quot;queries&quot;:[{
-    &quot;href&quot;:&quot;/api/search&quot;,
-    &quot;rel&quot;:&quot;search&quot;,
-    &quot;prompt&quot;: &quot;Lets search sth.&quot;,
-    &quot;data&quot;:[
-        {&quot;name&quot;:&quot;start&quot;,&quot;value&quot;:&quot;na&quot;},
-        {&quot;name&quot;:&quot;end&quot;,&quot;value&quot;:&quot;ce&quot;}
+  <span style="color:#f92672">&#34;template&#34;</span>:{
+    <span style="color:#f92672">&#34;data&#34;</span>:[
+      {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;Hi nace,nice to meet you:)&#34;</span>,<span style="color:#f92672">&#34;prompt&#34;</span>:<span style="color:#e6db74">&#34;New Text Message&#34;</span>}
+    ]
+  }
+}
+</code></pre></div><blockquote>
+<p>name,value是一对k,v结构的数据;prompt是对这条数据的说明或者注释。</p>
+</blockquote>
+<ul>
+<li>Read:在集合中搜索信息通过 <strong>搜索控件</strong> 实现</li>
+</ul>
+<pre><code>//Request Header
+
+POST /simpleCollection/ HTTP/1.1
+Host: blog.scnace.cc
+Accept: application/vnd.collection+json
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#960050;background-color:#1e0010">//Request</span> <span style="color:#960050;background-color:#1e0010">Body</span>
+{
+  <span style="color:#f92672">&#34;queries&#34;</span>:[{
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;/api/search&#34;</span>,
+    <span style="color:#f92672">&#34;rel&#34;</span>:<span style="color:#e6db74">&#34;search&#34;</span>,
+    <span style="color:#f92672">&#34;prompt&#34;</span>: <span style="color:#e6db74">&#34;Lets search sth.&#34;</span>,
+    <span style="color:#f92672">&#34;data&#34;</span>:[
+        {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;start&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;na&#34;</span>},
+        {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;end&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;ce&#34;</span>}
       ]
     }]
 }
-</code></pre>
-
-<ul>
-<li><p>Update:向集合中的子项<code>PUT</code> <strong>写入模板</strong> 来修改子项的数据</p>
-
+</code></pre></div><ul>
+<li>Update:向集合中的子项<code>PUT</code> <strong>写入模板</strong> 来修改子项的数据</li>
+</ul>
 <pre><code>//Request Header
 
 PUT /api/post/1 HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre></li>
-</ul>
-
-<pre><code class="language-JSON">{
-  &quot;template&quot;:{
-    &quot;data&quot;:[
-      {&quot;name&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Hi bizu:)&quot;,&quot;prompt&quot;:&quot;New Text Message&quot;}
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">{
+  <span style="color:#f92672">&#34;template&#34;</span>:{
+    <span style="color:#f92672">&#34;data&#34;</span>:[
+      {<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>,<span style="color:#f92672">&#34;value&#34;</span>:<span style="color:#e6db74">&#34;Hi bizu:)&#34;</span>,<span style="color:#f92672">&#34;prompt&#34;</span>:<span style="color:#e6db74">&#34;New Text Message&#34;</span>}
     ]
   }
 }
-</code></pre>
-
-<ul>
-<li><p>Delete:向集合中的子项发送<code>DELETE</code>来删除子项的数据</p>
-
+</code></pre></div><ul>
+<li>Delete:向集合中的子项发送<code>DELETE</code>来删除子项的数据</li>
+</ul>
 <pre><code>//Request Header
 
 DELETE /api/post/1 HTTP/1.1
 Host: blog.scnace.cc
 Accept: application/vnd.collection+json
-</code></pre></li>
-</ul>
-
-<h3 id="分页">分页</h3>
-
+</code></pre><h3 id="分页">分页</h3>
 <p>在处理较多子集的场景中,<strong>分页</strong> 是标准中不可或缺的一环,但是,Collection+JSON并没有显示地处理这个问题。办法总是会有的,分页这种平常的需求也是肯定要满足的,于是,我们可以采用关联其他媒体资源的方法实现分页:</p>
-
-<pre><code class="language-JSON">{
-  &quot;links&quot;:[{
-    &quot;name&quot;:&quot;next_page&quot;,
-    &quot;rel&quot;:&quot;next&quot;,
-    &quot;href&quot;:&quot;/api/post/2&quot;,
-    &quot;render&quot;: &quot;link&quot;,
-    &quot;prompt&quot;:&quot;Next&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">{
+  <span style="color:#f92672">&#34;links&#34;</span>:[{
+    <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;next_page&#34;</span>,
+    <span style="color:#f92672">&#34;rel&#34;</span>:<span style="color:#e6db74">&#34;next&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;/api/post/2&#34;</span>,
+    <span style="color:#f92672">&#34;render&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+    <span style="color:#f92672">&#34;prompt&#34;</span>:<span style="color:#e6db74">&#34;Next&#34;</span>
   },{
-    &quot;name&quot;:&quot;previous_page&quot;,
-    &quot;rel&quot;:&quot;previous&quot;,
-    &quot;href&quot;:&quot;/api/post/pre&quot;,
-    &quot;render&quot;: &quot;link&quot;,
-    &quot;prompt&quot;:&quot;Prev&quot;
+    <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;previous_page&#34;</span>,
+    <span style="color:#f92672">&#34;rel&#34;</span>:<span style="color:#e6db74">&#34;previous&#34;</span>,
+    <span style="color:#f92672">&#34;href&#34;</span>:<span style="color:#e6db74">&#34;/api/post/pre&#34;</span>,
+    <span style="color:#f92672">&#34;render&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+    <span style="color:#f92672">&#34;prompt&#34;</span>:<span style="color:#e6db74">&#34;Prev&#34;</span>
   }
   ]
 }
-</code></pre>
-
-<h3 id="实现">实现</h3>
-
+</code></pre></div><h3 id="实现">实现</h3>
 <blockquote>
 <p>这个标准工具包已经在我Side-Project的TODO List里面了233</p>
 </blockquote>
-
 <h2 id="reference">Reference</h2>
-
 <p><a href="http://amundsen.com/media-types/collection/format/">个人主页的Collection+JSON说明</a></p>
-
 <p><a href="https://github.com/collection-json">GitHub</a></p>
 
     </div>
@@ -372,13 +331,13 @@ Accept: application/vnd.collection+json
           <a href="/tags/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/">日常积累</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/docker%E4%B8%8Bes%E5%8F%8A%E5%85%B6%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/">
+        <a class="prev" href="/post/j2ee%E5%A4%8D%E4%B9%A0/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Docker下搭建Elasticsearch及其集群</span>
+            <span class="prev-text nav-default">j2ee复习</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/">
-            <span class="next-text nav-default">ShadowSocksX查看已经储存的Server信息</span>
+        <a class="next" href="/post/linux-mint%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9/">
+            <span class="next-text nav-default">linux mint下修改默认中文文件夹</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -387,6 +346,10 @@ Accept: application/vnd.collection+json
   </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
@@ -414,13 +377,10 @@ Accept: application/vnd.collection+json
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -430,7 +390,17 @@ Accept: application/vnd.collection+json
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

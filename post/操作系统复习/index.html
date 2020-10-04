@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,13 +44,10 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/" />
 
-
 <meta itemprop="name" content="操作系统复习">
 <meta itemprop="description" content="操作系统复习资料 根据《计算机操作系统教程》(第四版)整理 整理人:scnace 一般I/O方式: 联机I/O方式: 适用:交互式系统 实现方式:外围设">
 
-
-
-<meta itemprop="wordCount" content="5906">
+<meta itemprop="wordCount" content="5910">
 
 
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -122,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/%E9%87%8D%E8%A6%81%E8%AF%BE%E7%A8%8B/"> 重要课程 </a>
             </div>
-          <span class="more-meta"> 5906 words </span>
+          <span class="more-meta"> 5910 words </span>
           <span class="more-meta"> 12 mins read </span>
         
       </div>
@@ -131,257 +133,242 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#操作系统复习资料">操作系统复习资料</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h1 id="操作系统复习资料">操作系统复习资料</h1>
-
+      <h1 id="操作系统复习资料">操作系统复习资料</h1>
 <blockquote>
-<p>根据《计算机操作系统教程》(第四版)整理    整理人:scnace</blockquote></p>
+<p>根据《计算机操作系统教程》(第四版)整理    整理人:scnace<!-- raw HTML omitted --></p>
 </blockquote>
-
 <ol>
 <li>一般I/O方式:</li>
 </ol>
-
 <ul>
 <li>联机I/O方式:</li>
 </ul>
-
 <p>适用:交互式系统</p>
-
 <p>实现方式:外围设备直接和主机相连接，一台主机可以连接一台或多台外围设备</p>
-
 <p>实例:标准output设备,例如键盘,鼠标,显示器,光电笔,打印机。</p>
-
 <ul>
 <li>脱机I/O方式(预输入方式):</li>
 </ul>
-
 <p>适用:对设备联机输入输出时间较快的设备</p>
-
 <p>实现方式:利用PC作为外围处理器进行I/O处理,在PC上,用户通过联机方式把数据或程序首先输入到后援存储器上。</p>
-
 <p>实例: U盘</p>
-
 <ul>
 <li>直接耦合方式</li>
 </ul>
-
 <p>适用:大型设备</p>
-
 <p>实现方式:把主机和外围机通过一个公用的大容量外存直接偶合起来;此种方式需要一个大容量的公用存储器。</p>
-
 <ul>
 <li>spooling系统</li>
 </ul>
-
 <p>描述:指传输数据的过程中，将数据存放在临时工作区中。其它程序可以在之后的任意时间点对其存取。通常英语动词<strong>spool</strong>可以指储存设备的行为，具体表现为物理意义上的缠或卷，就比如说磁带机。最常见的假脱机的应用是打印缓存，即把打印任务加入到队列。</p>
-
 <ul>
 <li>网络联机方式</li>
 </ul>
-
 <p>即Server I/O (服务器端的I/O,当用户通过IP访问,并进行操作时,就会触发此方式).</p>
-
 <p>2.<a href="http://ss64.com/bash/">Linux命令</a></p>
-
 <ul>
-<li><p>系统维护及其管理命令:date .setsev等</p></li>
-
-<li><p>文件操作及管理命令:ls find等</p></li>
-
-<li><p>进程管理命令:kill at等</p></li>
-
-<li><p>磁盘及设备管理:adduser,userdel etc.</p></li>
-
-<li><p>文档操作指令:csplit,sort等</p></li>
-
-<li><p>网络通信:netstat ifconfig etc.</p></li>
-
-<li><p>程序开发:gcc link etc.</p></li>
-
-<li><p>X window:stratx,XE86Setup</p></li>
+<li>
+<p>系统维护及其管理命令:date .setsev等</p>
+</li>
+<li>
+<p>文件操作及管理命令:ls find等</p>
+</li>
+<li>
+<p>进程管理命令:kill at等</p>
+</li>
+<li>
+<p>磁盘及设备管理:adduser,userdel etc.</p>
+</li>
+<li>
+<p>文档操作指令:csplit,sort等</p>
+</li>
+<li>
+<p>网络通信:netstat ifconfig etc.</p>
+</li>
+<li>
+<p>程序开发:gcc link etc.</p>
+</li>
+<li>
+<p>X window:stratx,XE86Setup</p>
+</li>
 </ul>
-
 <p>3.批处理操作(Windows And Linux Shell)</p>
-
 <p>4.陷阱(trap)处理机构(图P30)</p>
-
 <ul>
-<li><p>在系统中为控制系统调用服务的处理机构称为陷阱处理机构</p></li>
-
-<li><p><a href="http://baike.baidu.com/view/4306833.htm">陷阱指令</a></p></li>
+<li>
+<p>在系统中为控制系统调用服务的处理机构称为陷阱处理机构</p>
+</li>
+<li>
+<p><a href="http://baike.baidu.com/view/4306833.htm">陷阱指令</a></p>
+</li>
 </ul>
-
 <p>5.程序顺序执行的特点</p>
-
 <ul>
-<li><p>顺序性:</p></li>
-
-<li><p>封闭性：</p></li>
-
-<li><p>可再现性:</p></li>
+<li>
+<p>顺序性:</p>
+</li>
+<li>
+<p>封闭性：</p>
+</li>
+<li>
+<p>可再现性:</p>
+</li>
 </ul>
-
 <p>6.Bernstein并发条件</p>
-
 <p>1966年Bernstein提出两个相邻语句S1 S2可以并发执行的条件:</p>
-
 <p>任意语句Sx划分为两个变量的集合R(Sx)和W(Sx) 其中<code>R(Sx)={a1a2...am}</code>,<code>aj(j=1,2,3..m)</code>是语句Sx在执行期间必须对其进行读的变量;</p>
-
 <p><code>W(Sx)={b1b2b3...bn}</code>
 <code>bj(j=1,2,3...n)</code> 为写的变量</p>
-
 <p>对于语句S1，S2,有</p>
-
 <ul>
-<li><p>R(S1)∩W(S2)={∅}</p></li>
-
-<li><p>W(S1)∩R(S2)={∅}</p></li>
-
-<li><p>W(S1)∩W(S2)={∅}</p></li>
+<li>
+<p>R(S1)∩W(S2)={∅}</p>
+</li>
+<li>
+<p>W(S1)∩R(S2)={∅}</p>
+</li>
+<li>
+<p>W(S1)∩W(S2)={∅}</p>
+</li>
 </ul>
-
 <p>同时成立,则语句S1和S2是可以并发执行的。</p>
-
 <p>然而 在实际的开发中,Bernstein条件是无法实现的。 所以解决多道程序并发中的资源互斥问题,我们要引入进程来实现。</p>
-
 <p>7.进程 和 程序 的概念</p>
-
 <ul>
-<li><p>进程是一个动态概念,程序是一个静态概念。程序是指令的有序集合，没有任何执行的含义。而进程是则是强调执行过程，它动态地被创建,并被调度执行后消亡。</p></li>
-
-<li><p>进程具有并发特征,而程序没有。进程具有独立性和异步性。</p></li>
-
-<li><p>进程是计算机资源的基本单位。</p></li>
-
-<li><p>只要程序的数据集不同，不同的进程可以包含同一程序。</p></li>
+<li>
+<p>进程是一个动态概念,程序是一个静态概念。程序是指令的有序集合，没有任何执行的含义。而进程是则是强调执行过程，它动态地被创建,并被调度执行后消亡。</p>
+</li>
+<li>
+<p>进程具有并发特征,而程序没有。进程具有独立性和异步性。</p>
+</li>
+<li>
+<p>进程是计算机资源的基本单位。</p>
+</li>
+<li>
+<p>只要程序的数据集不同，不同的进程可以包含同一程序。</p>
+</li>
 </ul>
-
 <p>8.进程控制块(Process Control Block)  以下简称PCB</p>
-
 <ul>
 <li>描述:</li>
 </ul>
-
 <ol>
-<li><p><em>进程标识号</em>(pid)和<em>进程名</em></p></li>
-
-<li><p>用户标识号(uid)和用户名</p></li>
-
-<li><p>家族关系:Process之间可以有家族(Parent)关系。PCB中也有相应的项去描述家族关系。</p></li>
+<li>
+<p><em>进程标识号</em>(pid)和<em>进程名</em></p>
+</li>
+<li>
+<p>用户标识号(uid)和用户名</p>
+</li>
+<li>
+<p>家族关系:Process之间可以有家族(Parent)关系。PCB中也有相应的项去描述家族关系。</p>
+</li>
 </ol>
-
 <ul>
 <li>控制信息:</li>
 </ul>
-
 <ol>
-<li><p>进程当前状态:初始状态,就绪状态,执行状态,等待状态,终止状态。</p></li>
-
-<li><p>进程优先级(PCB表项有以下几项与进程优先级有关):</p></li>
+<li>
+<p>进程当前状态:初始状态,就绪状态,执行状态,等待状态,终止状态。</p>
+</li>
+<li>
+<p>进程优先级(PCB表项有以下几项与进程优先级有关):</p>
+</li>
 </ol>
-
 <ul>
-<li><p> 占有CPU时间</p></li>
-
-<li><p>进程优先级偏移</p></li>
-
-<li><p>占据内存时间,等等</p></li>
+<li>
+<p> 占有CPU时间</p>
+</li>
+<li>
+<p>进程优先级偏移</p>
+</li>
+<li>
+<p>占据内存时间,等等</p>
+</li>
 </ul>
-
 <ol>
-<li><p>程序开始地址:Process首地址</p></li>
-
-<li><p>各种计时信息</p></li>
-
-<li><p>通信信息:与其他进程之间的通信信息。</p></li>
+<li>
+<p>程序开始地址:Process首地址</p>
+</li>
+<li>
+<p>各种计时信息</p>
+</li>
+<li>
+<p>通信信息:与其他进程之间的通信信息。</p>
+</li>
 </ol>
-
 <ul>
 <li>资源管理信息</li>
 </ul>
-
 <ol>
-<li><p>占用内存大小及其管理用数据结构指针</p></li>
-
-<li><p>(对换或者覆盖用的相关信息) &mdash;&ndash;&gt;在进程申请，释放内存中使用。</p></li>
-
-<li><p>共享程序段大小及起始地址</p></li>
-
-<li><p>I/O设备号&mdash;&mdash;&gt;申请释放设备进行数据传输时使用</p></li>
-
-<li><p>指向文件系统的指针及其有关标识&mdash;-&gt;可操作文件系统</p></li>
+<li>
+<p>占用内存大小及其管理用数据结构指针</p>
+</li>
+<li>
+<p>(对换或者覆盖用的相关信息) &mdash;&ndash;&gt;在进程申请，释放内存中使用。</p>
+</li>
+<li>
+<p>共享程序段大小及起始地址</p>
+</li>
+<li>
+<p>I/O设备号&mdash;&mdash;&gt;申请释放设备进行数据传输时使用</p>
+</li>
+<li>
+<p>指向文件系统的指针及其有关标识&mdash;-&gt;可操作文件系统</p>
+</li>
 </ol>
-
 <ul>
 <li>CPU现场保护结构</li>
 </ul>
-
 <p>PCB 中设有专门的CPU现场保护结构,以存储退出执行时的Process现场数据。例如:</p>
-
 <p>某些软件中在上次非正常退出后,下次启动时可以Roll back。</p>
-
 <p>9.带挂起的进程状态转换</p>
-
-<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/图片1.png" alt="图片1" /></p>
-
+<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/%E5%9B%BE%E7%89%871.png" alt="图片1"></p>
 <p>10.信号量(semaphore)</p>
-
 <p>它以一个整数变数，提供信号，以确保在并行计算环境中，不同进程在访问共享资源时，不会发生冲突。是一种不需要使用忙碌等待（busy waiting）的一种方法。</p>
-
 <p>在系统中，给予每一个进程一个信号量，代表每个进程目前的状态，未得到控制权的进程会在特定地方被强迫停下来，等待可以继续进行的信号到来。如果信号量是一个任意的整数，通常被称为计数信号量（Counting semaphore），或一般信号量（general semaphore）；如果信号量只有二进制的0或1，称为二进制信号量（binary semaphore）。在Linux系中，二进制信号量（binary semaphore）又称Mutex。(引自Wikipedia)</p>
-
 <p>在计数信号量中，若sem大于或等于零，则表示可供并发进程使用的资源实体数。若小于等于零则表示正在等待使用临界区的进程数。</p>
-
 <p>11.P(wait()),V(signal()) 原语</p>
-
 <p><strong>P操作</strong>会增加sem的值 而<strong>V操作</strong>则会减少sem的值</p>
-
 <p>具体运作方式：</p>
-
 <ol>
-<li><p>初始化，给与它一个非负数的整数值。</p></li>
-
-<li><p>运行 P（wait()），信号量S的值将被减少。企图进入临界区段的进程，需要先运行 P（wait()）。当信号量S减为负值时，进程会被挡住，不能继续；当信号量S不为负值时，进程可以获准进入临界区段。</p></li>
-
-<li><p>运行 V（又称signal()），信号量S的值会被增加。结束离开临界区段的进程，将会运行 V（又称signal()）。当信号量S不为负值时，先前被挡住的其他进程，将可获准进入临界区段。</p></li>
+<li>
+<p>初始化，给与它一个非负数的整数值。</p>
+</li>
+<li>
+<p>运行 P（wait()），信号量S的值将被减少。企图进入临界区段的进程，需要先运行 P（wait()）。当信号量S减为负值时，进程会被挡住，不能继续；当信号量S不为负值时，进程可以获准进入临界区段。</p>
+</li>
+<li>
+<p>运行 V（又称signal()），信号量S的值会被增加。结束离开临界区段的进程，将会运行 V（又称signal()）。当信号量S不为负值时，先前被挡住的其他进程，将可获准进入临界区段。</p>
+</li>
 </ol>
-
 <p>P,V操作必须以<strong>原语</strong>实现，并且在执行P,V操作时不允许中断发生。</p>
-
 <p>12.生产者-消费者问题（producer-consumer problems）</p>
-
 <p>生产者：往缓冲区写入数据，重复这个步骤</p>
-
 <p>消费者：从缓冲区读出数据，重复这个步骤</p>
-
 <p>首要矛盾：当生产者写入数据时，有界缓冲区已满；当消费者读出数据时，有界缓冲区为空；此时会引发进程死锁。</p>
-
 <p>解决方案：首先 这是一个<strong>同步</strong>问题 需要满足如下条件：</p>
-
 <ul>
-<li><p>               消费者向接收数据时有界缓冲区<strong>至少有一个</strong>单元是满的。</p></li>
-
-<li><p>               生产者想发送数据时有界缓冲区<strong>至少有一个</strong>单元是空的。</p></li>
+<li>
+<p>               消费者向接收数据时有界缓冲区<strong>至少有一个</strong>单元是满的。</p>
+</li>
+<li>
+<p>               生产者想发送数据时有界缓冲区<strong>至少有一个</strong>单元是空的。</p>
+</li>
 </ul>
-
 <p>再者 生产者各进程必须和消费者各进程<strong>互斥</strong>。</p>
-
 <p>伪代码实现（P,V操作）：</p>
-
 <blockquote>
 <p>生产者私有信号量avail表示有界缓冲区的空单元数初值为n，消费者私有信号量full表示有界缓冲区的非空单元数初值为0，mutex表示用于互斥的共有信号量。</p>
 </blockquote>
-
 <pre><code>deposit(data):
 
 begin
@@ -414,315 +401,330 @@ V(mutex)
 
 end
 </code></pre>
-
 <p>13.进程间用管道(pipe)通信</p>
-
 <blockquote>
 <p>见书P67</p>
 </blockquote>
-
 <p>14.死锁问题</p>
-
 <p>定义：当两个以上的运算单元，双方都在等待对方停止运行，以获取系统资源，但是没有一方提前退出时，这种状况，就称为死锁。</p>
-
 <p>起因：并发进程的资源竞争</p>
-
 <p>必要条件：</p>
-
 <ul>
-<li><p>互斥条件：不能同时被两个以上进程使用或操作</p></li>
-
-<li><p>不剥夺条件：进程所获得的资源在未使用完毕完毕之前 不能被其他进程强行剥夺 必须由他自身释放</p></li>
-
-<li><p>部分分配：每次申请新的资源时 会占用已分配的资源</p></li>
-
-<li><p>环路条件：存在一种进程循环链，链中每一个进程已获得的资源同时被下一个进程所请求。</p></li>
+<li>
+<p>互斥条件：不能同时被两个以上进程使用或操作</p>
+</li>
+<li>
+<p>不剥夺条件：进程所获得的资源在未使用完毕完毕之前 不能被其他进程强行剥夺 必须由他自身释放</p>
+</li>
+<li>
+<p>部分分配：每次申请新的资源时 会占用已分配的资源</p>
+</li>
+<li>
+<p>环路条件：存在一种进程循环链，链中每一个进程已获得的资源同时被下一个进程所请求。</p>
+</li>
 </ul>
-
 <p>15.进程与线程的区别</p>
-
 <p>线程是进程的一部分。参见Wikipedia线程的定义：</p>
-
 <blockquote>
 <p><strong>线程</strong>（英语：<strong>thread</strong>）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
 </blockquote>
-
 <p>16.处理机调度：</p>
-
 <ul>
-<li><p>作业调度：按一定的原则对外存输入井上的大量后备作业进行选择，给选出的作业分配内存和I/O设备等资源，并建立根进程，以使该作业的进程获得竞争处理机的权利。当作业执行完毕时，负责回收系统资源。</p></li>
-
-<li><p>交换调度：将处于外存交换区的就绪状态或等待状态的进程调入内存，或把处于内存就绪状态或内存等待状态的进程交换到外存交换区。</p></li>
-
-<li><p>进程调度：选取一个处于就绪状态的进程占用处理机</p></li>
-
-<li><p>线程调度：进程执行时的调度</p></li>
+<li>
+<p>作业调度：按一定的原则对外存输入井上的大量后备作业进行选择，给选出的作业分配内存和I/O设备等资源，并建立根进程，以使该作业的进程获得竞争处理机的权利。当作业执行完毕时，负责回收系统资源。</p>
+</li>
+<li>
+<p>交换调度：将处于外存交换区的就绪状态或等待状态的进程调入内存，或把处于内存就绪状态或内存等待状态的进程交换到外存交换区。</p>
+</li>
+<li>
+<p>进程调度：选取一个处于就绪状态的进程占用处理机</p>
+</li>
+<li>
+<p>线程调度：进程执行时的调度</p>
+</li>
 </ul>
-
 <p>17.调度目标：</p>
-
 <ul>
-<li><p>对所有作业应该是公平合理的</p></li>
-
-<li><p>应使设备有高的利用率</p></li>
-
-<li><p>每天执行尽可能多的作业</p></li>
-
-<li><p>有较快的响应时间</p></li>
+<li>
+<p>对所有作业应该是公平合理的</p>
+</li>
+<li>
+<p>应使设备有高的利用率</p>
+</li>
+<li>
+<p>每天执行尽可能多的作业</p>
+</li>
+<li>
+<p>有较快的响应时间</p>
+</li>
 </ul>
-
 <p>18.计算题：调度算法</p>
-
 <ul>
-<li><p>先来先服务(FCFS)算法</p></li>
-
-<li><p>轮转法(round robin)</p></li>
-
-<li><p>多级反馈轮转法(round robin with mutiple feedback)</p></li>
-
-<li><p>优先级法</p></li>
-
-<li><p>最短作业优先法(Shortest Job First ,SJF)</p></li>
-
-<li><p>最高响应时间优先法(highest response-radio Next ，HRN)</p></li>
+<li>
+<p>先来先服务(FCFS)算法</p>
+</li>
+<li>
+<p>轮转法(round robin)</p>
+</li>
+<li>
+<p>多级反馈轮转法(round robin with mutiple feedback)</p>
+</li>
+<li>
+<p>优先级法</p>
+</li>
+<li>
+<p>最短作业优先法(Shortest Job First ,SJF)</p>
+</li>
+<li>
+<p>最高响应时间优先法(highest response-radio Next ，HRN)</p>
+</li>
 </ul>
-
 <p>加权周转时间=T/Ts  T为周转时间  Ts为服务时间</p>
-
 <p>19.地址重定位或地址映射的方法</p>
-
 <ul>
-<li><p>静态地址重定位(static address relocation):在虚拟空间程序执行之前由装配程序完成地址映射工作。</p></li>
-
-<li><p>动态地址重定位(dynamic address relocation)：在程序执行过程中，在CPU访问内存之前 将要访问的程序或数据地址转换成内存地址。依靠硬件地址变换机构完成。</p></li>
+<li>
+<p>静态地址重定位(static address relocation):在虚拟空间程序执行之前由装配程序完成地址映射工作。</p>
+</li>
+<li>
+<p>动态地址重定位(dynamic address relocation)：在程序执行过程中，在CPU访问内存之前 将要访问的程序或数据地址转换成内存地址。依靠硬件地址变换机构完成。</p>
+</li>
 </ul>
-
 <p>20.动态分区法:</p>
-
 <p>不同于静态分区法，该法分区的建立是作业处理过程中进行的，且其大小随作业或进程对内存的要求而改变。提高内存的利用率。</p>
-
 <p>21.动态分区算法：</p>
-
 <ul>
-<li><p>最先适应算法：要求空闲区可用链或者可用表按<strong>起始地址递增</strong>的次序排列，一旦找到大于或等于所要求内存长度的分区 则结束探索。分配之后，重新结算分区大小。</p></li>
-
-<li><p>最佳适应算法:从<strong>小到大的次序</strong>组成空闲区可用链或者可用表，一旦找到大于或等于所要求内存长度的分区 则结束探索。分配之后，重新结算分区大小。</p></li>
-
-<li><p>最坏适应算法:从<strong>大到小的次序</strong>组成空闲区可用链或者可用表，先判断第一块分区。若Size(所要求的分区)&gt;Size(第一块分区)，分配失败。分配之后，重新结算分区大小。</p></li>
+<li>
+<p>最先适应算法：要求空闲区可用链或者可用表按<strong>起始地址递增</strong>的次序排列，一旦找到大于或等于所要求内存长度的分区 则结束探索。分配之后，重新结算分区大小。</p>
+</li>
+<li>
+<p>最佳适应算法:从<strong>小到大的次序</strong>组成空闲区可用链或者可用表，一旦找到大于或等于所要求内存长度的分区 则结束探索。分配之后，重新结算分区大小。</p>
+</li>
+<li>
+<p>最坏适应算法:从<strong>大到小的次序</strong>组成空闲区可用链或者可用表，先判断第一块分区。若Size(所要求的分区)&gt;Size(第一块分区)，分配失败。分配之后，重新结算分区大小。</p>
+</li>
 </ul>
-
 <p>22.覆盖技术：</p>
-
 <p>一个程序并不需要一开始就把它的全部指令和数据都装入内存后再执行。</p>
-
 <p>23.地址变换</p>
-
-<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/图片2.png" alt="图片2" /></p>
-
+<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/%E5%9B%BE%E7%89%872.png" alt="图片2"></p>
 <p>24.请求页式管理中的置换算法</p>
-
 <ul>
-<li><p>随机淘汰算法</p></li>
-
-<li><p>轮转法 和 先进先出</p></li>
-
-<li><p>最近最久未使用页面置换算法</p></li>
-
-<li><p>理想型淘汰算法(OPT)</p></li>
+<li>
+<p>随机淘汰算法</p>
+</li>
+<li>
+<p>轮转法 和 先进先出</p>
+</li>
+<li>
+<p>最近最久未使用页面置换算法</p>
+</li>
+<li>
+<p>理想型淘汰算法(OPT)</p>
+</li>
 </ul>
-
 <p>25.发生缺页的两种可能</p>
-
 <ul>
-<li><p>并发进程所需要的工作集总和大于内存可提供的可用区</p></li>
-
-<li><p>虽然分配了足够的工作集，但系统无法在开始执行前选择适当的程序段和数据进入内存</p></li>
+<li>
+<p>并发进程所需要的工作集总和大于内存可提供的可用区</p>
+</li>
+<li>
+<p>虽然分配了足够的工作集，但系统无法在开始执行前选择适当的程序段和数据进入内存</p>
+</li>
 </ul>
-
 <p>26.Linux基本状态：</p>
-
 <ul>
-<li><p>TASK_RUNNING：运行</p></li>
-
-<li><p>TASK_INTERRUPTIBLE:可中断</p></li>
-
-<li><p>TASK_UNINTERRUPTIBLE:不可中断</p></li>
-
-<li><p>TASK_STOPPED:暂停状态</p></li>
-
-<li><p>TASK_TRACE:被debugger监视</p></li>
-
-<li><p>TASK_ZOMBIE:系统调用exit后，进入僵死状态。</p></li>
+<li>
+<p>TASK_RUNNING：运行</p>
+</li>
+<li>
+<p>TASK_INTERRUPTIBLE:可中断</p>
+</li>
+<li>
+<p>TASK_UNINTERRUPTIBLE:不可中断</p>
+</li>
+<li>
+<p>TASK_STOPPED:暂停状态</p>
+</li>
+<li>
+<p>TASK_TRACE:被debugger监视</p>
+</li>
+<li>
+<p>TASK_ZOMBIE:系统调用exit后，进入僵死状态。</p>
+</li>
 </ul>
-
 <p>27.执行一个文件的调用：</p>
-
 <p>p149</p>
-
 <p>28.Linux软中断信号：</p>
-
 <p>软中断信号    符号名           功能</p>
-
 <p>2               SIGINT       DELETE键</p>
-
 <p>3               SIGQUIT   QUIT键</p>
-
 <p>4                SIGILL     非法指令</p>
-
 <p>14               SIGALARM   时钟定时信号</p>
-
 <p>17              SIGCHLD      子进程消亡</p>
-
 <p>19             SIGSTOP     停止进程的执行</p>
-
 <p>29              SIGIO            I/O就绪</p>
-
 <p>29.Windows NT的特点</p>
-
 <ul>
-<li><p>Windows NT是支持多处理器的操作系统。</p></li>
-
-<li><p>Windows NT是完全的32位操作系统，设计了4G大小的虚拟地址空间，其中2GB用做进程的私有空间。</p></li>
-
-<li><p>Windows NT支持16为的Windows代码，并为其提供独立的运行空间。</p></li>
-
-<li><p>Windows NT对访问共享内存的进程有严格的安全限制。 Windows NT的系统内存空间只能在和心态被访问。</p></li>
-
-<li><p>随着计算机体系结构和Windows家族的发展，Windows NT内核版本也升级到6.0版本以上，支持64位操作系统，具有更多的特点：</p></li>
-
-<li><p>新版本增强了Active Directory，使用了新的虚拟化和管理，采用了IIS 7.5。</p></li>
-
-<li><p>可支持多达64个物理处理器或最多256个系统的逻辑处理器。 可支持Live Migration（动态迁移），支持虚拟磁盘动态调整容量，及VM内存动态配置功能，能以虚拟镜像文件于实体主机上开机。</p></li>
-
-<li><p>可支持无线广域网，网络驱动程序接口规范为6.20，</p></li>
-
-<li><p>支持AVCHD摄影机以及通用视频类型1.1.</p></li>
-
-<li><p>能支持新的用户模式调度框架。</p></li>
-
-<li><p>能完整支持S800、S1600以及S3200数据传输速率的IEEE 1394b的火线堆栈。</p></li>
+<li>
+<p>Windows NT是支持多处理器的操作系统。</p>
+</li>
+<li>
+<p>Windows NT是完全的32位操作系统，设计了4G大小的虚拟地址空间，其中2GB用做进程的私有空间。</p>
+</li>
+<li>
+<p>Windows NT支持16为的Windows代码，并为其提供独立的运行空间。</p>
+</li>
+<li>
+<p>Windows NT对访问共享内存的进程有严格的安全限制。 Windows NT的系统内存空间只能在和心态被访问。</p>
+</li>
+<li>
+<p>随着计算机体系结构和Windows家族的发展，Windows NT内核版本也升级到6.0版本以上，支持64位操作系统，具有更多的特点：</p>
+</li>
+<li>
+<p>新版本增强了Active Directory，使用了新的虚拟化和管理，采用了IIS 7.5。</p>
+</li>
+<li>
+<p>可支持多达64个物理处理器或最多256个系统的逻辑处理器。 可支持Live Migration（动态迁移），支持虚拟磁盘动态调整容量，及VM内存动态配置功能，能以虚拟镜像文件于实体主机上开机。</p>
+</li>
+<li>
+<p>可支持无线广域网，网络驱动程序接口规范为6.20，</p>
+</li>
+<li>
+<p>支持AVCHD摄影机以及通用视频类型1.1.</p>
+</li>
+<li>
+<p>能支持新的用户模式调度框架。</p>
+</li>
+<li>
+<p>能完整支持S800、S1600以及S3200数据传输速率的IEEE 1394b的火线堆栈。</p>
+</li>
 </ul>
-
 <p>30.Windows进程的数据结构</p>
-
 <ul>
-<li><p>核心进程块:包含了Win内核调度该进程的所属线程所需要的基本信息</p></li>
-
-<li><p>进程环境块：驻留在进程地址空间中，提供映像调入器，堆管理器和其他运行在用户态的动态连接库所需要的进程信息</p></li>
+<li>
+<p>核心进程块:包含了Win内核调度该进程的所属线程所需要的基本信息</p>
+</li>
+<li>
+<p>进程环境块：驻留在进程地址空间中，提供映像调入器，堆管理器和其他运行在用户态的动态连接库所需要的进程信息</p>
+</li>
 </ul>
-
 <p>31.Win线程饿的数据结构</p>
-
 <ul>
-<li><p>核心线程块:存取系统进行线程调度和同步的线程信息。</p></li>
-
-<li><p>线程环境快：驻留在进程地址空间中，存储用于映像调入器和Win动态链接库所使用的线程上下文信息。</p></li>
+<li>
+<p>核心线程块:存取系统进行线程调度和同步的线程信息。</p>
+</li>
+<li>
+<p>线程环境快：驻留在进程地址空间中，存储用于映像调入器和Win动态链接库所使用的线程上下文信息。</p>
+</li>
 </ul>
-
 <p>32.win的虚拟地址布局</p>
-
-<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/图片3.png" alt="图片3" /></p>
-
+<p><img src="http://139.129.37.170/wordpress/wp-content/uploads/2016/01/%E5%9B%BE%E7%89%873.png" alt="图片3"></p>
 <p>33.win中页表中的主要状态位及其含义</p>
-
 <p>状态位                     含义</p>
-
 <p>Accessed            该页是否已被读过</p>
-
 <p>Cached Disable  该页是否不能被缓存</p>
-
 <p>Dirty                   该页是否已被读过</p>
-
 <p>Global                 该页是否适用于所有的进程</p>
-
 <p>Large Page          该页是否为大页(4MB)</p>
-
 <p>Owner                     该页是否可以在用户态下访问</p>
-
 <p>Valid                      该页是否驻留在物理内存中</p>
-
 <p>Write Through      是否跳过些缓存将该页实时写入磁盘</p>
-
 <p>Write                         该页是否可写</p>
-
 <p>34.常用纪录式结构文件</p>
-
 <ul>
-<li><p>连续结构：记录按生成<strong>先后顺序连续</strong>排列的逻辑结构</p></li>
-
-<li><p>多重结构：把记录按 关键字 和 记录名 （K-R）排列成行列式结构。同一个关键字也可以同时属于不同的记录。</p></li>
-
-<li><p>转置结构：把含有相同关键字的记录指针全部指向该关键字</p></li>
-
-<li><p>顺序结构：按某种优先顺序来搜索或追加 删除记录。</p></li>
+<li>
+<p>连续结构：记录按生成<strong>先后顺序连续</strong>排列的逻辑结构</p>
+</li>
+<li>
+<p>多重结构：把记录按 关键字 和 记录名 （K-R）排列成行列式结构。同一个关键字也可以同时属于不同的记录。</p>
+</li>
+<li>
+<p>转置结构：把含有相同关键字的记录指针全部指向该关键字</p>
+</li>
+<li>
+<p>顺序结构：按某种优先顺序来搜索或追加 删除记录。</p>
+</li>
 </ul>
-
 <p>35.计算  常见物理结构</p>
-
 <ul>
-<li><p>连续文件(p192)</p></li>
-
-<li><p>串联文件</p></li>
-
-<li><p>索引文件</p></li>
+<li>
+<p>连续文件(p192)</p>
+</li>
+<li>
+<p>串联文件</p>
+</li>
+<li>
+<p>索引文件</p>
+</li>
 </ul>
-
 <p>36.空闲块管理方法:</p>
-
 <ul>
-<li><p>空闲文件记录:把文件存储设备中的空闲块的块号统一放在一个称为空闲文件目录的物理块中。</p></li>
-
-<li><p>空闲块链:把文件存储设备上的所有空闲块链接在一起 从链首拿取新空闲块，队尾插入释放的空闲块。</p></li>
+<li>
+<p>空闲文件记录:把文件存储设备中的空闲块的块号统一放在一个称为空闲文件目录的物理块中。</p>
+</li>
+<li>
+<p>空闲块链:把文件存储设备上的所有空闲块链接在一起 从链首拿取新空闲块，队尾插入释放的空闲块。</p>
+</li>
 </ul>
-
 <p>空闲块链的常用链接方法：</p>
-
 <ol>
-<li><p>按空闲区大小顺序链接的方法</p></li>
-
-<li><p>按释放先后顺序链接的方法</p></li>
-
-<li><p>成组链法:每块分为50组 每组的第一块存放前一组中各块的块号和总块数。第一组只有49块。</p></li>
+<li>
+<p>按空闲区大小顺序链接的方法</p>
+</li>
+<li>
+<p>按释放先后顺序链接的方法</p>
+</li>
+<li>
+<p>成组链法:每块分为50组 每组的第一块存放前一组中各块的块号和总块数。第一组只有49块。</p>
+</li>
 </ol>
-
 <ul>
 <li>位示图：从内存中划出若干个字节，为每个文件存储设备建立一张位示图。每个文件存储设备的物理块都对应一位比特位 若该位为0 则表示该块为空闲块 若1 则已分配出去</li>
 </ul>
-
 <p>37.外围设备和内存之间的常用数据传送方式</p>
-
 <ul>
-<li><p>程序直接控制方法：由用户进程来直接控制内存或CPU和外围设备之间的信息传送   控制者是用户进程。涉及到的寄存器为：<strong>控制状态寄存器 和  数据缓冲寄存器      实现方式：</strong>外围设备接到Start命令后做<strong>接数据</strong>准备<strong>，</strong>做好准备后置触发器为Done；CPU接到Start命令后 检测触发器是否为Done;</p></li>
-
-<li><p>中断控制方法：通过设置中断的方式来增加CPU效率 即CPU可在等待中断这段时间内执行其他进程。 设置CPU中断允许位为1</p></li>
-
-<li><p>DMA方式：Direct Memory Access  增加内存地址寄存器  数据缓冲寄存器的内存将进入内存。</p></li>
-
-<li><p>通道方式:channel control  由通道(channel)硬件来管理IO操作 可以一个通道与较多设备进行数据交换  减轻CPU的工作负担。 有 <strong>通道设备控制器</strong> 和 <strong>指令执行机构</strong> 和 <strong>指令寄存器</strong>。   即 通过channel(IO控制器)去操作内存 CPU只需要发Start指令即可。</p></li>
+<li>
+<p>程序直接控制方法：由用户进程来直接控制内存或CPU和外围设备之间的信息传送   控制者是用户进程。涉及到的寄存器为：<strong>控制状态寄存器 和  数据缓冲寄存器      实现方式：<strong>外围设备接到Start命令后做</strong>接数据</strong>准备**，**做好准备后置触发器为Done；CPU接到Start命令后 检测触发器是否为Done;</p>
+</li>
+<li>
+<p>中断控制方法：通过设置中断的方式来增加CPU效率 即CPU可在等待中断这段时间内执行其他进程。 设置CPU中断允许位为1</p>
+</li>
+<li>
+<p>DMA方式：Direct Memory Access  增加内存地址寄存器  数据缓冲寄存器的内存将进入内存。</p>
+</li>
+<li>
+<p>通道方式:channel control  由通道(channel)硬件来管理IO操作 可以一个通道与较多设备进行数据交换  减轻CPU的工作负担。 有 <strong>通道设备控制器</strong> 和 <strong>指令执行机构</strong> 和 <strong>指令寄存器</strong>。   即 通过channel(IO控制器)去操作内存 CPU只需要发Start指令即可。</p>
+</li>
 </ul>
-
 <p>38.缓冲的种类（根据系统设置的缓冲器个数）</p>
-
 <ul>
-<li><p>单缓冲</p></li>
-
-<li><p>双缓冲</p></li>
-
-<li><p>多缓冲</p></li>
-
-<li><p>缓冲池</p></li>
+<li>
+<p>单缓冲</p>
+</li>
+<li>
+<p>双缓冲</p>
+</li>
+<li>
+<p>多缓冲</p>
+</li>
+<li>
+<p>缓冲池</p>
+</li>
 </ul>
-
 <p>39.缓冲池管理操作</p>
-
 <ul>
-<li><p>从3种缓冲队列中按一定的选取规则取出一个缓冲区的过程 take_buf(type)</p></li>
-
-<li><p>把缓冲区按一定的选取规则插入相应的缓冲区队列的过程 add_buf(type,number)</p></li>
-
-<li><p>供进程申请缓冲区用的过程 get_buf(type,number)</p></li>
-
-<li><p>供进程将缓冲区放入相应缓冲区队列的过程put_buf(type,work_buf)</p></li>
+<li>
+<p>从3种缓冲队列中按一定的选取规则取出一个缓冲区的过程 take_buf(type)</p>
+</li>
+<li>
+<p>把缓冲区按一定的选取规则插入相应的缓冲区队列的过程 add_buf(type,number)</p>
+</li>
+<li>
+<p>供进程申请缓冲区用的过程 get_buf(type,number)</p>
+</li>
+<li>
+<p>供进程将缓冲区放入相应缓冲区队列的过程put_buf(type,work_buf)</p>
+</li>
 </ul>
 
     </div>
@@ -763,6 +765,10 @@ end
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -789,13 +795,10 @@ end
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -805,7 +808,17 @@ end
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

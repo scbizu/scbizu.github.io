@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/phpjquery-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/" />
 
-
 <meta itemprop="name" content="php&amp;jQuery 实现动态链接">
 <meta itemprop="description" content="之前已经遇到过很多次这种问题了。 每次都要去看一遍sf上的解决方案,由于又不是一毛一样的问题,所以,每次都要自己再想一遍整个流程。 So，赶脚 很">
-
-
 
 <meta itemprop="wordCount" content="771">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -133,58 +135,39 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#问题描述">问题描述:</a></li>
-<li><a href="#解决方案-without-code">解决方案(Without code)</a></li>
-<li><a href="#code-is-here">Code is here</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#问题描述">问题描述:</a></li>
+    <li><a href="#解决方案without-code">解决方案(Without code)</a></li>
+    <li><a href="#code-is-here">Code is here</a></li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<p>之前已经遇到过很多次这种问题了。</p>
-
+      <p>之前已经遇到过很多次这种问题了。</p>
 <p>每次都要去看一遍sf上的解决方案,由于又不是一毛一样的问题,所以,每次都要自己再想一遍整个流程。</p>
-
 <p>So，赶脚 很不爽，还是记录下来吧，下次调用起来简单点。。。</p>
-
 <h2 id="问题描述">问题描述:</h2>
-
 <p>一直觉得不描述问题,直接Show me code 或是 大谈解决方案的博客就是耍流氓。</p>
-
 <p>(我才不要耍流氓)正文开始:</p>
-
 <p>在很多页面中用 <strong>CELL</strong> 或是 <strong>LIST</strong> 或是 <strong>TABLE</strong> 布局的时候,最常用的肯定是LOOP一个</p>
-
-<p><cell></cell>了,这样就可以实现动态布局了,可是当这个CELL还要附带一个动态链接时,问题来了,我们要怎么构建这个href呢~  没错,窝要说的就是这个问题。</p>
-
-<h2 id="解决方案-without-code">解决方案(Without code)</h2>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->了,这样就可以实现动态布局了,可是当这个CELL还要附带一个动态链接时,问题来了,我们要怎么构建这个href呢~  没错,窝要说的就是这个问题。</p>
+<h2 id="解决方案without-code">解决方案(Without code)</h2>
 <p>这里先说下解决思路。。。。</p>
-
 <p>首先,俺们当然要构造出这个Link啦,那么从服务器端取ID肯定是首选,每条CELL肯定会有其对应的动态ID记录,我们尝试把它拿过来。拿过来之后,我们要让你的每个CELL都有其自己的标志(构造附带这个ID的CELL),这边可以给这个DIV加for或者rel属性,或者anything U like。接下来给这个Div绑Click事件。当按下之后,我们要动态获取那个CELL ID,</p>
-
 <p>怎么获取就是要通过之前你写下的属性了。然后直接通过Get传值——&gt;跳转，OK。问题解决。</p>
-
 <p>UPDATE:</p>
-
 <p>当然还要记得,div不能设为ID,id选择器是不能绑多个事件的,要加改为class选择器。</p>
-
 <h2 id="code-is-here">Code is here</h2>
-
-<p><del>没时间解释了,直接上Code吧。</del></p>
-
+<p><!-- raw HTML omitted -->没时间解释了,直接上Code吧。<!-- raw HTML omitted --></p>
 <p>(这边给div插入的是rel属性)</p>
-
 <p>(Jquery+PHP 配置)</p>
-
 <p>HTML:</p>
-
 <pre><code>  &lt;div class=&quot;tinfo&quot; rel=&quot;{$v['jobid']}&quot;&gt;
      &lt;div class=&quot;weui_cell_hd&quot;&gt;
     &lt;p&gt; {$v['title']}&lt;/p&gt;
@@ -215,15 +198,12 @@
             &lt;/div&gt;
   &lt;/div&gt;
 </code></pre>
-
 <p>JQ:</p>
-
 <pre><code>  $(&quot;.tinfo&quot;).click(function(){
         var jobid=$(this).attr('rel')
         window.location.href=&quot;{php echo $this-&gt;createMobileUrl('ptjdetails');}&quot;+&quot;&amp;jobid=&quot;+jobid;
     });
 </code></pre>
-
 <p>完毕~</p>
 
     </div>
@@ -255,8 +235,8 @@
             <span class="prev-text nav-default">php emoji表情无法获取问题</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/xampp-cors%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5/">
-            <span class="next-text nav-default">xampp CORS跨域请求失败</span>
+        <a class="next" href="/post/shadowsocksx%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%82%A8%E5%AD%98%E7%9A%84server%E4%BF%A1%E6%81%AF/">
+            <span class="next-text nav-default">ShadowSocksX查看已经储存的Server信息</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -265,6 +245,10 @@
   </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
@@ -292,13 +276,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -308,7 +289,17 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

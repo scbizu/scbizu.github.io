@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>configuration on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in configuration on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>goeclipse配置指南</title>
       <link>https://blog.scnace.me/post/goeclipse%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link>

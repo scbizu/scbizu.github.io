@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/go-concurrency-pattern/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -42,15 +43,12 @@
 <meta property="og:description" content="再谈Go的常用并发模型 脱离业务领域谈设计模型都是扯淡，本文旨在抽象几种常用模型，希望在设计业务模型时提供参考 前言 转眼已经快写了三年的Go了，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/go-concurrency-pattern/" />
-<meta property="article:published_time" content="2019-12-22T15:07:44&#43;08:00"/>
-<meta property="article:modified_time" content="2019-12-22T15:07:44&#43;08:00"/>
-
+<meta property="article:published_time" content="2019-12-22T15:07:44+08:00" />
+<meta property="article:modified_time" content="2019-12-22T15:07:44+08:00" />
 <meta itemprop="name" content="Go Concurrency Pattern">
 <meta itemprop="description" content="再谈Go的常用并发模型 脱离业务领域谈设计模型都是扯淡，本文旨在抽象几种常用模型，希望在设计业务模型时提供参考 前言 转眼已经快写了三年的Go了，">
-
-
-<meta itemprop="datePublished" content="2019-12-22T15:07:44&#43;08:00" />
-<meta itemprop="dateModified" content="2019-12-22T15:07:44&#43;08:00" />
+<meta itemprop="datePublished" content="2019-12-22T15:07:44+08:00" />
+<meta itemprop="dateModified" content="2019-12-22T15:07:44+08:00" />
 <meta itemprop="wordCount" content="2239">
 
 
@@ -87,6 +85,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -104,6 +104,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -132,266 +134,231 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#再谈go的常用并发模型">再谈Go的常用并发模型</a>
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#常用并发模型">常用并发模型</a>
-<ul>
-<li><a href="#引子-timer">引子: Timer</a></li>
-<li><a href="#ping-pong">Ping Pong</a></li>
-<li><a href="#fan-in">Fan-In</a></li>
-<li><a href="#fan-out">Fan-Out</a></li>
-<li><a href="#daisy-chain">Daisy Chain</a></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#常用并发模型">常用并发模型</a>
+      <ul>
+        <li><a href="#引子-timer">引子: Timer</a></li>
+        <li><a href="#ping-pong">Ping Pong</a></li>
+        <li><a href="#fan-in">Fan-In</a></li>
+        <li><a href="#fan-out">Fan-Out</a></li>
+        <li><a href="#daisy-chain">Daisy Chain</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2019-12-22T15:07:44" title="December 22, 2019">December 22, 2019</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h1 id="再谈go的常用并发模型">再谈Go的常用并发模型</h1>
-
+      <h1 id="再谈go的常用并发模型">再谈Go的常用并发模型</h1>
 <blockquote>
 <p>脱离业务领域谈设计模型都是扯淡，本文旨在抽象几种常用模型，希望在设计业务模型时提供参考</p>
 </blockquote>
-
 <h2 id="前言">前言</h2>
-
 <p>转眼已经快写了三年的Go了，因为Go的本身设计的简洁，在平常基本用不到很多设计模式的思想，更别谈并发模型了，看过很多代码，基本都是channel/condition 乱飞，没有文档或者注释辅助的情况下，review/refator 代码简直是噩梦。 为了不让自己成为自己讨厌的人，我决定自己整理下Go常用的并发模式，也正好听Go Time的播客的时候，听JBD提到2016 GopherCon上的「Visualize Go Routine」的topic，又去拜读了相关文章，觉得是时候沉淀下这块知识了。</p>
-
 <h2 id="常用并发模型">常用并发模型</h2>
-
 <h3 id="引子-timer">引子: Timer</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;time&#34;</span>
 
-import &quot;time&quot;
-
-func timer(d time.Duration) &lt;-chan int {
-    c := make(chan int)
-    go func() {
-        time.Sleep(d)
-        c &lt;- 1
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">timer</span>(<span style="color:#a6e22e">d</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>) <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">d</span>)
+        <span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
     }()
-    return c
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>
 }
 
-func main() {
-    // 开启N个定时器，但是要注意这N个定时器并不是并发执行的。
-    for i := 0; i &lt; N; i++ {
-        c := timer(1 * time.Second)
-        &lt;-c
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// 开启N个定时器，但是要注意这N个定时器并不是并发执行的。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">N</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">timer</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+        <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>
     }
 }
-</code></pre>
-
-<p>这是一个很简单的并发模型的引子，目的是构造一个<strong>定时器</strong>，或者构造一个<strong>延时任务</strong> 。</p>
-
+</code></pre></div><p>这是一个很简单的并发模型的引子，目的是构造一个<strong>定时器</strong>，或者构造一个<strong>延时任务</strong> 。</p>
 <p>(为什么这边不用timer.Ticker ？ 因为作为一个引子，这个模型会引导我们的思想尽量往并发模型上靠拢。)</p>
-
 <h3 id="ping-pong">Ping Pong</h3>
-
 <blockquote>
 <p>让数据在Go Routine间反复横跳 !</p>
 </blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
-
-import (
-	&quot;fmt&quot;
-	&quot;time&quot;
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
 )
 
-type Ball struct {
-	hits int
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Ball</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">hits</span> <span style="color:#66d9ef">int</span>
 }
 
-func main() {
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
 
-	table := make(chan *Ball)
-	go player(1,table)
-	go player(2,table)
+	<span style="color:#a6e22e">table</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Ball</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">player</span>(<span style="color:#ae81ff">1</span>,<span style="color:#a6e22e">table</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">player</span>(<span style="color:#ae81ff">2</span>,<span style="color:#a6e22e">table</span>)
 
-	// 比赛开始
-	table &lt;- &amp;Ball{}
-	// 开始一场1s的比赛吧！
-	time.Sleep(1 * time.Second)
-	// 比赛结束
-	fmt.Printf(&quot;total hits: %d\n&quot;, (&lt;-table).hits)
+	<span style="color:#75715e">// 比赛开始
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">table</span> <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Ball</span>{}
+	<span style="color:#75715e">// 开始一场1s的比赛吧！
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+	<span style="color:#75715e">// 比赛结束
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;total hits: %d\n&#34;</span>, (<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">table</span>).<span style="color:#a6e22e">hits</span>)
 }
 
-func player(pnumber int,table chan *Ball) {
-	for {
-        ball := &lt;-table
-        fmt.Printf(&quot;player %d start to hit the ball&quot;,pnumber)
-		ball.hits++
-		// ping or pong
-		time.Sleep(100 * time.Millisecond)
-		table &lt;- ball
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">player</span>(<span style="color:#a6e22e">pnumber</span> <span style="color:#66d9ef">int</span>,<span style="color:#a6e22e">table</span> <span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Ball</span>) {
+	<span style="color:#66d9ef">for</span> {
+        <span style="color:#a6e22e">ball</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">table</span>
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;player %d start to hit the ball&#34;</span>,<span style="color:#a6e22e">pnumber</span>)
+		<span style="color:#a6e22e">ball</span>.<span style="color:#a6e22e">hits</span><span style="color:#f92672">++</span>
+		<span style="color:#75715e">// ping or pong
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+		<span style="color:#a6e22e">table</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ball</span>
 	}
 }
-</code></pre>
-
-<blockquote>
+</code></pre></div><blockquote>
 <p>在上面代码实现中，我们假设有两个玩家，每场比赛1s，玩家击球时间100ms。</p>
 </blockquote>
-
 <p>这个是有名的<a href="https://talks.golang.org/2013/advconc.slide#6">乒乓模型</a>。在这个模型中，球(数据)会在N个玩家(Go Routine所持有的channel)中传递，直到到达指定时间，球(数据)被回收。</p>
-
 <p>这个模式还有一个tips可以用来扩展：因为Go Runtime维护了一个channel的Receiver Queue（队列，具有FIFO的特性），所以导致总是最后一个Go Routine所在的channel可以先得到数据，并且确保了每次都可以固定顺序传递，所以不会导致同一个channel执行多次的情况。也即：按照代码的定义顺序，我们有chan recv1,chan recv2,chan recv3,那么receiver拿到数据的顺序一定是<code>3-&gt;2-&gt;1-&gt;3</code>.</p>
-
 <h3 id="fan-in">Fan-In</h3>
-
 <blockquote>
 <p>从多个数据源收集数据并把这些数据整合到同一个channel,也就是All for one 模式 (果然这么叫好奇怪</p>
 </blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
 )
 
-func producer(ch chan int, d time.Duration) {
-    var i int
-    for {
-        ch &lt;- i
-        i++
-        time.Sleep(d)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">producer</span>(<span style="color:#a6e22e">ch</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">d</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#66d9ef">for</span> {
+        <span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">i</span>
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">d</span>)
     }
 }
 
-func reader(out chan int) {
-    for x := range out {
-        fmt.Println(x)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">reader</span>(<span style="color:#a6e22e">out</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">out</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">x</span>)
     }
 }
 
-func main() {
-    // producer的集合channel
-    ch := make(chan int)
-    // reader channel
-    out := make(chan int)
-    go producer(ch, 100*time.Millisecond)
-    go producer(ch, 250*time.Millisecond)
-    go reader(out)
-    for i := range ch {
-        out &lt;- i
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// producer的集合channel
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+    <span style="color:#75715e">// reader channel
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">out</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">producer</span>(<span style="color:#a6e22e">ch</span>, <span style="color:#ae81ff">100</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">producer</span>(<span style="color:#a6e22e">ch</span>, <span style="color:#ae81ff">250</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">reader</span>(<span style="color:#a6e22e">out</span>)
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ch</span> {
+        <span style="color:#a6e22e">out</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">i</span>
     }
 }
-</code></pre>
-
-<h3 id="fan-out">Fan-Out</h3>
-
+</code></pre></div><h3 id="fan-out">Fan-Out</h3>
 <blockquote>
 <p>从一个channel中读取数据，分配到多个channel里面进行处理，也就是one for all 模式。</p>
 </blockquote>
-
 <p>也可以说是 workerpool 模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;sync&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
 )
 
-func worker(tasksCh &lt;-chan int, wg *sync.WaitGroup) {
-    defer wg.Done()
-    for {
-        task, ok := &lt;-tasksCh
-        if !ok {
-            return
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">worker</span>(<span style="color:#a6e22e">tasksCh</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">wg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>) {
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+    <span style="color:#66d9ef">for</span> {
+        <span style="color:#a6e22e">task</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">tasksCh</span>
+        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">ok</span> {
+            <span style="color:#66d9ef">return</span>
         }
-        d := time.Duration(task) * time.Millisecond
-        time.Sleep(d)
-        fmt.Println(&quot;processing task&quot;, task)
+        <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>(<span style="color:#a6e22e">task</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>
+        <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">d</span>)
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;processing task&#34;</span>, <span style="color:#a6e22e">task</span>)
     }
 }
 
-func pool(wg *sync.WaitGroup, workers, tasks int) {
-    tasksCh := make(chan int)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">pool</span>(<span style="color:#a6e22e">wg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>, <span style="color:#a6e22e">workers</span>, <span style="color:#a6e22e">tasks</span> <span style="color:#66d9ef">int</span>) {
+    <span style="color:#a6e22e">tasksCh</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
 
-    for i := 0; i &lt; workers; i++ {
-        // N个worker
-        go worker(tasksCh, wg)
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">workers</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#75715e">// N个worker
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">worker</span>(<span style="color:#a6e22e">tasksCh</span>, <span style="color:#a6e22e">wg</span>)
     }
 
-    for i := 0; i &lt; tasks; i++ {
-        // 把task放入task chan
-        tasksCh &lt;- i
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">tasks</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#75715e">// 把task放入task chan
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">tasksCh</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">i</span>
     }
 
-    close(tasksCh)
+    close(<span style="color:#a6e22e">tasksCh</span>)
 }
 
-func main() {
-    var wg sync.WaitGroup
-    wg.Add(36)
-    go pool(&amp;wg, 36, 50)
-    wg.Wait()
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+    <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">36</span>)
+    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">pool</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">wg</span>, <span style="color:#ae81ff">36</span>, <span style="color:#ae81ff">50</span>)
+    <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
 }
-</code></pre>
-
-<p>当然，这种方式还可以扩展成为 subworker 模式，由worker的channel再把task 分发出去。（当然还能是sub subworker 啥的</p>
-
+</code></pre></div><p>当然，这种方式还可以扩展成为 subworker 模式，由worker的channel再把task 分发出去。（当然还能是sub subworker 啥的</p>
 <h3 id="daisy-chain">Daisy Chain</h3>
-
 <blockquote>
 <p>refer: <a href="https://talks.golang.org/2012/concurrency.slide#39">https://talks.golang.org/2012/concurrency.slide#39</a></p>
 </blockquote>
-
-<pre><code class="language-go">//  Go Routine 一号
-func f(left, right chan int) {
-    left &lt;- 1 + &lt;-right
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//  Go Routine 一号
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">right</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) {
+    <span style="color:#a6e22e">left</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">right</span>
 }
 
-func main() {
-    const n = 10000
-    leftmost := make(chan int)
-    // right 是`leftmost`的一个引用，他们指向同一个内存地址
-    right := leftmost
-    // left 也是`leftmost`的一个引用
-    left := leftmost
-    for i := 0; i &lt; n; i++ {
-        // 为什么在这里要重新定义`right` ？
-        // 如果这里不重新定义`right`(把`right`指向新的地址)，在「Go Routine 二号」这里就会直接往这个channel塞1了
-        // 然后因为right和leftmost都指向同一个地址，最后就直接输出1退出了，甚至都没「Go Routine 一号」什么事了
-        // 这里还需要注意，Go Routine的调用栈是FILO（先入后出）的
-        right = make(chan int)
-        // 调用「Go Routine 一号」，目的是使`&lt;-left`增1
-        // 这里特别需要注意index == 0 的情况 ，此时，`left`是指向`leftmost`,也只有此时，`left`是指向`leftmost`的，
-        // 这也保证了，「Go Routine 一号」最后一次的出栈可以让值正确地赋到`leftmost`上.
-        go f(left, right)
-        // 把`right`赋值给`left`，这里非常关键，这里除了代码表面上的保留`right`之前的状态，还覆盖了`left`的地址，
-        // 让其之后不再指向`leftmost`的地址，而是指向`right`的地址，以形成关键的`daisy chain`,
-        // daisy chain(展开): left(应该是leftmost) &lt;-1 + ... + 1 + 1 + (1 + &lt;- right .)
-        left = right
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">10000</span>
+    <span style="color:#a6e22e">leftmost</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+    <span style="color:#75715e">// right 是`leftmost`的一个引用，他们指向同一个内存地址
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">right</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">leftmost</span>
+    <span style="color:#75715e">// left 也是`leftmost`的一个引用
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">left</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">leftmost</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#75715e">// 为什么在这里要重新定义`right` ？
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 如果这里不重新定义`right`(把`right`指向新的地址)，在「Go Routine 二号」这里就会直接往这个channel塞1了
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 然后因为right和leftmost都指向同一个地址，最后就直接输出1退出了，甚至都没「Go Routine 一号」什么事了
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 这里还需要注意，Go Routine的调用栈是FILO（先入后出）的
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">right</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+        <span style="color:#75715e">// 调用「Go Routine 一号」，目的是使`&lt;-left`增1
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 这里特别需要注意index == 0 的情况 ，此时，`left`是指向`leftmost`,也只有此时，`left`是指向`leftmost`的，
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 这也保证了，「Go Routine 一号」最后一次的出栈可以让值正确地赋到`leftmost`上.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">right</span>)
+        <span style="color:#75715e">// 把`right`赋值给`left`，这里非常关键，这里除了代码表面上的保留`right`之前的状态，还覆盖了`left`的地址，
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 让其之后不再指向`leftmost`的地址，而是指向`right`的地址，以形成关键的`daisy chain`,
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// daisy chain(展开): left(应该是leftmost) &lt;-1 + ... + 1 + 1 + (1 + &lt;- right .)
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">left</span> = <span style="color:#a6e22e">right</span>
     }
 
-    //  Go Routine 二号
-    // 这个 匿名Go Routine 必须放在for循环之后，确保传入这个go routine的是最后一个`right`, 原因可以结合上面的展开daisy chain 看，那么如果把这个匿名 go routine放在循环之前会发生什么呢？
-    go func(c chan int) { c &lt;- 1 }(right)
-    fmt.Println(&lt;-leftmost)
+    <span style="color:#75715e">//  Go Routine 二号
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这个 匿名Go Routine 必须放在for循环之后，确保传入这个go routine的是最后一个`right`, 原因可以结合上面的展开daisy chain 看，那么如果把这个匿名 go routine放在循环之前会发生什么呢？
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>) { <span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span> }(<span style="color:#a6e22e">right</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">leftmost</span>)
 }
-</code></pre>
-
-<p>这段代码很有意思，也非常巧妙，在<a href="https://stackoverflow.com/questions/26135616/understand-the-code-go-concurrency-pattern-daisy-chain">SOF</a>上也有相关讨论， 任何一个地方动一下，可能最后的结果都可能不一样。</p>
-
+</code></pre></div><p>这段代码很有意思，也非常巧妙，在<a href="https://stackoverflow.com/questions/26135616/understand-the-code-go-concurrency-pattern-daisy-chain">SOF</a>上也有相关讨论， 任何一个地方动一下，可能最后的结果都可能不一样。</p>
 <p>使用场景： Daisy Chain的模式，在编写链式workerflow时显得非常高效，假设一个job需要被多个handler顺序处理，那么这种模式在有非常多(成千上万)个handler时，会有奇效。</p>
-
 <p><a href="https://github.com/massimo-marino/workers-daisy-chain">这里</a>有人也用Daisy Chain实现了一个类似workpool的东西，对这种模式实际应用场景感兴趣的同学也可以参考下。</p>
-
 <h3 id="总结">总结</h3>
-
 <p>并发模式不是银弹，如果串行的模式能花更少的代价造出符合当前场景的模型，那么, 何尝又不是不可呢？</p>
-
 <p>先就酱，这又是一个长期坑， To Be Continued&hellip;</p>
 
     </div>
@@ -430,6 +397,10 @@ func main() {
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -456,13 +427,10 @@ func main() {
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -472,7 +440,17 @@ func main() {
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

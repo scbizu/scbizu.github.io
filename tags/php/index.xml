@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in php on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/php/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>php emoji表情无法获取问题</title>
       <link>https://blog.scnace.me/post/php-emoji%E8%A1%A8%E6%83%85%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</link>

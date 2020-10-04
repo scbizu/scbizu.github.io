@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/diy-macos-wms/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -42,15 +43,12 @@
 <meta property="og:description" content="调教属于自己的mac窗口管理器(mWMS) 一个Geeker就要拥有自己的窗口管理器（强行 缘起 自从前年刚入mac生态生态时就在体验各种各样的窗" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/diy-macos-wms/" />
-<meta property="article:published_time" content="2020-06-27T16:47:48&#43;08:00"/>
-<meta property="article:modified_time" content="2020-06-27T16:47:48&#43;08:00"/>
-
+<meta property="article:published_time" content="2020-06-27T16:47:48+08:00" />
+<meta property="article:modified_time" content="2020-06-27T16:47:48+08:00" />
 <meta itemprop="name" content="DIY MacOS WMS">
 <meta itemprop="description" content="调教属于自己的mac窗口管理器(mWMS) 一个Geeker就要拥有自己的窗口管理器（强行 缘起 自从前年刚入mac生态生态时就在体验各种各样的窗">
-
-
-<meta itemprop="datePublished" content="2020-06-27T16:47:48&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-27T16:47:48&#43;08:00" />
+<meta itemprop="datePublished" content="2020-06-27T16:47:48+08:00" />
+<meta itemprop="dateModified" content="2020-06-27T16:47:48+08:00" />
 <meta itemprop="wordCount" content="2630">
 
 
@@ -87,6 +85,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -104,6 +104,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -129,87 +131,54 @@
     </header>
 
     
+  <div class="post-outdated">
+    <div class="hint">
+      <p>[NOTE] Updated <span class="timeago" datetime="2020-06-27T16:47:48" title="June 27, 2020">June 27, 2020</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<h1 id="调教属于自己的mac窗口管理器-mwms">调教属于自己的mac窗口管理器(mWMS)</h1>
-
+      <h1 id="调教属于自己的mac窗口管理器mwms">调教属于自己的mac窗口管理器(mWMS)</h1>
 <blockquote>
 <p>一个Geeker就要拥有自己的窗口管理器（强行</p>
 </blockquote>
-
 <h2 id="缘起">缘起</h2>
-
 <p>自从前年刚入mac生态生态时就在体验各种各样的窗口管理器，但是一直没有找到一款喜欢的。偶然在 @linuxtoy 的一次Retweet里面发现了一个看起来颜值很高的平铺窗口管理器 — <a href="http://github.com/koekeishiya/yabai">yabai</a>。<strong>颜值高</strong>，<strong>平铺</strong>，<strong>可以自己写代码来调整配置</strong>。这不是我理想的wms原型嘛，于是就在一个周末开始折腾了。</p>
-
 <h2 id="diy">DIY</h2>
-
 <blockquote>
 <p>具体可以参照yabai的<a href="https://github.com/koekeishiya/yabai/wiki">官方wiki</a>设置</p>
 </blockquote>
-
 <p>yabai由一份.yabairc驱动，里面定义了所有窗口管理的行为(yabai config)，比如 窗口透明度 ，窗口大小，窗口组织格式（平铺 or 浮动，不止平铺窗口，但是我还是更喜欢平铺XD），把.yabairc设置成可执行并通过<code>homebrew service</code>启动之后，yabai就可以在你的mac生效了。</p>
-
 <p>这之后，我们就可以通过yabai提供的命令行工具操作窗口了。比如切换focus的窗口 <code>yabai -m window —west</code> , 切换window并转移foucus到这个window <code>yabai -m window --space 1; yabai -m space --focus 1</code> ，我当时甚至还写了一个<a href="https://github.com/scbizu/yabai-alfredflow">Alffred Workflow</a> 来管理窗口。</p>
-
 <p>但是即便有了workflow每次敲命令行也太麻烦了，这时候发现yabai的作者其实还推荐了另一个跟yabai搭配的工具 — <a href="https://github.com/koekeishiya/skhd">skhd</a> , 这个工具本意是维护一些常用命令的key binding ，但是由于yabai本身就是一个response-less的工具，所以很skhd非常合得来，比如我们可以配置  <code>cmd + alt + 1</code> 来mapping到刚才的 <code>yabai -m window --space 1; yabai -m space --focus 1 (cmd + alt - 1 : yabai -m space --focus 1)，</code>这时候就可以通过键盘的keybindings来操作窗口了。</p>
-
 <p>作为一个窗口管理工具，没有一个简易的面板来管理的话，颜值其实就没那么高了。因为我们用了yabai之后其实就放弃了mac自带的Dock ，所以一般使用的时候都会 <code>killall Dock</code>，这样整个屏幕就看上去太空了，正好可以空出一个塞statusBar的间距。<del>于是，yabai会自带一个statusBar，并且statusBar也是可以配置的 (已在最近版本中移除，yabai开始专注窗口管理，不再集成statusbar的功能，把这个扔给用户自己实现了，如果需要的话)。</del></p>
-
 <h2 id="变革">变革</h2>
-
 <p>变革包括了两个部分:</p>
-
-<h2 id="0x01-macos-catalina">0x01:  MacOS Catalina</h2>
-
+<h2 id="0x01--macos-catalina">0x01:  MacOS Catalina</h2>
 <p>可能对于大部分macOS用户来说，Catalina升级是平滑的，beta之后修复了很多bug，macOS继续作为大多数码农的效率工具发光发热，但是，yabai社区却炸开了锅。由于yabai使用的是从macOS Mojave时代起开放的<a href="https://forum.latenightsw.com/t/scripting-additions-on-mojave/1550">Apple Scripting Addition</a> （这东西Apple的Release Note也没有提到 , 所以， Apple并没有义务对Scripting Addition做兼容，在我升级到Catalina的时候，果然由于yabai的关系，macOS直接白屏退出了，看Crash Log就是Windows Manager Crash导致的。</p>
-
 <p>翻了下issue列表，果然不止我一个人遇到这个问题，找到了这个 <a href="https://github.com/koekeishiya/yabai/issues/275">issue #275</a> , 并在 <a href="https://github.com/koekeishiya/yabai/issues/277">issue #277</a>看到了问题的根源：<strong>macOS修改了一个指针地址，导致改变macOS背景透明度的时候，yabai会crash</strong>。 暂时改了yabai窗口透明度(opacity_duration设置为0.0)之后，一切貌似又恢复了正常。</p>
-
-<h2 id="0x02-macos-catalina-10-15-5">0x02: MacOS Catalina 10.15.5</h2>
-
+<h2 id="0x02-macos-catalina-10155">0x02: MacOS Catalina 10.15.5</h2>
 <p>由于我一直没升级yabai的关系(挺稳定的，就一直忘记升级)，在我macOS升级Catalina 10.15.5 这个patch之后，yabai重新启动的时候报了一个错：<code>payload doesn't support this macOS version</code> 。没找到相关的issue，但是好在yabai是完全开源的项目，直接看了yabai的代码，发现yabai定义的<code>OSAX_VERSION</code> 和 我本机的<code>OSAX_VERSION</code> (通过yabai在debug模式下启动的log可以看到)，感觉应该升级yabai到HEAD version可以解决这个问题。先通过brew upgrade更新，发现并没有新版本更新，于是按照<a href="https://github.com/koekeishiya/yabai/wiki/Tips-and-tricks#auto-updating-from-head-via-brew">官方的方法</a>更新到了HEAD的版本。</p>
-
 <p>再重新install-sa之后，yabai回来了！</p>
-
 <p>但是，咦 ？ 我的statusbar哪里去了 ？难道是新版本移除了statusbar，继续翻issue list，终于找到了<a href="https://github.com/koekeishiya/yabai/issues/486">相关的issue</a> ，原来是作者不想继续维护这个statusbar，想专心做wms了。issue翻到末尾给了我惊喜，有人单独把原来的statusbar fork出来了一个新的项目，叫做<a href="https://github.com/somdoron/spacebar">spacebar</a>。看到社区这么活跃，我就更开心了！</p>
-
 <h2 id="涅槃">涅槃</h2>
-
 <p>但是，如果还用回原来的statusbar，对于我这种一直想尝试新东西的人就有点索然无味了。抱着试一试的心态，下载了wiki里面提到的mac的widget工具 <a href="http://tracesof.net/uebersicht/">Übersicht</a> 。这个工具还是挺有趣的，能自己通过<code>jsx OR coffee script</code> 编写mac的桌面widget。也就是说，用它就可以DIY自己的statusbar了！</p>
-
 <p>为了配合自定义的statusbar，yabai的新版本开放了窗口padding的设置:</p>
-
-<pre><code class="language-bash">yabai -m config top_padding                  x
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yabai -m config top_padding                  x
 yabai -m config bottom_padding               x
 yabai -m config left_padding                 x
 yabai -m config right_padding                x
-</code></pre>
-
-<p>用户可以自定义窗口距离屏幕的padding大小来决定自己的statusbar或者一些widget放在哪里。</p>
-
+</code></pre></div><p>用户可以自定义窗口距离屏幕的padding大小来决定自己的statusbar或者一些widget放在哪里。</p>
 <p>空出了padding之后，就可以写自己的statusbar了。然而，我根本就写不来 jsx 和 coffee script XD。于是去github上逛了逛，嘛，还是有很多人在用Ubersicht的嘛。找了一个还看得过去的设计就开始自己对着ReactJS的文档XJB改了一个<a href="https://github.com/scbizu/nibar">statusbar</a>。加windows index tab，加battery icon ，加clock icon等等。</p>
-
 <p>加完之后发现，如果每次依靠Refresh Duration来刷新的话，那我的statusbar还有什么意义，都不能实时反应出我在哪个窗口，其它窗口有没有被占用。</p>
-
 <p>但是，yabai貌似什么都算到了！它开放了一种event notify的方式可以和其它的script进行交互(通过macOS的osascript)，只需要在yabairc里面指定你要交互的app name就可以了，比如：</p>
-
-<pre><code class="language-bash">yabai -m signal --add event=space_changed \
-            action=&quot;osascript -e 'tell application id \&quot;tracesOf.Uebersicht\&quot; to refresh widget id \&quot;spaces-primary-jsx\&quot;'&quot;
-</code></pre>
-
-<p>用了几天，感觉确实还行，比之前的statusbar更谐了hhh。</p>
-
-<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9748b096-5af4-4968-bf77-0f52e225e95a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200627%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20200627T085102Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5db4e5f95902579db1f2d525d9d95205639c978f38b6f63517b091fba89b14b5&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Untitled.png%22" alt="mac%20mWMS%20e49307fe58264b009fbd2626a7d355d3/Untitled.png" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yabai -m signal --add event<span style="color:#f92672">=</span>space_changed <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>            action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;osascript -e &#39;tell application id \&#34;tracesOf.Uebersicht\&#34; to refresh widget id \&#34;spaces-primary-jsx\&#34;&#39;&#34;</span>
+</code></pre></div><p>用了几天，感觉确实还行，比之前的statusbar更谐了hhh。</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9748b096-5af4-4968-bf77-0f52e225e95a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200627%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20200627T085102Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=5db4e5f95902579db1f2d525d9d95205639c978f38b6f63517b091fba89b14b5&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Untitled.png%22" alt="mac%20mWMS%20e49307fe58264b009fbd2626a7d355d3/Untitled.png"></p>
 <p>statusbar交给自己管理之后，确实有很多异想天开的功能可以自己实现：比如实现一个 windows XP 的statusbar也是可以的（如果jsx script写得6的话</p>
-
 <h2 id="总结">总结</h2>
-
 <p>本篇记录了我在折腾和实际体验yabai时遇到的一些问题和感想。</p>
-
 <p>那么，以上，就酱。</p>
-
 <blockquote>
 <p><del>什么 ？ 你问我敢不敢升级Big Sur，那当然是不敢啊，不过<a href="https://github.com/koekeishiya/yabai/issues/589">社区已经有勇士上车了</a>，等待后续吧。</del></p>
 </blockquote>
@@ -262,13 +231,10 @@ yabai -m config right_padding                x
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -278,7 +244,17 @@ yabai -m config right_padding                x
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

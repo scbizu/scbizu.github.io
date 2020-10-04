@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in linux on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux mint下修改默认中文文件夹</title>
       <link>https://blog.scnace.me/post/linux-mint%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9/</link>

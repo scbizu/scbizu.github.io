@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>template on 一只菜鸡的成长之路</title>
@@ -6,11 +6,7 @@
     <description>Recent content in template on 一只菜鸡的成长之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>copyleft</copyright>
-    
-	<atom:link href="https://blog.scnace.me/tags/template/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyleft</copyright><atom:link href="https://blog.scnace.me/tags/template/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>修改Golang template语法</title>
       <link>https://blog.scnace.me/post/%E4%BF%AE%E6%94%B9golang%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</link>

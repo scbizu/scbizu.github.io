@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%80%83%E8%AF%95%E6%95%B4%E7%90%86/" />
 
-
 <meta itemprop="name" content="软件工程考试整理">
 <meta itemprop="description" content="题型： 选择题：15x2 = 30分 填空题：10x1 = 10分 简答题：4~5题，共30分。 分析设计题：3题，共30分。 第1章 什么是软件危机，典型表现">
-
-
 
 <meta itemprop="wordCount" content="2522">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -131,12 +133,16 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
       <p>题型：</p>
-
 <pre><code> 选择题：15x2 = 30分
 
 
@@ -149,22 +155,16 @@
 
 分析设计题：3题，共30分。
 </code></pre>
-
 <p>第1章</p>
-
 <ul>
 <li>什么是软件危机，典型表现，产生原因</li>
 </ul>
-
 <p>定义:</p>
-
 <pre><code>1. 如何开发软件以满足对软件日益增长的需求
 
 2. 如何维护数量不断膨胀的已有软件    
 </code></pre>
-
 <p>典型表现:</p>
-
 <pre><code>1. 对软件开发成本和进度常常很不准确
 2. 用户对软件系统结果不满意
 3. 软件产品的质量往往靠不住
@@ -173,9 +173,7 @@
 6. 软件成本在计算机系统总成本中所占比例逐年上升
 7. 软件开发生产率提高的速度 远远跟不上计算机应用速度普及深入的趋势。
 </code></pre>
-
 <p>原因：</p>
-
 <pre><code>1. 忽视软件需求分析的重要性
 2. 认为软件开发就是写程序并设法使之运行
 3. 轻视软件维护
@@ -227,9 +225,7 @@
 
   渐增模式，最终的软件由多个构件(相互作用的模块)组成,并且能够完成特定的功能，每个新构件必须是可以测试的。
 </code></pre>
-
 <p>第2、3章</p>
-
 <pre><code>* 可行性分析：技术可行性、经济可行性、操作可行性、社会可行性
 
 
@@ -244,9 +240,7 @@
 2. 属性:数据对象的性质
 3. 联系:数据对象彼此之间互相联系的方式
 </code></pre>
-
 <p>第5章</p>
-
 <pre><code>* 什么是总体设计
 
 
@@ -280,9 +274,7 @@
 
 * 模块的耦合性和内聚性原则
 </code></pre>
-
 <p>耦合：一个软件结构内不同模块之间的互连程度的度量</p>
-
 <pre><code>数据耦合：交换的信息仅仅是数据  属于低耦合
  控制耦合：交换的信息仅仅是控制信息(可以是数据) 中等程度耦合
  特征耦合：数据结构中，传递的数据多于需要的数据。
@@ -294,30 +286,22 @@
 *           两个模块有一部分程序代码重叠(只可能出现在汇编程序中)
 *           一个模块有多个功能
 </code></pre>
-
 <p>-建议-:尽量使用数据耦合,少使用控制耦合和特征耦合,限制公共环境耦合的范围，完全不用内容耦合。</p>
-
 <p>内聚：一个模块内各个元素彼此结合的紧密程度，是信息隐藏和局部化概念的自然扩展  尽量做到高内聚
 低内聚：
 偶然内聚：一个模块完成一组任务，任务彼此间的关系比较松散
 逻辑内聚：一个模块完成的任务在逻辑上属于相同或相似的一类
 时间内聚：一个模块包含的任务必须在同一时间内执行</p>
-
 <p>中内聚：
 过程内聚：一个模块内的处理元素是相关的，而且必须以特定次序执行
 通信内聚：模块中所有元素都使用同一个输入数据或产生同一个输出数据</p>
-
 <p>高内聚：
 顺序内聚：一个模块内的处理元素和同一个功能密切相关 而且这些处理必须顺序执行
 功能内聚：最高程度的内聚。模块内所有元素都是一个整体来实现一个单一的功能</p>
-
 <pre><code>* 开发成本与模块化的关系
 </code></pre>
-
 <p>存在一个最佳模块数量M 使得软件总成本最低（源于：随着软件模块的增多，开发单个模块的成本的减少，但是所需要的模块间的接口成本却在不断增加）</p>
-
 <p>第6章</p>
-
 <pre><code>* 结构化程序的三种基本结构
 
 
@@ -335,9 +319,7 @@
 
 * 程序流程图、盒图、PAD图、判定表、判定树
 </code></pre>
-
 <p>第7章</p>
-
 <pre><code>* 软件测试的含义
 
 
@@ -349,14 +331,12 @@
 
 * 集成测试，集成方法
 </code></pre>
-
 <p>集成测试：测试和组装软件的系统化技术
 集成方法：
-     非渐增式测试方法：分别测试每个模块再把所有模块结合在一起
-     渐增式测试方法：把下一个测试的模块同已经测试好的那些模块结合起来测试，测试完再把下一个应该测试的模块结合进来测试
-          自顶向下集成:深度优先或者宽度优先
-          自底向上集成:</p>
-
+非渐增式测试方法：分别测试每个模块再把所有模块结合在一起
+渐增式测试方法：把下一个测试的模块同已经测试好的那些模块结合起来测试，测试完再把下一个应该测试的模块结合进来测试
+自顶向下集成:深度优先或者宽度优先
+自底向上集成:</p>
 <pre><code>1.               把低层模块组合成实现某个特定的软件子功能的族
 2.               写一个驱动程序，协调测试数据的输入输出
 3.               对由模块组成的子功能族进行测试
@@ -366,21 +346,15 @@
 
 * 驱动模块和桩模块
 </code></pre>
-
 <p>驱动程序：接收测试数据，把这些数据传送给被测试的模块，并且印出有关的结果。
 存根程序：代替被测试的模块所调用的模块 也称虚拟子程序</p>
-
 <pre><code>* 黑盒测试技术：等价类划分法、边界值法
 </code></pre>
-
 <p>等价划分：把程序的输入域划分为若干个数据类，据此导出测试用例</p>
-
 <pre><code>1. 设计一个新的测试方案以尽可能多地覆盖尚未被覆盖的有效等价类，重复这一步骤直到所有有效等价类都被覆盖为止
 2. 设计一个新的测试方案使它覆盖一个而且只覆盖一个尚未被覆盖的无效等价类，重复这一步骤直到所有无效等价类都被覆盖为止
 </code></pre>
-
 <p>边界值分析：首先确定边界情况，通常输入等价类和输出等价类的边界，就是应该着重测试的程序边界情况</p>
-
 <pre><code>* 白盒测试技术：逻辑覆盖
 
 
@@ -393,41 +367,29 @@
 7. 边覆盖
 8. 路径覆盖
 </code></pre>
-
 <p>第9、10、11章</p>
-
 <pre><code>* 类与实例
 </code></pre>
-
 <p>类：对具有相同数据和相同操作的一组相似对象的定义</p>
-
 <p>实例：某个特定的类所描述的一个具体的对象</p>
-
 <ul>
 <li>类与类之间的关系</li>
 </ul>
-
 <p>封装(encapsulation)
 继承(inheritance)
 多态(polymorphism)
 重载(overloading)</p>
-
 <ul>
 <li>类图</li>
 </ul>
-
 <p>p221</p>
-
 <ul>
 <li>用例图</li>
 </ul>
-
 <p>p227</p>
-
 <ul>
 <li>状态图</li>
 </ul>
-
 <p>p252</p>
 
     </div>
@@ -464,6 +426,10 @@
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -490,13 +456,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -506,7 +469,17 @@
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 

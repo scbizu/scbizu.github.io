@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.75.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -43,11 +44,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.scnace.me/post/golang-channel%E5%AE%9E%E9%AA%8C/" />
 
-
 <meta itemprop="name" content="golang channel实验">
 <meta itemprop="description" content="信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。 信道到底是怎么一">
-
-
 
 <meta itemprop="wordCount" content="1451">
 
@@ -85,6 +83,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
       </a>
@@ -102,6 +102,8 @@
         <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
       </li>
@@ -133,34 +135,31 @@
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#信道到底是怎么一种东西">信道到底是怎么一种东西?</a></li>
-<li><a href="#donot-bb-show-me-the-code">Donot BB Show me the code</a></li>
-<li><a href="#goroutine基本运用">Goroutine基本运用</a></li>
-<li><a href="#关于range和close在channel中的应用">关于Range和Close在channel中的应用</a></li>
-<li><a href="#升阶-让我们在一起吧">升阶&ndash;让我们在一起吧</a></li>
-<li><a href="#监视器">监视器</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#信道到底是怎么一种东西">信道到底是怎么一种东西?</a></li>
+        <li><a href="#donot-bb-show-me-the-code">Donot BB Show me the code</a></li>
+        <li><a href="#goroutine基本运用">Goroutine基本运用</a></li>
+        <li><a href="#关于range和close在channel中的应用">关于Range和Close在channel中的应用</a></li>
+        <li><a href="#升阶--让我们在一起吧">升阶&ndash;让我们在一起吧</a></li>
+        <li><a href="#监视器">监视器</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
     <div class="post-content">
-      
-
-<p>信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。</p>
-
+      <p>信道(channel)是Goroutine之间通信的手段,所以,掌握Channel的用法之于Golang的学习变得尤为重要。</p>
 <h3 id="信道到底是怎么一种东西">信道到底是怎么一种东西?</h3>
-
 <p>也许信道与 <strong>UNIX的双向PIPE</strong> 比较类似,也是采用了FIFO的方式来实现调度。由于Goroutine <strong>运行在相同的地址空间</strong> , <strong>所以访问共享内存时必须要做好同步</strong> 。Channel就是为了解决这个问题而出现的。通过他来接收或者发送值。</p>
-
 <h3 id="donot-bb-show-me-the-code">Donot BB Show me the code</h3>
-
 <pre><code>    func main() {
 
        init:=make(chan int,20)
@@ -169,20 +168,12 @@
        fmt.Println(&lt;-init)
        fmt.Println(&lt;-init)
        }
-</code></pre>
-
-<p>这就是Channel的用法了,首先缓冲数据,再取出数据。</p>
-
+</code></pre><p>这就是Channel的用法了,首先缓冲数据,再取出数据。</p>
 <p>By the way,信道的发送和接收方默认是阻塞的,也就是,知道发送方有数据发送过来之前,接收的通道一直都是阻塞的。</p>
-
 <p>当然,这是缓冲Channel的写法。可以缓冲多组数据。</p>
-
 <p>而无缓冲的channel(即 <strong>make(chan TYPE)</strong> )只能用于单组数据的传输,这也是goroutine最常用的方式。</p>
-
 <h3 id="goroutine基本运用">Goroutine基本运用</h3>
-
 <p>用channel来辅助并发(Coroutine) 应该是channel最基础的应用.由于在主线程(main)会在go func()之前跑完,所以导致func()没法跑完  用channel实现的思路是 <strong>用channel去阻塞主线程,直到个go func()全部跑完 再把阻塞取消掉</strong>。在多个Go Routine中,<strong>需要维护一个全局的channel数组,由这个全局channel控制每个Goroutine</strong>。示例代码如下:</p>
-
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -213,12 +204,8 @@ func main() {
 	}
 }
 
-</code></pre>
-
-<p>稍微对着代码解释下,charr是我设置的全局channel数组  由他负责所有的子Channel</p>
-
+</code></pre><p>稍微对着代码解释下,charr是我设置的全局channel数组  由他负责所有的子Channel</p>
 <h3 id="关于range和close在channel中的应用">关于Range和Close在channel中的应用</h3>
-
 <pre><code>    package main
 
     import (
@@ -239,18 +226,11 @@ func main() {
             fmt.Println(data)
             }
        }
-</code></pre>
-
-<p>这里的range实际是遍历的一种简写方法。作用也是遍历channel里的所有数据。range给我们带来了很大的便利</p>
-
+</code></pre><p>这里的range实际是遍历的一种简写方法。作用也是遍历channel里的所有数据。range给我们带来了很大的便利</p>
 <p>而close(),便是关闭当前信道。<strong>注意!close一定要在生产的地方去调用,在消费的地方调用会引起panic</strong>.channel作为一种缓存类型,并不需要经常去关闭,只要在确实没有数据发的时候关闭信道就可以了。</p>
-
-<h3 id="升阶-让我们在一起吧">升阶&ndash;让我们在一起吧</h3>
-
+<h3 id="升阶--让我们在一起吧">升阶&ndash;让我们在一起吧</h3>
 <p>思想:在遇到非常复杂的计算时,我们可以分多路对此计算进行分割计算，之后再把三路的计算结果放入总信道，然后从总信道里取值，以此来缩短程序的运行时间。</p>
-
 <p>The Code is here:</p>
-
 <pre><code>    package main
 
     import (
@@ -291,18 +271,11 @@ func main() {
             fmt.Println(&lt;-res)
             }
        }
-</code></pre>
-
-<p>(嘘！这里我们假装50-x是一个非常耗时的计算。。。用了Sleep来强行伪装。。。。)</p>
-
+</code></pre><p>(嘘！这里我们假装50-x是一个非常耗时的计算。。。用了Sleep来强行伪装。。。。)</p>
 <h3 id="监视器">监视器</h3>
-
 <p>Golang中黑科技炒鸡多的,这就是我喜欢它的原因吧~~比如这个SELECT是用来监测信道上的数据流动</p>
-
 <p>select默认是阻塞的,只有当监听的信道接收或发送时才可以运行,然后当有多个信道满足条件时,select会选择一个执行。(感觉用法跟Switch‘有点像   然而只是语法有点像 case default啥的</p>
-
 <p>然后上面的代码就可以开始简化了:</p>
-
 <pre><code>    //合并全部分支
     func merge(aChan ...chan int)chan int{
         //aChan是一个Slice类型
@@ -318,10 +291,7 @@ func main() {
             }()
         return result;
         }
-</code></pre>
-
-<p>SELECT 还有一个 <strong>设置超时</strong> 功能,用来避免全部阻塞的情况</p>
-
+</code></pre><p>SELECT 还有一个 <strong>设置超时</strong> 功能,用来避免全部阻塞的情况</p>
 <pre><code>case &lt;-time.After(5*time.Second):
 //do sth here
 </code></pre>
@@ -365,6 +335,10 @@ func main() {
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
@@ -391,13 +365,10 @@ func main() {
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">copyleft</span>
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -407,7 +378,17 @@ func main() {
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 
 
