@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>tape x topic: 我对智能体上下文的组织方式 - 一只菜鸡的成长之路</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="scnace" /><meta name="description" content="想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。 Hello Tape 我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="https://blog.scnace.me/post/tapextopic/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="tape x topic: 我对智能体上下文的组织方式" />
+<meta property="og:description" content="想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。 Hello Tape 我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.scnace.me/post/tapextopic/" />
+<meta property="article:published_time" content="2026-03-27T14:00:00+08:00" />
+<meta property="article:modified_time" content="2026-03-27T14:00:00+08:00" />
+<meta itemprop="name" content="tape x topic: 我对智能体上下文的组织方式">
+<meta itemprop="description" content="想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。 Hello Tape 我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新">
+<meta itemprop="datePublished" content="2026-03-27T14:00:00+08:00" />
+<meta itemprop="dateModified" content="2026-03-27T14:00:00+08:00" />
+<meta itemprop="wordCount" content="3237">
+
+
+
+<meta itemprop="keywords" content="agent,ai," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="tape x topic: 我对智能体上下文的组织方式"/>
+<meta name="twitter:description" content="想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。 Hello Tape 我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">scnace</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/index.xml">
+        <li class="mobile-menu-item">RSS</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">scnace</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/index.xml">RSS</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">tape x topic: 我对智能体上下文的组织方式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2026-03-27 </span>
+        <div class="post-category">
+            <a href="/categories/agi/"> agi </a>
+            </div>
+          <span class="more-meta"> 3237 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hello-tape">Hello Tape</a></li>
+    <li><a href="#tape-as-spec">Tape as Spec</a>
+      <ul>
+        <li><a href="#合理的抽象">合理的抽象</a></li>
+        <li><a href="#对基础设施足够友好">对基础设施足够友好</a></li>
+      </ul>
+    </li>
+    <li><a href="#topic">Topic</a>
+      <ul>
+        <li><a href="#topic-的基本实现"><code>Topic</code> 的基本实现</a></li>
+        <li><a href="#给-topic-加上一层生命周期-hooks">给 <code>Topic</code> 加上一层生命周期 hooks</a></li>
+        <li><a href="#我对-topic-的几个后续提案">我对 <code>Topic</code> 的几个后续提案</a></li>
+      </ul>
+    </li>
+    <li><a href="#memory">Memory</a></li>
+    <li><a href="#tape-to-any-agent">Tape to Any-Agent</a></li>
+    <li><a href="#credits">Credits</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。</p>
+</blockquote>
+<h2 id="hello-tape">Hello Tape</h2>
+<p>我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新包装出来的概念，结果顺着 <a href="https://tape.system">tape</a> 读下去，反而被它的抽象吸引住了。</p>
+<p>Tape 用“纸带”来描述 agent 的 context window：每个关键时刻都像纸带上的一个孔，平时可以折叠，需要回溯时再展开。历史没有消失，也不会被凭空改写。</p>
+<p>在它之前，我觉得能参考的 agent context 设计，主要还是几篇头部团队的文章。</p>
+<ul>
+<li><a href="https://manus.im/zh-cn/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus">AI代理的上下文工程：构建Manus的经验教训</a>：Manus 给我的启发主要有三点。第一，用文件系统而不是单纯靠压缩摘要去承接历史；第二，错误也是历史的一部分，不该被抹掉；第三，通过「Action -&gt; Document」让 agent 的行为更可追踪。我对 MCP 和 MCP-like 方案一直有点保留：工具集一旦过大，agent 很难长期稳定地把注意力放在正确的位置上，成本和误判都会跟着上来。</li>
+<li><a href="https://github.com/sourcegraph/amp-examples-and-guides/blob/main/guides/context-management/Context%20Engineering%20-%20Amp.md">AMP: Context Engineering</a>：AMP 更像是面向 Coding Agent 的工程化方案。它把复杂的 tool call 收敛成 <code>read / write / edit / bash</code> 四个基本动作，再通过 sub-agent 和 handoff 控制上下文膨胀。</li>
+</ul>
+<p>相比之下，AMP 更像是对 Coding Agent 的优化，而 Manus 提出的设计更能引出我对 General Agent 的思考。</p>
+<p>Manus 的方案也让我一直在想几个问题：</p>
+<ul>
+<li>「Document 的存储介质」为什么一定要是文件系统？如果企业已经有数据库或对象存储，能不能直接复用？</li>
+<li>Document 的并发控制该怎么设计？如果相似的 Action 产出不同的 Document，会不会反过来干扰 agent 的判断？</li>
+<li>Action 和 Document 之间，到底应该抽象成什么样的范式？</li>
+</ul>
+<p>也是因为这些问题，我看到 Tape 时会觉得它的设计会更加自然。</p>
+<h2 id="tape-as-spec">Tape as Spec</h2>
+<p>Tape 本身不是一套具体实现，更像是一份关于 agent 系统该怎么组织上下文的设计说明。如果你想用它设计出来的智能体可以长成什么样，可以试试 <a href="https://bub.build">bub</a>。这篇文章还是聚焦在 Tape 的设计本身。</p>
+<h3 id="合理的抽象">合理的抽象</h3>
+<p>我一直相信，好抽象不是“造概念”，而是不断贴近真实场景和现实规律。Tape 的设计很符合这个标准。</p>
+<ul>
+<li>Tape 对应一个真实的 LLM Session。每个 session 自诞生起就有自己的一条纸带，历史只能向前累积。</li>
+<li>Entry 是最小单元，记录一次真实交互：用户输入、模型回答、工具调用都算。Entry 不应该被篡改或删除。agent 得出错误结论时，正确做法不是回头改历史，而是追加一条“这里错了、后来怎么修正”的新 entry。</li>
+<li>Anchor 是特殊的 Entry，用来标记值得回溯的节点。它可以是“错题本”，也可以是“一个值得保留的好想法”。Anchor 本质上是对若干 entries 的提炼，所以扩展空间很大。</li>
+<li>View 是一组 Entry 的集合。你可以把它理解成一个项目、一段任务周期，或者任何需要被回顾的主题窗口。项目资料、讨论分歧、关键里程碑都能落在同一个 view 里。</li>
+<li>当单个 session 也撑不住上下文长度时，Tape 通过 <code>handoff</code> 解决问题：先产出一个带前序状态的 Anchor，再把窗口往后推进。原始信息仍然保留，只是默认不再每次都展开。</li>
+</ul>
+<p>Tape 给的抽象不多，但都很准。也正因为它足够克制，实现层才有足够的发挥空间。</p>
+<h3 id="对基础设施足够友好">对基础设施足够友好</h3>
+<p>Tape 的另一个优点，是它不强迫你接受某一种固定基础设施。抽象稳定之后，存储层就可以按场景替换：</p>
+<ul>
+<li>单机场景可以像 Manus 一样，用本地 JSONL 持久化 entries 和 anchors。</li>
+<li>分布式场景可以把 entries 和 anchors 放进数据库或对象存储里，方便扩展和横向伸缩。</li>
+<li>如果场景强调“回忆”，也可以接入向量数据库来承担召回能力。</li>
+</ul>
+<p>这些都不是新问题，业界已经有很多成熟实现。对企业来说，理想做法往往不是再造一套新设施，而是复用已有的数据基础设施。</p>
+<p>甚至连可观测性平台也可以接进来。比如在 entry 上记录 token 消耗，把 Tape 变成一套 agent 的“记账系统”。</p>
+<h2 id="topic">Topic</h2>
+<p><code>Topic</code> 是我基于 Tape View 衍生出来的一个高层抽象，对应的是我自己的业务场景：企业知识库问答。</p>
+<p>公司最近在推进 AI 知识库建设，但真实问题往往不是“这段知识怎么解释”，而是“这个业务问题落在哪块系统、应该去哪里查、怎么查更高效”。如果只让开发自己用 skill 或 Coding Agent，还解决不了跨角色协作的问题。产品、测试、运营带着业务话题来问时，背后对应的通常是一段复杂的代码和流程。</p>
+<p>所以我想做的 agent，更像一个“面向代码库的客服”：它需要理解业务话题，知道该去哪块系统里找线索，也要知道怎么判断自己有没有找对。</p>
+<p>这类场景对上下文组织有几个明确要求：</p>
+<ul>
+<li>用户的话题需要可回溯、可复用。很多问题不会只出现一次，后续对话应该能继承之前积累的经验。</li>
+<li>系统要有可观测性，至少能看清 token 开销和行为链路。</li>
+<li>在企业环境里，还要兼顾数据安全和实现成本。</li>
+</ul>
+<p>也是基于这些考虑，我最后选了 Tape 作为整体设计的底层约束。</p>
+<p>但 Tape 当时并没有 <code>Topic</code> 这一层抽象（<a href="https://github.com/bubbuild/tape.systems/pull/3#event-23341167110">感谢摆锤哥哥认可我对 topic 的设想 🥰</a>）。于是我开始基于 <code>Entry / Anchor / View</code> 填补了这个空白。</p>
+<h3 id="topic-的基本实现"><code>Topic</code> 的基本实现</h3>
+<p>我的想法其实很直接：在话题开始时写入 <code>topic_initial</code>，在用户明确结束时写入 <code>topic_finalized</code>。这两个 Anchor 之间的 entries 和 anchors，就构成一个 topic。</p>
+<p>这样一来，底层仍然是 Tape，但对用户暴露出来的可以是更贴近业务直觉的概念，比如 ChatBot 常见的「Topics」列表。</p>
+<p><img src="../assets/topic_design.png" alt="Topic"></p>
+<p>存储层上，我只是在 Tape 原本的 entry 和 anchor 之上补了一层 topic 元数据：<code>topic_initial_index</code>、<code>topic_finalized_index</code>、topic summary，以及 owner、timestamp 等业务字段。这里的 index 我更倾向用自增 <code>seq</code>，因为后续做 range search、统计 entry 数量都会更直接。</p>
+<h3 id="给-topic-加上一层生命周期-hooks">给 <code>Topic</code> 加上一层生命周期 hooks</h3>
+<p>为了让它更适合真实业务，我又加了一层 hooks，把 <code>topic_initial</code> 和 <code>topic_finalized</code> 变成 topic 生命周期的起点和终点。围绕它们，可以扩展出：</p>
+<ul>
+<li><code>pre_topic_initial_hooks</code></li>
+<li><code>post_topic_initial_hooks</code></li>
+<li><code>pre_topic_finalized_hooks</code></li>
+<li><code>post_topic_finalized_hooks</code></li>
+</ul>
+<p>有了这层机制，topic 就能自然长出不同形态。</p>
+<h4 id="正常主题common-topic">正常主题（Common Topic）</h4>
+<p><img src="../assets/common_topic.png" alt="CommonTopic"></p>
+<p>这是最标准的一条生命周期：开始、交互、结束，完整而清晰。</p>
+<h4 id="需要回忆的主题memory-able-topic">需要回忆的主题（Memory-able Topic）</h4>
+<p><img src="../assets/memory_topic.png" alt="MemoryTopic"></p>
+<p>在 <code>post_topic_initial</code> 之后插入 recall 流程：先根据当前需求去历史 topic summary 里检索相关主题，再把召回结果写成一个 <code>recall_anchor</code> 带回当前上下文。它占用的上下文很小，但需要时仍然能顺着 index 范围继续追溯原始 entries。</p>
+<h4 id="没有正常结束的主题aborted-topic">没有正常结束的主题（Aborted Topic）</h4>
+<p><img src="../assets/abort_topic.png" alt="AbortTopic"></p>
+<p>真实用户不会总按流程出牌。有时上一个 topic 还没结束，新的 topic 已经开始了。为避免上下文错乱，我在 <code>pre_topic_initial</code> 阶段加了一个 <code>topic_finalize_prev</code>：开启新话题前，先检查上一个 topic 是否已经结束；如果没有，就补一条 <code>topic_finalized</code>。</p>
+<h4 id="超长主题extra-large-topic">超长主题（Extra-Large Topic）</h4>
+<p>这一类不用额外 hooks，但仍然要用 Tape 原本的 <code>handoff</code>。当单个 topic 超出上下文窗口时，可以插入一个中断 Anchor，我暂时把它叫做 <code>brain_overload</code>。它记录中断位置和一段 summary，这样一个 topic 就会被切成多个可回放的段落。</p>
+<p>未完待续。按业务需求继续扩展 hooks，本质上仍然是在同一套组织方式上做演化。</p>
+<h3 id="我对-topic-的几个后续提案">我对 <code>Topic</code> 的几个后续提案</h3>
+<ul>
+<li>Share-able Topic：允许 topic 作为一个可分享的业务单元，被别的同事或别的业务线引用。这样大家既能看摘要，也能沿着 topic 继续追到细节。类似 <a href="https://github.com/Xuanwo/xurl">XuanWo 的 xurl</a>，以后甚至可以直接问：「根据 @scnace 的开放知识库，这个问题该怎么处理？」</li>
+<li>Fact Topic：在 <code>post_topic_finalize</code> 阶段接入 RAG，把 topic 中沉淀出来的业务结论转成 contributor 维度的 metadata。</li>
+<li>Topic Cost：按 topic 统计 token 花费，把成本也纳入可追踪范围。</li>
+</ul>
+<p><code>Topic</code> 作为对 Tape View 的进一步抽象，让我更确信 Tape 不只是一个漂亮概念，而是真的能落进业务系统里。</p>
+<h2 id="memory">Memory</h2>
+<p>在这种上下文组织方式下，“记忆”会变得很自然。</p>
+<p>相比某些 🦞 的外挂 memory 方案，这种做法不需要再额外维护一套割裂的系统：不用单独再起一层数据库，也不用为“记忆模块”额外付出一层系统复杂度。</p>
+<p>在我的理解里，Tape 不需要额外设计一个 memory 子系统。Entry 和 Anchor 本身就提供了“沿时间漫游”的能力，这就是记忆。它不是外挂，而是 agent 的基础能力。</p>
+<h2 id="tape-to-any-agent">Tape to Any-Agent</h2>
+<p>Tape 是一套设计语言，不是某个固定产品。它可以被拉向不同的垂直场景：比如 <a href="https://bub.build">bub</a> 更专注于群聊场景的群像智能体，而我更关心企业知识库问答。</p>
+<p>如果继续往前走，我希望 Tape 最终能变成一个足够稳定的内核：它既能承接不同场景的 agent，也能在运行中逐步完成自我抽象和自我迭代。某种意义上，它很像 agent 世界里的“百变怪”。</p>
+<h2 id="credits">Credits</h2>
+<ul>
+<li><a href="https://tape.system">Tape System</a></li>
+<li><a href="https://bub.build">Bub Community</a></li>
+<li><a href="https://github.com/PsiACE">PsiACE</a></li>
+<li><a href="https://manus.im/zh-cn/blog/">Manus Blog</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">scnace</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2026-03-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/agent/">agent</a>
+          <a href="/tags/ai/">ai</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/go-module-migration/">
+            <span class="next-text nav-default">Go Module Migration</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:scbizu@gamil.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/scnace" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/scbizu" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.scnace.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2016 - 
+    2026<span class="heart"><i class="iconfont icon-heart"></i></span><span>copyleft</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+    <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

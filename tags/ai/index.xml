@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ai on 一只菜鸡的成长之路</title>
+    <link>https://blog.scnace.me/tags/ai/</link>
+    <description>Recent content in ai on 一只菜鸡的成长之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>copyleft</copyright>
+    <lastBuildDate>Fri, 27 Mar 2026 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.scnace.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tape x topic: 我对智能体上下文的组织方式</title>
+      <link>https://blog.scnace.me/post/tapextopic/</link>
+      <pubDate>Fri, 27 Mar 2026 14:00:00 +0800</pubDate>
+      
+      <guid>https://blog.scnace.me/post/tapextopic/</guid>
+      <description>想借这篇文章，记录一下我这段时间对 agent 和上下文组织方式的理解。 Hello Tape 我是偶然认识 Tape 的。那几天我对全是 🦞 的信息流已经有点疲劳，本来以为它又是一个新</description>
+    </item>
+    
+  </channel>
+</rss>
